@@ -81,6 +81,32 @@ export function LogoSymbol({
   );
 }
 
+/**
+ * Parent-entity lockup — "SupremeHome Roofing & Construction".
+ *
+ * NOTE: the supplied file is only 160x35, so it is used at small sizes only
+ * (footer attribution / about page). Ask the client for a vector or a 2x
+ * raster before using it any larger.
+ */
+export function SupremeHomeRoofingLogo({
+  height = 30,
+  className = "",
+}: {
+  height?: number;
+  className?: string;
+}) {
+  return (
+    <Image
+      src="/brand/supreme-home-roofing-construction.jpg"
+      alt="Supreme Home Roofing & Construction"
+      width={Math.round(height * (160 / 35))}
+      height={height}
+      className={className}
+      style={{ height, width: "auto" }}
+    />
+  );
+}
+
 /** Supreme Home lockup — the residential side of the business. */
 export function SupremeHomeLogo({
   height = 40,

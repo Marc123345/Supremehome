@@ -1,8 +1,15 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
-import { site, nav, services, manufacturers } from "@/lib/site";
+import {
+  site,
+  nav,
+  services,
+  manufacturers,
+  credentialBadges,
+} from "@/lib/site";
 import { locations } from "@/lib/locations";
-import { Logo } from "./Logo";
+import { Logo, SupremeHomeRoofingLogo } from "./Logo";
 
 /**
  * Footer in the Vharanani Group pattern: a split panel — brand-colour left,
@@ -132,6 +139,22 @@ export function Footer() {
               </li>
             ))}
           </ul>
+
+          {/* Parent entity + CertainTeed credentials */}
+          <h3 className="display-sm mb-4">Part of</h3>
+          <div className="flex flex-wrap items-center gap-6 mb-10">
+            <SupremeHomeRoofingLogo height={34} />
+            {credentialBadges.map((badge) => (
+              <Image
+                key={badge.name}
+                src={badge.src}
+                alt={badge.alt}
+                width={56}
+                height={56}
+                title={`${badge.issuer} ${badge.name}`}
+              />
+            ))}
+          </div>
 
           {/* Tagline */}
           <div
