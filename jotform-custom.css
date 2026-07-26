@@ -1,0 +1,374 @@
+/* ═══════════════════════════════════════════════════════════════════
+   SUPREME COMMERCIAL COATINGS — JOTFORM CUSTOM CSS
+   Matches the website design system exactly.
+
+   WHERE TO PASTE
+   Jotform Form Builder → Form Designer (paint-roller icon, top right)
+   → Styles tab → scroll to "Inject Custom CSS" → paste all of this → Save.
+
+   Works with Jotform's Classic and Card layouts. Tested against Jotform's
+   standard class names (.form-line, .form-textbox, .form-submit-button …).
+
+   BRAND (from the SCC master package)
+     SCC Red   #E00116     Ink  #0B0B0D     Border  #D2D5DA
+     Display   Bebas Neue  Body Manrope
+   ═══════════════════════════════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --scc-red: #e00116;
+  --scc-red-dark: #a80110;
+  --scc-ink: #0b0b0d;
+  --scc-ink-60: #3a3d43;
+  --scc-ink-40: #7d818a;
+  --scc-border: #d2d5da;
+  --scc-bg: #f6f7f9;
+  --scc-white: #ffffff;
+}
+
+/* ── PAGE BACKGROUND ─────────────────────────────────────────────── */
+
+.supernova,
+.supernova body,
+body {
+  background: var(--scc-bg) !important;
+}
+
+/* ── FORM SHELL ──────────────────────────────────────────────────── */
+
+.form-all {
+  font-family: "Manrope", system-ui, -apple-system, sans-serif !important;
+  background: var(--scc-white) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 0 !important;
+  max-width: 780px !important;
+  padding: 0 0 8px !important;
+  box-shadow: 0 30px 70px -40px rgba(0, 0, 0, 0.35) !important;
+  color: var(--scc-ink) !important;
+}
+
+/* Red rule across the top — the site's accent line */
+.form-all::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: var(--scc-red);
+  margin-bottom: 8px;
+}
+
+/* ── HEADER ──────────────────────────────────────────────────────── */
+
+.form-header-group {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  padding: 32px 40px 26px !important;
+  margin-bottom: 8px !important;
+}
+
+.form-header-group .form-header {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+  font-size: clamp(1.9rem, 4vw, 2.6rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: 0.01em !important;
+  text-transform: uppercase !important;
+  color: var(--scc-ink) !important;
+  margin: 0 0 8px !important;
+}
+
+.form-header-group .form-subHeader {
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+  color: var(--scc-ink-60) !important;
+  margin: 0 !important;
+}
+
+/* ── SECTION HEADINGS (Text / Divider fields) ────────────────────── */
+
+.form-line .form-html h1,
+.form-line .form-html h2,
+.form-line .form-html h3 {
+  font-family: "Bebas Neue", "Arial Narrow", sans-serif !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.01em !important;
+  color: var(--scc-ink) !important;
+}
+
+/* ── FIELD ROWS ──────────────────────────────────────────────────── */
+
+.form-line {
+  padding: 12px 40px !important;
+  margin: 0 !important;
+}
+
+.form-line-active,
+.form-line:hover {
+  background: transparent !important;
+}
+
+/* ── LABELS ──────────────────────────────────────────────────────── */
+
+.form-label,
+.form-label-top,
+.form-label-left,
+.form-label-right {
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--scc-ink) !important;
+  margin-bottom: 9px !important;
+  line-height: 1.4 !important;
+}
+
+.form-sub-label {
+  font-size: 0.74rem !important;
+  color: var(--scc-ink-40) !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+.form-required {
+  color: var(--scc-red) !important;
+  font-size: 1em !important;
+}
+
+/* ── INPUTS ──────────────────────────────────────────────────────── */
+
+.form-textbox,
+.form-textarea,
+.form-dropdown,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-size: 0.95rem !important;
+  color: var(--scc-ink) !important;
+  background: var(--scc-white) !important;
+  border: 1px solid var(--scc-border) !important;
+  border-radius: 0 !important;
+  padding: 13px 15px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-shadow: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-textarea,
+textarea {
+  min-height: 140px !important;
+  line-height: 1.6 !important;
+  resize: vertical !important;
+}
+
+/* Dropdown caret */
+.form-dropdown,
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230b0b0d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 14px center !important;
+  padding-right: 40px !important;
+}
+
+.form-textbox:hover,
+.form-textarea:hover,
+.form-dropdown:hover {
+  border-color: var(--scc-ink-40) !important;
+}
+
+.form-textbox:focus,
+.form-textarea:focus,
+.form-dropdown:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--scc-red) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(224, 1, 22, 0.12) !important;
+}
+
+::placeholder {
+  color: #a9adb5 !important;
+  opacity: 1;
+}
+
+/* ── RADIO / CHECKBOX ────────────────────────────────────────────── */
+
+.form-radio-item,
+.form-checkbox-item {
+  margin-bottom: 9px !important;
+}
+
+.form-radio-item label,
+.form-checkbox-item label {
+  font-size: 0.93rem !important;
+  color: var(--scc-ink-60) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  cursor: pointer;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: var(--scc-red) !important;
+  width: 17px !important;
+  height: 17px !important;
+  margin-right: 9px !important;
+  cursor: pointer;
+}
+
+/* ── SUBMIT BUTTON — matches the site's pill CTA ─────────────────── */
+
+.form-submit-button,
+.form-submit-button.form-submit-print,
+button[type="submit"] {
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  color: var(--scc-white) !important;
+  background: var(--scc-red) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  padding: 17px 40px !important;
+  min-width: 230px !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 24px -10px rgba(224, 1, 22, 0.7) !important;
+  transition: background-color 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+.form-submit-button:hover,
+button[type="submit"]:hover {
+  background: var(--scc-red-dark) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 14px 30px -10px rgba(224, 1, 22, 0.75) !important;
+}
+
+.form-submit-button:focus-visible {
+  outline: 3px solid var(--scc-red) !important;
+  outline-offset: 3px !important;
+}
+
+.form-buttons-wrapper,
+.form-line-button {
+  padding: 22px 40px 34px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  text-align: left !important;
+}
+
+/* ── VALIDATION ──────────────────────────────────────────────────── */
+
+.form-line-error {
+  background: rgba(224, 1, 22, 0.04) !important;
+  border-left: 3px solid var(--scc-red) !important;
+}
+
+.form-line-error .form-textbox,
+.form-line-error .form-textarea,
+.form-line-error .form-dropdown {
+  border-color: var(--scc-red) !important;
+  background: var(--scc-white) !important;
+}
+
+.form-error-message {
+  background: var(--scc-red) !important;
+  color: var(--scc-white) !important;
+  border-radius: 0 !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  padding: 6px 10px !important;
+}
+
+.form-error-message .form-error-arrow {
+  border-bottom-color: var(--scc-red) !important;
+}
+
+/* ── PROGRESS / PAGINATION (multi-page forms) ────────────────────── */
+
+.form-pagebreak-back,
+.form-pagebreak-next {
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  padding: 14px 30px !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+.form-pagebreak-next {
+  background: var(--scc-red) !important;
+  color: var(--scc-white) !important;
+}
+
+.form-pagebreak-back {
+  background: transparent !important;
+  color: var(--scc-ink) !important;
+  border: 1.5px solid var(--scc-border) !important;
+}
+
+.form-pagebreak-back:hover {
+  border-color: var(--scc-ink) !important;
+  background: var(--scc-ink) !important;
+  color: var(--scc-white) !important;
+}
+
+/* ── CARD LAYOUT (Jotform Cards) ─────────────────────────────────── */
+
+.jfCard-question .jfField-label,
+.jfQuestion-label {
+  font-family: "Manrope", system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  color: var(--scc-ink) !important;
+}
+
+.jfCard-button,
+.jfForm-button {
+  background: var(--scc-red) !important;
+  border-radius: 999px !important;
+  font-weight: 700 !important;
+}
+
+/* ── MOBILE ──────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 640px) {
+  .form-all {
+    border-left: none !important;
+    border-right: none !important;
+  }
+  .form-line,
+  .form-header-group,
+  .form-buttons-wrapper,
+  .form-line-button {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .form-submit-button,
+  button[type="submit"] {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+/* ── ACCESSIBILITY ───────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  .form-submit-button:hover {
+    transform: none !important;
+  }
+}
