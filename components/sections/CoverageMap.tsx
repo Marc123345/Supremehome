@@ -7,6 +7,7 @@ import { Globe, Search, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { locations } from "@/lib/locations";
 import { clientTypes, site } from "@/lib/site";
 import { CoverageLookup } from "@/components/ui/CoverageLookup";
+import { useReducedMotion } from "@/components/ui/useReducedMotion";
 
 /**
  * Bento coverage map — adapted from the BentoInteractiveMap layout onto the
@@ -46,16 +47,17 @@ export function CoverageMap({
   quote?: string;
   showTargets?: boolean;
 } = {}) {
+  const reduced = useReducedMotion();
   const [hovered, setHovered] = useState<string | null>(null);
   const [showLookup, setShowLookup] = useState(false);
   const [pulse, setPulse] = useState(0);
 
   // Cycle a highlight through the cities so the map reads as live.
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (reduced) return;
     const id = setInterval(() => setPulse((p) => (p + 1) % locations.length), 2600);
     return () => clearInterval(id);
-  }, []);
+  }, [reduced]);
 
   // Close the modal on Escape.
   useEffect(() => {

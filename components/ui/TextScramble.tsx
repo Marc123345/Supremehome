@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef, memo } from "react";
+import { useReducedMotion } from "./useReducedMotion";
 
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -34,6 +35,7 @@ export const TextScramble = memo(function TextScramble({
   resolvedColor = "var(--supreme-red)",
   scramblingColor = "rgba(255,255,255,0.28)",
 }: TextScrambleProps) {
+  const reduced = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [displayText, setDisplayText] = useState(phrases[0] ?? "");
   const [isScrambling, setIsScrambling] = useState(true);
@@ -95,11 +97,8 @@ export const TextScramble = memo(function TextScramble({
   );
 
   useEffect(() => {
-    // Respect reduced-motion: hold the phrase, skip the decode animation.
-    const reduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
+    // Mobile / reduced motion: cycle the phrases with no per-character
+    // decode work (that ran a rAF loop for ~2s per phrase, forever).
     if (reduced) {
       setDisplayText(phrases[currentIndex]);
       setIsScrambling(false);
@@ -129,7 +128,7 @@ export const TextScramble = memo(function TextScramble({
       if (timerRef.current) clearTimeout(timerRef.current);
       if (fadeTimerRef.current) clearTimeout(fadeTimerRef.current);
     };
-  }, [currentIndex, phrases, scrambleTo, scrambleDuration, holdDuration]);
+  }, [currentIndex, phrases, scrambleTo, scrambleDuration, holdDuration, reduced]);
 
   return (
     <span

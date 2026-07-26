@@ -587,3 +587,93 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE: NO DECORATIVE MOTION
+   Marquees, Ken Burns and rotating badges run continuously —
+   on a phone that is battery and main-thread cost for no gain,
+   and it competes with scrolling. JS-driven motion is switched
+   off separately via useReducedMotion().
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px), (pointer: coarse) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-ticker-left,
+  .animate-ticker-right,
+  .animate-kenburns,
+  .animate-circle-rotate,
+  .animate-pulse-ring,
+  .animate-float-x,
+  .preloader-letter,
+  .animate-bounce {
+    animation: none !important;
+  }
+
+  /* Ken Burns leaves a scale on the hero image; settle it flat. */
+  .animate-kenburns {
+    transform: none !important;
+  }
+
+  /* Hover-only depth has no meaning on touch and costs a repaint. */
+  .image-frame::before,
+  .image-frame__media img,
+  .notch-card,
+  .edge-card,
+  .sliding-word {
+    transition: none !important;
+  }
+  .image-frame:hover::before {
+    translate: 10px 10px;
+  }
+  .image-frame:hover .image-frame__media img,
+  .notch-card:hover {
+    transform: none !important;
+  }
+  .notch-card:hover {
+    filter: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TOUCH TARGETS
+   Anything tappable gets a 44px minimum hit area on coarse
+   pointers. `.tap` expands the hit box with a pseudo-element so
+   nothing moves visually — used for controls whose visible size
+   is deliberately small (carousel dots, inline text links).
+   ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px), (pointer: coarse) {
+  .tap {
+    position: relative;
+  }
+  .tap::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    height: 100%;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Inline links inside prose/lists: give them real vertical bulk without
+     pushing the layout around. */
+  .tap-inline {
+    display: inline-block;
+    padding-block: 0.72rem;
+    margin-block: -0.72rem;
+  }
+
+  /* Native controls should never be under the threshold. */
+  input,
+  select,
+  textarea,
+  button {
+    min-height: 44px;
+  }
+}

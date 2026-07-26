@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
+import { useReducedMotion } from "./useReducedMotion";
 
 type Direction = "up" | "down" | "left" | "right" | "none";
 
@@ -33,7 +34,11 @@ interface RevealProps {
   as?: "div" | "section" | "li" | "span" | "article";
 }
 
-/** Fade/slide an element in the first time it enters the viewport. */
+/**
+ * Fade/slide an element in the first time it enters the viewport.
+ * On mobile and under prefers-reduced-motion this renders a plain element —
+ * no scroll listeners, no transform work, content visible immediately.
+ */
 export function Reveal({
   children,
   direction = "up",
@@ -43,6 +48,11 @@ export function Reveal({
   amount = 0.25,
   as = "div",
 }: RevealProps) {
+  const reduced = useReducedMotion();
+  const Tag = as;
+
+  if (reduced) return <Tag className={className}>{children}</Tag>;
+
   const { x, y } = offsetFor(direction);
   const MotionTag = motion[as];
 
@@ -52,11 +62,7 @@ export function Reveal({
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, amount }}
-      transition={{
-        duration,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </MotionTag>
@@ -67,9 +73,7 @@ export function Reveal({
 
 const containerVariants: Variants = {
   hidden: {},
-  show: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 
 const itemVariants: Variants = {
@@ -90,6 +94,9 @@ export function RevealGroup({
   className?: string;
   amount?: number;
 }) {
+  const reduced = useReducedMotion();
+  if (reduced) return <div className={className}>{children}</div>;
+
   return (
     <motion.div
       className={className}
@@ -110,6 +117,9 @@ export function RevealItem({
   children: ReactNode;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
+  if (reduced) return <div className={className}>{children}</div>;
+
   return (
     <motion.div className={className} variants={itemVariants}>
       {children}
@@ -128,7 +138,11 @@ export function RevealWords({
   className?: string;
   delay?: number;
 }) {
+  const reduced = useReducedMotion();
+  if (reduced) return <span className={className}>{text}</span>;
+
   const words = text.split(" ");
+
   return (
     <motion.span
       className={className}
@@ -145,7 +159,11 @@ export function RevealWords({
         <span
           key={i}
           aria-hidden="true"
-          style={{ display: "inline-block", overflow: "hidden", verticalAlign: "top" }}
+          style={{
+            display: "inline-block",
+            overflow: "hidden",
+            verticalAlign: "top",
+          }}
         >
           <motion.span
             style={{ display: "inline-block" }}
@@ -158,7 +176,7 @@ export function RevealWords({
             }}
           >
             {word}
-            {i < words.length - 1 ? " " : ""}
+            {i < words.length - 1 ? " " : ""}
           </motion.span>
         </span>
       ))}

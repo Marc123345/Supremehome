@@ -51,7 +51,7 @@ export function Footer() {
                       ? "/residential-roofing"
                       : "/commercial-roofing"
                   }
-                  className="group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
+                  className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
                 >
                   <span className="w-1 h-1 shrink-0 bg-white/50 transition-transform group-hover:scale-150" />
                   {s.title}
@@ -74,7 +74,7 @@ export function Footer() {
               <Phone size={16} className="shrink-0 text-white/60" />
               <a
                 href={site.phoneHref}
-                className="hover:text-white transition-colors"
+                className="tap-inline hover:text-white transition-colors"
               >
                 {site.phone}
               </a>
@@ -83,7 +83,7 @@ export function Footer() {
               <Mail size={16} className="shrink-0 text-white/60" />
               <a
                 href={`mailto:${site.email}`}
-                className="hover:text-white transition-colors break-all"
+                className="tap-inline hover:text-white transition-colors break-all"
               >
                 {site.email}
               </a>
@@ -103,7 +103,7 @@ export function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-[0.93rem] transition-colors hover:text-[var(--supreme-red)]"
+                  className="tap-inline text-[0.93rem] transition-colors hover:text-[var(--supreme-red)]"
                   style={{ color: "var(--ink-50)" }}
                 >
                   {item.label}
@@ -121,7 +121,7 @@ export function Footer() {
               >
                 <Link
                   href={`/service-areas/${loc.slug}`}
-                  className="text-[0.86rem] transition-colors hover:text-[var(--supreme-red)]"
+                  className="tap-inline text-[0.86rem] transition-colors hover:text-[var(--supreme-red)]"
                   style={{ color: "var(--ink-50)" }}
                 >
                   {loc.name}
@@ -181,7 +181,7 @@ export function Footer() {
 
             <Link
               href="/contact"
-              className="group inline-flex items-center gap-2.5 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
+              className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
             >
               Book a free inspection
               <ArrowRight

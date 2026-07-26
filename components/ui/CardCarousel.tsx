@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useReducedMotion } from "./useReducedMotion";
 
 /**
  * Paged card carousel — a track of equal-width cards that advances a page at a
@@ -51,6 +52,7 @@ export function CardCarousel({
   /** 0 disables auto-advance */
   autoAdvanceMs?: number;
 }) {
+  const reduced = useReducedMotion();
   const count = children.length;
   const [perView, setPerView] = useState(3);
   const [page, setPage] = useState(0);
@@ -68,12 +70,20 @@ export function CardCarousel({
     return () => window.removeEventListener("resize", compute);
   }, []);
 
-  const pageCount = Math.max(1, Math.ceil(count / perView));
+  /**
+   * Advance one CARD at a time, clamped so the track never scrolls past the
+   * last card. Paging by a whole viewport (ceil(count / perView)) left a
+   * ragged final page: with 4 cards at 3-per-view, page 2 showed one card and
+   * two empty slots. Stepping by card gives positions 0 and 1 here, both a
+   * full row.
+   */
+  const maxIndex = Math.max(0, count - perView);
+  const pageCount = maxIndex + 1;
 
-  // Clamp when the viewport (and therefore page count) changes.
+  // Clamp when the viewport (and therefore maxIndex) changes.
   useEffect(() => {
-    setPage((p) => Math.min(p, pageCount - 1));
-  }, [pageCount]);
+    setPage((p) => Math.min(p, maxIndex));
+  }, [maxIndex]);
 
   const go = useCallback(
     (next: number) => {
@@ -84,12 +94,13 @@ export function CardCarousel({
 
   // Auto-advance, paused on hover/focus and when reduced motion is requested.
   useEffect(() => {
-    if (!autoAdvanceMs || paused || pageCount < 2) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Auto-advance is suppressed on mobile: moving content under a thumb
+    // mid-read is worse than a static row.
+    if (!autoAdvanceMs || paused || pageCount < 2 || reduced) return;
 
     const id = setInterval(() => setPage((p) => (p + 1) % pageCount), autoAdvanceMs);
     return () => clearInterval(id);
-  }, [autoAdvanceMs, paused, pageCount]);
+  }, [autoAdvanceMs, paused, pageCount, reduced]);
 
   // Arrow keys only while the carousel has focus, so they don't fight the page.
   const onKeyDown = (e: React.KeyboardEvent) => {
@@ -137,15 +148,17 @@ export function CardCarousel({
         <div
           className="flex"
           style={{
-            transform: `translateX(-${page * 100}%)`,
-            transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+            transform: `translateX(-${(page * 100) / perView}%)`,
+            transition: reduced
+              ? "none"
+              : "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         >
           {children.map((child, i) => (
             <CarouselItem
               key={i}
               width={`${100 / perView}%`}
-              offPage={i < page * perView || i >= (page + 1) * perView}
+              offPage={i < page || i >= page + perView}
             >
               {child}
             </CarouselItem>
@@ -161,9 +174,9 @@ export function CardCarousel({
               <button
                 key={i}
                 onClick={() => go(i)}
-                aria-label={`Go to slide group ${i + 1} of ${pageCount}`}
+                aria-label={`Show cards starting at ${i + 1} of ${count}`}
                 aria-current={i === page ? "true" : undefined}
-                className="h-[3px] transition-all duration-300"
+                className="tap h-[3px] transition-all duration-300"
                 style={{
                   width: i === page ? 36 : 18,
                   background:

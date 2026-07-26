@@ -63,7 +63,7 @@ export function Proof() {
             <Reveal delay={0.25}>
               <Link
                 href="/contact"
-                className="group inline-flex items-center gap-2 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
+                className="tap-inline group inline-flex items-center gap-2 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
               >
                 Request our references
                 <ArrowRight

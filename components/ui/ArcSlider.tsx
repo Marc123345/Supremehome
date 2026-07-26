@@ -432,7 +432,7 @@ export function ArcSlider({
               key={i}
               onClick={() => navigateTo(i)}
               aria-label={`Go to service ${i + 1}`}
-              className="h-[2px] transition-all duration-300"
+              className="tap h-[2px] transition-all duration-300"
               style={{
                 width: i === activeIndex ? 32 : 16,
                 background: i === activeIndex ? ACCENT : "rgba(255,255,255,0.18)",

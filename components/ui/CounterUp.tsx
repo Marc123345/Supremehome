@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "./useReducedMotion";
 
 /**
  * Count-up number that starts when it scrolls into view.
@@ -25,6 +26,7 @@ export function CounterUp({
   decimals?: number;
   className?: string;
 }) {
+  const reduced = useReducedMotion();
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
@@ -32,10 +34,6 @@ export function CounterUp({
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
 
     if (reduced) {
       setValue(end);
@@ -64,7 +62,7 @@ export function CounterUp({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [end, duration]);
+  }, [end, duration, reduced]);
 
   return (
     <span ref={ref} className={className}>

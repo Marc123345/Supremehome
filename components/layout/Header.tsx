@@ -71,7 +71,7 @@ export function Header() {
           <Link
             href="/"
             aria-label={`${site.name} — home`}
-            className="relative z-10 mr-auto"
+            className="tap relative z-10 mr-auto"
           >
             <Logo variant="light" height={40} priority />
           </Link>
