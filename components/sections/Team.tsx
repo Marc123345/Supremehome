@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { HardHat, ClipboardList, Paintbrush, FileSearch } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { team } from "@/lib/site";
@@ -41,22 +40,21 @@ export function Team() {
             const Icon = ICONS[i % ICONS.length];
             return (
               <RevealItem key={member.role} className="h-full">
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="edge-card group h-full p-8 flex flex-col"
-                >
-                  <span className="grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] transition-colors duration-300 group-hover:bg-[var(--supreme-red)]">
-                    <Icon
-                      size={23}
-                      className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
-                    />
-                  </span>
-                  <h3 className="display-sm mb-3">{member.role}</h3>
-                  <p className="text-[0.9rem] leading-[1.7] text-black/58">
-                    {member.body}
-                  </p>
-                </motion.div>
+                <div className="notch-card clip-notch group h-full">
+                  <span className="notch-tick" />
+                  <div className="clip-notch h-full p-8 flex flex-col">
+                    <span className="grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] transition-colors duration-300 group-hover:bg-[var(--supreme-red)]">
+                      <Icon
+                        size={23}
+                        className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
+                      />
+                    </span>
+                    <h3 className="display-sm mb-3">{member.role}</h3>
+                    <p className="text-[0.9rem] leading-[1.7] text-black/58">
+                      {member.body}
+                    </p>
+                  </div>
+                </div>
               </RevealItem>
             );
           })}

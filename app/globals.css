@@ -270,6 +270,129 @@ body {
   width: 100%;
 }
 
+/* ── SHAPE + DEPTH ───────────────────────────────────────── */
+/* The header's angled brand block is the shape language for the whole
+   site, so cards carry the same cut rather than a plain rectangle. */
+
+.clip-notch {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 26px) 0,
+    100% 26px,
+    100% 100%,
+    0 100%
+  );
+}
+
+.clip-notch-lg {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 44px) 0,
+    100% 44px,
+    100% 100%,
+    0 100%
+  );
+}
+
+/* Bottom-left cut — used to alternate direction across a grid */
+.clip-notch-alt {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    26px 100%,
+    0 calc(100% - 26px)
+  );
+}
+
+/* A notched card can't paint its own border (clip-path cuts it off), so
+   the "border" is a padded parent with the notch applied to both layers. */
+.notch-card {
+  position: relative;
+  background: var(--hairline);
+  padding: 1px;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.4s ease, filter 0.4s ease;
+}
+.notch-card > * {
+  background: var(--white);
+}
+.notch-card:hover {
+  transform: translateY(-6px);
+  background: var(--supreme-red);
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.22));
+}
+
+.notch-card-dark {
+  background: rgba(255, 255, 255, 0.12);
+}
+.notch-card-dark > * {
+  background: var(--ink-80);
+}
+.notch-card-dark:hover {
+  background: var(--supreme-red);
+  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.55));
+}
+
+/* Corner tick that sits inside the notch */
+.notch-tick {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  background: var(--supreme-red);
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  opacity: 0.25;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+.notch-card:hover .notch-tick {
+  opacity: 1;
+}
+
+/* ── LAYERED IMAGE FRAME ─────────────────────────────────── */
+/* Two planes: an offset brand-colour plate behind, the notched media
+   in front. Gives the image blocks depth instead of a flat crop. */
+
+.image-frame {
+  position: relative;
+  isolation: isolate;
+}
+.image-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  translate: 18px 18px;
+  background: var(--supreme-red);
+  z-index: -1;
+  transition: translate 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.image-frame:hover::before {
+  translate: 26px 26px;
+}
+.image-frame__media {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.55);
+}
+.image-frame__media img {
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.image-frame:hover .image-frame__media img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 640px) {
+  .image-frame::before {
+    translate: 10px 10px;
+  }
+  .image-frame:hover::before {
+    translate: 14px 14px;
+  }
+}
+
 } /* end @layer components */
 
 /* ── ANIMATIONS ──────────────────────────────────────────── */

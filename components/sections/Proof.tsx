@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Quote, FileText, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
@@ -76,16 +76,11 @@ export function Proof() {
 
           {/* Image */}
           <Reveal direction="left" className="lg:col-span-5 order-1 lg:order-2">
-            <div className="relative aspect-[4/5] overflow-hidden">
-              <Image
-                src={media.aerialWarehouse}
-                alt="Aerial view of a commercial building with a large flat roof"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-              <span className="absolute bottom-0 left-0 right-0 h-[4px] bg-[var(--supreme-red)]" />
-            </div>
+            <ImageFrame
+              src={media.aerialWarehouse}
+              alt="Aerial view of a commercial building with a large flat roof"
+              ratio="4/5"
+            />
           </Reveal>
         </div>
       </div>

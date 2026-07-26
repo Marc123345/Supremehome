@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { process, media } from "@/lib/site";
 
@@ -33,16 +33,11 @@ export function Process() {
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <Reveal direction="right">
-                <div className="relative aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={media.crewOnRoof}
-                    alt="Two roofing technicians working on a roof deck during an installation"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover"
-                  />
-                  <span className="absolute bottom-0 left-0 right-0 h-[4px] bg-[var(--supreme-red)]" />
-                </div>
+                <ImageFrame
+                  src={media.crewOnRoof}
+                  alt="Two roofing technicians working on a roof deck during an installation"
+                  ratio="3/4"
+                />
               </Reveal>
 
               <Reveal delay={0.2}>

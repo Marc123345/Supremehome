@@ -122,17 +122,38 @@ honest and a competitive advantage over rivals implying otherwise.
 
 ## Brand usage
 
-| Context | Asset |
-| --- | --- |
-| Header (on the red angled block) | `scc-horizontal-white.svg` |
-| Footer red panel | `scc-horizontal-white.svg` |
-| Mobile menu (white sheet) | `scc-horizontal.svg` |
-| Residential page | `supreme-home-horizontal.png` |
-| Favicon / touch icons | SCC symbol |
+### SCC colour specification
 
-`Logo` takes `variant="dark" | "light" | "solid"`. **`light` is reverse — white
-lettering but a still-red symbol, so it is for dark backgrounds only.** On red,
-use `solid` (white monochrome), or the symbol vanishes.
+| | |
+| --- | --- |
+| **SCC Red** | `#E00116` · rgb(224, 1, 22) · approx CMYK 0/100/90/12 |
+| **Black** | `#000000` |
+| **White** | `#FFFFFF` — reverse typography and one-colour reverse artwork |
+
+> **Background rule.** Use full colour on white or light neutral backgrounds.
+> Use reverse on black or sufficiently dark backgrounds. **Do not alter SCC red
+> to compensate for a background.**
+
+Print conversion varies by substrate, ink system and profile — request a
+physical proof for critical colour matching.
+
+**The lockup is therefore never placed on SCC red.** The header's angled block
+and the footer's brand panel are black/ink specifically so the reverse lockup
+sits on a compliant background; red carries the CTA, accents and the footer
+bottom bar instead.
+
+| Context | Background | Asset |
+| --- | --- | --- |
+| Header angled block | black | `scc-horizontal-reverse.svg` |
+| Footer brand panel | ink `#0b0b0d` | `scc-horizontal-reverse.svg` |
+| Mobile menu sheet | white | `scc-horizontal.svg` |
+| Residential page | white | `supreme-home-horizontal.png` |
+| Footer "Part of" | white | `supreme-home-roofing-construction.jpg` |
+| Favicon / touch icons | — | SCC symbol |
+
+`Logo` takes `variant="dark" | "light" | "solid"` — full colour, reverse, and
+one-colour white. `solid` is kept for single-colour contexts only; it is not a
+way to put the lockup on a red background.
 
 The CertainTeed **ShingleMaster** and **Master Craftsman** badges are specific
 credential tiers, shown in the Credentials band and on the residential page.

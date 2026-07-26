@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { motion } from "motion/react";
 import { Check, TrendingDown } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
@@ -108,31 +108,21 @@ export function RestorationLadder() {
         {/* ── Why restoration wins ── */}
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mt-16 lg:mt-24">
           <Reveal direction="right" className="lg:col-span-5">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src={media.aerialCommercial}
-                alt="Aerial view of a large commercial distribution centre with an expansive flat roof"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(180deg, transparent 45%, rgba(0,0,0,0.75) 100%)",
-                }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-7">
-                <p className="eyebrow text-[var(--supreme-red-bright)] mb-2">
-                  Built for scale
-                </p>
-                <p className="display-sm">
-                  100+ square projects — and the gas station on the corner
-                </p>
-              </div>
-              <span className="absolute bottom-0 left-0 right-0 h-[3px] bg-[var(--supreme-red)]" />
-            </div>
+            <ImageFrame
+              src={media.aerialCommercial}
+              alt="Aerial view of a large commercial distribution centre with an expansive flat roof"
+              ratio="4/3"
+              overlay={
+                <>
+                  <p className="eyebrow text-[var(--supreme-red-bright)] mb-2">
+                    Built for scale
+                  </p>
+                  <p className="display-sm">
+                    100+ square projects — and the gas station on the corner
+                  </p>
+                </>
+              }
+            />
           </Reveal>
 
           <div className="lg:col-span-7">

@@ -61,19 +61,19 @@ export function Header() {
           className="absolute top-0 left-0 h-full pointer-events-none"
           style={{
             width: "clamp(275px, 27vw, 440px)",
-            background: "var(--supreme-red)",
+            background: "var(--ink)",
             clipPath: "polygon(0 0, 85% 0, 100% 100%, 0% 100%)",
           }}
         />
 
         <div className="relative h-full flex items-center px-[var(--gutter)]">
-          {/* Logo — sits on the red block, so it renders light */}
+          {/* Logo — reverse lockup on the black block */}
           <Link
             href="/"
             aria-label={`${site.name} — home`}
             className="relative z-10 mr-auto"
           >
-            <Logo variant="solid" height={40} priority />
+            <Logo variant="light" height={40} priority />
           </Link>
 
           {/* Centred nav */}

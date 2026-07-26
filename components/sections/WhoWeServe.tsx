@@ -34,17 +34,17 @@ export function WhoWeServe() {
             {clientTypes.map((client, i) => {
               const Icon = ICONS[i % ICONS.length];
               return (
-                <div
-                  key={client.title}
-                  className="edge-card h-full p-8 lg:p-9 flex flex-col min-h-[300px]"
-                >
-                  <span className="inline-grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] shrink-0">
-                    <Icon size={23} className="text-[var(--supreme-red)]" />
-                  </span>
-                  <h3 className="display-sm mb-3">{client.title}</h3>
-                  <p className="text-[0.92rem] leading-[1.7] text-black/58">
-                    {client.body}
-                  </p>
+                <div key={client.title} className="notch-card clip-notch h-full">
+                  <span className="notch-tick" />
+                  <div className="clip-notch h-full p-8 lg:p-9 flex flex-col min-h-[300px]">
+                    <span className="inline-grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] shrink-0">
+                      <Icon size={23} className="text-[var(--supreme-red)]" />
+                    </span>
+                    <h3 className="display-sm mb-3">{client.title}</h3>
+                    <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                      {client.body}
+                    </p>
+                  </div>
                 </div>
               );
             })}

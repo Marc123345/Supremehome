@@ -14,7 +14,8 @@ import { Logo, SupremeHomeRoofingLogo } from "./Logo";
 /**
  * Footer in the Vharanani Group pattern: a split panel — brand-colour left,
  * white right — over a solid brand-colour bottom bar. Recoloured burgundy ->
- * Supreme red, with the big Bebas tagline carrying the accent word.
+ * Supreme red. The brand panel is ink rather than red so the reverse
+ * lockup sits on a compliant background per the SCC colour spec.
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -23,13 +24,15 @@ export function Footer() {
     <footer className="relative">
       {/* ── SPLIT PANEL ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Left — red */}
+        {/* Left — near-black. SCC's colour spec permits the reverse lockup
+            on black or sufficiently dark backgrounds only, so this panel is
+            ink rather than SCC red; the bottom bar carries the red. */}
         <div
-          className="relative px-[var(--gutter)] py-14 lg:py-20"
-          style={{ background: "var(--supreme-red)" }}
+          className="relative px-[var(--gutter)] py-14 lg:py-20 noise"
+          style={{ background: "var(--ink-90)" }}
         >
           <div className="mb-8">
-            <Logo variant="solid" height={44} />
+            <Logo variant="light" height={44} />
           </div>
 
           <p className="text-[0.95rem] leading-[1.75] text-white/90 max-w-md mb-10">

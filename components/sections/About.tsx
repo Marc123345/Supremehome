@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
@@ -66,16 +66,11 @@ export function About() {
           {/* ── Right ── */}
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
             <div className="relative">
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src={media.aerialCommercial}
-                  alt="Aerial view of a commercial building with an expansive flat roof"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-cover"
-                />
-                <span className="absolute bottom-0 inset-x-0 h-[4px] bg-[var(--supreme-red)]" />
-              </div>
+              <ImageFrame
+                src={media.aerialCommercial}
+                alt="Aerial view of a commercial building with an expansive flat roof"
+                ratio="4/5"
+              />
 
               {/* Rotating badge, overlapping the image corner */}
               <div className="absolute -top-7 -left-7 hidden sm:block text-[var(--ink)]">

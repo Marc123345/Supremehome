@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { motion } from "motion/react";
+import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { whyChoose, capabilities, media } from "@/lib/site";
 
@@ -34,16 +33,11 @@ export function WhyChoose() {
           </div>
 
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
-            <div className="relative aspect-[5/4] overflow-hidden">
-              <Image
-                src={media.residentialTearOff}
-                alt="A roofer stripping damaged shingles from a Texas home"
-                fill
-                sizes="(max-width: 1024px) 100vw, 40vw"
-                className="object-cover"
-              />
-              <span className="absolute bottom-0 inset-x-0 h-[4px] bg-[var(--supreme-red)]" />
-            </div>
+            <ImageFrame
+              src={media.residentialTearOff}
+              alt="A roofer stripping damaged shingles from a Texas home"
+              ratio="5/4"
+            />
           </Reveal>
         </div>
 
@@ -51,22 +45,29 @@ export function WhyChoose() {
         <RevealGroup className="grid sm:grid-cols-2 gap-5 mb-16 lg:mb-20">
           {whyChoose.map((reason, i) => (
             <RevealItem key={reason.title} className="h-full">
-              <motion.div
-                whileHover={{ y: -5 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className="edge-card h-full p-8 lg:p-9"
+              <div
+                className={`notch-card h-full ${
+                  i % 2 === 0 ? "clip-notch" : "clip-notch-alt"
+                }`}
               >
-                <span
-                  className="font-display text-[2.4rem] leading-none text-black/12 block mb-5"
-                  aria-hidden="true"
+                {i % 2 === 0 && <span className="notch-tick" />}
+                <div
+                  className={`h-full p-8 lg:p-9 ${
+                    i % 2 === 0 ? "clip-notch" : "clip-notch-alt"
+                  }`}
                 >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <h3 className="display-sm mb-3">{reason.title}</h3>
-                <p className="text-[0.93rem] leading-[1.7] text-black/58">
-                  {reason.body}
-                </p>
-              </motion.div>
+                  <span
+                    className="font-display text-[2.4rem] leading-none text-black/12 block mb-5"
+                    aria-hidden="true"
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="display-sm mb-3">{reason.title}</h3>
+                  <p className="text-[0.93rem] leading-[1.7] text-black/58">
+                    {reason.body}
+                  </p>
+                </div>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
