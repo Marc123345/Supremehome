@@ -1,26 +1,459 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════
+   SUPREME HOME ROOFING — DESIGN TOKENS
+   Palette sampled from mysupremehome.com (brand red #C20606)
+   ═══════════════════════════════════════════════════════════ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand */
+  --supreme-red: #c20606;
+  --supreme-red-dark: #8f0404;
+  --supreme-red-bright: #e01414;
+  --supreme-brick: #c0392b; /* logo mark red */
+
+  /* Red tints */
+  --red-80: #ce3838;
+  --red-60: #da6a6a;
+  --red-40: #e79b9b;
+  --red-20: #f3cdcd;
+  --red-wash: rgba(194, 6, 6, 0.06);
+
+  /* Ink / neutrals */
+  --ink: #000000;
+  --ink-90: #0b0b0d;
+  --ink-80: #17181c;
+  --ink-70: #232529;
+  --ink-60: #3a3d43;
+  --ink-50: #5b5f66;
+  --ink-40: #7d818a;
+  --ink-30: #a9adb5;
+  --ink-20: #d2d5da;
+  --ink-10: #eaeaee; /* sampled from site */
+  --ink-05: #f6f7f9;
+  --white: #ffffff;
+
+  /* Semantic */
+  --background: var(--white);
+  --foreground: var(--ink);
+  --hairline: rgba(0, 0, 0, 0.1);
+  --hairline-light: rgba(255, 255, 255, 0.14);
+
+  /* Type scale — fluid */
+  --step--2: clamp(0.69rem, 0.67rem + 0.1vw, 0.75rem);
+  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --step-1: clamp(1.2rem, 1.14rem + 0.3vw, 1.4rem);
+  --step-2: clamp(1.44rem, 1.34rem + 0.5vw, 1.8rem);
+  --step-3: clamp(1.73rem, 1.57rem + 0.8vw, 2.3rem);
+  --step-4: clamp(2.07rem, 1.83rem + 1.2vw, 3rem);
+  --step-5: clamp(2.49rem, 2.12rem + 1.85vw, 3.9rem);
+
+  /* Layout */
+  --gutter: clamp(1.25rem, 4vw, 5rem);
+  --shell: 1440px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-red-brand: var(--supreme-red);
+  --color-ink: var(--ink);
+  --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── BASE ────────────────────────────────────────────────── */
+
+* {
+  min-width: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--supreme-red);
+  color: var(--white);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPONENT CLASSES
+   These live in @layer components so Tailwind utilities always
+   win. Without the layer, `.btn { display:inline-flex }` beats
+   `.hidden`, and responsive visibility silently breaks.
+   ═══════════════════════════════════════════════════════════ */
+
+@layer components {
+
+/* ── TYPOGRAPHY UTILITIES ────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-bebas), "Arial Narrow", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.display-xl {
+  font-family: var(--font-bebas), "Arial Narrow", sans-serif;
+  font-size: clamp(3rem, 11vw, 9.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+}
+
+.display-lg {
+  font-family: var(--font-bebas), "Arial Narrow", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.94;
+  text-transform: uppercase;
+}
+
+.display-md {
+  font-family: var(--font-bebas), "Arial Narrow", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 3.4rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.display-sm {
+  font-family: var(--font-bebas), "Arial Narrow", sans-serif;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  line-height: 1.08;
+  text-transform: uppercase;
+}
+
+/* Eyebrow / kicker label */
+.eyebrow {
+  font-size: var(--step--2);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: var(--ink-60);
+}
+
+/* Outlined display text (hero) */
+.text-stroke {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.92);
+  paint-order: stroke fill;
+}
+
+@media (min-width: 768px) {
+  .text-stroke {
+    -webkit-text-stroke-width: 2.5px;
+  }
+}
+
+/* ── LAYOUT ──────────────────────────────────────────────── */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(4rem, 9vw, 8.5rem);
+}
+
+.rule {
+  height: 1px;
+  background: var(--hairline);
+  border: 0;
+}
+
+/* ── COMPONENTS ──────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  font-size: var(--step--1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-align: center;
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--supreme-red);
+  color: var(--white);
+  box-shadow: 0 8px 24px -10px rgba(194, 6, 6, 0.7);
+}
+.btn-primary:hover {
+  background: var(--supreme-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px -10px rgba(194, 6, 6, 0.75);
+}
+
+.btn-ghost-light {
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-ghost-dark {
+  border: 1.5px solid var(--ink-20);
+  color: var(--ink);
+  background: transparent;
+}
+.btn-ghost-dark:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Card with a red edge that draws in on hover */
+.edge-card {
+  position: relative;
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  transition: border-color 0.35s ease, transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+.edge-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: var(--supreme-red);
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.edge-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.4);
+  border-color: var(--ink-20);
+}
+.edge-card:hover::after {
+  width: 100%;
+}
+
+} /* end @layer components */
+
+/* ── ANIMATIONS ──────────────────────────────────────────── */
+
+@keyframes ticker-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes ticker-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.animate-ticker-left {
+  animation: ticker-left 48s linear infinite;
+  will-change: transform;
+}
+.animate-ticker-right {
+  animation: ticker-right 56s linear infinite;
+  will-change: transform;
+}
+
+/* Slow cinematic zoom on hero stills */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: scale(1.18) translate3d(-1.2%, -1.2%, 0);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 22s ease-out forwards;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.24, 0.6, 0.35, 1) infinite;
+}
+
+/* Blueprint grid overlay */
+.grid-overlay {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.22) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.22) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Subtle noise for depth on dark panels */
+.noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ── PRELOADER (ported from topfloor Preloader.js) ───────── */
+
+@keyframes preloader-letter {
+  0%,
+  75%,
+  100% {
+    opacity: 1;
+    transform: rotateY(0deg);
+  }
+  25%,
+  50% {
+    opacity: 0.35;
+    transform: rotateY(-90deg);
+  }
+}
+.preloader-letter {
+  display: inline-block;
+  animation: preloader-letter 3s infinite;
+}
+
+@keyframes preloader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.preloader-spinner {
+  animation: preloader-spin 1s linear infinite;
+}
+
+/* ── SLIDING DISPLAY TEXT (topfloor Slidingtext.js) ──────── */
+/* Outlined by default, solid on hover — the marquee "fill" effect. */
+
+.sliding-word {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.55);
+  color: transparent;
+  transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+}
+.sliding-word:hover {
+  color: var(--supreme-red);
+  -webkit-text-stroke-color: var(--supreme-red);
+}
+
+/* ── CIRCLE TEXT (topfloor Circletext.js) ────────────────── */
+
+@keyframes circle-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-circle-rotate {
+  animation: circle-rotate 18s linear infinite;
+  transform-origin: center;
+}
+
+/* ── FLOAT (topfloor float-bob-x) ────────────────────────── */
+
+@keyframes float-bob-x {
+  0%,
+  100% {
+    transform: translateX(-14px);
+  }
+  50% {
+    transform: translateX(14px);
+  }
+}
+.animate-float-x {
+  animation: float-bob-x 5s ease-in-out infinite;
+}
+
+/* ── SCROLLBAR ───────────────────────────────────────────── */
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(194, 6, 6, 0.35) transparent;
+}
+.thin-scroll::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(194, 6, 6, 0.3);
+}
+
+/* ── ACCESSIBILITY ───────────────────────────────────────── */
+
+:focus-visible {
+  outline: 3px solid var(--supreme-red);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  padding: 0.9rem 1.4rem;
+  background: var(--supreme-red);
+  color: var(--white);
+  font-weight: 700;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

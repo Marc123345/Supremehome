@@ -1,0 +1,56 @@
+"use client";
+
+import { Building2, Warehouse, Church, Fuel } from "lucide-react";
+import { Reveal, RevealWords } from "@/components/ui/Reveal";
+import { CardCarousel } from "@/components/ui/CardCarousel";
+import { clientTypes } from "@/lib/site";
+
+const ICONS = [Building2, Warehouse, Church, Fuel];
+
+export function WhoWeServe() {
+  return (
+    <section className="section bg-white border-t border-black/[0.07]">
+      <div className="shell">
+        <div className="max-w-2xl mb-12 lg:mb-16">
+          <Reveal>
+            <p className="eyebrow text-[var(--supreme-red)] mb-5">
+              Who we work with
+            </p>
+          </Reveal>
+          <h2 className="display-lg mb-5">
+            <RevealWords text="Built around the people who own the roof" />
+          </h2>
+          <Reveal delay={0.15}>
+            <p className="lede">
+              Property managers, building owners and clergy have the same
+              problem: a flat roof nearing end of life and a budget that was not
+              written for a replacement.
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal amount={0.1}>
+          <CardCarousel ariaLabel="Who we work with" autoAdvanceMs={6500}>
+            {clientTypes.map((client, i) => {
+              const Icon = ICONS[i % ICONS.length];
+              return (
+                <div
+                  key={client.title}
+                  className="edge-card h-full p-8 lg:p-9 flex flex-col min-h-[300px]"
+                >
+                  <span className="inline-grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] shrink-0">
+                    <Icon size={23} className="text-[var(--supreme-red)]" />
+                  </span>
+                  <h3 className="display-sm mb-3">{client.title}</h3>
+                  <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                    {client.body}
+                  </p>
+                </div>
+              );
+            })}
+          </CardCarousel>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

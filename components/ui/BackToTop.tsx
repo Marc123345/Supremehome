@@ -1,0 +1,83 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ArrowUp } from "lucide-react";
+
+const RADIUS = 22;
+const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
+
+/**
+ * Scroll-to-top button with a circular progress ring.
+ * Ported from topfloor `elements/BackToTop.js`, which used an SVG path stroke
+ * to trace scroll progress — same idea, rebuilt with a dasharray offset.
+ */
+export function BackToTop() {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct = scrollable > 0 ? window.scrollY / scrollable : 0;
+      setProgress(Math.min(pct, 1));
+      setVisible(window.scrollY > 600);
+    };
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.3 }}
+          onClick={() =>
+            window.scrollTo({ top: 0, behavior: "smooth" })
+          }
+          aria-label="Back to top"
+          className="group fixed bottom-6 right-6 z-[90] w-[52px] h-[52px] grid place-items-center rounded-full bg-[var(--ink-90)] shadow-lg"
+        >
+          <svg
+            className="absolute inset-0 -rotate-90"
+            width="52"
+            height="52"
+            viewBox="0 0 52 52"
+            aria-hidden="true"
+          >
+            <circle
+              cx="26"
+              cy="26"
+              r={RADIUS}
+              fill="none"
+              stroke="rgba(255,255,255,0.14)"
+              strokeWidth="2"
+            />
+            <circle
+              cx="26"
+              cy="26"
+              r={RADIUS}
+              fill="none"
+              stroke="var(--supreme-red)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray={CIRCUMFERENCE}
+              strokeDashoffset={CIRCUMFERENCE * (1 - progress)}
+              style={{ transition: "stroke-dashoffset 0.1s linear" }}
+            />
+          </svg>
+          <ArrowUp
+            size={17}
+            className="relative text-white transition-transform duration-300 group-hover:-translate-y-0.5"
+          />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
