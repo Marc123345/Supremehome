@@ -58,6 +58,26 @@ export const manufacturers = [
   { name: "Attic Breeze", note: "Solar attic ventilation" },
 ] as const;
 
+/* CertainTeed credential badges — official artwork supplied by the client.
+   These are specific CertainTeed contractor tiers, so the wording stays
+   exactly as CertainTeed names them. */
+export const credentialBadges = [
+  {
+    src: "/brand/certainteed-shinglemaster.png",
+    alt: "CertainTeed ShingleMaster roofing contractor credential",
+    name: "ShingleMaster",
+    issuer: "CertainTeed",
+    note: "Credentialed installer of CertainTeed steep-slope systems.",
+  },
+  {
+    src: "/brand/certainteed-master-craftsman.png",
+    alt: "CertainTeed Master Craftsman roofing contractor credential",
+    name: "Master Craftsman",
+    issuer: "CertainTeed",
+    note: "CertainTeed's higher craftsmanship tier for shingle installation.",
+  },
+] as const;
+
 export const warranties = [
   {
     title: "Free Inspection & Estimate",

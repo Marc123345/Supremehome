@@ -55,10 +55,17 @@ export const metadata: Metadata = {
       "We restore flat and low-slope commercial roofs instead of replacing them.",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/brand/apple-touch-icon.png", sizes: "180x180" }],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#c20606",
+  themeColor: "#e00116",
   width: "device-width",
   initialScale: 1,
 };

@@ -24,7 +24,8 @@ npm run build
 
 | Source | What was taken |
 | --- | --- |
-| `mysupremehome.com` | The colour palette. Brand red sampled off the live site as **`#C20606`**, plus black, white and `#EAEAEE`. |
+| `SCC_Professional_Logo_Master_Package` | The **primary identity**. Supreme Commercial Coatings leads the site, matching the commercial-first positioning. Official **SCC Red `#E00116`** (from `README_FIRST.txt`), plus the horizontal / stacked / symbol SVG masters, reverse and white-monochrome treatments, and favicons. |
+| `Supreme Home Website 2` | The **residential lockup** (`#d4101a`, from `HexCode.jpg`) and the two CertainTeed credential badges. |
 | `~/my-react-app/Varahnigroup` (Vharanani Group) | The **hero**. Full-bleed media, dark→brand gradient, blueprint grid, scramble headline, dual tickers, scroll cue and the 4px accent line. `TextScramble` is a direct port. |
 | `~/Desktop/topfloor pack` | Component **patterns**: Preloader, Counter/CounterUp, BackToTop, Slidingtext, Circletext, About, Process, Whycoose, Cta, Team, Services. Rebuilt in Tailwind + motion — the pack's own images are grey placeholders and its markup is Bootstrap/jQuery-era, so only the ideas carried over. |
 | `~/my-react-app/marc-portfolio-nextjs` | The **services arc slider** (`components/ArcSlider.tsx`), restyled to this palette. |
@@ -84,8 +85,9 @@ liability.
 2. **Swap the photography.** Every image is a verified-live Unsplash URL in
    `media` (`lib/site.ts`). Replace with their own job photos and drone
    footage; add the new host to `remotePatterns` in `next.config.ts`.
-3. **Add the real logo.** `components/layout/Logo.tsx` is a reconstruction of
-   the mysupremehome.com lockup, not their vector file.
+3. ~~Add the real logo.~~ **Done** — the supplied master assets are in
+   `public/brand/`. Note the SCC *reverse* file keeps the symbol red, so it is
+   only valid on dark/black; red backgrounds use the *white monochrome* file.
 4. **Add the VA letter.** `components/sections/Proof.tsx` states the Veterans
    Hospital letter of recommendation exists and is available on request. Drop
    the PDF in `/public` and link it.
@@ -117,3 +119,22 @@ honest and a competitive advantage over rivals implying otherwise.
   never renders blank for non-JS clients.
 - `prefers-reduced-motion` is respected across the scramble, counters,
   carousel auto-advance and all transitions.
+
+## Brand usage
+
+| Context | Asset |
+| --- | --- |
+| Header (on the red angled block) | `scc-horizontal-white.svg` |
+| Footer red panel | `scc-horizontal-white.svg` |
+| Mobile menu (white sheet) | `scc-horizontal.svg` |
+| Residential page | `supreme-home-horizontal.png` |
+| Favicon / touch icons | SCC symbol |
+
+`Logo` takes `variant="dark" | "light" | "solid"`. **`light` is reverse — white
+lettering but a still-red symbol, so it is for dark backgrounds only.** On red,
+use `solid` (white monochrome), or the symbol vanishes.
+
+The CertainTeed **ShingleMaster** and **Master Craftsman** badges are specific
+credential tiers, shown in the Credentials band and on the residential page.
+Wording matches CertainTeed's own naming; confirm both tiers are current before
+launch.

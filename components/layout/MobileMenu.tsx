@@ -68,7 +68,7 @@ export function MobileMenu({
           >
             <div className="flex items-center justify-between px-6 h-[76px] border-b border-black/10 shrink-0">
               <Link href="/" onClick={onClose}>
-                <Logo />
+                <Logo height={34} />
               </Link>
               <button
                 onClick={onClose}

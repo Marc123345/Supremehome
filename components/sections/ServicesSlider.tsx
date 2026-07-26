@@ -41,7 +41,7 @@ export function ServicesSlider({
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[720px] h-[520px] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(194,6,6,0.16) 0%, transparent 70%)",
+            "radial-gradient(ellipse, rgba(224,1,22,0.16) 0%, transparent 70%)",
         }}
       />
 

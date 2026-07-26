@@ -60,7 +60,7 @@ export function Header() {
         <div
           className="absolute top-0 left-0 h-full pointer-events-none"
           style={{
-            width: "clamp(240px, 24vw, 400px)",
+            width: "clamp(275px, 27vw, 440px)",
             background: "var(--supreme-red)",
             clipPath: "polygon(0 0, 85% 0, 100% 100%, 0% 100%)",
           }}
@@ -73,7 +73,7 @@ export function Header() {
             aria-label={`${site.name} — home`}
             className="relative z-10 mr-auto"
           >
-            <Logo variant="light" />
+            <Logo variant="solid" height={40} priority />
           </Link>
 
           {/* Centred nav */}

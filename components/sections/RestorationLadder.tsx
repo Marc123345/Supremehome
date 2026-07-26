@@ -17,7 +17,7 @@ export function RestorationLadder() {
         className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(194,6,6,0.22) 0%, transparent 68%)",
+            "radial-gradient(circle, rgba(224,1,22,0.22) 0%, transparent 68%)",
         }}
       />
 
@@ -60,7 +60,7 @@ export function RestorationLadder() {
                   className="relative h-full p-8 lg:p-10"
                   style={{
                     background: isSpecialty
-                      ? "linear-gradient(165deg, rgba(194,6,6,0.16) 0%, rgba(11,11,13,1) 60%)"
+                      ? "linear-gradient(165deg, rgba(224,1,22,0.16) 0%, rgba(11,11,13,1) 60%)"
                       : "var(--ink-90)",
                   }}
                 >
@@ -87,7 +87,7 @@ export function RestorationLadder() {
                           ? "var(--supreme-red-bright)"
                           : "rgba(255,255,255,0.45)",
                         borderColor: isSpecialty
-                          ? "rgba(224,20,20,0.5)"
+                          ? "rgba(255,34,51,0.5)"
                           : "rgba(255,255,255,0.16)",
                       }}
                     >

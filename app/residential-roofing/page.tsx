@@ -6,7 +6,8 @@ import { Process } from "@/components/sections/Process";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
-import { media, warranties } from "@/lib/site";
+import { SupremeHomeLogo } from "@/components/layout/Logo";
+import { media, warranties, credentialBadges } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Residential Roofing, Repair & Storm Damage in Houston",
@@ -53,11 +54,29 @@ export default function ResidentialRoofingPage() {
                 <RevealWords text="Backed in writing, financed if you need it" />
               </h2>
               <Reveal delay={0.15}>
-                <p className="lede mb-10">
+                <p className="lede mb-8">
                   Storm damage, an ageing roof or a leak you cannot trace — we
                   inspect at no cost and tell you honestly whether it is a repair
                   or a replacement.
                 </p>
+              </Reveal>
+
+              {/* Residential lockup + CertainTeed credentials */}
+              <Reveal delay={0.2}>
+                <div className="flex flex-wrap items-center gap-7 mb-10 pb-8 border-b border-black/10">
+                  <SupremeHomeLogo height={42} />
+                  <span className="w-px h-10 bg-black/12" />
+                  {credentialBadges.map((badge) => (
+                    <Image
+                      key={badge.name}
+                      src={badge.src}
+                      alt={badge.alt}
+                      width={68}
+                      height={68}
+                      title={`${badge.issuer} ${badge.name}`}
+                    />
+                  ))}
+                </div>
               </Reveal>
 
               <RevealGroup className="grid sm:grid-cols-2 gap-5">

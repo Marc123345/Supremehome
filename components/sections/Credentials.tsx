@@ -1,8 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { ShieldCheck, Award, FileCheck, Wallet } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
-import { credentials, manufacturers, warranties } from "@/lib/site";
+import {
+  credentials,
+  manufacturers,
+  warranties,
+  credentialBadges,
+} from "@/lib/site";
 
 const WARRANTY_ICONS = [FileCheck, ShieldCheck, Award, Wallet];
 
@@ -13,7 +19,7 @@ export function Credentials() {
         className="absolute -bottom-52 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(194,6,6,0.18) 0%, transparent 68%)",
+            "radial-gradient(circle, rgba(224,1,22,0.18) 0%, transparent 68%)",
         }}
       />
 
@@ -72,6 +78,39 @@ export function Credentials() {
                       <span className="text-[0.8rem] text-white/45 text-right">
                         {m.note}
                       </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+
+            {/* CertainTeed credential badges */}
+            <Reveal delay={0.3}>
+              <div className="mt-9 pt-8 border-t border-white/12">
+                <p className="eyebrow text-white/40 mb-6">
+                  CertainTeed credentials
+                </p>
+                <ul className="flex flex-wrap gap-6">
+                  {credentialBadges.map((badge) => (
+                    <li
+                      key={badge.name}
+                      className="flex items-center gap-4 max-w-[260px]"
+                    >
+                      <Image
+                        src={badge.src}
+                        alt={badge.alt}
+                        width={76}
+                        height={76}
+                        className="shrink-0"
+                      />
+                      <div>
+                        <p className="display-sm leading-none mb-1.5">
+                          {badge.name}
+                        </p>
+                        <p className="text-[0.78rem] leading-[1.5] text-white/45">
+                          {badge.note}
+                        </p>
+                      </div>
                     </li>
                   ))}
                 </ul>

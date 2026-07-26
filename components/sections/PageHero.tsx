@@ -34,7 +34,7 @@ export function PageHero({
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 55%, rgba(194,6,6,0.32) 100%)",
+              "linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 55%, rgba(224,1,22,0.32) 100%)",
           }}
         />
         <div className="absolute inset-0 grid-overlay opacity-[0.05]" />

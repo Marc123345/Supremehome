@@ -1,23 +1,30 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════════════════════
-   SUPREME HOME ROOFING — DESIGN TOKENS
-   Palette sampled from mysupremehome.com (brand red #C20606)
+   SUPREME — DESIGN TOKENS
+
+   Brand red is the official SCC Red from the Supreme Commercial
+   Coatings master package (README_FIRST.txt), not a screen sample.
+   Supreme Home's own red is kept as a secondary token for the
+   residential lockup.
    ═══════════════════════════════════════════════════════════ */
 
 :root {
-  /* Brand */
-  --supreme-red: #c20606;
-  --supreme-red-dark: #8f0404;
-  --supreme-red-bright: #e01414;
-  --supreme-brick: #c0392b; /* logo mark red */
+  /* Brand — Supreme Commercial Coatings */
+  --supreme-red: #e00116;
+  --supreme-red-dark: #a80110;
+  --supreme-red-bright: #ff2233;
+
+  /* Supreme Home (residential lockup) — from HexCode.jpg */
+  --supreme-home-red: #d4101a;
+  --supreme-brick: #d4101a;
 
   /* Red tints */
-  --red-80: #ce3838;
-  --red-60: #da6a6a;
-  --red-40: #e79b9b;
-  --red-20: #f3cdcd;
-  --red-wash: rgba(194, 6, 6, 0.06);
+  --red-80: #e63445;
+  --red-60: #ec6774;
+  --red-40: #f39aa3;
+  --red-20: #f9ccd1;
+  --red-wash: rgba(224, 1, 22, 0.06);
 
   /* Ink / neutrals */
   --ink: #000000;
@@ -204,12 +211,12 @@ body {
 .btn-primary {
   background: var(--supreme-red);
   color: var(--white);
-  box-shadow: 0 8px 24px -10px rgba(194, 6, 6, 0.7);
+  box-shadow: 0 8px 24px -10px rgba(224, 1, 22, 0.7);
 }
 .btn-primary:hover {
   background: var(--supreme-red-dark);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px -10px rgba(194, 6, 6, 0.75);
+  box-shadow: 0 14px 30px -10px rgba(224, 1, 22, 0.75);
 }
 
 .btn-ghost-light {
@@ -413,14 +420,14 @@ body {
 
 .thin-scroll {
   scrollbar-width: thin;
-  scrollbar-color: rgba(194, 6, 6, 0.35) transparent;
+  scrollbar-color: rgba(224, 1, 22, 0.35) transparent;
 }
 .thin-scroll::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 .thin-scroll::-webkit-scrollbar-thumb {
-  background: rgba(194, 6, 6, 0.3);
+  background: rgba(224, 1, 22, 0.3);
 }
 
 /* ── ACCESSIBILITY ───────────────────────────────────────── */

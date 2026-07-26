@@ -164,7 +164,7 @@ export function CoverageMap({
                     style={{
                       boxShadow: light
                         ? "0 0 18px rgba(255,255,255,0.2)"
-                        : "0 0 18px rgba(194,6,6,0.32)",
+                        : "0 0 18px rgba(224,1,22,0.32)",
                     }}
                   >
                     <span className="font-display text-[0.82rem] leading-none uppercase">

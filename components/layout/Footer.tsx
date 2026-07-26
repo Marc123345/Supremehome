@@ -22,7 +22,7 @@ export function Footer() {
           style={{ background: "var(--supreme-red)" }}
         >
           <div className="mb-8">
-            <Logo variant="light" />
+            <Logo variant="solid" height={44} />
           </div>
 
           <p className="text-[0.95rem] leading-[1.75] text-white/90 max-w-md mb-10">

@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
  * scroll-snap fallback under 768px.
  */
 
-const ACCENT = "#c20606";
+const ACCENT = "#e00116";
 
 export type ArcCard = {
   id: string;
