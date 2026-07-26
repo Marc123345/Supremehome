@@ -30,8 +30,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative w-full overflow-hidden flex flex-col"
-      style={{ minHeight: "100svh" }}
+      className="relative w-full overflow-hidden flex flex-col min-h-[calc(100svh-76px)] lg:min-h-[calc(100svh-96px)]"
     >
       {/* ── BACKGROUND ── */}
       <div className="absolute inset-0 z-0">
@@ -65,7 +64,7 @@ export function Hero() {
       </div>
 
       {/* ── CONTENT (normal flow — no absolute stacking) ── */}
-      <div className="relative z-10 flex-1 flex flex-col shell pt-[120px] pb-[130px] lg:pt-[190px] lg:pb-[150px]">
+      <div className="relative z-10 flex-1 flex flex-col shell pt-12 pb-[130px] lg:pt-20 lg:pb-[150px]">
         {/* Top: positioning copy */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

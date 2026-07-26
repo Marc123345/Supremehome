@@ -1,0 +1,3 @@
+# Keeps public/ in git.
+# Next.js serves static assets from here; Vercel also probes for it during
+# framework detection, and git does not track empty directories.

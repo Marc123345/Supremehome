@@ -12,6 +12,10 @@ export function Logo({
 }) {
   const wordColor = variant === "light" ? "#ffffff" : "#000000";
   const lightWordColor = variant === "light" ? "rgba(255,255,255,0.9)" : "#000000";
+  // On the red header block the brick-red mark would disappear, so the light
+  // variant renders the glyph in white with a red negative-space window.
+  const markColor = variant === "light" ? "#ffffff" : "var(--supreme-brick)";
+  const windowColor = variant === "light" ? "var(--supreme-red)" : "#ffffff";
 
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
@@ -26,15 +30,15 @@ export function Logo({
         {/* Roof chevron — sits above the body with a clear gap */}
         <path
           d="M20 1.5 L39 15.5 L33.5 15.5 L20 5.6 L6.5 15.5 L1 15.5 Z"
-          fill="var(--supreme-brick)"
+          fill={markColor}
         />
-        {/* Body — walls with a negative-space opening on the right */}
+        {/* Body — walls with a doorway cut out of the base */}
         <path
           d="M5.5 19 H34.5 V38.5 H24 V29 H16 V38.5 H5.5 Z"
-          fill="var(--supreme-brick)"
+          fill={markColor}
         />
-        {/* Window cut-out */}
-        <rect x="16" y="22.5" width="8" height="4" fill="var(--supreme-brick)" />
+        {/* Window */}
+        <rect x="15.5" y="22" width="9" height="4.5" fill={windowColor} />
       </svg>
 
       <span

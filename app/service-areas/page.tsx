@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
-import { ServiceAreasSection } from "@/components/sections/ServiceAreasSection";
+import { CoverageMap } from "@/components/sections/CoverageMap";
 import { CTABand } from "@/components/sections/CTABand";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { media, serviceAreas, site } from "@/lib/site";
@@ -24,7 +24,7 @@ export default function ServiceAreasPage() {
         imageAlt="Aerial view of a commercial district with large flat roofs"
       />
 
-      <ServiceAreasSection compact />
+      <CoverageMap />
 
       {/* ── Coverage detail ── */}
       <section className="section bg-white">

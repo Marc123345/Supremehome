@@ -265,7 +265,7 @@ export function ArcSlider({
       <div
         ref={containerRef}
         className="relative w-full select-none"
-        style={{ perspective: "1600px", height: 540 }}
+        style={{ perspective: "1600px", height: 660 }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -292,7 +292,7 @@ export function ArcSlider({
                 style={{
                   transformStyle: "preserve-3d",
                   width: "min(380px, 55vw)",
-                  height: 480,
+                  height: 600,
                 }}
                 onClick={() => {
                   if (dragRef.current.hasMoved) return;
@@ -321,25 +321,36 @@ export function ArcSlider({
                     }}
                   />
 
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="flex items-center justify-between gap-3 mb-7">
                     <span className="eyebrow text-[var(--supreme-red-bright)]">
                       {String(i + 1).padStart(2, "0")} · {c.category}
                     </span>
-                    <span className="eyebrow text-white/35">Service</span>
+                    <span className="eyebrow text-white/35 shrink-0">Service</span>
                   </div>
 
-                  <div className="flex-1 flex flex-col justify-end">
-                    <h3 className="display-md text-white mb-3">{c.title}</h3>
-                    <p className="text-[0.9rem] leading-[1.7] text-white/62 mb-7">
+                  {/* justify-end pushes content to the base of the card; the
+                      min-h-0 + shrink lets long copy compress instead of
+                      pushing the CTA past the card edge. */}
+                  <div className="flex-1 min-h-0 flex flex-col justify-end">
+                    <h3
+                      className="font-display uppercase text-white mb-3.5"
+                      style={{
+                        fontSize: "clamp(1.7rem, 2.4vw, 2.35rem)",
+                        lineHeight: 1.02,
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p className="text-[0.86rem] leading-[1.6] text-white/62 mb-6">
                       {c.blurb}
                     </p>
 
                     {c.bullets && (
-                      <ul className="space-y-1.5 mb-8">
+                      <ul className="space-y-2 mb-7">
                         {c.bullets.slice(0, 3).map((b) => (
                           <li
                             key={b}
-                            className="flex gap-3 items-start text-[0.76rem] uppercase tracking-[0.1em] text-white/48"
+                            className="flex gap-2.5 items-start text-[0.8rem] leading-[1.45] text-white/50"
                           >
                             <span className="mt-[7px] w-[4px] h-[4px] shrink-0 bg-[var(--supreme-red)]" />
                             <span>{b}</span>

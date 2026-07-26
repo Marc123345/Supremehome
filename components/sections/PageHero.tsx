@@ -40,7 +40,7 @@ export function PageHero({
         <div className="absolute inset-0 grid-overlay opacity-[0.05]" />
       </div>
 
-      <div className="shell relative pt-[150px] pb-16 lg:pt-[220px] lg:pb-24">
+      <div className="shell relative pt-16 pb-16 lg:pt-24 lg:pb-24">
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"

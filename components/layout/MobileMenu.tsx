@@ -1,11 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { X, Phone, ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { X, Phone, ArrowUpRight, Mail, MapPin, ChevronDown } from "lucide-react";
 import { nav, site } from "@/lib/site";
+import { locations } from "@/lib/locations";
 import { Logo } from "./Logo";
+
+const AREAS_HREF = "/service-areas";
 
 export function MobileMenu({
   open,
@@ -14,6 +17,8 @@ export function MobileMenu({
   open: boolean;
   onClose: () => void;
 }) {
+  const [areasOpen, setAreasOpen] = useState(false);
+
   // Lock body scroll and close on Escape while the sheet is open.
   useEffect(() => {
     if (!open) return;
@@ -86,17 +91,84 @@ export function MobileMenu({
                     ease: [0.22, 1, 0.36, 1],
                   }}
                 >
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className="group flex items-center justify-between py-4 border-b border-black/[0.07]"
-                  >
-                    <span className="display-sm">{item.label}</span>
-                    <ArrowUpRight
-                      size={19}
-                      className="text-black/25 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </Link>
+                  {item.href === AREAS_HREF ? (
+                    <div className="border-b border-black/[0.07]">
+                      <div className="flex items-center justify-between">
+                        <Link
+                          href={item.href}
+                          onClick={onClose}
+                          className="flex-1 py-4"
+                        >
+                          <span className="display-sm">{item.label}</span>
+                        </Link>
+                        <button
+                          onClick={() => setAreasOpen((o) => !o)}
+                          aria-expanded={areasOpen}
+                          aria-label={
+                            areasOpen
+                              ? "Hide service areas"
+                              : "Show all service areas"
+                          }
+                          className="w-11 h-11 grid place-items-center border border-black/10 shrink-0"
+                        >
+                          <ChevronDown
+                            size={17}
+                            className="transition-transform duration-300"
+                            style={{
+                              transform: areasOpen ? "rotate(180deg)" : "none",
+                            }}
+                          />
+                        </button>
+                      </div>
+
+                      <AnimatePresence initial={false}>
+                        {areasOpen && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{
+                              duration: 0.35,
+                              ease: [0.22, 1, 0.36, 1],
+                            }}
+                            className="overflow-hidden grid grid-cols-2 gap-x-4"
+                          >
+                            {locations.map((loc) => (
+                              <li key={loc.slug}>
+                                <Link
+                                  href={`/service-areas/${loc.slug}`}
+                                  onClick={onClose}
+                                  className="group flex items-center gap-2 py-2.5 border-b border-black/[0.05]"
+                                >
+                                  <MapPin
+                                    size={12}
+                                    className="shrink-0 text-black/20 group-hover:text-[var(--supreme-red)] transition-colors"
+                                  />
+                                  <span className="text-[0.85rem] font-semibold group-hover:text-[var(--supreme-red)] transition-colors">
+                                    {loc.name}
+                                  </span>
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+
+                      <div className="pb-4" />
+                    </div>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      className="group flex items-center justify-between py-4 border-b border-black/[0.07]"
+                    >
+                      <span className="display-sm">{item.label}</span>
+                      <ArrowUpRight
+                        size={19}
+                        className="text-black/25 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      />
+                    </Link>
+                  )}
                 </motion.div>
               ))}
             </nav>
