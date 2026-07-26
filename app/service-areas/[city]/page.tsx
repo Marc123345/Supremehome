@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Phone, ArrowUpRight, Check } from "lucide-react";
+import { MapPin, Phone, Check } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServicesSlider } from "@/components/sections/ServicesSlider";
 import { RestorationLadder } from "@/components/sections/RestorationLadder";
@@ -9,7 +9,8 @@ import { Credentials } from "@/components/sections/Credentials";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { SlidingText } from "@/components/sections/SlidingText";
-import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
+import { CoverageMap } from "@/components/sections/CoverageMap";
+import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { locations, getLocation } from "@/lib/locations";
 import { media, site, restorationBenefits } from "@/lib/site";
 
@@ -50,8 +51,6 @@ export default async function LocationPage({
   const location = getLocation(city);
 
   if (!location) notFound();
-
-  const others = locations.filter((l) => l.slug !== location.slug);
 
   const localBusinessSchema = {
     "@context": "https://schema.org",
@@ -199,43 +198,15 @@ export default async function LocationPage({
 
       <Credentials />
 
-      {/* ── Other locations ── */}
-      <section className="section bg-[var(--ink-05)] border-y border-black/[0.07]">
-        <div className="shell">
-          <Reveal>
-            <p className="eyebrow text-[var(--supreme-red)] mb-5">
-              Elsewhere in Greater Houston
-            </p>
-          </Reveal>
-          <h2 className="display-lg mb-12">
-            <RevealWords text="Other areas we cover" />
-          </h2>
-
-          <RevealGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-px bg-black/[0.09] border border-black/[0.09]">
-            {others.map((other) => (
-              <RevealItem key={other.slug}>
-                <Link
-                  href={`/service-areas/${other.slug}`}
-                  className="group h-full bg-[var(--ink-05)] hover:bg-white p-5 flex flex-col gap-1.5 transition-colors"
-                >
-                  <span className="flex items-center justify-between gap-2">
-                    <span className="font-display text-[1.15rem] uppercase leading-none">
-                      {other.name}
-                    </span>
-                    <ArrowUpRight
-                      size={14}
-                      className="shrink-0 text-black/20 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </span>
-                  <span className="text-[0.68rem] uppercase tracking-[0.14em] text-black/38">
-                    {other.county.replace(" County", "").replace(" Counties", "")}
-                  </span>
-                </Link>
-              </RevealItem>
-            ))}
-          </RevealGroup>
-        </div>
-      </section>
+      {/* ── Other locations — interactive coverage map ── */}
+      <CoverageMap
+        activeSlug={location.slug}
+        eyebrow="Elsewhere in Greater Houston"
+        titleLead="Other areas"
+        titleAccent="We cover."
+        quote={`“${location.name} is one of ${locations.length} communities we cover. Pick any tile to see what we find on roofs there.”`}
+        showTargets={false}
+      />
 
       <FAQ />
       <CTABand />

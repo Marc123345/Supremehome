@@ -30,7 +30,22 @@ const HQ_SLUG = "katy";
 const COUNTY_SHORT = (county: string) =>
   county.replace(" Counties", "").replace(" County", "");
 
-export function CoverageMap() {
+export function CoverageMap({
+  /** Slug of the page's own city, if any — that tile is marked "You are here". */
+  activeSlug,
+  eyebrow = "Coverage",
+  titleLead = "Where we",
+  titleAccent = "Work.",
+  quote,
+  showTargets = true,
+}: {
+  activeSlug?: string;
+  eyebrow?: string;
+  titleLead?: string;
+  titleAccent?: string;
+  quote?: string;
+  showTargets?: boolean;
+} = {}) {
   const [hovered, setHovered] = useState<string | null>(null);
   const [showLookup, setShowLookup] = useState(false);
   const [pulse, setPulse] = useState(0);
@@ -69,24 +84,23 @@ export function CoverageMap() {
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3 mb-5">
               <span className="eyebrow text-[var(--supreme-red-bright)] bg-[var(--supreme-red)]/12 px-2.5 py-1">
-                Coverage
+                {eyebrow}
               </span>
               <span className="eyebrow text-white/40">
                 Greater Houston · {locations.length} communities
               </span>
             </div>
             <h2 className="display-lg">
-              Where we
+              {titleLead}
               <br />
               <span className="text-stroke italic text-[var(--supreme-red-bright)]">
-                Work.
+                {titleAccent}
               </span>
             </h2>
           </div>
           <p className="text-[0.92rem] text-white/55 max-w-[300px] leading-[1.75] italic border-l border-white/10 pl-6">
-            “Crews run out of {site.address.city}. Commercial flat-roof work
-            travels further — if your building sits outside the map, call and
-            ask.”
+            {quote ??
+              `“Crews run out of ${site.address.city}. Commercial flat-roof work travels further — if your building sits outside the map, call and ask.”`}
           </p>
         </div>
 
@@ -118,12 +132,19 @@ export function CoverageMap() {
 
             <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-2">
               {locations.map((loc, i) => {
-                const isHQ = loc.slug === HQ_SLUG;
-                const isPulsing = pulse === i;
+                const isCurrent = loc.slug === activeSlug;
+                const isHQ = !isCurrent && loc.slug === HQ_SLUG;
+                // Only pulse other cities — the current one is already marked.
+                const isPulsing = pulse === i && !isCurrent;
+                const light = isCurrent || isHQ;
+
+                const tag = isCurrent ? "You are here" : isHQ ? "HQ" : null;
+
                 return (
                   <Link
                     key={loc.slug}
                     href={`/service-areas/${loc.slug}`}
+                    aria-current={isCurrent ? "page" : undefined}
                     onMouseEnter={() => setHovered(loc.slug)}
                     onMouseLeave={() => setHovered(null)}
                     onFocus={() => setHovered(loc.slug)}
@@ -132,25 +153,32 @@ export function CoverageMap() {
                       relative aspect-square flex flex-col items-center justify-center gap-1 px-1
                       border text-center transition-all duration-500
                       ${
-                        isHQ
+                        light
                           ? "bg-white border-white text-[var(--ink)]"
                           : "bg-[var(--supreme-red)] border-[var(--supreme-red)]/70 text-white"
                       }
+                      ${isCurrent ? "ring-2 ring-[var(--supreme-red-bright)] z-10" : ""}
                       ${isPulsing ? "scale-[1.07] ring-2 ring-white z-10" : ""}
                       hover:scale-[1.07] hover:z-10
                     `}
                     style={{
-                      boxShadow: isHQ
-                        ? "0 0 18px rgba(255,255,255,0.18)"
+                      boxShadow: light
+                        ? "0 0 18px rgba(255,255,255,0.2)"
                         : "0 0 18px rgba(194,6,6,0.32)",
                     }}
                   >
                     <span className="font-display text-[0.82rem] leading-none uppercase">
                       {loc.name}
                     </span>
-                    {isHQ && (
-                      <span className="text-[7px] font-bold uppercase tracking-[0.18em] opacity-60">
-                        HQ
+                    {tag && (
+                      <span
+                        className={`text-[7px] font-bold uppercase tracking-[0.16em] leading-tight ${
+                          isCurrent
+                            ? "text-[var(--supreme-red)]"
+                            : "opacity-55"
+                        }`}
+                      >
+                        {tag}
                       </span>
                     )}
                   </Link>
@@ -254,6 +282,7 @@ export function CoverageMap() {
           </div>
 
           {/* 4 — Who it's for */}
+          {showTargets && (
           <div className="md:col-span-12 mt-10 lg:mt-14 pt-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-14">
             <div>
               <h3 className="eyebrow text-[var(--supreme-red-bright)] mb-5">
@@ -279,6 +308,7 @@ export function CoverageMap() {
               ))}
             </ul>
           </div>
+          )}
         </div>
       </div>
 
