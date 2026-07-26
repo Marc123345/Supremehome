@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { Logo } from "@/components/layout/Logo";
 
-const WORD = "SUPREME";
+const WORD = "RESTORATION";
 
 /**
  * Branded loading screen.
@@ -37,12 +38,23 @@ export function Preloader() {
           className="fixed inset-0 z-[300] grid place-items-center bg-[var(--ink-90)]"
           exit={{ opacity: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          aria-hidden="true"
+          role="status"
+          aria-label="Loading"
         >
-          <div className="flex flex-col items-center gap-7">
-            <span className="preloader-spinner block w-11 h-11 rounded-full border-2 border-white/12 border-t-[var(--supreme-red)]" />
+          <div className="flex flex-col items-center gap-8 px-6">
+            {/* Reverse lockup — the loader is ink, which is a compliant
+                background for it per the SCC colour spec. */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Logo variant="light" height={54} priority />
+            </motion.div>
 
-            <span className="font-display text-[2.2rem] tracking-[0.22em] text-white">
+            <span className="preloader-spinner block w-9 h-9 rounded-full border-2 border-white/12 border-t-[var(--supreme-red)]" />
+
+            <span className="font-display text-[1.15rem] tracking-[0.3em] text-white/70">
               {WORD.split("").map((letter, i) => (
                 <span
                   key={i}
@@ -52,10 +64,6 @@ export function Preloader() {
                   {letter}
                 </span>
               ))}
-            </span>
-
-            <span className="eyebrow text-[var(--supreme-red-bright)]">
-              Roof Restoration
             </span>
           </div>
         </motion.div>

@@ -14,6 +14,33 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
  * time, with prev/next arrows, dot pagination, drag/swipe and keyboard support.
  * Cards per view is responsive (1 / 2 / 3).
  */
+/** Off-page slides are hidden from both the tab order and the a11y tree.
+ *  aria-hidden alone would leave any link inside them focusable. */
+function CarouselItem({
+  children,
+  width,
+  offPage,
+}: {
+  children: ReactNode;
+  width: string;
+  offPage: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (ref.current) ref.current.inert = offPage;
+  }, [offPage]);
+
+  return (
+    <div
+      ref={ref}
+      className="shrink-0 px-2.5 first:pl-0 last:pr-0"
+      style={{ width }}
+    >
+      {children}
+    </div>
+  );
+}
+
 export function CardCarousel({
   children,
   ariaLabel = "Carousel",
@@ -115,16 +142,13 @@ export function CardCarousel({
           }}
         >
           {children.map((child, i) => (
-            <div
+            <CarouselItem
               key={i}
-              className="shrink-0 px-2.5 first:pl-0 last:pr-0"
-              style={{ width: `${100 / perView}%` }}
-              aria-hidden={
-                i < page * perView || i >= (page + 1) * perView ? true : undefined
-              }
+              width={`${100 / perView}%`}
+              offPage={i < page * perView || i >= (page + 1) * perView}
             >
               {child}
-            </div>
+            </CarouselItem>
           ))}
         </div>
       </div>

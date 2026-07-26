@@ -1,3 +1,5 @@
+import { locations } from "./locations";
+
 /**
  * Single source of truth for site content.
  * Every fact below comes from the Supreme Home Roofing discovery questionnaire
@@ -7,6 +9,22 @@
  * "years in business" claims are asserted, because the questionnaire reports
  * 1 year trading and no published review profile yet.
  */
+
+/**
+ * Canonical origin for metadata, sitemap and schema.
+ *
+ * This must be the host actually serving the site. Hardcoding
+ * `mysupremehome.com` meant the Vercel deployment emitted canonicals and a
+ * sitemap pointing at the old Squarespace site — telling Google the real
+ * version of every page lived at a URL that doesn't serve it.
+ *
+ * Set NEXT_PUBLIC_SITE_URL once the production domain is attached.
+ */
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
 
 export const site = {
   name: "Supreme Home Roofing & Construction",
@@ -25,7 +43,7 @@ export const site = {
     full: "21145 FM 529, Suite 1110, Katy, TX 77449",
   },
   hours: "Mon–Sat, 7:00am – 7:00pm",
-  url: "https://mysupremehome.com",
+  url: siteUrl,
 } as const;
 
 /* ── CREDENTIALS ─────────────────────────────────────────── */
@@ -261,7 +279,7 @@ export const services: Service[] = [
 
 /* ── PROCESS ─────────────────────────────────────────────── */
 
-export const process = [
+export const processSteps = [
   {
     n: "01",
     title: "Free Roof Inspection",
@@ -364,26 +382,9 @@ export const team = [
 
 /* ── SERVICE AREAS ───────────────────────────────────────── */
 
-export const serviceAreas = [
-  "Houston",
-  "Cypress",
-  "Katy",
-  "Missouri City",
-  "Spring",
-  "Tomball",
-  "Richmond",
-  "Rosenberg",
-  "Pearland",
-  "Webster",
-  "Humble",
-  "New Caney",
-  "Conroe",
-  "Waller",
-  "Sealy",
-  "Brookshire",
-  "Manvel",
-  "Fresno",
-] as const;
+/* Derived from lib/locations.ts so the two lists cannot drift. Previously
+   this was a hand-maintained duplicate of the same 18 cities. */
+export const serviceAreas: readonly string[] = locations.map((l) => l.name);
 
 /* ── WHO WE WORK WITH ────────────────────────────────────── */
 

@@ -2,7 +2,7 @@
 
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
-import { process, media } from "@/lib/site";
+import { processSteps, media } from "@/lib/site";
 
 export function Process() {
   return (
@@ -53,7 +53,7 @@ export function Process() {
 
           {/* Steps */}
           <ol className="lg:col-span-7">
-            {process.map((step, i) => (
+            {processSteps.map((step, i) => (
               <Reveal key={step.n} delay={i * 0.07} as="li">
                 <div className="group grid grid-cols-[auto_1fr] gap-6 lg:gap-8 py-8 border-b border-black/10 first:pt-0">
                   <span className="font-display text-[2.4rem] leading-none text-black/15 transition-colors duration-300 group-hover:text-[var(--supreme-red)]">

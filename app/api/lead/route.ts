@@ -26,12 +26,49 @@ type LeadPayload = {
   company_website?: string; // honeypot
 };
 
-export async function POST(request: Request) {
-  let body: LeadPayload;
+/** Field caps. Without these a single request could log megabytes. */
+const LIMITS = {
+  name: 120,
+  phone: 40,
+  email: 200,
+  propertyType: 60,
+  city: 60,
+  service: 120,
+  message: 4000,
+} as const;
 
+const MAX_BODY_BYTES = 16_000;
+
+function clamp(value: string | undefined, max: number) {
+  return (value ?? "").trim().slice(0, max);
+}
+
+export async function POST(request: Request) {
+  // Reject oversized payloads before parsing them.
+  const declared = Number(request.headers.get("content-length") ?? 0);
+  if (declared > MAX_BODY_BYTES) {
+    return NextResponse.json({ error: "Message too long." }, { status: 413 });
+  }
+
+  let raw: string;
   try {
-    body = await request.json();
+    raw = await request.text();
   } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  if (raw.length > MAX_BODY_BYTES) {
+    return NextResponse.json({ error: "Message too long." }, { status: 413 });
+  }
+
+  let body: LeadPayload;
+  try {
+    body = JSON.parse(raw);
+  } catch {
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+  }
+
+  if (typeof body !== "object" || body === null) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
@@ -40,9 +77,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = body.name?.trim();
-  const phone = body.phone?.trim();
-  const email = body.email?.trim();
+  const name = clamp(body.name, LIMITS.name);
+  const phone = clamp(body.phone, LIMITS.phone);
+  const email = clamp(body.email, LIMITS.email);
 
   if (!name || !phone || !email) {
     return NextResponse.json(
@@ -63,10 +100,10 @@ export async function POST(request: Request) {
     name,
     phone,
     email,
-    propertyType: body.propertyType ?? "",
-    city: body.city ?? "",
-    service: body.service ?? "",
-    message: body.message?.trim() ?? "",
+    propertyType: clamp(body.propertyType, LIMITS.propertyType),
+    city: clamp(body.city, LIMITS.city),
+    service: clamp(body.service, LIMITS.service),
+    message: clamp(body.message, LIMITS.message),
   };
 
   // TODO: forward `lead` to email / CRM before launch.

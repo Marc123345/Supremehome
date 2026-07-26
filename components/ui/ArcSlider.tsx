@@ -25,6 +25,39 @@ export type ArcCard = {
   bullets?: readonly string[];
 };
 
+/** Arc geometry, shared by the SSR pass and runtime repositioning so the
+ *  cards are never painted stacked on top of one another. */
+function arcStyle(offset: number, cardWidth: number) {
+  const abs = Math.abs(offset);
+  if (abs === 0) return { x: 0, rotateY: 0, z: 0, scale: 1, opacity: 1, zIndex: 10 };
+  if (abs === 1)
+    return {
+      x: offset * cardWidth * 0.82,
+      rotateY: offset < 0 ? 32 : -32,
+      z: -120,
+      scale: 0.82,
+      opacity: 0.55,
+      zIndex: 5,
+    };
+  if (abs === 2)
+    return {
+      x: offset * cardWidth * 1.3,
+      rotateY: offset < 0 ? 48 : -48,
+      z: -240,
+      scale: 0.64,
+      opacity: 0.18,
+      zIndex: 2,
+    };
+  return {
+    x: offset * cardWidth * 1.75,
+    rotateY: offset < 0 ? 55 : -55,
+    z: -350,
+    scale: 0.5,
+    opacity: 0,
+    zIndex: 1,
+  };
+}
+
 export function ArcSlider({
   cards,
   initialIndex = 0,
@@ -68,9 +101,6 @@ export function ArcSlider({
     (index: number, animate: boolean) => {
       const containerWidth = containerRef.current?.offsetWidth ?? 900;
       const cardWidth = Math.min(380, Math.max(260, containerWidth * 0.55));
-      const step1 = cardWidth * 0.82;
-      const step2 = cardWidth * 1.3;
-      const step3 = cardWidth * 1.75;
 
       cards.forEach((_, i) => {
         const card = cardsRef.current[i];
@@ -78,44 +108,17 @@ export function ArcSlider({
 
         const offset = i - index;
         const abs = Math.abs(offset);
-
-        let translateX = 0;
-        let rotateY = 0;
-        let translateZ = 0;
-        let scale = 1;
-        let opacity = 1;
-        let zIndex = 10;
-
-        if (abs === 0) {
-          zIndex = 10;
-        } else if (abs === 1) {
-          translateX = offset * step1;
-          rotateY = offset < 0 ? 32 : -32;
-          translateZ = -120;
-          scale = 0.82;
-          opacity = 0.55;
-          zIndex = 5;
-        } else if (abs === 2) {
-          translateX = offset * step2;
-          rotateY = offset < 0 ? 48 : -48;
-          translateZ = -240;
-          scale = 0.64;
-          opacity = 0.18;
-          zIndex = 2;
-        } else {
-          translateX = offset * step3;
-          rotateY = offset < 0 ? 55 : -55;
-          translateZ = -350;
-          scale = 0.5;
-          opacity = 0;
-          zIndex = 1;
-        }
+        const { x, rotateY, z, scale, opacity, zIndex } = arcStyle(
+          offset,
+          cardWidth
+        );
+        const offArc = abs > 1;
 
         card.style.zIndex = String(zIndex);
         card.style.transition = animate
           ? "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, box-shadow 0.6s ease"
           : "none";
-        card.style.transform = `translateX(${translateX}px) rotateY(${rotateY}deg) translateZ(${translateZ}px) scale(${scale})`;
+        card.style.transform = `translateX(${x}px) rotateY(${rotateY}deg) translateZ(${z}px) scale(${scale})`;
         card.style.opacity = String(opacity);
         card.style.boxShadow =
           abs === 0
@@ -123,7 +126,10 @@ export function ArcSlider({
             : abs === 1
             ? "0 8px 30px rgba(0,0,0,0.45)"
             : "none";
-        card.style.pointerEvents = abs > 1 ? "none" : "auto";
+        card.style.pointerEvents = offArc ? "none" : "auto";
+        // Off-arc cards are visually gone but their links stayed in the tab
+        // order, so keyboard users landed on invisible content.
+        card.inert = offArc;
       });
     },
     [cards]
@@ -151,15 +157,6 @@ export function ArcSlider({
       window.removeEventListener("scroll", invalidate);
     };
   }, [activeIndex, positionCards]);
-
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") navigateTo(activeIndex - 1);
-      if (e.key === "ArrowRight") navigateTo(activeIndex + 1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [activeIndex, navigateTo]);
 
   useEffect(() => {
     return () => {
@@ -266,6 +263,22 @@ export function ArcSlider({
         ref={containerRef}
         className="relative w-full select-none"
         style={{ perspective: "1600px", height: 660 }}
+        role="region"
+        aria-roledescription="carousel"
+        aria-label="Services"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          // Scoped to the slider. A window-level listener stole ArrowLeft /
+          // ArrowRight from the whole page, including when it was off-screen.
+          if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            navigateTo(activeIndex - 1);
+          }
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            navigateTo(activeIndex + 1);
+          }
+        }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -289,11 +302,17 @@ export function ArcSlider({
                   if (isActive) activeCardRef.current = el;
                 }}
                 className="absolute cursor-pointer"
-                style={{
-                  transformStyle: "preserve-3d",
-                  width: "min(380px, 55vw)",
-                  height: 600,
-                }}
+                style={(() => {
+                  const a = arcStyle(i - initialIndex, 380);
+                  return {
+                    transformStyle: "preserve-3d" as const,
+                    width: "min(380px, 55vw)",
+                    height: 600,
+                    transform: `translateX(${a.x}px) rotateY(${a.rotateY}deg) translateZ(${a.z}px) scale(${a.scale})`,
+                    opacity: a.opacity,
+                    zIndex: a.zIndex,
+                  };
+                })()}
                 onClick={() => {
                   if (dragRef.current.hasMoved) return;
                   if (i !== activeIndex) navigateTo(i);
