@@ -450,6 +450,39 @@ body {
   animation: pulse-ring 2.4s cubic-bezier(0.24, 0.6, 0.35, 1) infinite;
 }
 
+/* Vertical review marquee (portfolio ContactTestimonials pattern) */
+@keyframes reviews-scroll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+.reviews-track {
+  animation: reviews-scroll 70s linear infinite;
+  will-change: transform;
+}
+.reviews-track:hover {
+  animation-play-state: paused;
+}
+.reviews-mask {
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black 40px,
+    black calc(100% - 40px),
+    transparent 100%
+  );
+}
+
 /* Blueprint grid overlay */
 .grid-overlay {
   background-image: linear-gradient(
@@ -580,6 +613,7 @@ body {
   .animate-circle-rotate,
   .animate-pulse-ring,
   .animate-float-x,
+  .reviews-track,
   .animate-bounce {
     animation: none !important;
   }

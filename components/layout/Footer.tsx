@@ -9,7 +9,7 @@ import {
   credentialBadges,
 } from "@/lib/site";
 import { locations } from "@/lib/locations";
-import { Logo, SupremeHomeRoofingLogo } from "./Logo";
+import { Logo } from "./Logo";
 
 /**
  * Footer in the Vharanani Group pattern: a split panel — brand-colour left,
@@ -131,7 +131,7 @@ export function Footer() {
           </ul>
 
           <h3 className="display-sm mb-4">Manufacturer certified</h3>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-10">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-6">
             {manufacturers.map((m) => (
               <li
                 key={m.name}
@@ -143,10 +143,10 @@ export function Footer() {
             ))}
           </ul>
 
-          {/* Parent entity + CertainTeed credentials */}
-          <h3 className="display-sm mb-4">Part of</h3>
+          {/* CertainTeed credential badges. These sat under a "Part of"
+              heading next to the parent-entity lockup; with that lockup gone
+              they belong with the manufacturer list above. */}
           <div className="flex flex-wrap items-center gap-6 mb-10">
-            <SupremeHomeRoofingLogo height={34} />
             {credentialBadges.map((badge) => (
               <Image
                 key={badge.name}

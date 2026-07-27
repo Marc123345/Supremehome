@@ -9,6 +9,7 @@ import { Process } from "@/components/sections/Process";
 import { Credentials } from "@/components/sections/Credentials";
 import { Team } from "@/components/sections/Team";
 import { Proof } from "@/components/sections/Proof";
+import { Reviews } from "@/components/sections/Reviews";
 import { CoverageMap } from "@/components/sections/CoverageMap";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
@@ -27,6 +28,7 @@ export default function Home() {
       <Credentials />
       <Team />
       <Proof />
+      <Reviews />
       <CoverageMap />
       <FAQ />
       <CTABand />
