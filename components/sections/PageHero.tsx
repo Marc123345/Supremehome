@@ -28,13 +28,13 @@ export function PageHero({
           priority
           sizes="100vw"
           className="object-cover"
-          style={{ filter: "brightness(0.4) contrast(1.05)" }}
+          style={{ filter: "brightness(0.58) contrast(1.02)" }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(100deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.5) 55%, rgba(224,1,22,0.32) 100%)",
+              "linear-gradient(100deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.36) 55%, rgba(224,1,22,0.30) 100%)",
           }}
         />
         <div className="absolute inset-0 grid-overlay opacity-[0.05]" />

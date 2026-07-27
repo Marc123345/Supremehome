@@ -56,7 +56,7 @@ export function Hero() {
             priority
             sizes="100vw"
             className="object-cover"
-            style={{ filter: "brightness(0.46) contrast(1.08) saturate(0.92)" }}
+            style={{ filter: "brightness(0.66) contrast(1.04) saturate(0.98)" }}
           />
         </div>
 
@@ -76,7 +76,7 @@ export function Hero() {
             onCanPlay={() => setVideoReady(true)}
             className="absolute inset-0 w-full h-full object-cover"
             style={{
-              filter: "brightness(0.46) contrast(1.08) saturate(0.92)",
+              filter: "brightness(0.66) contrast(1.04) saturate(0.98)",
               opacity: videoReady ? 1 : 0,
               transition: "opacity 0.9s ease",
             }}
@@ -89,14 +89,14 @@ export function Hero() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.3) 38%, rgba(0,0,0,0.58) 72%, rgba(224,1,22,0.42) 100%)",
+              "linear-gradient(180deg, rgba(0,0,0,0.50) 0%, rgba(0,0,0,0.16) 38%, rgba(0,0,0,0.40) 72%, rgba(224,1,22,0.34) 100%)",
           }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(96deg, rgba(0,0,0,0.74) 0%, rgba(0,0,0,0.34) 46%, transparent 80%)",
+              "linear-gradient(96deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.22) 50%, transparent 82%)",
           }}
         />
         <div className="absolute inset-0 grid-overlay opacity-[0.045]" />

@@ -79,8 +79,17 @@ export function Reviews() {
                 Reviews on Google
               </p>
             </Reveal>
+            {/* Split so the closing phrase carries the accent, matching the
+                two-tone headline treatment used across the site (and the
+                portfolio original this section is based on). The space
+                between the two halves is an explicit text node — the word
+                wrappers are inline-blocks, which swallow adjacent
+                whitespace. */}
             <h2 className="display-lg">
-              <RevealWords text="Don't take our word for it" />
+              <RevealWords text="Don’t take our word" />{" "}
+              <span className="italic text-[var(--supreme-red)]">
+                <RevealWords text="for it." delay={0.14} />
+              </span>
             </h2>
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
