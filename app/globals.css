@@ -472,33 +472,6 @@ body {
 
 /* ── PRELOADER (ported from topfloor Preloader.js) ───────── */
 
-@keyframes preloader-letter {
-  0%,
-  75%,
-  100% {
-    opacity: 1;
-    transform: rotateY(0deg);
-  }
-  25%,
-  50% {
-    opacity: 0.35;
-    transform: rotateY(-90deg);
-  }
-}
-.preloader-letter {
-  display: inline-block;
-  animation: preloader-letter 3s infinite;
-}
-
-@keyframes preloader-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.preloader-spinner {
-  animation: preloader-spin 1s linear infinite;
-}
-
 /* ── SLIDING DISPLAY TEXT (topfloor Slidingtext.js) ──────── */
 /* Outlined by default, solid on hover — the marquee "fill" effect. */
 
@@ -607,7 +580,6 @@ body {
   .animate-circle-rotate,
   .animate-pulse-ring,
   .animate-float-x,
-  .preloader-letter,
   .animate-bounce {
     animation: none !important;
   }
