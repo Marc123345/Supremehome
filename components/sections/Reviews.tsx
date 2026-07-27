@@ -79,14 +79,14 @@ export function Reviews() {
                 Reviews on Google
               </p>
             </Reveal>
-            {/* Split so the closing phrase carries the accent, matching the
-                two-tone headline treatment used across the site (and the
-                portfolio original this section is based on). The space
-                between the two halves is an explicit text node — the word
-                wrappers are inline-blocks, which swallow adjacent
-                whitespace. */}
+            {/* Split so the closing phrase carries the accent on its own
+                line, matching the two-tone headline treatment used across the
+                site (and the portfolio original this section is based on).
+                The <br> is what forces the break — a plain space would let
+                the two halves reflow onto one line at wide viewports. */}
             <h2 className="display-lg">
-              <RevealWords text="Don’t take our word" />{" "}
+              <RevealWords text="Don’t take our word" />
+              <br />
               <span className="italic text-[var(--supreme-red)]">
                 <RevealWords text="for it." delay={0.14} />
               </span>
