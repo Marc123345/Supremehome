@@ -163,12 +163,32 @@ export function RevealWords({
               display: "inline-block",
               overflow: "hidden",
               verticalAlign: "top",
+              /*
+               * The display faces run line-height below 1 (display-lg is
+               * 0.94), so the wrapper's content box is shorter than the
+               * glyphs and `overflow: hidden` was shaving their tops and
+               * tails. Italic — synthetic oblique on Bebas — additionally
+               * skews glyphs past the right edge, which clipped the "T" in
+               * "IT.".
+               *
+               * Padding enlarges the clip box; the matching negative margin
+               * cancels it out, so nothing moves and word gaps are unchanged.
+               */
+              paddingTop: "0.16em",
+              paddingBottom: "0.16em",
+              paddingRight: "0.12em",
+              marginTop: "-0.16em",
+              marginBottom: "-0.16em",
+              marginRight: "-0.12em",
             }}
           >
             <motion.span
               style={{ display: "inline-block" }}
               variants={{
-                hidden: { y: "105%" },
+                // 130%, not 105%: the clip box is now taller than the glyph
+                // box, so a smaller offset would leave a sliver showing
+                // before the reveal.
+                hidden: { y: "130%" },
                 show: {
                   y: "0%",
                   transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
