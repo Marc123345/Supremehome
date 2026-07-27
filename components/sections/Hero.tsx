@@ -7,6 +7,7 @@ import { ArrowRight, ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { TextScramble } from "@/components/ui/TextScramble";
 import { Ticker } from "@/components/ui/Ticker";
 import { CertStickers } from "@/components/ui/CertStickers";
+import { GoogleRating } from "@/components/ui/GoogleRating";
 import { site, media, tickerPrimary, tickerSecondary } from "@/lib/site";
 
 const SCRAMBLE_PHRASES = [
@@ -139,6 +140,16 @@ export function Hero() {
                 </li>
               ))}
             </motion.ul>
+
+            {/* Live Google rating — real figures from the knowledge panel. */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="mt-6"
+            >
+              <GoogleRating variant="dark" />
+            </motion.div>
 
             {/* Mobile / tablet: stickers sit under the chips, where there is
                 room — the upper-right is occupied by the intro copy. */}

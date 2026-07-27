@@ -97,8 +97,16 @@ export const reviews: Review[] = [
   },
 ];
 
-/** Google Business profile — used for the map embed and the "read them all" link. */
+/**
+ * Google Business profile.
+ *
+ * `rating` and `reviewCount` are read off the live Google knowledge panel
+ * (verified 4.8 / 21 reviews). They are real, so keep them in step with the
+ * profile — do not round the rating up to 5.0.
+ */
 export const googleProfile = {
+  rating: 4.8,
+  reviewCount: 21,
   shareUrl: "https://share.google/efub2uSqCpHHpaawG",
   mapEmbedUrl:
     "https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sSupreme+Home+Roofing+and+Construction,+21145+FM+529+Suite+1110,+Katy,+TX+77449",
