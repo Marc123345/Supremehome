@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, ChevronDown, MapPin, ArrowUpRight, ArrowRight } from "lucide-react";
+import { Menu, ChevronDown, MapPin, ArrowUpRight, Phone } from "lucide-react";
 import { nav, site } from "@/lib/site";
 import { locations } from "@/lib/locations";
 import { Logo } from "./Logo";
@@ -205,14 +205,29 @@ export function Header() {
             })}
           </nav>
 
-          {/* Right — square solid CTA */}
+          {/* Right — phone as a number with a label, not a button */}
           <a
             href={site.phoneHref}
-            className="hidden lg:flex items-center justify-center gap-2.5 h-[56px] px-8 text-white font-semibold text-[0.94rem] transition-all duration-300 hover:bg-[var(--supreme-red-dark)]"
-            style={{ background: "var(--supreme-red)" }}
+            className="group hidden lg:flex items-center gap-3.5"
+            aria-label={`Call ${site.phone}`}
           >
-            {site.phone}
-            <ArrowRight size={16} />
+            <span
+              className="grid place-items-center w-11 h-11 rounded-full shrink-0 transition-colors duration-300 group-hover:bg-[var(--supreme-red)]"
+              style={{ background: "var(--red-wash)" }}
+            >
+              <Phone
+                size={18}
+                className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
+              />
+            </span>
+            <span className="leading-tight">
+              <span className="block eyebrow text-black/45">
+                Free inspection
+              </span>
+              <span className="block font-display text-[1.4rem] leading-none tracking-wide transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
+                {site.phone}
+              </span>
+            </span>
           </a>
 
           <button

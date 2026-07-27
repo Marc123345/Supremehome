@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { ArrowRight, ChevronDown, Phone, ShieldCheck } from "lucide-react";
 import { TextScramble } from "@/components/ui/TextScramble";
 import { Ticker } from "@/components/ui/Ticker";
+import { CertStickers } from "@/components/ui/CertStickers";
 import { site, media, tickerPrimary, tickerSecondary } from "@/lib/site";
 
 const SCRAMBLE_PHRASES = [
@@ -87,6 +88,12 @@ export function Hero() {
           </p>
         </motion.div>
 
+        {/* Desktop: credential stickers sit in the open upper-right, clear of
+            the headline block and the right-hand copy below it. */}
+        <div className="hidden lg:block absolute right-[var(--gutter)] top-[clamp(6.5rem,16vh,11rem)] z-20">
+          <CertStickers size={132} />
+        </div>
+
         {/* Spacer pushes the headline block to the lower third */}
         <div className="flex-1 min-h-[2.5rem]" />
 
@@ -132,6 +139,10 @@ export function Hero() {
                 </li>
               ))}
             </motion.ul>
+
+            {/* Mobile / tablet: stickers sit under the chips, where there is
+                room — the upper-right is occupied by the intro copy. */}
+            <CertStickers size={78} className="mt-6 lg:hidden" />
 
             {/* Mobile / tablet CTAs */}
             <motion.div
