@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import {
   site,
   nav,
@@ -87,10 +87,6 @@ export function Footer() {
               >
                 {site.email}
               </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Clock size={16} className="shrink-0 text-white/60" />
-              {site.hours}
             </div>
           </div>
         </div>

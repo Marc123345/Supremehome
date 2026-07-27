@@ -27,7 +27,7 @@ export const siteUrl =
     : "http://localhost:3000");
 
 export const site = {
-  name: "Supreme Home Roofing & Construction",
+  name: "Supreme Home Roofing and Construction",
   dba: "Supreme Commercial Coatings",
   shortName: "Supreme",
   tagline: "Restore First. Replace Only When You Must.",
@@ -42,7 +42,15 @@ export const site = {
     zip: "77449",
     full: "21145 FM 529, Suite 1110, Katy, TX 77449",
   },
-  hours: "Mon–Sat, 7:00am – 7:00pm",
+  /**
+   * Opening hours are deliberately NOT published.
+   * The discovery questionnaire never asked for them, and the value that used
+   * to sit here ("Mon–Sat, 7:00am – 7:00pm") was assumed — it contradicts the
+   * Google Business listing, which shows the business opening at 9am. Wrong
+   * hours on a lead-gen site cost calls, so the site points at the Google
+   * profile, which the client already maintains. Set this once Tyler confirms
+   * the real hours and restore the row on /contact.
+   */
   jotformId: "262071993397065",
   url: siteUrl,
 } as const;

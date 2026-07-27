@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/sections/PageHero";
 import { Credentials } from "@/components/sections/Credentials";
-import { Proof } from "@/components/sections/Proof";
 import { CTABand } from "@/components/sections/CTABand";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site } from "@/lib/site";
@@ -110,7 +109,6 @@ export default function AboutPage() {
       </section>
 
       <Credentials />
-      <Proof />
       <CTABand />
     </>
   );

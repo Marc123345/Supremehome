@@ -52,7 +52,7 @@ export function CTABand() {
                 />
               </Link>
               <p className="text-[0.8rem] text-white/65 lg:text-right mt-2">
-                {site.hours} · {site.address.city}, TX
+                Free inspection · {site.address.city}, TX
               </p>
             </div>
           </Reveal>

@@ -4,6 +4,7 @@ import { PageHero } from "@/components/sections/PageHero";
 import { JotformEmbed } from "@/components/sections/JotformEmbed";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site, credentials } from "@/lib/site";
+import { googleProfile } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "Contact — Book a Free Roof Inspection",
@@ -32,10 +33,13 @@ const CONTACT_ITEMS = [
     note: "Serving Greater Houston",
   },
   {
+    // Hours live on the Google profile the client already keeps up to date,
+    // rather than a second copy here that can drift out of step.
     icon: Clock,
-    label: "Hours",
-    value: site.hours,
-    note: "Emergency storm response outside hours",
+    label: "Opening hours",
+    value: "See current hours on Google",
+    href: googleProfile.shareUrl,
+    note: "Kept up to date on our Google listing",
   },
 ];
 

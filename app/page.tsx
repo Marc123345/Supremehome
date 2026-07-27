@@ -8,7 +8,6 @@ import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Process } from "@/components/sections/Process";
 import { Credentials } from "@/components/sections/Credentials";
 import { Team } from "@/components/sections/Team";
-import { Proof } from "@/components/sections/Proof";
 import { Reviews } from "@/components/sections/Reviews";
 import { SectionSplit } from "@/components/ui/SectionSplit";
 import { CoverageMap } from "@/components/sections/CoverageMap";
@@ -36,7 +35,6 @@ export default function Home() {
       <SectionSplit from="white" to="ink" />
       <Credentials />
       <Team />
-      <Proof />
       <CoverageMap />
       <FAQ />
       <SectionSplit from="white" to="red" direction="left" />
