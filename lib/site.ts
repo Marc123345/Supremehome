@@ -450,6 +450,10 @@ export const faqs = [
    photography and drone footage is supplied. Swap the URLs here only. */
 
 export const media = {
+  /** Hero background loop. The still below doubles as its poster, so the
+      optimised image is still what paints first. */
+  heroVideo:
+    "https://ik.imagekit.io/qcvroy8xpd/Video.mp4?updatedAt=1776680374692",
   heroCoating:
     "https://images.unsplash.com/photo-1674485169641-bcb2bf6f1df9?auto=format&fit=crop&w=2000&q=80",
   aerialCommercial:

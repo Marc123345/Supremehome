@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -8,6 +9,7 @@ import { TextScramble } from "@/components/ui/TextScramble";
 import { Ticker } from "@/components/ui/Ticker";
 import { CertStickers } from "@/components/ui/CertStickers";
 import { GoogleRating } from "@/components/ui/GoogleRating";
+import { useReducedMotion } from "@/components/ui/useReducedMotion";
 import { site, media, tickerPrimary, tickerSecondary } from "@/lib/site";
 
 const SCRAMBLE_PHRASES = [
@@ -24,6 +26,14 @@ const TRUST_CHIPS = [
 ] as const;
 
 export function Hero() {
+  const reduced = useReducedMotion();
+  const [videoReady, setVideoReady] = useState(false);
+  // Mount-gated so the <video> is absent from the server HTML entirely.
+  // Rendered server-side it would sit in the markup on phones too, and the
+  // browser starts fetching before hydration can unmount it.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   const scrollToNext = () => {
     document
       .getElementById("restoration-ladder")
@@ -36,6 +46,8 @@ export function Hero() {
     >
       {/* ── BACKGROUND ── */}
       <div className="absolute inset-0 z-0">
+        {/* The still stays the LCP element: it is priority-loaded and paints
+            immediately, and the video fades in over it once it can play. */}
         <div className="absolute inset-0 animate-kenburns">
           <Image
             src={media.heroCoating}
@@ -47,6 +59,31 @@ export function Hero() {
             style={{ filter: "brightness(0.46) contrast(1.08) saturate(0.92)" }}
           />
         </div>
+
+        {/* Video is desktop-only. A looping background clip is the heaviest
+            continuous animation on the page, and mobile is explicitly kept
+            still — phones get the poster still instead and never download it. */}
+        {mounted && !reduced && (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={media.heroCoating}
+            aria-hidden="true"
+            tabIndex={-1}
+            onCanPlay={() => setVideoReady(true)}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              filter: "brightness(0.46) contrast(1.08) saturate(0.92)",
+              opacity: videoReady ? 1 : 0,
+              transition: "opacity 0.9s ease",
+            }}
+          >
+            <source src={media.heroVideo} type="video/mp4" />
+          </video>
+        )}
 
         <div
           className="absolute inset-0"
