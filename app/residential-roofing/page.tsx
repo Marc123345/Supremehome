@@ -9,7 +9,10 @@ import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Re
 import { SupremeHomeLogo } from "@/components/layout/Logo";
 import { media, warranties, credentialBadges } from "@/lib/site";
 
+import { FaqJsonLd } from "@/components/seo/JsonLd";
+
 export const metadata: Metadata = {
+  alternates: { canonical: "/residential-roofing" },
   title: "Residential Roofing, Repair & Storm Damage in Houston",
   description:
     "Shingle and metal roofing for Houston-area homes. CertainTeed certified installation, 5-year leak protection warranty, insurance claim assistance and zero-down financing.",
@@ -104,6 +107,7 @@ export default function ResidentialRoofingPage() {
       />
 
       <Process />
+      <FaqJsonLd />
       <FAQ />
       <CTABand />
     </>

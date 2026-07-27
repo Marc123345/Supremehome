@@ -6,6 +6,7 @@ import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Re
 import { media, serviceAreas, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/service-areas" },
   title: "Service Areas — Commercial & Residential Roofing Across Greater Houston",
   description: `Supreme Home Roofing serves ${serviceAreas
     .slice(0, 8)

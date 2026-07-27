@@ -5,7 +5,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/ui/Preloader";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { site, serviceAreas } from "@/lib/site";
+import { site, serviceAreas, services, manufacturers } from "@/lib/site";
+import { googleProfile } from "@/lib/reviews";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -70,35 +71,83 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-/** LocalBusiness structured data — helps the map pack and rich results. */
+/**
+ * Site-wide structured data, emitted as a @graph so the business, the website
+ * and the service catalogue are linked by @id rather than repeated on every
+ * page. Page-level types (FAQPage, BreadcrumbList, Service) reference this
+ * business by @id from components/seo/JsonLd.tsx.
+ *
+ * Two omissions are deliberate:
+ *
+ *  · No `openingHours`. The client has not confirmed them, and the value
+ *    previously on the site contradicted their Google listing. Publishing
+ *    wrong hours in schema is worse than publishing none.
+ *  · No `aggregateRating`. The 4.8/21 shown on the page comes from Google
+ *    reviews, and Google's structured-data policy forbids marking up ratings
+ *    aggregated from another site. Google already surfaces that rating from
+ *    its own data, so the markup would add nothing and risks a manual action.
+ */
+const BUSINESS_ID = `${site.url}/#business`;
+
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "RoofingContractor",
-  name: site.name,
-  alternateName: site.dba,
-  telephone: site.phone,
-  email: site.email,
-  url: site.url,
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.address.street,
-    addressLocality: site.address.city,
-    addressRegion: site.address.state,
-    postalCode: site.address.zip,
-    addressCountry: "US",
-  },
-  areaServed: serviceAreas.map((area) => ({
-    "@type": "City",
-    name: `${area}, TX`,
-  })),
-  description:
-    "Commercial roof restoration and coating contractor serving Greater Houston, plus residential roofing, repair and storm damage restoration.",
-  knowsAbout: [
-    "Commercial roof restoration",
-    "Silicone roof coatings",
-    "Flat roof repair",
-    "Metal roof restoration",
-    "Storm and hail damage",
+  "@graph": [
+    {
+      "@type": "RoofingContractor",
+      "@id": BUSINESS_ID,
+      name: site.name,
+      alternateName: site.dba,
+      legalName: site.name,
+      telephone: site.phone,
+      email: site.email,
+      url: site.url,
+      logo: `${site.url}/brand/scc-horizontal.svg`,
+      image: `${site.url}/opengraph-image`,
+      sameAs: [googleProfile.shareUrl],
+      currenciesAccepted: "USD",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.address.street,
+        addressLocality: site.address.city,
+        addressRegion: site.address.state,
+        postalCode: site.address.zip,
+        addressCountry: "US",
+      },
+      areaServed: serviceAreas.map((area) => ({
+        "@type": "City",
+        name: `${area}, TX`,
+      })),
+      description:
+        "Commercial roof restoration and coating contractor serving Greater Houston, plus residential roofing, repair and storm damage restoration.",
+      knowsAbout: [
+        "Commercial roof restoration",
+        "Silicone roof coatings",
+        "Flat roof repair",
+        "Metal roof restoration",
+        "Storm and hail damage",
+      ],
+      hasCredential: manufacturers.map((m) => ({
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "Manufacturer certification",
+        name: `${m.name} certified applicator`,
+      })),
+      makesOffer: services.map((s) => ({
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: s.title,
+          description: s.blurb,
+        },
+      })),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      publisher: { "@id": BUSINESS_ID },
+      inLanguage: "en-US",
+    },
   ],
 };
 

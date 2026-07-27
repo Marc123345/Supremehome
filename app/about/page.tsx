@@ -7,6 +7,7 @@ import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About Supreme Home Roofing & Construction",
   description:
     "Supreme Home Roofing and Construction, DBA Supreme Commercial Coatings — a Katy, TX roofing contractor built around restoring commercial roofs rather than replacing them.",

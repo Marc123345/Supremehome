@@ -10,6 +10,11 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { SlidingText } from "@/components/sections/SlidingText";
 import { CoverageMap } from "@/components/sections/CoverageMap";
+import {
+  FaqJsonLd,
+  BreadcrumbJsonLd,
+  ServicesJsonLd,
+} from "@/components/seo/JsonLd";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { locations, getLocation } from "@/lib/locations";
 import { media, site, restorationBenefits } from "@/lib/site";
@@ -77,6 +82,14 @@ export default async function LocationPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
+
+      <BreadcrumbJsonLd
+        trail={[
+          { name: "Service Areas", path: "/service-areas" },
+          { name: location.name, path: `/service-areas/${location.slug}` },
+        ]}
+      />
+      <ServicesJsonLd areaServed={location.name} />
 
       <PageHero
         breadcrumb={location.name}
@@ -208,6 +221,7 @@ export default async function LocationPage({
         showTargets={false}
       />
 
+      <FaqJsonLd />
       <FAQ />
       <CTABand />
     </>

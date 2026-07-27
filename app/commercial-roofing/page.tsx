@@ -9,7 +9,10 @@ import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { media } from "@/lib/site";
 
+import { FaqJsonLd, ServicesJsonLd } from "@/components/seo/JsonLd";
+
 export const metadata: Metadata = {
+  alternates: { canonical: "/commercial-roofing" },
   title: "Commercial Roof Restoration & Coatings in Houston",
   description:
     "Flat and low-slope commercial roofing across Greater Houston. Silicone and acrylic restoration coatings, TPO and modified bitumen systems, repairs and replacement — with a free written assessment first.",
@@ -39,6 +42,8 @@ export default function CommercialRoofingPage() {
       <WhoWeServe />
       <Process />
       <Credentials />
+      <ServicesJsonLd />
+      <FaqJsonLd />
       <FAQ />
       <CTABand />
     </>

@@ -7,6 +7,7 @@ import { media, site, credentials } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/contact" },
   title: "Contact — Book a Free Roof Inspection",
   description: `Call ${site.phone} or request a free roof inspection. Supreme Home Roofing serves commercial and residential clients across Greater Houston from ${site.address.city}, TX.`,
 };

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { RestorationLadder } from "@/components/sections/RestorationLadder";
 import { About } from "@/components/sections/About";
@@ -13,6 +14,12 @@ import { SectionSplit } from "@/components/ui/SectionSplit";
 import { CoverageMap } from "@/components/sections/CoverageMap";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
+
+import { FaqJsonLd } from "@/components/seo/JsonLd";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -36,6 +43,7 @@ export default function Home() {
       <Credentials />
       <Team />
       <CoverageMap />
+      <FaqJsonLd />
       <FAQ />
       <SectionSplit from="white" to="red" direction="left" />
       <CTABand />
