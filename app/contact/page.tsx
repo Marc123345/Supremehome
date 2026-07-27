@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Phone, Mail, MapPin, Clock, CalendarCheck } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
-import { ContactForm } from "@/components/sections/ContactForm";
+import { JotformEmbed } from "@/components/sections/JotformEmbed";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site, credentials } from "@/lib/site";
 
@@ -65,7 +65,7 @@ export default function ContactPage() {
                 <RevealWords text="Tell us about the roof" />
               </h2>
               <Reveal delay={0.15}>
-                <ContactForm />
+                <JotformEmbed formId={site.jotformId} />
               </Reveal>
             </div>
 

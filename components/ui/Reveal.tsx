@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { useReducedMotion } from "./useReducedMotion";
 
 type Direction = "up" | "down" | "left" | "right" | "none";
@@ -156,29 +156,33 @@ export function RevealWords({
       aria-label={text}
     >
       {words.map((word, i) => (
-        <span
-          key={i}
-          aria-hidden="true"
-          style={{
-            display: "inline-block",
-            overflow: "hidden",
-            verticalAlign: "top",
-          }}
-        >
-          <motion.span
-            style={{ display: "inline-block" }}
-            variants={{
-              hidden: { y: "105%" },
-              show: {
-                y: "0%",
-                transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
-              },
+        <Fragment key={i}>
+          <span
+            aria-hidden="true"
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+              verticalAlign: "top",
             }}
           >
-            {word}
-            {i < words.length - 1 ? " " : ""}
-          </motion.span>
-        </span>
+            <motion.span
+              style={{ display: "inline-block" }}
+              variants={{
+                hidden: { y: "105%" },
+                show: {
+                  y: "0%",
+                  transition: { duration: 0.72, ease: [0.22, 1, 0.36, 1] },
+                },
+              }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {/* The word gap must be a text node BETWEEN the wrappers. Kept
+              inside the inline-block it is trailing whitespace, which CSS
+              collapses — that is what jammed every heading together. */}
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </motion.span>
   );
