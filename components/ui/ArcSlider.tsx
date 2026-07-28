@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 /**
  * 3D arc slider — ported from marc-portfolio-nextjs `components/ArcSlider.tsx`
  * and restyled onto the Supreme design system (red accent, Bebas display,
- * square corners). Behaviour is unchanged: rotateY arc, pointer tilt on the
+ * square corners). Behavior is unchanged: rotateY arc, pointer tilt on the
  * active card, drag to advance, arrow-key nav, dots, and a horizontal
  * scroll-snap fallback under 768px.
  */

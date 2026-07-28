@@ -12,9 +12,9 @@ interface TextScrambleProps {
   /** Time for the scramble-in transition (ms) */
   scrambleDuration?: number;
   className?: string;
-  /** Colour of characters that have resolved */
+  /** Color of characters that have resolved */
   resolvedColor?: string;
-  /** Colour of characters still scrambling */
+  /** Color of characters still scrambling */
   scramblingColor?: string;
 }
 

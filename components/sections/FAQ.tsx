@@ -4,10 +4,26 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus } from "lucide-react";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 import { faqs } from "@/lib/site";
 
-export function FAQ() {
+type Faq = { q: string; a: string };
+
+/**
+ * The default question set is commercial (client feedback section 1 —
+ * residential financing and shingle questions were pulled out of it). The
+ * residential page passes its own list via `items` so homeowner questions live
+ * on the residential page and nowhere else.
+ */
+export function FAQ({
+  items,
+  intro = "Including the one most roofers would rather you didn't ask.",
+}: {
+  items?: readonly Faq[];
+  intro?: string;
+} = {}) {
   const [open, setOpen] = useState<number | null>(0);
+  const list: readonly Faq[] = items ?? faqs;
 
   return (
     <section className="section bg-white">
@@ -17,17 +33,13 @@ export function FAQ() {
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
               <Reveal>
-                <p className="eyebrow text-[var(--supreme-red)] mb-5">
-                  Straight answers
-                </p>
+                <HouseEyebrow className="mb-5">Straight answers</HouseEyebrow>
               </Reveal>
               <h2 className="display-lg mb-6">
                 <RevealWords text="Questions worth asking" />
               </h2>
               <Reveal delay={0.15}>
-                <p className="lede">
-                  Including the one most roofers would rather you did not ask.
-                </p>
+                <p className="lede">{intro}</p>
               </Reveal>
             </div>
           </div>
@@ -35,7 +47,7 @@ export function FAQ() {
           {/* Accordion */}
           <div className="lg:col-span-8">
             <dl className="border-t border-black/12">
-              {faqs.map((faq, i) => {
+              {list.map((faq, i) => {
                 const isOpen = open === i;
                 return (
                   <Reveal key={faq.q} delay={i * 0.04}>

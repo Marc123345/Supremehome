@@ -4,8 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Phone, ArrowUpRight, Mail, MapPin, ChevronDown } from "lucide-react";
-import { nav, site } from "@/lib/site";
+import {
+  nav,
+  secondaryNav,
+  site,
+  residentialBrand,
+  residentialNavItem,
+} from "@/lib/site";
 import { locations } from "@/lib/locations";
+import { HouseMark } from "@/components/ui/HouseMark";
 import { Logo } from "./Logo";
 
 const AREAS_HREF = "/service-areas";
@@ -171,6 +178,47 @@ export function MobileMenu({
                   )}
                 </motion.div>
               ))}
+
+              {/* Secondary commercial links — the deeper sections that don't
+                  fit in the desktop bar. */}
+              <ul className="pt-5 space-y-0.5">
+                {secondaryNav.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      onClick={onClose}
+                      className="flex items-center gap-2.5 py-2.5 text-[0.9rem] font-semibold text-black/55 hover:text-[var(--supreme-red)] transition-colors"
+                    >
+                      <HouseMark size={13} className="shrink-0 opacity-50" />
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Residential handoff — visually fenced off from the commercial
+                  nav above it, per client feedback section 1. */}
+              <Link
+                href={residentialBrand.externalUrl ?? residentialNavItem.href}
+                onClick={onClose}
+                {...(residentialBrand.externalUrl
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+                className="group mt-6 flex items-center justify-between gap-4 p-4 bg-[var(--ink-05)] border border-black/10"
+              >
+                <span>
+                  <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/35 mb-1">
+                    {residentialNavItem.note}
+                  </span>
+                  <span className="block font-display text-[1.05rem]">
+                    {residentialNavItem.label} roofing
+                  </span>
+                </span>
+                <ArrowUpRight
+                  size={18}
+                  className="shrink-0 text-black/25 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
             </nav>
 
             <div className="px-6 pb-8 pt-2 space-y-3 shrink-0">
@@ -183,7 +231,7 @@ export function MobileMenu({
                 onClick={onClose}
                 className="btn btn-ghost-dark w-full"
               >
-                Book a Free Inspection
+                Request a Roof Assessment
               </Link>
 
               <div className="pt-4 space-y-2.5 text-[0.82rem] text-black/55">

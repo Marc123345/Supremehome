@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { Menu, ChevronDown, MapPin, ArrowUpRight, Phone } from "lucide-react";
-import { nav, site } from "@/lib/site";
+import { nav, site, residentialBrand, residentialNavItem } from "@/lib/site";
 import { locations } from "@/lib/locations";
 import { Logo } from "./Logo";
 import { MobileMenu } from "./MobileMenu";
@@ -13,9 +13,19 @@ import { MobileMenu } from "./MobileMenu";
 const AREAS_HREF = "/service-areas";
 
 /**
- * Header in the Vharanani Group pattern: white bar, an angled brand-colour
- * block behind the logo (clip-path polygon), centred nav, and a square solid
- * CTA on the right. Recoloured burgundy -> Supreme red.
+ * Header: white bar, an angled brand-color block behind the logo (clip-path
+ * polygon), centered nav, and the phone on the right.
+ *
+ * COMMERCIAL-FIRST (client feedback section 1). Residential used to sit as the
+ * second item in the main nav, which made it read as an equal half of the
+ * business. It is now pulled out of the main nav entirely and placed in the
+ * right-hand cluster behind a divider, labeled with the residential brand
+ * name — so it reads as a link to a sibling business rather than a section of
+ * this one.
+ *
+ * The phone number's text collapses at lg and returns at xl. Without that, the
+ * centered nav collides with the right cluster on 1024–1279px screens now that
+ * the residential link shares that space.
  */
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,8 +86,8 @@ export function Header() {
             <Logo variant="light" height={40} priority />
           </Link>
 
-          {/* Centred nav */}
-          <nav className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-10 xl:gap-12">
+          {/* Centered nav */}
+          <nav className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-6 xl:gap-10">
             {nav.map((item) => {
               const active =
                 pathname === item.href ||
@@ -205,30 +215,53 @@ export function Header() {
             })}
           </nav>
 
-          {/* Right — phone as a number with a label, not a button */}
-          <a
-            href={site.phoneHref}
-            className="group hidden lg:flex items-center gap-3.5"
-            aria-label={`Call ${site.phone}`}
-          >
-            <span
-              className="grid place-items-center w-11 h-11 rounded-full shrink-0 transition-colors duration-300 group-hover:bg-[var(--supreme-red)]"
-              style={{ background: "var(--red-wash)" }}
+          {/* Right cluster — residential handoff, then the phone. */}
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+            {/* Residential sits behind a divider and in muted type on purpose:
+                it is a different side of the business, not a peer of the
+                commercial nav. */}
+            <Link
+              href={residentialBrand.externalUrl ?? residentialNavItem.href}
+              {...(residentialBrand.externalUrl
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
+              className="group flex flex-col leading-tight text-right"
             >
-              <Phone
-                size={18}
-                className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
-              />
-            </span>
-            <span className="leading-tight">
-              <span className="block eyebrow text-black/45">
-                Free inspection
+              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/35">
+                {residentialNavItem.note}
               </span>
-              <span className="block font-display text-[1.4rem] leading-none tracking-wide transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
-                {site.phone}
+              <span className="text-[0.88rem] font-semibold text-black/55 transition-colors group-hover:text-[var(--supreme-red)]">
+                {residentialNavItem.label}
               </span>
-            </span>
-          </a>
+            </Link>
+
+            <span className="h-9 w-px bg-black/12" aria-hidden="true" />
+
+            <a
+              href={site.phoneHref}
+              className="group flex items-center gap-3.5"
+              aria-label={`Call ${site.phone}`}
+            >
+              <span
+                className="grid place-items-center w-11 h-11 rounded-full shrink-0 transition-colors duration-300 group-hover:bg-[var(--supreme-red)]"
+                style={{ background: "var(--red-wash)" }}
+              >
+                <Phone
+                  size={18}
+                  className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
+                />
+              </span>
+              {/* Collapses at lg so the centered nav has room. */}
+              <span className="hidden xl:block leading-tight">
+                <span className="block eyebrow text-black/45">
+                  Free assessment
+                </span>
+                <span className="block font-display text-[1.4rem] leading-none tracking-wide transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
+                  {site.phone}
+                </span>
+              </span>
+            </a>
+          </div>
 
           <button
             onClick={() => setMenuOpen(true)}

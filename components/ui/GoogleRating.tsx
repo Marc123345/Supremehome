@@ -1,7 +1,7 @@
 import { Star, StarHalf } from "lucide-react";
 import { googleProfile } from "@/lib/reviews";
 
-/** Google "G" — official four-colour mark, inline so it needs no network request. */
+/** Google "G" — official four-color mark, inline so it needs no network request. */
 export function GoogleG({ size = 18, className = "" }: { size?: number; className?: string }) {
   return (
     <svg

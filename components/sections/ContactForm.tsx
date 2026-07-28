@@ -165,7 +165,7 @@ export function ContactForm() {
                 {services.map((s) => (
                   <option key={s.slug}>{s.title}</option>
                 ))}
-                <option>Not sure — I need an inspection</option>
+                <option>Not sure, I need an assessment</option>
               </select>
             </div>
 
@@ -215,7 +215,7 @@ export function ContactForm() {
                   </>
                 ) : (
                   <>
-                    Request my free inspection
+                    Request my free assessment
                     <ArrowRight
                       size={16}
                       className="transition-transform duration-300 group-hover:translate-x-1"

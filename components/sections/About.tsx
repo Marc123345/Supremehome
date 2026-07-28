@@ -7,6 +7,7 @@ import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Re
 import { CounterUp } from "@/components/ui/CounterUp";
 import { CircleText } from "@/components/ui/CircleText";
 import { aboutPoints, stats, media } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 /**
  * Ported from topfloor `sections/home1/About.js` — two-column about block with
@@ -21,7 +22,7 @@ export function About() {
           {/* ── Left ── */}
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow text-[var(--supreme-red)] mb-5">About us</p>
+              <HouseEyebrow className="mb-5">About us</HouseEyebrow>
             </Reveal>
 
             <h2 className="display-lg mb-6">
@@ -67,8 +68,8 @@ export function About() {
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
             <div className="relative">
               <ImageFrame
-                src={media.aerialCommercial}
-                alt="Aerial view of a commercial building with an expansive flat roof"
+                src={media.industrialPark}
+                alt="Aerial view of an industrial park with a mix of low-slope and metal roofs"
                 ratio="4/5"
               />
 
@@ -85,7 +86,7 @@ export function About() {
                   <CounterUp end={100} suffix="+" />
                 </p>
                 <p className="text-[0.84rem] leading-[1.5] text-white/62">
-                  Square commercial projects — and the gas station on the corner
+                  Square commercial projects, and the gas station on the corner
                 </p>
               </div>
             </div>

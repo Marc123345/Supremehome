@@ -1,21 +1,31 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/PageHero";
-import { RestorationLadder } from "@/components/sections/RestorationLadder";
+import { Recommendations } from "@/components/sections/Recommendations";
+import { RoofSystems } from "@/components/sections/RoofSystems";
+import { RestorationScope } from "@/components/sections/RestorationScope";
 import { ServicesSlider } from "@/components/sections/ServicesSlider";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Process } from "@/components/sections/Process";
 import { Credentials } from "@/components/sections/Credentials";
+import { CaseStudies } from "@/components/sections/CaseStudies";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { media } from "@/lib/site";
 
 import { FaqJsonLd, ServicesJsonLd } from "@/components/seo/JsonLd";
 
+/**
+ * The commercial page carries the same argument as the homepage, in more
+ * depth. It is deliberately free of residential material — no shingles, no
+ * homeowner financing, no residential storm content (client feedback
+ * section 1). The residential handoff lives on the homepage and in the nav.
+ */
+
 export const metadata: Metadata = {
   alternates: { canonical: "/commercial-roofing" },
-  title: "Commercial Roof Restoration & Coatings in Houston",
+  title: "Commercial Roof Restoration & Replacement in Houston",
   description:
-    "Flat and low-slope commercial roofing across Greater Houston. Silicone and acrylic restoration coatings, TPO and modified bitumen systems, repairs and replacement — with a free written assessment first.",
+    "Commercial roof restoration and replacement across Greater Houston. We assess metal, TPO, modified bitumen, built-up and low-slope systems, then recommend restoring or replacing based on documented condition. Starts with a free written assessment.",
 };
 
 export default function CommercialRoofingPage() {
@@ -23,25 +33,31 @@ export default function CommercialRoofingPage() {
     <>
       <PageHero
         breadcrumb="Commercial"
-        eyebrow="Flat & Low-Slope Specialists"
-        title="Commercial roof restoration in Houston"
-        intro="Warehouses, retail centres, churches, gas stations and quick-service restaurants. We restore serviceable flat roofs with certified coating systems — and replace only when the deck genuinely calls for it."
+        eyebrow="Restoration & Replacement"
+        title="Commercial roof restoration and replacement"
+        intro="Warehouses, retail centers, churches, gas stations and restaurants across Greater Houston. We assess the roof you have, then tell you whether restoring it or replacing it is the better use of your money."
         image={media.heroCoating}
-        imageAlt="A technician spray-applying a white restoration coating across a commercial flat roof"
+        imageAlt="A technician spray-applying a restoration coating across a commercial roof"
       />
 
-      <RestorationLadder />
+      <Recommendations />
+      <RoofSystems />
+      <RestorationScope />
 
       <ServicesSlider
         filter="commercial"
-        eyebrow="Commercial services"
-        title="Every system we install"
-        intro="One contractor for the whole roof — restoration, repair, storm work and full replacement, with the documentation your ownership group and insurer expect."
+        eyebrow="How we work"
+        title="Assess, then restore or replace"
+        intro="Three stages, not a menu of services. Which one your building needs is decided by what we document on the roof."
       />
 
       <WhoWeServe />
       <Process />
       <Credentials />
+
+      {/* Empty until real commercial projects are added to lib/site.ts. */}
+      <CaseStudies />
+
       <ServicesJsonLd />
       <FaqJsonLd />
       <FAQ />

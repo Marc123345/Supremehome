@@ -3,6 +3,7 @@
 import { ImageFrame } from "@/components/ui/ImageFrame";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { whyChoose, capabilities, media } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 /**
  * Ported from topfloor `sections/home3/Whycoose.js` (copy + image split) and
@@ -17,9 +18,9 @@ export function WhyChoose() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16 lg:mb-24">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow text-[var(--supreme-red)] mb-5">
+              <HouseEyebrow className="mb-5">
                 Why choose us
-              </p>
+              </HouseEyebrow>
             </Reveal>
             <h2 className="display-lg mb-6">
               <RevealWords text="The difference is the assessment" />
@@ -27,15 +28,18 @@ export function WhyChoose() {
             <Reveal delay={0.15}>
               <p className="lede">
                 Anyone can install a roof. The value is in knowing which roofs
-                need one — and being willing to say so when they don&apos;t.
+                need one, and being willing to say so when they don&apos;t.
               </p>
             </Reveal>
           </div>
 
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
+            {/* Was `residentialTearOff` — a shingle tear-off on a house, which
+                is residential imagery on a commercial section (feedback
+                section 1). Swapped for commercial roof photography. */}
             <ImageFrame
-              src={media.residentialTearOff}
-              alt="A roofer stripping damaged shingles from a Texas home"
+              src={media.aerialWarehouse}
+              alt="Aerial view of a warehouse roof with visible seams, curbs and rooftop units"
               ratio="5/4"
             />
           </Reveal>

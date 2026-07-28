@@ -66,7 +66,7 @@ export function JotformEmbed({
 
       <noscript>
         <p style={{ marginTop: "1rem" }}>
-          The enquiry form needs JavaScript.{" "}
+          The inquiry form needs JavaScript.{" "}
           <a
             href={`https://form.jotform.com/${formId}`}
             className="font-bold text-[var(--supreme-red)]"

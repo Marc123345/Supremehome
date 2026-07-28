@@ -2,16 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    // Placeholder photography lives on Unsplash until the client's own
-    // job photos and drone footage are supplied. Add their CDN host here
-    // when that happens.
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/**",
-      },
-    ],
+    // Site photography is now self-hosted under /public/photos (Pexels and
+    // Unsplash sources, both licensed for commercial use without attribution).
+    // Nothing on the site hotlinks a remote image any more, so no
+    // remotePatterns entry is required. Add one here only if the client's
+    // photography ends up on an external CDN.
   },
 };
 

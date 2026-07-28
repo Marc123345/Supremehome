@@ -353,7 +353,7 @@ body {
 }
 
 /* ── LAYERED IMAGE FRAME ─────────────────────────────────── */
-/* Two planes: an offset brand-colour plate behind, the notched media
+/* Two planes: an offset brand-color plate behind, the notched media
    in front. Gives the image blocks depth instead of a flat crop. */
 
 .image-frame {

@@ -1,16 +1,33 @@
 "use client";
 
-import Image from "next/image";
-import { ShieldCheck, Award, FileCheck, Wallet } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
-import {
-  credentials,
-  manufacturers,
-  warranties,
-  credentialBadges,
-} from "@/lib/site";
+import { HouseMark, HouseEyebrow } from "@/components/ui/HouseMark";
+import { credentials, manufacturers, credibilityPillars } from "@/lib/site";
 
-const WARRANTY_ICONS = [FileCheck, ShieldCheck, Award, Wallet];
+/**
+ * COMMERCIAL CREDIBILITY — rebuilt per client feedback section 5.
+ *
+ * Two things were wrong with the previous version.
+ *
+ * 1. It was residential. It led with the four "warranties" — including
+ *    zero-down homeowner financing and the 5-year residential workmanship
+ *    warranty — and displayed the two CertainTeed steep-slope shingle badges.
+ *    None of that belongs on a commercial page (feedback section 1). Those now
+ *    live on /residential-roofing.
+ *
+ * 2. It asserted warranty issuance flatly ("what lets us issue manufacturer
+ *    warranties"). Feedback section 5 is careful about this: SCC can offer
+ *    "applicable manufacturer-backed warranty options WHEN PROJECT
+ *    REQUIREMENTS ARE MET". The copy here is conditional for that reason —
+ *    it's a qualification claim, not a guarantee, and overstating it is the
+ *    kind of thing a manufacturer rep will call about.
+ *
+ * The section now builds credibility on what's verifiable today:
+ * qualifications, process discipline, and named accountability — because the
+ * commercial portfolio is still being built and the client asked to present
+ * that accurately rather than pad it.
+ */
 
 export function Credentials() {
   return (
@@ -22,6 +39,13 @@ export function Credentials() {
             "radial-gradient(circle, rgba(224,1,22,0.18) 0%, transparent 68%)",
         }}
       />
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-6rem] top-[-4rem] opacity-[0.05]"
+      >
+        <HouseMark size={480} color="#ffffff" />
+      </div>
 
       <div className="shell relative">
         {/* ── Credential bar ── */}
@@ -42,23 +66,23 @@ export function Credentials() {
           ))}
         </RevealGroup>
 
-        {/* ── Warranties ── */}
+        {/* ── Why you can trust a young commercial arm ── */}
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
           <div className="lg:col-span-5">
             <Reveal>
-              <p className="eyebrow text-[var(--supreme-red-bright)] mb-5">
-                What backs the work
-              </p>
+              <HouseEyebrow tone="light" className="mb-5">
+                Why you can trust us on it
+              </HouseEyebrow>
             </Reveal>
             <h2 className="display-lg mb-6">
-              <RevealWords text="Warranties, not promises" />
+              <RevealWords text="We'd rather earn it than claim it" />
             </h2>
             <Reveal delay={0.15}>
               <p className="text-[1rem] leading-[1.8] text-white/60">
-                Certified applicator status is what lets us issue manufacturer
-                warranties on restoration systems — and it is the difference
-                between a coating that carries a warranty and one that is just
-                paint.
+                Our commercial portfolio is still growing, and we&rsquo;re not
+                going to pretend otherwise. What we can point at is the
+                certification, the process, and the people whose name is on
+                the work.
               </p>
             </Reveal>
 
@@ -81,64 +105,34 @@ export function Credentials() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </Reveal>
-
-            {/* CertainTeed credential badges */}
-            <Reveal delay={0.3}>
-              <div className="mt-9 pt-8 border-t border-white/12">
-                <p className="eyebrow text-white/40 mb-6">
-                  CertainTeed credentials
+                <p className="mt-5 text-[0.82rem] leading-[1.65] text-white/40">
+                  Where a project meets the manufacturer&rsquo;s requirements,
+                  it can carry a manufacturer-backed warranty. We tell you
+                  whether yours qualifies before you sign, not after.
                 </p>
-                <ul className="flex flex-wrap gap-6">
-                  {credentialBadges.map((badge) => (
-                    <li
-                      key={badge.name}
-                      className="flex items-center gap-4 max-w-[260px]"
-                    >
-                      <Image
-                        src={badge.src}
-                        alt={badge.alt}
-                        width={76}
-                        height={76}
-                        className="shrink-0"
-                      />
-                      <div>
-                        <p className="display-sm leading-none mb-1.5">
-                          {badge.name}
-                        </p>
-                        <p className="text-[0.78rem] leading-[1.5] text-white/45">
-                          {badge.note}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </Reveal>
           </div>
 
           <RevealGroup className="lg:col-span-7 grid sm:grid-cols-2 gap-5 self-start">
-            {warranties.map((w, i) => {
-              const Icon = WARRANTY_ICONS[i % WARRANTY_ICONS.length];
-              return (
-                <RevealItem key={w.title} className="h-full">
-                  <div
-                    className="h-full p-7 lg:p-8 border border-white/12 transition-colors duration-300 hover:border-[var(--supreme-red)]"
-                    style={{ background: "rgba(255,255,255,0.02)" }}
-                  >
-                    <Icon
-                      size={22}
-                      className="text-[var(--supreme-red-bright)] mb-5"
-                    />
-                    <h3 className="display-sm mb-3">{w.title}</h3>
-                    <p className="text-[0.9rem] leading-[1.7] text-white/58">
-                      {w.body}
-                    </p>
-                  </div>
-                </RevealItem>
-              );
-            })}
+            {credibilityPillars.map((pillar) => (
+              <RevealItem key={pillar.title} className="h-full">
+                <div
+                  className="h-full p-7 lg:p-8 border border-white/12 transition-colors duration-300 hover:border-[var(--supreme-red)]"
+                  style={{ background: "rgba(255,255,255,0.02)" }}
+                >
+                  <HouseMark
+                    size={22}
+                    color="var(--supreme-red-bright)"
+                    className="mb-5"
+                  />
+                  <h3 className="display-sm mb-3">{pillar.title}</h3>
+                  <p className="text-[0.9rem] leading-[1.7] text-white/58">
+                    {pillar.body}
+                  </p>
+                </div>
+              </RevealItem>
+            ))}
           </RevealGroup>
         </div>
       </div>

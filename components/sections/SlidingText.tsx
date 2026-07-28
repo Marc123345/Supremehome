@@ -3,14 +3,16 @@
 /**
  * Oversized scrolling display band.
  * Ported from topfloor `sections/home1/Slidingtext.js` — the marquee of giant
- * headline words that fill with colour on hover, with a mark between each.
+ * headline words that fill with color on hover, with a mark between each.
  */
 
+/* "Flat Roofs" and "Coatings" were replaced: both narrowed the company to a
+   flat-roof coating applicator, which client feedback section 3 retired. */
 const WORDS = [
   "Restoration",
-  "Coatings",
-  "Flat Roofs",
+  "Replacement",
   "Commercial",
+  "Assessment",
 ] as const;
 
 function Mark() {

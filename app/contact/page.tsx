@@ -5,10 +5,11 @@ import { JotformEmbed } from "@/components/sections/JotformEmbed";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site, credentials } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
-  title: "Contact — Book a Free Roof Inspection",
+  title: "Contact: Request a Free Roof Assessment",
   description: `Call ${site.phone} or request a free roof inspection. Supreme Home Roofing serves commercial and residential clients across Greater Houston from ${site.address.city}, TX.`,
 };
 
@@ -49,10 +50,10 @@ export default function ContactPage() {
     <>
       <PageHero
         breadcrumb="Contact"
-        eyebrow="Free inspection · No obligation"
+        eyebrow="Free assessment · No obligation"
         title="Let's look at your roof"
-        intro="Tell us what you are dealing with and we will get someone on the roof. You will get a written assessment with photographs — including an honest answer on whether you need to do anything at all yet."
-        image={media.greyRoof}
+        intro="Tell us what you are dealing with and we will get someone on the roof. You will get a written assessment with photographs. That includes an honest answer on whether you need to do anything at all yet."
+        image={media.grayRoof}
         imageAlt="Close view of a weathered roof surface"
       />
 
@@ -62,9 +63,9 @@ export default function ContactPage() {
             {/* ── Form ── */}
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="eyebrow text-[var(--supreme-red)] mb-5">
+                <HouseEyebrow className="mb-5">
                   Request an inspection
-                </p>
+                </HouseEyebrow>
               </Reveal>
               <h2 className="display-md mb-8">
                 <RevealWords text="Tell us about the roof" />

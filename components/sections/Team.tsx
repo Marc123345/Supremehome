@@ -1,27 +1,38 @@
 "use client";
 
+import Image from "next/image";
 import { HardHat, ClipboardList, Paintbrush, FileSearch } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 import { team } from "@/lib/site";
 
 const ICONS = [HardHat, ClipboardList, Paintbrush, FileSearch];
 
 /**
- * Ported from topfloor `sections/home1/Team.js` (a Swiper carousel of staff
- * cards). Rebuilt as a static grid of ROLES rather than people — the client
- * has not supplied names or headshots, and inventing them would be fabrication.
- * Drop real names, photos and bios into `team` in lib/site.ts to fill this in.
+ * WHO YOU DEAL WITH.
+ *
+ * Client feedback section 5 asks for "real SCC leadership and clear project
+ * accountability" on the site. That needs names, titles and headshots the
+ * client hasn't supplied yet, and inventing staff would be fabrication.
+ *
+ * So each card renders whatever it has:
+ *   - name + photo  → headshot card with the person's name and role
+ *   - name only     → name and role, icon in place of the photo
+ *   - neither       → the role on its own, exactly as before
+ *
+ * Fill in `name` and `photo` in `team` (lib/site.ts) and the cards upgrade
+ * themselves with no code change. Headshots go in /public/team.
  */
 export function Team() {
+  const hasRealPeople = team.some((m) => m.name);
+
   return (
     <section className="section bg-white border-t border-black/[0.07]">
       <div className="shell">
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-end mb-12 lg:mb-16">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow text-[var(--supreme-red)] mb-5">
-                Who you deal with
-              </p>
+              <HouseEyebrow className="mb-5">Who you deal with</HouseEyebrow>
             </Reveal>
             <h2 className="display-lg">
               <RevealWords text="A small team, on your roof" />
@@ -29,8 +40,9 @@ export function Team() {
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <p className="lede">
-              You will not be handed between call centres. The person who
-              inspects the roof is the person who writes the assessment.
+              You won&rsquo;t get passed around a call center. The person who
+              assesses your roof is the person who writes the recommendation and
+              puts their name on it.
             </p>
           </Reveal>
         </div>
@@ -43,13 +55,36 @@ export function Team() {
                 <div className="notch-card clip-notch group h-full">
                   <span className="notch-tick" />
                   <div className="clip-notch h-full p-8 flex flex-col">
-                    <span className="grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] transition-colors duration-300 group-hover:bg-[var(--supreme-red)]">
-                      <Icon
-                        size={23}
-                        className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
-                      />
-                    </span>
-                    <h3 className="display-sm mb-3">{member.role}</h3>
+                    {member.photo ? (
+                      <span className="relative w-20 h-20 mb-7 rounded-full overflow-hidden bg-[var(--ink-05)]">
+                        <Image
+                          src={member.photo}
+                          alt={member.name ?? member.role}
+                          fill
+                          sizes="80px"
+                          className="object-cover"
+                        />
+                      </span>
+                    ) : (
+                      <span className="grid place-items-center w-14 h-14 mb-7 rounded-full bg-[var(--red-wash)] transition-colors duration-300 group-hover:bg-[var(--supreme-red)]">
+                        <Icon
+                          size={23}
+                          className="text-[var(--supreme-red)] transition-colors duration-300 group-hover:text-white"
+                        />
+                      </span>
+                    )}
+
+                    {member.name ? (
+                      <>
+                        <h3 className="display-sm mb-1">{member.name}</h3>
+                        <p className="eyebrow text-[var(--supreme-red)] mb-3">
+                          {member.role}
+                        </p>
+                      </>
+                    ) : (
+                      <h3 className="display-sm mb-3">{member.role}</h3>
+                    )}
+
                     <p className="text-[0.9rem] leading-[1.7] text-black/58">
                       {member.body}
                     </p>
@@ -59,6 +94,18 @@ export function Team() {
             );
           })}
         </RevealGroup>
+
+        {/* Shown only while the team is still listed by role. Disappears on its
+            own the moment real names land in lib/site.ts. */}
+        {!hasRealPeople && (
+          <Reveal delay={0.2}>
+            <p className="mt-8 text-[0.88rem] leading-[1.7] text-black/45 max-w-2xl">
+              Want to know exactly who&rsquo;s coming out to your building?
+              Ask when you call. We&rsquo;ll tell you who&rsquo;s walking the
+              roof and who&rsquo;s writing the report.
+            </p>
+          </Reveal>
+        )}
       </div>
     </section>
   );

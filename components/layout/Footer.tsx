@@ -1,21 +1,32 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import {
   site,
   nav,
+  secondaryNav,
   services,
   manufacturers,
-  credentialBadges,
+  residentialBrand,
+  residentialNavItem,
 } from "@/lib/site";
 import { locations } from "@/lib/locations";
+import { HouseMark } from "@/components/ui/HouseMark";
 import { Logo } from "./Logo";
 
 /**
- * Footer in the Vharanani Group pattern: a split panel — brand-colour left,
- * white right — over a solid brand-colour bottom bar. Recoloured burgundy ->
- * Supreme red. The brand panel is ink rather than red so the reverse
- * lockup sits on a compliant background per the SCC colour spec.
+ * Footer: a split panel — ink left, white right — over a solid brand-red
+ * bottom bar. The brand panel is ink rather than red so the reverse lockup
+ * sits on a compliant background per the SCC color spec.
+ *
+ * COMMERCIAL-FIRST (client feedback section 1):
+ *   - The services list is commercial only. It used to render whatever the
+ *     first six entries of `services` were, which included shingles.
+ *   - Residential is a single labeled handoff link, not a peer nav item.
+ *   - The CertainTeed steep-slope badges were removed; they are residential
+ *     credentials and now live on /residential-roofing.
+ *   - The tagline is the client's own line, replacing "Repair. Restore.
+ *     Replace last." — which led with repair and positioned SCC as a repair
+ *     company (feedback section 2).
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -24,7 +35,7 @@ export function Footer() {
     <footer className="relative">
       {/* ── SPLIT PANEL ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Left — near-black. SCC's colour spec permits the reverse lockup
+        {/* Left — near-black. SCC's color spec permits the reverse lockup
             on black or sufficiently dark backgrounds only, so this panel is
             ink rather than SCC red; the bottom bar carries the red. */}
         <div
@@ -36,29 +47,66 @@ export function Footer() {
           </div>
 
           <p className="text-[0.95rem] leading-[1.75] text-white/90 max-w-md mb-10">
-            {site.name}, trading as {site.dba}. Commercial roof restoration and
-            coatings across Greater Houston — plus full residential roofing,
-            repair and storm damage restoration.
+            Commercial roof restoration and replacement across Greater Houston.
+            We assess the roof you have, then recommend restoring it or
+            replacing it based on what we actually find up there.
           </p>
 
-          <h3 className="display-sm text-white mb-5">Services</h3>
+          <h3 className="display-sm text-white mb-5">Commercial roofing</h3>
           <ul className="space-y-3 mb-10">
-            {services.slice(0, 6).map((s) => (
+            {services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={
-                    s.audience === "residential"
-                      ? "/residential-roofing"
-                      : "/commercial-roofing"
-                  }
+                  href="/commercial-roofing"
                   className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
                 >
-                  <span className="w-1 h-1 shrink-0 bg-white/50 transition-transform group-hover:scale-150" />
+                  <HouseMark
+                    size={12}
+                    color="rgba(255,255,255,0.5)"
+                    className="shrink-0 transition-transform group-hover:scale-125"
+                  />
                   {s.title}
                 </Link>
               </li>
             ))}
+            {secondaryNav.slice(0, 2).map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
+                >
+                  <HouseMark
+                    size={12}
+                    color="rgba(255,255,255,0.5)"
+                    className="shrink-0 transition-transform group-hover:scale-125"
+                  />
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
+
+          {/* Residential handoff — fenced off, not listed as a service. */}
+          <Link
+            href={residentialBrand.externalUrl ?? residentialNavItem.href}
+            {...(residentialBrand.externalUrl
+              ? { target: "_blank", rel: "noopener noreferrer" }
+              : {})}
+            className="group flex items-center justify-between gap-4 mb-10 p-4 border border-white/15 hover:border-white/35 transition-colors"
+          >
+            <span>
+              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/40 mb-1">
+                {residentialNavItem.note}
+              </span>
+              <span className="block text-[0.93rem] font-semibold text-white/85">
+                Roofing for homes
+              </span>
+            </span>
+            <ArrowRight
+              size={16}
+              className="shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
 
           {/* Contact */}
           <div className="space-y-4 text-[0.93rem] text-white/90">
@@ -139,21 +187,9 @@ export function Footer() {
             ))}
           </ul>
 
-          {/* CertainTeed credential badges. These sat under a "Part of"
-              heading next to the parent-entity lockup; with that lockup gone
-              they belong with the manufacturer list above. */}
-          <div className="flex flex-wrap items-center gap-6 mb-10">
-            {credentialBadges.map((badge) => (
-              <Image
-                key={badge.name}
-                src={badge.src}
-                alt={badge.alt}
-                width={56}
-                height={56}
-                title={`${badge.issuer} ${badge.name}`}
-              />
-            ))}
-          </div>
+          {/* The CertainTeed steep-slope badges used to render here. They are
+              residential shingle credentials, so they moved to
+              /residential-roofing — feedback section 1. */}
 
           {/* Tagline */}
           <div
@@ -168,10 +204,10 @@ export function Footer() {
                 color: "var(--ink)",
               }}
             >
-              Repair. Restore.
+              Restore when viable.
               <br />
               <span style={{ color: "var(--supreme-red)" }}>
-                Replace last.
+                Replace when necessary.
               </span>
             </p>
 
@@ -179,7 +215,7 @@ export function Footer() {
               href="/contact"
               className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
             >
-              Book a free inspection
+              Request a roof assessment
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -198,12 +234,13 @@ export function Footer() {
         }}
       >
         <p className="text-[0.82rem] text-white/85">
-          © {year} {site.name}. All rights reserved.
+          © {year} {site.legalName}, doing business as {site.dba}. All rights
+          reserved.
         </p>
         <p className="text-[0.78rem] text-white/80 sm:text-right max-w-2xl">
           Insured to $2M · Bonded where required · Oklahoma CIB residential
-          roofing licence #80007778. Texas does not issue a state roofing
-          contractor licence.
+          roofing license #80007778. Texas does not issue a state roofing
+          contractor license.
         </p>
       </div>
     </footer>

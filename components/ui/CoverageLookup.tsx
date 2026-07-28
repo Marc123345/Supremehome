@@ -16,7 +16,7 @@ function normalise(s: string) {
 }
 
 /**
- * Coverage lookup — type a city or neighbourhood and find out whether we cover
+ * Coverage lookup — type a city or neighborhood and find out whether we cover
  * it, and which location page to read.
  *
  * Deliberately matches on place names, not ZIP codes: we don't hold a verified
@@ -74,7 +74,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
         </p>
         <h2 className="display-lg mb-4 max-w-[18ch]">Are you in our area?</h2>
         <p className="text-[0.98rem] leading-[1.75] text-white/60 max-w-xl mb-9">
-          Type your city or neighbourhood. We cover eighteen communities across
+          Type your city or neighborhood. We cover eighteen communities across
           Greater Houston, and we travel further for commercial flat-roof work.
         </p>
 
@@ -87,7 +87,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
           className="flex flex-col sm:flex-row gap-3 max-w-2xl"
         >
           <label htmlFor="coverage-query" className="sr-only">
-            Your city or neighbourhood
+            Your city or neighborhood
           </label>
           <div className="relative flex-1">
             <Search

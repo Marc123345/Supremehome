@@ -2,16 +2,26 @@
 
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { ArcSlider, type ArcCard } from "@/components/ui/ArcSlider";
-import { services } from "@/lib/site";
+import { services, residentialServices, type Service } from "@/lib/site";
 
 /**
- * Services as a 3D arc slider — the same interaction as the services slider on
- * marc-portfolio-nextjs, restyled to the Supreme design system.
+ * Services as a 3D arc slider.
+ *
+ * The commercial and residential service lists are now separate arrays rather
+ * than one list with an "audience" filter that included a shared "both"
+ * bucket. That bucket was how residential storm work, insurance claims and
+ * roof repair ended up rendering on commercial pages — exactly what client
+ * feedback section 1 asks us to stop doing. There is no longer any way for a
+ * residential card to appear in a commercial context.
+ *
+ * The commercial list is also no longer a menu of eight disconnected services.
+ * It is the three stages of the actual engagement (assess → restore or
+ * replace), per feedback section 2.
  */
 export function ServicesSlider({
-  filter,
+  filter = "commercial",
   title = "What we do",
-  intro = "Commercial restoration is the core of the business. Everything else is here because a building owner needs one number, from one contractor, for the whole roof.",
+  intro = "Commercial restoration and replacement is the business. We assess the roof first and let what we find decide the rest.",
   eyebrow = "Services",
 }: {
   filter?: "commercial" | "residential";
@@ -19,9 +29,8 @@ export function ServicesSlider({
   intro?: string;
   eyebrow?: string;
 }) {
-  const list = filter
-    ? services.filter((s) => s.audience === filter || s.audience === "both")
-    : services;
+  const list: Service[] =
+    filter === "residential" ? residentialServices : services;
 
   const cards: ArcCard[] = list.map((s) => ({
     id: s.slug,

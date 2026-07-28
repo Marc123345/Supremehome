@@ -5,12 +5,16 @@ import { Credentials } from "@/components/sections/Credentials";
 import { CTABand } from "@/components/sections/CTABand";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About Supreme Home Roofing & Construction",
+  // The root layout appends "| Supreme Commercial Coatings" to every title,
+  // so repeating the brand here produced "About Supreme Commercial Coatings |
+  // Supreme Commercial Coatings" in the tab and in search results.
+  title: "About",
   description:
-    "Supreme Home Roofing and Construction, DBA Supreme Commercial Coatings — a Katy, TX roofing contractor built around restoring commercial roofs rather than replacing them.",
+    "Supreme Commercial Coatings is a Katy, TX commercial roofing contractor that assesses the roof first, then restores it or replaces it based on what the assessment finds.",
 };
 
 export default function AboutPage() {
@@ -19,10 +23,10 @@ export default function AboutPage() {
       <PageHero
         breadcrumb="About"
         eyebrow="Who we are"
-        title="The restore-first roofing contractor"
-        intro={`${site.name}, trading as ${site.dba}. Based in ${site.address.city} and built around one conviction: a roof nearing the end of its life does not automatically need replacing.`}
+        title="We assess before we recommend"
+        intro={`${site.dba} is the commercial arm of ${site.legalName}, based in ${site.address.city}. We got into this because too many building owners get handed a replacement quote for a roof that didn't need replacing.`}
         image={media.aerialPlant}
-        imageAlt="Aerial view of a large industrial building with a flat roof"
+        imageAlt="Aerial view of a large industrial building and its roof system"
       />
 
       {/* ── Story ── */}
@@ -31,40 +35,44 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="eyebrow text-[var(--supreme-red)] mb-5">
+                <HouseEyebrow className="mb-5">
                   Why we exist
-                </p>
+                </HouseEyebrow>
               </Reveal>
               <h2 className="display-lg mb-8">
-                <RevealWords text="Replacement is not the only answer" />
+                <RevealWords text="Replacement isn't the only answer" />
               </h2>
 
               <Reveal delay={0.15}>
                 <div className="space-y-6 text-[1.02rem] leading-[1.85] text-black/68">
                   <p>
-                    Walk a building owner through three quotes for an ageing flat
-                    roof and you will usually see the same thing three times:
-                    full tear-off and replacement. Not because the roof always
-                    needs it, but because replacement carries the highest price
-                    tag.
+                    Get three quotes on an aging commercial roof and you&rsquo;ll
+                    usually get the same answer three times: tear it off and
+                    replace it. Sometimes that&rsquo;s right. A lot of the time
+                    it&rsquo;s just the biggest ticket on the page.
                   </p>
                   <p>
-                    We built this company the other way round. Every project
-                    starts with an inspection and a written assessment. If the
-                    deck and insulation are dry and the membrane is weathered
-                    rather than failed, a certified coating system will renew
-                    that roof for a fraction of replacement cost — no tear-off,
-                    and the building stays open.
+                    We do it the other way around. Every project starts with an
+                    assessment and a written report on what we found. If the
+                    deck and insulation are dry and the membrane is worn rather
+                    than failed, we can usually bring that roof back for a
+                    fraction of what replacing it costs. No tear-off, and your
+                    building never closes.
                   </p>
                   <p>
-                    When the substrate is genuinely gone, we say so plainly and
-                    quote the replacement. What we will not do is sell a coating
-                    over a roof that cannot carry one, or a replacement over a
-                    roof that did not need one.
+                    When the substrate is gone, we say so and price the
+                    replacement. What we won&rsquo;t do is put a coating over a
+                    roof that can&rsquo;t carry one, or sell a replacement to
+                    somebody who didn&rsquo;t need it.
+                  </p>
+                  <p>
+                    That applies to every kind of commercial roof, not just flat
+                    ones. Metal, TPO, mod-bit, built-up. We assess the system
+                    that&rsquo;s on your building and go from there.
                   </p>
                   <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black/78">
-                    Our goal is to be the commercial roofing restoration company
-                    Houston property managers and building owners call first.
+                    Restore when viable. Replace when necessary. That&rsquo;s
+                    the whole business.
                   </p>
                 </div>
               </Reveal>
@@ -75,7 +83,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image
                     src={media.heroCoating}
-                    alt="Applying a reflective restoration coating to a commercial flat roof"
+                    alt="Applying a reflective restoration coating to a commercial roof"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
                     className="object-cover"
@@ -87,10 +95,11 @@ export default function AboutPage() {
                   <h3 className="display-sm mb-4">At a glance</h3>
                   <dl className="space-y-3.5 text-[0.9rem]">
                     {[
-                      ["Trading as", site.dba],
+                      ["Legal entity", site.legalName],
+                      ["Doing business as", site.dba],
                       ["Based in", `${site.address.city}, Texas`],
-                      ["Focus", "Commercial roof restoration & coatings"],
-                      ["Also", "Residential roofing & storm restoration"],
+                      ["Focus", "Commercial roof restoration & replacement"],
+                      ["Systems", "Metal, single-ply, mod-bit, BUR, low-slope"],
                       ["Insurance", "General liability to $2M"],
                     ].map(([label, value]) => (
                       <div

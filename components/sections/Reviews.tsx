@@ -5,6 +5,7 @@ import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { useReducedMotion } from "@/components/ui/useReducedMotion";
 import { reviews, googleProfile, type Review } from "@/lib/reviews";
 import { site } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 /**
  * Google reviews + map, in the vertical auto-scrolling pattern from
@@ -75,9 +76,9 @@ export function Reviews() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-end mb-12 lg:mb-16">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow text-[var(--supreme-red)] mb-5">
+              <HouseEyebrow className="mb-5">
                 Reviews on Google
-              </p>
+              </HouseEyebrow>
             </Reveal>
             {/* Split so the closing phrase carries the accent on its own
                 line, matching the two-tone headline treatment used across the
@@ -94,8 +95,8 @@ export function Reviews() {
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <p className="lede">
-              Real reviews from Supreme customers across the Houston area —
-              roofs replaced, storm damage handled, insurance claims sorted.
+              Real reviews from Supreme customers across the Houston area.
+              Roofs replaced, storm damage handled, insurance claims sorted.
             </p>
           </Reveal>
         </div>

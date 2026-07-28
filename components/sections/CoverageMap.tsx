@@ -102,7 +102,7 @@ export function CoverageMap({
           </div>
           <p className="text-[0.92rem] text-white/55 max-w-[300px] leading-[1.75] italic border-l border-white/10 pl-6">
             {quote ??
-              `“Crews run out of ${site.address.city}. Commercial flat-roof work travels further — if your building sits outside the map, call and ask.”`}
+              `“Crews run out of ${site.address.city}. Commercial work travels further. If your building sits outside the map, call and ask.”`}
           </p>
         </div>
 
@@ -234,8 +234,8 @@ export function CoverageMap({
                 coverage.
               </h3>
               <p className="text-[0.92rem] leading-[1.7] text-white/85">
-                Type your city or neighbourhood and we&apos;ll tell you straight
-                away whether we cover it — and what we see on roofs there.
+                Type your city or neighborhood and we&apos;ll tell you straight
+                away whether we cover it, and what we see on roofs there.
               </p>
             </div>
             <button
@@ -291,8 +291,8 @@ export function CoverageMap({
                 Who we go out to
               </h3>
               <p className="text-[0.93rem] leading-[1.75] text-white/50">
-                Calibrated for flat and low-slope commercial roofs nearing the
-                end of service life — and the residential work in between.
+                Commercial buildings across Greater Houston with roofs coming
+                up on the end of their service life. Any system, any size.
               </p>
             </div>
             <ul className="md:col-span-2 grid grid-cols-2 sm:grid-cols-3 gap-5">

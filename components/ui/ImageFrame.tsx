@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 
 /**
- * Layered image block: an offset brand-colour plate behind a notched media
+ * Layered image block: an offset brand-color plate behind a notched media
  * pane, with a slow scale on hover. Replaces the flat full-bleed crops so the
  * image sections read as two planes rather than one.
  */

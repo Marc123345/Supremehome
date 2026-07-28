@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { MapPin, Phone, Check } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServicesSlider } from "@/components/sections/ServicesSlider";
-import { RestorationLadder } from "@/components/sections/RestorationLadder";
+import { Recommendations } from "@/components/sections/Recommendations";
 import { Credentials } from "@/components/sections/Credentials";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
@@ -18,6 +18,7 @@ import {
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { locations, getLocation } from "@/lib/locations";
 import { media, site, restorationBenefits } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 type Params = { city: string };
 
@@ -37,7 +38,7 @@ export async function generateMetadata({
 
   return {
     title: `Commercial & Residential Roofing in ${location.name}, TX`,
-    description: `Roof restoration, coatings, repair and replacement in ${location.name}, ${location.county}. Free inspection and written assessment from ${site.name} — insured to $2M and manufacturer certified.`,
+    description: `Commercial roof restoration and replacement in ${location.name}, ${location.county}. Free roof assessment and written report from ${site.name} — insured to $2M and manufacturer certified.`,
     alternates: { canonical: `/service-areas/${location.slug}` },
     openGraph: {
       title: `Roofing in ${location.name}, TX | ${site.shortName}`,
@@ -96,8 +97,8 @@ export default async function LocationPage({
         eyebrow={`${location.county} · Texas`}
         title={`Roofing in ${location.name}`}
         intro={location.intro}
-        image={media.aerialCommercial}
-        imageAlt={`Commercial buildings with flat roofs of the kind found across ${location.name}, Texas`}
+        image={media.loadingDocks}
+        imageAlt={`Loading docks and low-slope roofing of the kind found across ${location.name}, Texas`}
       />
 
       {/* ── Local detail ── */}
@@ -106,9 +107,9 @@ export default async function LocationPage({
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="eyebrow text-[var(--supreme-red)] mb-5">
+                <HouseEyebrow className="mb-5">
                   On the ground in {location.name}
-                </p>
+                </HouseEyebrow>
               </Reveal>
               <h2 className="display-lg mb-8">
                 <RevealWords text={`What we see on ${location.name} roofs`} />
@@ -125,7 +126,7 @@ export default async function LocationPage({
                     {location.localAngle}
                   </p>
                   <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black/75">
-                    Every {location.name} enquiry starts the same way: a free
+                    Every {location.name} inquiry starts the same way: a free
                     inspection, core samples where the roof warrants them, and a
                     written report telling you whether this is a repair, a
                     restoration or a genuine replacement.
@@ -140,7 +141,7 @@ export default async function LocationPage({
                     {site.phone}
                   </a>
                   <Link href="/contact" className="btn btn-ghost-dark">
-                    Book a free inspection
+                    Request a roof assessment
                   </Link>
                 </div>
               </Reveal>
@@ -201,7 +202,7 @@ export default async function LocationPage({
       </section>
 
       <SlidingText />
-      <RestorationLadder />
+      <Recommendations />
 
       <ServicesSlider
         eyebrow={`Services in ${location.name}`}

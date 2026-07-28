@@ -23,21 +23,32 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+  /**
+   * Metadata follows the repositioning in client feedback sections 2 and 3.
+   *
+   * The previous title, description and keyword set sold a narrower company
+   * than the one being built: "coating specialists", "flat and low-slope",
+   * "flat roof repair Houston". That copy tells a property manager with a
+   * standing-seam metal warehouse that we are not for them, and it frames SCC
+   * as a coating applicator rather than a restoration and replacement
+   * contractor. Both are now stated in the terms the client asked for.
+   */
   title: {
     default:
-      "Commercial Roof Restoration & Coatings in Houston | Supreme Home Roofing",
+      "Commercial Roof Restoration & Replacement in Houston | Supreme Commercial Coatings",
     template: `%s | ${site.name}`,
   },
   description:
-    "Houston commercial roof restoration and coating specialists. We restore flat and low-slope roofs instead of replacing them — free inspections, insured to $2M, APOC and Henry's certified.",
+    "Houston commercial roof restoration and replacement. We assess metal, TPO, modified bitumen, built-up and low-slope systems, then recommend restoring or replacing based on documented condition. Free assessment, insured to $2M, manufacturer certified.",
   keywords: [
     "commercial roofing Houston",
-    "roof restoration Houston",
+    "commercial roof restoration Houston",
+    "commercial roof replacement Houston",
+    "metal roof restoration Houston",
+    "TPO roofing Houston",
+    "modified bitumen roofing Houston",
     "roof coating Houston",
-    "flat roof repair Houston",
-    "commercial roof coating contractor",
-    "low slope roofing Houston",
-    "silicone roof coating",
+    "commercial roof assessment",
     "roofing contractor Katy TX",
   ],
   openGraph: {
@@ -45,15 +56,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "Commercial Roof Restoration & Coatings in Houston",
+    title: "Commercial Roof Restoration & Replacement in Houston",
     description:
-      "We restore flat and low-slope commercial roofs instead of replacing them. Free inspection, written assessment, honest recommendation.",
+      "We assess the roof you have, then recommend restoring or replacing it based on what we document. Free assessment and a written recommendation.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Commercial Roof Restoration & Coatings in Houston",
+    title: "Commercial Roof Restoration & Replacement in Houston",
     description:
-      "We restore flat and low-slope commercial roofs instead of replacing them.",
+      "Restore when viable. Replace when necessary. Commercial roofing across Greater Houston.",
   },
   robots: { index: true, follow: true },
   icons: {
@@ -73,7 +84,7 @@ export const viewport: Viewport = {
 
 /**
  * Site-wide structured data, emitted as a @graph so the business, the website
- * and the service catalogue are linked by @id rather than repeated on every
+ * and the service catalog are linked by @id rather than repeated on every
  * page. Page-level types (FAQPage, BreadcrumbList, Service) reference this
  * business by @id from components/seo/JsonLd.tsx.
  *
@@ -118,13 +129,15 @@ const structuredData = {
         name: `${area}, TX`,
       })),
       description:
-        "Commercial roof restoration and coating contractor serving Greater Houston, plus residential roofing, repair and storm damage restoration.",
+        "Commercial roof restoration and replacement contractor serving Greater Houston. Assesses metal, single-ply, modified bitumen, built-up and low-slope roof systems and recommends restoration or replacement based on documented condition. Residential roofing is offered separately as Supreme Home Roofing.",
       knowsAbout: [
         "Commercial roof restoration",
-        "Silicone roof coatings",
-        "Flat roof repair",
-        "Metal roof restoration",
-        "Storm and hail damage",
+        "Commercial roof replacement",
+        "Roof condition assessment",
+        "Standing-seam and exposed-fastener metal roofing",
+        "TPO and single-ply membrane roofing",
+        "Modified bitumen and built-up roofing",
+        "Roof coating systems",
       ],
       hasCredential: manufacturers.map((m) => ({
         "@type": "EducationalOccupationalCredential",

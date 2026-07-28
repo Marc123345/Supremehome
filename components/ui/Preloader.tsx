@@ -14,7 +14,7 @@ import { Logo } from "@/components/layout/Logo";
  * the bar never sticks partway and the user is never trapped.
  *
  * On the ink background the reverse treatment is the compliant one per the
- * SCC colour spec — full colour is for white/light only.
+ * SCC color spec — full color is for white/light only.
  */
 
 const CAP_MS = 2200;

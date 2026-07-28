@@ -9,7 +9,7 @@ import Image from "next/image";
  *   SCC  — SCC_Professional_Logo_Master_Package (minified web SVG masters)
  *   SH   — "Supreme Home Website 2" (Sized logo supreme home 2 Large.png)
  *
- * SCC colour specification — background rule:
+ * SCC color specification — background rule:
  *   "Use full color on white or light neutral backgrounds. Use reverse on
  *    black or sufficiently dark backgrounds. Do not alter SCC red to
  *    compensate for a background."
@@ -18,9 +18,9 @@ import Image from "next/image";
  * footer's brand panel are black/ink for exactly this reason.
  *
  * Treatments, all supplied by the package — no CSS filters over the master:
- *   dark    full colour  — black lettering + red symbol · white / light only
+ *   dark    full color  — black lettering + red symbol · white / light only
  *   light   reverse      — white lettering + red symbol · black / dark only
- *   solid   white mono   — one-colour white. Kept for single-colour contexts
+ *   solid   white mono   — one-color white. Kept for single-color contexts
  *                          (embroidery, stamps). Not a substitute for putting
  *                          the lockup on a compliant background.
  */
@@ -53,7 +53,7 @@ export function Logo({
       width={Math.round(height * SCC_RATIO)}
       height={height}
       priority={priority}
-      // SVG: Next's optimiser doesn't process these, and doing so would
+      // SVG: Next's optimizer doesn't process these, and doing so would
       // rasterise a vector master.
       unoptimized
       className={className}

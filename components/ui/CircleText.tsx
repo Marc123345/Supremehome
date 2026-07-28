@@ -10,7 +10,7 @@ import { ArrowUpRight } from "lucide-react";
  * dependency and scales cleanly.
  */
 export function CircleText({
-  text = "FREE INSPECTION · FREE INSPECTION · ",
+  text = "FREE ROOF ASSESSMENT · FREE ROOF ASSESSMENT · ",
   href = "/contact",
   size = 168,
   className = "",
@@ -25,7 +25,7 @@ export function CircleText({
   return (
     <Link
       href={href}
-      aria-label="Book a free roof inspection"
+      aria-label="Request a free roof assessment"
       className={`group relative grid place-items-center shrink-0 ${className}`}
       style={{ width: size, height: size }}
     >

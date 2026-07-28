@@ -25,14 +25,28 @@ function Script({ data }: { data: object }) {
   );
 }
 
-/** FAQPage — the answers are original copy, so this is legitimately eligible. */
-export function FaqJsonLd() {
+/**
+ * FAQPage — the answers are original copy, so this is legitimately eligible.
+ *
+ * `items` must match the questions actually rendered on the page. The
+ * residential page shows `residentialFaqs`, not the commercial set, and FAQ
+ * markup that doesn't match visible page content is a structured-data policy
+ * violation — so the page passes its own list rather than inheriting the
+ * commercial default.
+ */
+export function FaqJsonLd({
+  items,
+}: {
+  items?: readonly { q: string; a: string }[];
+} = {}) {
+  const list = items ?? faqs;
+
   return (
     <Script
       data={{
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
+        mainEntity: list.map((f) => ({
           "@type": "Question",
           name: f.q,
           acceptedAnswer: { "@type": "Answer", text: f.a },

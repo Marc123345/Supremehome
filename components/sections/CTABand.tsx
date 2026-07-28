@@ -26,7 +26,7 @@ export function CTABand() {
             <Reveal delay={0.15}>
               <p className="text-[1.05rem] leading-[1.75] text-white/82 max-w-xl">
                 We will inspect it, document it, and tell you whether it needs a
-                repair, a restoration or a replacement — in writing, before
+                repair, a restoration or a replacement, in writing, before
                 anyone talks price.
               </p>
             </Reveal>
@@ -45,14 +45,14 @@ export function CTABand() {
                 href="/contact"
                 className="btn btn-ghost-light group w-full lg:w-auto"
               >
-                Book a free inspection
+                Request a roof assessment
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
               <p className="text-[0.8rem] text-white/65 lg:text-right mt-2">
-                Free inspection · {site.address.city}, TX
+                Free roof assessment · {site.address.city}, TX
               </p>
             </div>
           </Reveal>

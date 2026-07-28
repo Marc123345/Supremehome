@@ -4,6 +4,7 @@ import { Building2, Warehouse, Church, Fuel } from "lucide-react";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { CardCarousel } from "@/components/ui/CardCarousel";
 import { clientTypes } from "@/lib/site";
+import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 const ICONS = [Building2, Warehouse, Church, Fuel];
 
@@ -13,18 +14,18 @@ export function WhoWeServe() {
       <div className="shell">
         <div className="max-w-2xl mb-12 lg:mb-16">
           <Reveal>
-            <p className="eyebrow text-[var(--supreme-red)] mb-5">
+            <HouseEyebrow className="mb-5">
               Who we work with
-            </p>
+            </HouseEyebrow>
           </Reveal>
           <h2 className="display-lg mb-5">
             <RevealWords text="Built around the people who own the roof" />
           </h2>
           <Reveal delay={0.15}>
             <p className="lede">
-              Property managers, building owners and clergy have the same
-              problem: a flat roof nearing end of life and a budget that was not
-              written for a replacement.
+              Property managers, building owners and church boards all land in
+              the same spot: a roof that&rsquo;s running out of life, and a
+              budget nobody wrote with a replacement in mind.
             </p>
           </Reveal>
         </div>
