@@ -3,7 +3,7 @@
 import { Quote, Star, User, MapPin, ArrowUpRight, Navigation } from "lucide-react";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { useReducedMotion } from "@/components/ui/useReducedMotion";
-import { reviews, googleProfile, type Review } from "@/lib/reviews";
+import { commercialSafeReviews, googleProfile, type Review } from "@/lib/reviews";
 import { site } from "@/lib/site";
 import { HouseEyebrow } from "@/components/ui/HouseMark";
 
@@ -67,7 +67,13 @@ function ReviewCard({ review }: { review: Review }) {
 
 export function Reviews() {
   const reduced = useReducedMotion();
-  const visible = reduced ? reviews.slice(0, 4) : reviews;
+  // commercialSafeReviews, not `reviews`: two of the thirteen explicitly
+  // describe residential shingle work, and one closes with "get your storm
+  // damaged roof replaced". Client feedback section 1 keeps that off the
+  // commercial pages. See lib/reviews.ts.
+  const visible = reduced
+    ? commercialSafeReviews.slice(0, 4)
+    : commercialSafeReviews;
 
   return (
     <section className="section bg-[var(--ink-05)] border-y border-black/[0.07]">
@@ -95,8 +101,10 @@ export function Reviews() {
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <p className="lede">
-              Real reviews from Supreme customers across the Houston area.
-              Roofs replaced, storm damage handled, insurance claims sorted.
+              These are real Google reviews for Supreme, earned across the
+              Houston area. Our commercial portfolio is younger than the
+              company is, and we&rsquo;d rather show you the track record we
+              actually have than dress it up as something else.
             </p>
           </Reveal>
         </div>

@@ -3,7 +3,11 @@
 import { ShieldCheck } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { HouseMark, HouseEyebrow } from "@/components/ui/HouseMark";
-import { credentials, manufacturers, credibilityPillars } from "@/lib/site";
+import {
+  credentials,
+  commercialManufacturers,
+  credibilityPillars,
+} from "@/lib/site";
 
 /**
  * COMMERCIAL CREDIBILITY — rebuilt per client feedback section 5.
@@ -93,7 +97,7 @@ export function Credentials() {
                   Manufacturer certified
                 </p>
                 <ul className="space-y-3.5">
-                  {manufacturers.map((m) => (
+                  {commercialManufacturers.map((m) => (
                     <li
                       key={m.name}
                       className="flex items-baseline justify-between gap-4 pb-3.5 border-b border-white/[0.08]"

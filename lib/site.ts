@@ -108,12 +108,45 @@ export const credentials = [
   },
 ] as const;
 
+/**
+ * `audience` exists because the full list is genuinely mixed: APOC and Henry's
+ * are the commercial coating and waterproofing approvals, while CertainTeed is
+ * steep-slope shingles and Attic Breeze is residential attic ventilation.
+ *
+ * Rendering all four with their descriptions on a commercial page put the
+ * words "Shingle and steep-slope systems" and "Solar attic ventilation" in the
+ * middle of the commercial credibility section, which is the leak client
+ * feedback section 1 asks us to close. Components filter on this.
+ *
+ * The FAQ still names all four in one sentence, which is correct: that is a
+ * factual statement of what we are certified on, not residential marketing.
+ */
 export const manufacturers = [
-  { name: "APOC", note: "Roof coatings and restoration systems" },
-  { name: "Henry's", note: "Commercial roofing and waterproofing" },
-  { name: "CertainTeed", note: "Shingle and steep-slope systems" },
-  { name: "Attic Breeze", note: "Solar attic ventilation" },
+  {
+    name: "APOC",
+    note: "Roof coatings and restoration systems",
+    audience: "commercial" as const,
+  },
+  {
+    name: "Henry's",
+    note: "Commercial roofing and waterproofing",
+    audience: "commercial" as const,
+  },
+  {
+    name: "CertainTeed",
+    note: "Shingle and steep-slope systems",
+    audience: "residential" as const,
+  },
+  {
+    name: "Attic Breeze",
+    note: "Solar attic ventilation",
+    audience: "residential" as const,
+  },
 ] as const;
+
+export const commercialManufacturers = manufacturers.filter(
+  (m) => m.audience === "commercial",
+);
 
 /* CertainTeed credential badges — official artwork supplied by the client.
    These are specific CertainTeed contractor tiers, so the wording stays

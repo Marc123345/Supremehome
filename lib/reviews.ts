@@ -25,6 +25,18 @@ export type Review = {
   /** What the job was, taken from the review or the owner's reply. */
   service: string;
   quote: string;
+  /**
+   * True when the review explicitly describes residential work — shingles, a
+   * family home, a homeowner's insurance claim.
+   *
+   * These are real and positive, but client feedback section 1 says
+   * residential material should not run through the commercial pages, and a
+   * review that ends "get your storm damaged roof replaced" is residential
+   * marketing sitting on a commercial homepage. Commercial surfaces render
+   * `commercialSafeReviews`; the full set stays available for the residential
+   * side.
+   */
+  residential?: boolean;
 };
 
 export const reviews: Review[] = [
@@ -37,6 +49,7 @@ export const reviews: Review[] = [
   {
     name: "Shawn Thomson",
     service: "Storm damage",
+    residential: true,
     quote:
       "We had a quick and painless job completed within the quoted time frame. New shingles were installed and cleanup of all the old materials were hauled off. We're so happy with our new roof! Get your storm damaged roof replaced before you get water damage!",
   },
@@ -49,6 +62,7 @@ export const reviews: Review[] = [
   {
     name: "Alison Dieringer",
     service: "Roof repair",
+    residential: true,
     quote:
       "Supreme Home Roofing is wonderful! My mother's roof needed some work, but I was unsure who to hire, as I do not live nearby. Supreme was recommended by one of her neighbors, and they were top notch!",
   },
@@ -113,3 +127,16 @@ export const googleProfile = {
   directionsUrl:
     "https://www.google.com/maps/dir/?api=1&destination=Supreme+Home+Roofing+and+Construction,+21145+FM+529+Suite+1110,+Katy,+TX+77449",
 } as const;
+
+/**
+ * Reviews safe to show on the commercial side.
+ *
+ * These are still Supreme Home Roofing reviews, not commercial project
+ * references, and the section says so. Client feedback section 5 lists "the
+ * established experience and reputation behind the broader Supreme brand" as a
+ * legitimate credibility source, so they earn their place — but only if the
+ * page is honest about whose reviews they are.
+ */
+export const commercialSafeReviews: Review[] = reviews.filter(
+  (r) => !r.residential,
+);
