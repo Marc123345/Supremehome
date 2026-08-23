@@ -37,7 +37,11 @@ export function BackToTop() {
             window.scrollTo({ top: 0, behavior: "smooth" })
           }
           aria-label="Back to top"
-          className="group fixed bottom-6 right-6 z-[90] w-[52px] h-[52px] grid place-items-center rounded-full bg-[var(--ink-90)] shadow-lg"
+          /* Bottom-LEFT. The Jotform assessment agent launcher occupies the
+             bottom-right corner on every page, and two floating circles in
+             the same corner is one of them covering the other. The agent is
+             the conversion path, so it keeps the corner people look in. */
+          className="group fixed bottom-6 left-6 z-[90] w-[52px] h-[52px] grid place-items-center rounded-full bg-[var(--ink-90)] shadow-lg"
         >
           <svg
             className="absolute inset-0 -rotate-90"

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Bebas_Neue, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
@@ -193,6 +194,20 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <BackToTop />
+
+        {/* Supreme assessment agent (Jotform). It fills and submits the same
+            form the contact page embeds, so a conversation that finishes is a
+            lead, not a hand-off to another step.
+
+            lazyOnload keeps it off the critical path: it loads after the page
+            is interactive rather than competing with the hero image for
+            bandwidth. The launcher is not part of first paint, so nothing
+            visible waits on it. */}
+        <Script
+          id="supreme-assessment-agent"
+          src="https://cdn.jotfor.ms/agent/embedjs/01a02fe8bce870008b0de7beaa0b1f91da1a/embed.js"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
