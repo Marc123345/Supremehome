@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { HouseMark, HouseEyebrow } from "@/components/ui/HouseMark";
@@ -56,7 +55,7 @@ export function CaseStudies() {
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <p className="lede">
-              Every photo here came off one of our own jobs. What the roof was,
+              What the roof was,
               what we found, and what we ended up recommending.
             </p>
           </Reveal>
@@ -65,9 +64,7 @@ export function CaseStudies() {
         <RevealGroup className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {caseStudies.map((study) => (
             <RevealItem key={study.slug} className="h-full">
-              <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              <article
                 className="h-full flex flex-col border border-black/10 bg-white overflow-hidden"
               >
                 {study.image && (
@@ -109,7 +106,7 @@ export function CaseStudies() {
                     {study.summary}
                   </p>
                 </div>
-              </motion.article>
+              </article>
             </RevealItem>
           ))}
         </RevealGroup>

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
 import { Globe, Search, ArrowUpRight, ShieldCheck } from "lucide-react";
 import { locations } from "@/lib/locations";
 import { clientTypes, site } from "@/lib/site";
@@ -109,11 +108,7 @@ export function CoverageMap({
         {/* ── Bento grid ── */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
           {/* 1 — The map */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="md:col-span-8 bg-[var(--ink-80)] border border-white/10 p-6 lg:p-8 relative overflow-hidden"
           >
             <div className="flex items-center justify-between gap-4 mb-8">
@@ -189,13 +184,8 @@ export function CoverageMap({
             </div>
 
             {/* Hover panel */}
-            <AnimatePresence>
-              {hoveredLocation && (
-                <motion.div
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 16 }}
-                  transition={{ duration: 0.22 }}
+                          {hoveredLocation && (
+                <div
                   className="hidden lg:block absolute top-6 right-6 max-w-[270px] bg-white text-black p-5 shadow-2xl pointer-events-none z-20"
                 >
                   <p className="eyebrow text-black/40 mb-1.5">
@@ -210,17 +200,12 @@ export function CoverageMap({
                   <span className="block mt-3 pt-3 border-t border-black/10 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[var(--supreme-red)]">
                     Open location page →
                   </span>
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
-          </motion.div>
+          </div>
 
           {/* 2 — Coverage check CTA */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          <div
             className="md:col-span-4 bg-[var(--supreme-red)] p-8 lg:p-10 text-white flex flex-col justify-between relative overflow-hidden group"
           >
             <Search
@@ -245,7 +230,7 @@ export function CoverageMap({
               Check my area
               <ArrowUpRight size={16} />
             </button>
-          </motion.div>
+          </div>
 
           {/* 3 — Verified stats */}
           <div className="md:col-span-12 grid grid-cols-2 sm:grid-cols-4 gap-4 mt-1">
@@ -315,13 +300,8 @@ export function CoverageMap({
       </div>
 
       {/* ── Lookup modal ── */}
-      <AnimatePresence>
-        {showLookup && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+              {showLookup && (
+          <div
             className="fixed inset-0 z-[200] flex items-center justify-center p-4"
             role="dialog"
             aria-modal="true"
@@ -333,18 +313,13 @@ export function CoverageMap({
               aria-label="Close"
               tabIndex={-1}
             />
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 24 }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            <div
               className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto thin-scroll border border-white/10"
             >
               <CoverageLookup onClose={() => setShowLookup(false)} />
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
     </section>
   );
 }

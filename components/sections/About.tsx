@@ -26,15 +26,16 @@ export function About() {
             </Reveal>
 
             <h2 className="display-lg mb-6">
-              <RevealWords text="A roofer who tells you not to re-roof" />
+              <RevealWords text="Assessment before recommendation" />
             </h2>
 
             <Reveal delay={0.15}>
               <p className="lede mb-9">
-                Supreme Commercial Coatings exists because building owners kept
-                getting the same answer from every contractor they called: tear
-                it off and start again. We built the business around the
-                assessment that comes first.
+                Supreme Commercial Coatings helps commercial property
+                decision-makers understand the roof they have before committing
+                to the work they may need. We document current conditions,
+                identify the required scope, and deliver restoration and
+                coating when viable or replacement when necessary.
               </p>
             </Reveal>
 

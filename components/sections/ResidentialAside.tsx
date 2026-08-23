@@ -64,9 +64,9 @@ export function ResidentialAside() {
                   Looking for a roof on your house?
                 </h2>
                 <p className="text-[0.95rem] leading-[1.75] text-black/58 max-w-2xl">
-                  That&rsquo;s {residentialBrand.name}. Same company, same
-                  crews, different work. Shingle roofs, storm and hail claims,
-                  and homeowner financing all live over there.
+                  Residential roofing is provided separately through{" "}
+                  {residentialBrand.name}. Shingle roofs, storm and hail
+                  claims, and homeowner financing all live over there.
                 </p>
               </div>
 

@@ -1,40 +1,22 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
-
 /**
- * True when motion should be suppressed.
+ * True when motion should be suppressed — which is now always.
  *
- * Two triggers:
- *  · the user asked for reduced motion, or
- *  · this is a phone-sized / touch-primary device — continuous decorative
- *    motion costs battery and main-thread time there, and competes with
- *    scrolling on mid-range hardware.
+ * This site sells to commercial property owners and facility managers, who
+ * arrive with a specific question and limited time. Scroll reveals, counters
+ * and rotating text all delay the moment the page can be read, and on a
+ * long page they delay it repeatedly.
  *
- * Defaults to FALSE so the first client render matches the server render.
- * Returning true initially would make every Reveal render a plain element,
- * then swap to a motion element once the effect ran — a full remount that
- * flashes the content out and back in on desktop.
+ * Every animated component in the codebase already branched on this hook, so
+ * returning a constant here switches the whole site to a static render in one
+ * place rather than unpicking each call site. It is a constant rather than a
+ * media query on purpose: the server and the client now agree, so nothing
+ * mounts, measures and swaps.
  *
- * The real value is applied in a layout effect, which runs before the browser
- * paints, so phones never see a frame of animation.
+ * To bring motion back, restore the matchMedia implementation from git
+ * history — the call sites are all still wired for it.
  */
-const QUERY =
-  "(prefers-reduced-motion: reduce), (max-width: 768px), (pointer: coarse)";
-
-const useIsomorphicLayoutEffect =
-  typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
 export function useReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
-
-  useIsomorphicLayoutEffect(() => {
-    const mq = window.matchMedia(QUERY);
-    const update = () => setReduced(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
-  return reduced;
+  return true;
 }

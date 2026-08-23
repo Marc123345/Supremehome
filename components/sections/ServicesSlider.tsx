@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
-import { ArcSlider, type ArcCard } from "@/components/ui/ArcSlider";
+import type { ArcCard } from "@/components/ui/ArcSlider";
 import { services, residentialServices, type Service } from "@/lib/site";
 
 /**
- * Services as a 3D arc slider.
+ * Services as a static grid.
  *
  * The commercial and residential service lists are now separate arrays rather
  * than one list with an "audience" filter that included a shared "both"
@@ -41,7 +43,7 @@ export function ServicesSlider({
     href:
       s.audience === "residential"
         ? "/residential-roofing"
-        : "/commercial-roofing",
+        : `/commercial-roofing${s.anchor ?? ""}`,
   }));
 
   return (
@@ -71,15 +73,48 @@ export function ServicesSlider({
           </Reveal>
         </div>
 
-        <Reveal amount={0.1}>
-          <ArcSlider cards={cards} initialIndex={0} />
-        </Reveal>
-
-        <Reveal delay={0.2}>
-          <p className="mt-8 text-center text-[0.8rem] text-white/35">
-            Drag, use the arrows, or press ← / → to browse
-          </p>
-        </Reveal>
+        {/* This was a 3D arc carousel: cards rotated up to 55 degrees on the
+            Y axis, one legible at a time, browsed by dragging. A property
+            manager checking whether we handle their roof had to work through
+            it card by card to find out. A grid shows all of them at once,
+            unrotated. */}
+        <div className="grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2 lg:grid-cols-3">
+          {cards.map((card) => (
+            <article
+              key={card.id}
+              className="flex flex-col bg-[var(--ink-90)] p-7 lg:p-8"
+            >
+              <p className="eyebrow text-[var(--supreme-red-bright)] mb-4">
+                {card.category}
+              </p>
+              <h3 className="display-sm mb-4">{card.title}</h3>
+              <p className="text-[0.92rem] leading-[1.75] text-white/62 mb-6">
+                {card.blurb}
+              </p>
+              <ul className="space-y-2.5 mb-7">
+                {(card.bullets ?? []).map((b) => (
+                  <li
+                    key={b}
+                    className="flex gap-3 text-[0.88rem] leading-[1.6] text-white/75"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="mt-[0.55em] w-[5px] h-[5px] shrink-0 bg-[var(--supreme-red-bright)]"
+                    />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={card.href}
+                className="mt-auto inline-flex items-center gap-2 text-[0.88rem] font-bold text-[var(--supreme-red-bright)] hover:underline"
+              >
+                {card.title}
+                <ArrowRight size={15} aria-hidden="true" />
+              </Link>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

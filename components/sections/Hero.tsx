@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "motion/react";
 import { ArrowRight, ChevronDown, Phone, ShieldCheck } from "lucide-react";
-import { TextScramble } from "@/components/ui/TextScramble";
 import { Ticker } from "@/components/ui/Ticker";
 import { GoogleRating } from "@/components/ui/GoogleRating";
 import { HouseMark } from "@/components/ui/HouseMark";
-import { useReducedMotion } from "@/components/ui/useReducedMotion";
 import { site, media, tickerPrimary, tickerSecondary } from "@/lib/site";
 
 /**
@@ -49,13 +45,6 @@ const TRUST_CHIPS = [
 ] as const;
 
 export function Hero() {
-  const reduced = useReducedMotion();
-  const [videoReady, setVideoReady] = useState(false);
-  // Mount-gated so the <video> is absent from the server HTML entirely.
-  // Rendered server-side it would sit in the markup on phones too, and the
-  // browser starts fetching before hydration can unmount it.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
 
   const scrollToNext = () => {
     document
@@ -67,9 +56,9 @@ export function Hero() {
     <section className="relative w-full overflow-hidden flex flex-col min-h-[calc(100svh-76px)] lg:min-h-[calc(100svh-96px)]">
       {/* ── BACKGROUND ── */}
       <div className="absolute inset-0 z-0">
-        {/* The still stays the LCP element: it is priority-loaded and paints
-            immediately, and the video fades in over it once it can play. */}
-        <div className="absolute inset-0 animate-kenburns">
+        {/* The still is the LCP element: priority-loaded, and no longer
+            carrying a slow zoom. */}
+        <div className="absolute inset-0">
           <Image
             src={media.heroCoating}
             alt="A roofing technician spray-applying a restoration coating across a commercial roof"
@@ -81,30 +70,10 @@ export function Hero() {
           />
         </div>
 
-        {/* Video is desktop-only. A looping background clip is the heaviest
-            continuous animation on the page, and mobile is explicitly kept
-            still — phones get the poster still instead and never download it. */}
-        {mounted && !reduced && (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            poster={media.heroCoating}
-            aria-hidden="true"
-            tabIndex={-1}
-            onCanPlay={() => setVideoReady(true)}
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              filter: "brightness(0.66) contrast(1.04) saturate(0.98)",
-              opacity: videoReady ? 1 : 0,
-              transition: "opacity 0.9s ease",
-            }}
-          >
-            <source src={media.heroVideo} type="video/mp4" />
-          </video>
-        )}
+        {/* A muted looping background clip used to sit here, desktop-only.
+            It is the single heaviest continuous animation a page can carry,
+            and it fetched 0.84 MB before anyone had read a line. The still
+            above is what remains. */}
 
         <div
           className="absolute inset-0"
@@ -126,10 +95,7 @@ export function Hero() {
       {/* ── CONTENT ── */}
       <div className="relative z-10 flex-1 flex flex-col shell pt-12 pb-[130px] lg:pt-20 lg:pb-[150px]">
         {/* Top: positioning copy */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
+        <div
         >
           <div className="flex items-center gap-3 mb-4">
             <HouseMark
@@ -138,26 +104,25 @@ export function Hero() {
               className="shrink-0"
             />
             <span className="eyebrow text-[var(--supreme-red-bright)]">
-              Greater Houston · Commercial Roof Restoration &amp; Replacement
+              Greater Houston · Commercial Roof Assessment, Restoration &amp;
+              Replacement
             </span>
           </div>
           <p
             className="max-w-md text-[0.95rem] lg:text-[0.98rem] leading-[1.75]"
             style={{ color: "rgba(255,255,255,0.86)" }}
           >
-            Most roofing companies show up already knowing what they want to
-            sell you. We get on the roof, document what&rsquo;s actually there,
-            and let the condition decide.
+            Commercial roofs do not all require the same answer. We begin with
+            the roof you have, document its current condition, and recommend
+            coating and protection, restoration, or replacement based on what
+            the assessment supports.
           </p>
-        </motion.div>
+        </div>
 
         {/* Desktop: the house sits large in the open upper-right. This is the
             "you are unmistakably on a Supreme site" moment Tiffany asked for —
             the mark is the first shape you register after the headline. */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.5 }}
+        <div
           aria-hidden="true"
           className="hidden lg:block absolute right-[var(--gutter)] top-[clamp(5.5rem,14vh,10rem)] z-20"
         >
@@ -166,7 +131,7 @@ export function Hero() {
             color="var(--supreme-red)"
             className="drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
           />
-        </motion.div>
+        </div>
 
         {/* Spacer pushes the headline block to the lower third */}
         <div className="flex-1 min-h-[2.5rem]" />
@@ -181,10 +146,7 @@ export function Hero() {
                 and at 11vw it wrapped to four lines and pushed the CTAs, trust
                 chips and rating clean off the fold. The scale below keeps each
                 sentence on one line down to tablet. */}
-            <motion.h1
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.15 }}
+            <h1
               className="font-display uppercase text-white"
               style={{
                 fontSize: "clamp(2rem, 5.4vw, 4.5rem)",
@@ -196,13 +158,10 @@ export function Hero() {
               <span className="block italic text-[var(--supreme-red-bright)]">
                 Replace when necessary.
               </span>
-            </motion.h1>
+            </h1>
 
             {/* Section 3: say out loud that we assess every major system. */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
+            <div
               className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1"
             >
               <span
@@ -214,20 +173,19 @@ export function Hero() {
               >
                 We assess
               </span>
-              <TextScramble
-                phrases={SYSTEM_PHRASES}
-                holdDuration={3400}
-                scrambleDuration={1500}
+              {/* This was a scrambling rotator cycling one system at a time,
+                  so five sixths of the list was invisible at any moment and a
+                  reader had to wait to learn whether their roof type was
+                  covered. All five are listed at once now. */}
+              <span
                 className="text-[0.8rem] font-bold uppercase tracking-[0.16em]"
-                resolvedColor="var(--supreme-red-bright)"
-                scramblingColor="rgba(255,255,255,0.22)"
-              />
-            </motion.div>
+                style={{ color: "var(--supreme-red-bright)" }}
+              >
+                {SYSTEM_PHRASES.join(" · ")}
+              </span>
+            </div>
 
-            <motion.ul
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+            <ul
               className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2"
             >
               {TRUST_CHIPS.map((chip) => (
@@ -243,23 +201,17 @@ export function Hero() {
                   {chip}
                 </li>
               ))}
-            </motion.ul>
+            </ul>
 
             {/* Live Google rating — real figures from the knowledge panel. */}
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
+            <div
               className="mt-6"
             >
               <GoogleRating variant="dark" />
-            </motion.div>
+            </div>
 
             {/* Mobile / tablet CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7 }}
+            <div
               className="mt-7 flex flex-wrap items-center gap-3 lg:hidden"
             >
               <a href={site.phoneHref} className="btn btn-primary">
@@ -269,14 +221,11 @@ export function Hero() {
               <Link href="/contact" className="btn btn-ghost-light">
                 Request an Assessment
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* Desktop secondary block */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.62 }}
+          <div
             className="hidden lg:flex lg:col-span-5 xl:col-span-4 flex-col items-start pb-3"
           >
             <h2 className="display-sm text-white mb-3">
@@ -311,15 +260,12 @@ export function Hero() {
                 <ArrowRight size={16} className="text-white -rotate-45" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
       {/* ── SCROLL INDICATOR ── */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
+      <button
         onClick={scrollToNext}
         aria-label="Scroll to next section"
         className="absolute left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-1.5"
@@ -336,13 +282,10 @@ export function Hero() {
           size={14}
           className="animate-bounce text-[var(--supreme-red-bright)]"
         />
-      </motion.button>
+      </button>
 
       {/* ── TICKERS ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 1 }}
+      <div
         className="absolute bottom-0 inset-x-0 z-20"
         style={{
           backgroundColor: "rgba(0,0,0,0.55)",
@@ -355,7 +298,7 @@ export function Hero() {
           className="border-b border-white/[0.06]"
         />
         <Ticker items={tickerSecondary} direction="right" display />
-      </motion.div>
+      </div>
 
       <div className="absolute bottom-0 inset-x-0 h-[4px] z-30 bg-[var(--supreme-red)]" />
     </section>

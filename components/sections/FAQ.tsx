@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { Plus } from "lucide-react";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { HouseEyebrow } from "@/components/ui/HouseMark";
@@ -66,12 +65,7 @@ export function FAQ({
                           >
                             {faq.q}
                           </span>
-                          <motion.span
-                            animate={{ rotate: isOpen ? 45 : 0 }}
-                            transition={{
-                              duration: 0.35,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
+                          <span
                             className="shrink-0 mt-1 w-8 h-8 grid place-items-center rounded-full border transition-colors duration-300"
                             style={{
                               borderColor: isOpen
@@ -81,28 +75,19 @@ export function FAQ({
                             }}
                           >
                             <Plus size={16} />
-                          </motion.span>
+                          </span>
                         </button>
                       </dt>
 
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.dd
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                              duration: 0.42,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
+                                              {isOpen && (
+                          <dd
                             className="overflow-hidden"
                           >
                             <p className="pb-7 pr-12 text-[0.97rem] leading-[1.8] text-black/62">
                               {faq.a}
                             </p>
-                          </motion.dd>
+                          </dd>
                         )}
-                      </AnimatePresence>
                     </div>
                   </Reveal>
                 );

@@ -81,7 +81,7 @@ export function Credentials() {
               </HouseEyebrow>
             </Reveal>
             <h2 className="display-lg mb-6">
-              <RevealWords text="We'd rather earn it than claim it" />
+              <RevealWords text="Credentials and process you can verify" />
             </h2>
             <Reveal delay={0.15}>
               <p className="text-[1rem] leading-[1.8] text-white/60">

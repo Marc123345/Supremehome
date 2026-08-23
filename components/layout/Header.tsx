@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
 import { Menu, ChevronDown, MapPin, ArrowUpRight, Phone } from "lucide-react";
 import { nav, site, residentialBrand, residentialNavItem } from "@/lib/site";
 import { locations } from "@/lib/locations";
@@ -60,34 +59,27 @@ export function Header() {
 
   return (
     <>
-      <motion.header
-        initial={{ y: -90 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="sticky top-0 z-[100] bg-white h-[76px] lg:h-[96px]"
-      >
-        {/* Angled brand block behind the logo */}
-        <div
-          className="absolute top-0 left-0 h-full pointer-events-none"
-          style={{
-            width: "clamp(275px, 27vw, 440px)",
-            background: "var(--ink)",
-            clipPath: "polygon(0 0, 85% 0, 100% 100%, 0% 100%)",
-          }}
-        />
-
-        <div className="relative h-full flex items-center px-[var(--gutter)]">
-          {/* Logo — reverse lockup on the black block */}
+      <header className="sticky top-0 z-[100] bg-white h-[76px] lg:h-[96px] border-b border-black/10">
+        <div className="relative h-full flex items-center gap-6 pr-[var(--gutter)]">
+          {/* The brand block is sized by the logo inside it rather than a
+              fixed clamp. As a fixed width it ran under the first nav item,
+              which is dark type — "Commercial Roofing" was black text on a
+              black block. Square, too: the angled cut it used to carry is
+              gone with the rest of the site's diagonals. */}
           <Link
             href="/"
             aria-label={`${site.name} — home`}
-            className="tap relative z-10 mr-auto"
+            className="tap relative z-10 shrink-0 h-full flex items-center pl-[var(--gutter)] pr-8 lg:pr-12"
+            style={{ background: "var(--ink)" }}
           >
             <Logo variant="light" height={40} priority />
           </Link>
 
-          {/* Centered nav */}
-          <nav className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-6 xl:gap-10">
+          {/* Nav sits in the flow between the logo and the right cluster.
+              It used to be absolutely centred while the right cluster was in
+              flow, so below about 1400px the two overlapped and "About" ran
+              straight through the residential link. */}
+          <nav className="hidden lg:flex items-center gap-6 xl:gap-9 mx-auto">
             {nav.map((item) => {
               const active =
                 pathname === item.href ||
@@ -119,13 +111,8 @@ export function Header() {
                       />
                     </Link>
 
-                    <AnimatePresence>
-                      {areasOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 6 }}
-                          transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+                    {areasOpen && (
+                        <div
                           onMouseEnter={openAreas}
                           onMouseLeave={scheduleClose}
                           className="absolute left-1/2 -translate-x-1/2 top-full pt-4"
@@ -193,9 +180,8 @@ export function Header() {
                               </a>
                             </div>
                           </div>
-                        </motion.div>
+                        </div>
                       )}
-                    </AnimatePresence>
                   </div>
                 );
               }
@@ -216,7 +202,7 @@ export function Header() {
           </nav>
 
           {/* Right cluster — residential handoff, then the phone. */}
-          <div className="hidden lg:flex items-center gap-5 xl:gap-6">
+          <div className="hidden lg:flex items-center gap-5 xl:gap-6 shrink-0">
             {/* Residential sits behind a divider and in muted type on purpose:
                 it is a different side of the business, not a peer of the
                 commercial nav. */}
@@ -274,7 +260,7 @@ export function Header() {
 
         {/* Hairline */}
         <div className="absolute bottom-0 inset-x-0 h-px bg-black/12" />
-      </motion.header>
+      </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>

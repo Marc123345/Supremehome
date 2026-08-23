@@ -19,13 +19,16 @@ export function Ticker({
   dotColor = "var(--supreme-red)",
   textColor = "rgba(255,255,255,0.72)",
 }: TickerProps) {
-  const animation =
-    direction === "left" ? "animate-ticker-left" : "animate-ticker-right";
+  /* The marquee is stopped site-wide, so the duplicated second copy that
+     made the scroll seamless would now just overflow the right edge. One
+     copy, wrapped and centred, reads as a plain strip of labels. The
+     `direction` prop is kept so the animation can be restored. */
+  void direction;
 
   return (
-    <div className={`overflow-hidden ${className}`} aria-hidden="true">
-      <div className={`${animation} flex whitespace-nowrap py-[7px] w-max`}>
-        {[...items, ...items].map((item, i) => (
+    <div className={className} aria-hidden="true">
+      <div className="flex flex-wrap justify-center gap-y-1 py-[7px]">
+        {items.map((item, i) => (
           <span
             key={`${item}-${i}`}
             className="flex items-center gap-5 px-5 shrink-0"

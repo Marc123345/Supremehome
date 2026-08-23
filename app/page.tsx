@@ -12,7 +12,6 @@ import { Credentials } from "@/components/sections/Credentials";
 import { Team } from "@/components/sections/Team";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { Reviews } from "@/components/sections/Reviews";
-import { SectionSplit } from "@/components/ui/SectionSplit";
 import { CoverageMap } from "@/components/sections/CoverageMap";
 import { ResidentialAside } from "@/components/sections/ResidentialAside";
 import { FAQ } from "@/components/sections/FAQ";
@@ -68,9 +67,7 @@ export default function Home() {
           is one of the credibility sources feedback section 5 names. */}
       <Reviews />
 
-      <SectionSplit from="light" to="ink" />
       <Recommendations />
-      <SectionSplit from="ink" to="light" direction="left" />
 
       <RoofSystems />
       <RestorationScope />
@@ -79,7 +76,6 @@ export default function Home() {
 
       <Process />
 
-      <SectionSplit from="white" to="ink" />
       <Credentials />
       <Team />
 
@@ -94,13 +90,10 @@ export default function Home() {
           threaded through the commercial pages — feedback section 1. */}
       <ResidentialAside />
 
-      <SectionSplit from="white" to="ink" />
       <CoverageMap />
-      <SectionSplit from="ink" to="white" direction="left" />
 
       <FaqJsonLd />
       <FAQ />
-      <SectionSplit from="white" to="red" direction="left" />
       <CTABand />
     </>
   );

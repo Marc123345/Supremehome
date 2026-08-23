@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { ArrowUp } from "lucide-react";
 
 const RADIUS = 22;
@@ -30,14 +29,10 @@ export function BackToTop() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  if (!visible) return null;
+
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.3 }}
+        <button
           onClick={() =>
             window.scrollTo({ top: 0, behavior: "smooth" })
           }
@@ -76,8 +71,6 @@ export function BackToTop() {
             size={17}
             className="relative text-white transition-transform duration-300 group-hover:-translate-y-0.5"
           />
-        </motion.button>
-      )}
-    </AnimatePresence>
+        </button>
   );
 }

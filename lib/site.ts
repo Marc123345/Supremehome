@@ -342,6 +342,10 @@ export const eligibilityFactors = [
 
 export type Service = {
   slug: string;
+  /** Anchor on /commercial-roofing this service actually explains. The footer
+      and the services slider used to point all three at the bare page, which
+      promised detail the link did not reach (correction package D3, J2). */
+  anchor?: string;
   title: string;
   kicker: string;
   blurb: string;
@@ -358,6 +362,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "roof-assessment",
+    anchor: "#process",
     title: "Commercial Roof Assessment",
     kicker: "Where every project starts",
     blurb:
@@ -373,6 +378,7 @@ export const services: Service[] = [
   },
   {
     slug: "roof-restoration",
+    anchor: "#scope",
     title: "Commercial Roof Restoration",
     kicker: "Coating and full restoration systems",
     blurb:
@@ -388,6 +394,7 @@ export const services: Service[] = [
   },
   {
     slug: "roof-replacement",
+    anchor: "#recommendations",
     title: "Commercial Roof Replacement",
     kicker: "When restoration won't hold",
     blurb:

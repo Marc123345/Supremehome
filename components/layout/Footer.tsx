@@ -57,7 +57,7 @@ export function Footer() {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href="/commercial-roofing"
+                  href={`/commercial-roofing${s.anchor ?? ""}`}
                   className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
                 >
                   <HouseMark

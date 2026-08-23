@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { HouseMark, HouseEyebrow } from "@/components/ui/HouseMark";
 import { roofSystems, roofSystemImages, eligibilityFactors, media } from "@/lib/site";
@@ -44,18 +43,20 @@ export function RoofSystems() {
             {/* Kept to two lines: at display-lg the longer version ran to
                 three and pushed the systems grid off the fold. */}
             <h2 className="display-lg">
-              <RevealWords text="Whatever's up there," />
+              <RevealWords text="We assess the roof" />
               <br />
               <span className="text-[var(--supreme-red)]">
-                <RevealWords text="we'll assess it." delay={0.15} />
+                <RevealWords text="system you have." delay={0.15} />
               </span>
             </h2>
           </div>
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
             <p className="lede">
-              Metal, membrane, asphalt, or something previous crews left behind.
-              We look at the whole roof system rather than deciding what
-              you&rsquo;re getting based on what kind of roof it is.
+              Metal, membrane, asphalt, or something previous crews left
+              behind. We evaluate the existing assembly, its current
+              serviceability, and the conditions that affect the appropriate
+              next step. Being able to assess a roof type does not mean every
+              roof of that type is eligible for the same system.
             </p>
           </Reveal>
         </div>
@@ -70,9 +71,7 @@ export function RoofSystems() {
             const photo = roofSystemImages[system.slug];
             return (
               <RevealItem key={system.slug}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                <div
                   className="group h-full bg-white flex flex-col"
                 >
                   {photo && (
@@ -98,7 +97,7 @@ export function RoofSystems() {
                       {system.body}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </RevealItem>
             );
           })}

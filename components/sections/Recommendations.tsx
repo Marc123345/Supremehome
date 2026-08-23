@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
 import { HouseMark, HouseEyebrow } from "@/components/ui/HouseMark";
@@ -77,9 +76,7 @@ export function Recommendations() {
         <RevealGroup className="grid md:grid-cols-2 gap-px bg-white/10 border border-white/10 mb-16 lg:mb-24">
           {recommendations.map((rec) => (
             <RevealItem key={rec.key}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              <div
                 className="relative h-full p-8 lg:p-12"
                 style={{
                   background:
@@ -112,7 +109,7 @@ export function Recommendations() {
                 <p className="text-[0.98rem] leading-[1.8] text-white/62">
                   {rec.body}
                 </p>
-              </motion.div>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>
@@ -135,9 +132,7 @@ export function Recommendations() {
         <RevealGroup className="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
           {pathways.map((path) => (
             <RevealItem key={path.key}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              <div
                 className="relative h-full p-8 lg:p-10 bg-[var(--ink-90)]"
               >
                 <div className="flex items-baseline justify-between mb-7">
@@ -163,7 +158,7 @@ export function Recommendations() {
                 <p className="text-[0.95rem] leading-[1.75] text-white/60">
                   {path.body}
                 </p>
-              </motion.div>
+              </div>
             </RevealItem>
           ))}
         </RevealGroup>

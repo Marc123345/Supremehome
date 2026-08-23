@@ -270,39 +270,30 @@ body {
   width: 100%;
 }
 
+/* ── MOTION ──────────────────────────────────────────────── */
+/* Every keyframe animation below is defined but switched off. The audience
+   for this site is a property owner or facility manager checking whether a
+   contractor is worth a call, and decorative motion — the marquee tickers,
+   the hero's slow zoom, the rotating badge — competes with reading and keeps
+   the page busy after it has finished loading. The keyframes are kept so the
+   effect can be restored by putting the animation shorthand back. */
+
 /* ── SHAPE + DEPTH ───────────────────────────────────────── */
 /* The header's angled brand block is the shape language for the whole
    site, so cards carry the same cut rather than a plain rectangle. */
 
-.clip-notch {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 26px) 0,
-    100% 26px,
-    100% 100%,
-    0 100%
-  );
-}
+/* The cut corners are gone. They were the site's shape language — header
+   wedge, notched cards, angled section splits — and they cost legibility:
+   a diagonal crossing a card edge pulls the eye along the cut instead of
+   down the column of text, and the notch ate the top-right corner of every
+   card exactly where a heading starts. Square edges read faster.
 
-.clip-notch-lg {
-  clip-path: polygon(
-    0 0,
-    calc(100% - 44px) 0,
-    100% 44px,
-    100% 100%,
-    0 100%
-  );
-}
-
-/* Bottom-left cut — used to alternate direction across a grid */
+   The class names stay so every call site keeps working. Restore the
+   polygons here to bring the shape back. */
+.clip-notch,
+.clip-notch-lg,
 .clip-notch-alt {
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 100%,
-    26px 100%,
-    0 calc(100% - 26px)
-  );
+  clip-path: none;
 }
 
 /* A notched card can't paint its own border (clip-path cuts it off), so
@@ -311,16 +302,12 @@ body {
   position: relative;
   background: var(--hairline);
   padding: 1px;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.4s ease, filter 0.4s ease;
 }
 .notch-card > * {
   background: var(--white);
 }
 .notch-card:hover {
-  transform: translateY(-6px);
   background: var(--supreme-red);
-  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.22));
 }
 
 .notch-card-dark {
@@ -331,11 +318,11 @@ body {
 }
 .notch-card-dark:hover {
   background: var(--supreme-red);
-  filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.55));
 }
 
-/* Corner tick that sits inside the notch */
+/* Corner tick that sat inside the notch. No notch, no tick. */
 .notch-tick {
+  display: none;
   position: absolute;
   top: 0;
   right: 0;
@@ -414,12 +401,10 @@ body {
   }
 }
 .animate-ticker-left {
-  animation: ticker-left 48s linear infinite;
-  will-change: transform;
+  animation: none;
 }
 .animate-ticker-right {
-  animation: ticker-right 56s linear infinite;
-  will-change: transform;
+  animation: none;
 }
 
 /* Slow cinematic zoom on hero stills */
@@ -432,7 +417,8 @@ body {
   }
 }
 .animate-kenburns {
-  animation: kenburns 22s ease-out forwards;
+  animation: none;
+  transform: none;
 }
 
 @keyframes pulse-ring {
@@ -447,7 +433,7 @@ body {
   }
 }
 .animate-pulse-ring {
-  animation: pulse-ring 2.4s cubic-bezier(0.24, 0.6, 0.35, 1) infinite;
+  animation: none;
 }
 
 /* Vertical review marquee (portfolio ContactTestimonials pattern) */
@@ -460,7 +446,7 @@ body {
   }
 }
 .reviews-track {
-  animation: reviews-scroll 70s linear infinite;
+  animation: none;
   will-change: transform;
 }
 .reviews-track:hover {
@@ -526,7 +512,7 @@ body {
   }
 }
 .animate-circle-rotate {
-  animation: circle-rotate 18s linear infinite;
+  animation: none;
   transform-origin: center;
 }
 
@@ -542,7 +528,7 @@ body {
   }
 }
 .animate-float-x {
-  animation: float-bob-x 5s ease-in-out infinite;
+  animation: none;
 }
 
 /* ── SCROLLBAR ───────────────────────────────────────────── */

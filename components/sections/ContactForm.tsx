@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "motion/react";
 import { Check, Loader2, AlertCircle, ArrowRight } from "lucide-react";
 import { services, serviceAreas } from "@/lib/site";
 
@@ -48,12 +47,9 @@ export function ContactForm() {
 
   return (
     <div className="relative">
-      <AnimatePresence mode="wait">
-        {status === "sent" ? (
-          <motion.div
+              {status === "sent" ? (
+          <div
             key="success"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
             className="p-10 lg:p-14 bg-[var(--ink-05)] border-l-[4px] border-[var(--supreme-red)] text-center"
           >
             <span className="inline-grid place-items-center w-16 h-16 rounded-full bg-[var(--supreme-red)] mb-6">
@@ -65,13 +61,11 @@ export function ContactForm() {
               business day. If it is urgent, call us directly and we will get a
               crew out sooner.
             </p>
-          </motion.div>
+          </div>
         ) : (
-          <motion.form
+          <form
             key="form"
             onSubmit={handleSubmit}
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
             className="grid sm:grid-cols-2 gap-5"
           >
             <div className="sm:col-span-1">
@@ -227,9 +221,8 @@ export function ContactForm() {
                 No cost, no obligation. We never sell your details.
               </p>
             </div>
-          </motion.form>
+          </form>
         )}
-      </AnimatePresence>
     </div>
   );
 }

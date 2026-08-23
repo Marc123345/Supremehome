@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
 import { X, Phone, ArrowUpRight, Mail, MapPin, ChevronDown } from "lucide-react";
 import {
   nav,
@@ -44,15 +43,11 @@ export function MobileMenu({
     };
   }, [open, onClose]);
 
+  if (!open) return null;
+
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
+        <div
           className="fixed inset-0 z-[120] lg:hidden"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
@@ -66,12 +61,8 @@ export function MobileMenu({
           />
 
           {/* Sheet */}
-          <motion.div
+          <div
             className="absolute inset-y-0 right-0 w-full max-w-[420px] bg-white flex flex-col thin-scroll overflow-y-auto"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="flex items-center justify-between px-6 h-[76px] border-b border-black/10 shrink-0">
               <Link href="/" onClick={onClose}>
@@ -87,17 +78,8 @@ export function MobileMenu({
             </div>
 
             <nav className="flex-1 px-6 py-4">
-              {nav.map((item, i) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: 0.12 + i * 0.06,
-                    duration: 0.45,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
+              {nav.map((item) => (
+                <div key={item.href}>
                   {item.href === AREAS_HREF ? (
                     <div className="border-b border-black/[0.07]">
                       <div className="flex items-center justify-between">
@@ -128,16 +110,8 @@ export function MobileMenu({
                         </button>
                       </div>
 
-                      <AnimatePresence initial={false}>
-                        {areasOpen && (
-                          <motion.ul
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                              duration: 0.35,
-                              ease: [0.22, 1, 0.36, 1],
-                            }}
+                                              {areasOpen && (
+                          <ul
                             className="overflow-hidden grid grid-cols-2 gap-x-4"
                           >
                             {locations.map((loc) => (
@@ -157,9 +131,8 @@ export function MobileMenu({
                                 </Link>
                               </li>
                             ))}
-                          </motion.ul>
+                          </ul>
                         )}
-                      </AnimatePresence>
 
                       <div className="pb-4" />
                     </div>
@@ -176,7 +149,7 @@ export function MobileMenu({
                       />
                     </Link>
                   )}
-                </motion.div>
+                </div>
               ))}
 
               {/* Secondary commercial links — the deeper sections that don't
@@ -248,9 +221,7 @@ export function MobileMenu({
                 </p>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          </div>
+        </div>
   );
 }

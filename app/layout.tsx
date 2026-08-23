@@ -3,7 +3,6 @@ import { Bebas_Neue, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Preloader } from "@/components/ui/Preloader";
 import { BackToTop } from "@/components/ui/BackToTop";
 import { site, serviceAreas, services } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
@@ -119,6 +118,7 @@ const structuredData = {
       logo: `${site.url}/brand/scc-horizontal.svg`,
       image: `${site.url}/opengraph-image`,
       sameAs: [googleProfile.shareUrl],
+      slogan: site.tagline,
       currenciesAccepted: "USD",
       address: {
         "@type": "PostalAddress",
@@ -189,7 +189,6 @@ export default function RootLayout({
         <a href="#main" className="skip-link">
           Skip to content
         </a>
-        <Preloader />
         <Header />
         <main id="main">{children}</main>
         <Footer />
