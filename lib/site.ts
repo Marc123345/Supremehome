@@ -235,7 +235,7 @@ export const restorationScope = [
   },
   {
     title: "Detailing",
-    body: "Seams, penetrations, curbs, drains and flashings. That is where roofs actually leak.",
+    body: "Seams, penetrations, curbs, drains and flashings. That's where roofs leak.",
   },
   {
     title: "Surface preparation",
@@ -443,7 +443,7 @@ export const residentialServices: Service[] = [
       "On-site adjuster meetings",
       "Supplement documentation",
       "Scope review before you sign anything",
-      "A straight answer on what is and isn't covered",
+      "What your policy does and doesn't cover",
     ],
     audience: "residential",
   },
@@ -457,7 +457,7 @@ export const residentialServices: Service[] = [
       "Leak tracing and documentation",
       "Emergency tarping after storms",
       "Written report with photos",
-      "An honest repair-or-replace answer",
+      "Repair or replace, answered in writing",
     ],
     audience: "residential",
   },
@@ -588,12 +588,12 @@ export const credibilityPillars = [
     body: "Supreme leadership walks commercial roofs personally. You're not handed to a rotating account manager after you sign.",
   },
   {
-    title: "Real photos, real projects",
-    body: "What you see on this site comes off our own jobs. We'd rather show you a short portfolio that's ours than a long one that isn't.",
+    title: "No borrowed portfolios",
+    body: "Our commercial project list is short and growing. We'd rather show you that than pad it out with work that isn't ours.",
   },
   {
     title: "The Supreme name behind it",
-    body: "Supreme Commercial Coatings is the commercial arm of an established Supreme roofing operation, with the reputation that comes with it.",
+    body: "Supreme Commercial Coatings is the commercial arm of Supreme Home Roofing and Construction. Same owner, same crews, and one name answering for both.",
   },
 ] as const;
 
@@ -626,7 +626,7 @@ export const caseStudies: CaseStudy[] = [];
 export const capabilities = [
   { title: "Moisture surveys", note: "Core samples before we quote" },
   { title: "Infrared scanning", note: "Finding wet insulation" },
-  { title: "Seam and flashing work", note: "Where roofs actually leak" },
+  { title: "Seam and flashing work", note: "Where most leaks start" },
   { title: "Ponding correction", note: "Tapered fills and drainage" },
   { title: "Metal roof restoration", note: "Rust treatment and seam seal" },
   { title: "Coating systems", note: "Silicone and acrylic, to spec" },

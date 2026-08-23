@@ -33,10 +33,10 @@ export function FAQ({
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-32">
               <Reveal>
-                <HouseEyebrow className="mb-5">Straight answers</HouseEyebrow>
+                <HouseEyebrow className="mb-5">Before you call</HouseEyebrow>
               </Reveal>
               <h2 className="display-lg mb-6">
-                <RevealWords text="Questions worth asking" />
+                <RevealWords text="The questions owners ask us" />
               </h2>
               <Reveal delay={0.15}>
                 <p className="lede">{intro}</p>

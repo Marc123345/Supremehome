@@ -10,7 +10,7 @@ import { HouseEyebrow } from "@/components/ui/HouseMark";
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
   title: "Contact: Request a Free Roof Assessment",
-  description: `Call ${site.phone} or request a free roof inspection. Supreme Home Roofing serves commercial and residential clients across Greater Houston from ${site.address.city}, TX.`,
+  description: `Call ${site.phone} or request a free roof assessment. ${site.name} covers commercial and residential roofing across Greater Houston from ${site.address.city}, TX.`,
 };
 
 const CONTACT_ITEMS = [
@@ -52,7 +52,7 @@ export default function ContactPage() {
         breadcrumb="Contact"
         eyebrow="Free assessment · No obligation"
         title="Let's look at your roof"
-        intro="Tell us what you are dealing with and we will get someone on the roof. You will get a written assessment with photographs. That includes an honest answer on whether you need to do anything at all yet."
+        intro="Tell us what you're dealing with and we'll get someone on the roof. You get a written assessment with photos, and if the roof doesn't need work yet, the report says that too."
         image={media.grayRoof}
         imageAlt="Close view of a weathered roof surface"
       />
@@ -120,8 +120,8 @@ export default function ContactPage() {
                     />
                     <h3 className="display-sm mb-3">Prefer to book online?</h3>
                     <p className="text-[0.9rem] leading-[1.7] text-white/60 mb-5">
-                      Online scheduling is coming shortly. Until then, call us and
-                      we will put a slot in the diary while you are on the phone.
+                      Online booking is coming. For now, call and we&rsquo;ll get
+                      you on the schedule while you&rsquo;re on the phone.
                     </p>
                     <a href={site.phoneHref} className="btn btn-primary w-full">
                       <Phone size={16} />

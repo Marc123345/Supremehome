@@ -135,7 +135,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
         {result.kind === "hit" && (
           <div className="mt-8 p-7 lg:p-8 bg-white/[0.03] border-l-[4px] border-[var(--supreme-red)] max-w-2xl">
             <p className="eyebrow text-[var(--supreme-red-bright)] mb-3">
-              Yes — we cover it
+              Yes, we cover it
             </p>
             <h3 className="display-md mb-3">
               {result.matchedOn}
@@ -172,8 +172,8 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
             <h3 className="display-md mb-3">Still worth a call</h3>
             <p className="text-[0.93rem] leading-[1.7] text-white/62 mb-6">
               We didn&apos;t find “{result.query}” in our eighteen listed
-              communities — but commercial flat-roof projects regularly justify
-              the travel across the wider Houston metro. Call and ask.
+              communities. Commercial projects regularly justify the travel
+              across the wider Houston metro, though. Call and ask.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={site.phoneHref} className="btn btn-primary">

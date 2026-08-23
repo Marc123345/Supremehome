@@ -86,7 +86,8 @@ export function About() {
                   <CounterUp end={100} suffix="+" />
                 </p>
                 <p className="text-[0.84rem] leading-[1.5] text-white/62">
-                  Square commercial projects, and the gas station on the corner
+                  Square roofs are what we&rsquo;re built for. Small ones get
+                  the same paperwork.
                 </p>
               </div>
             </div>

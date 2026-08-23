@@ -27,11 +27,11 @@ export const locations: Location[] = [
     name: "Houston",
     county: "Harris County",
     intro:
-      "The core of our service area. Houston has more low-slope commercial roof than anywhere else in Texas, and most of it is a restoration candidate long before it is a replacement candidate.",
+      "The core of our service area. Houston has more low-slope commercial roof than anywhere else in Texas, and most of it is a restoration candidate long before it's a replacement candidate.",
     buildingStock:
       "Warehouse and distribution space, office parks, retail strip centers, churches and medical buildings. Overwhelmingly flat or low-slope, with TPO, modified bitumen and older built-up systems.",
     localAngle:
-      "Houston roofs age on heat and UV more than on storms. A membrane can look finished at fifteen years and still have a dry, sound deck underneath. That is exactly the roof a coating system is designed for.",
+      "Houston roofs age on heat and UV more than on storms. A membrane can look finished at fifteen years and still have a dry, sound deck underneath. That's exactly the roof a coating system is designed for.",
     nearby: ["Energy Corridor", "Westchase", "Greenspoint", "Sharpstown", "East End"],
   },
   {
@@ -41,7 +41,7 @@ export const locations: Location[] = [
     intro:
       "Cypress has grown fast along the 290 corridor, and a lot of its retail and light-industrial roof stock hit the age where owners start getting replacement quotes.",
     buildingStock:
-      "Newer retail centers, self-storage, light industrial and a large volume of suburban residential. A genuine mix of low-slope commercial and steep-slope shingle.",
+      "Newer retail centers, self-storage, light industrial and a large volume of suburban residential. An even mix of low-slope commercial and steep-slope shingle.",
     localAngle:
       "Much of the commercial roof here is young enough that restoration is clearly the right call. Replacing a fifteen-year-old TPO roof with a dry deck is the most expensive mistake an owner can make.",
     nearby: ["Fairfield", "Bridgeland", "Copperfield", "US-290 corridor"],
@@ -51,7 +51,7 @@ export const locations: Location[] = [
     name: "Katy",
     county: "Harris, Fort Bend & Waller Counties",
     intro:
-      "Our home base. We are headquartered in Katy, which means the shortest response time in our whole coverage map, for inspections and for storm make-safe work.",
+      "Our home base. Crews roll out of Katy every morning, which makes it the fastest response on our coverage map, for inspections and for storm make-safe work.",
     buildingStock:
       "Energy Corridor office and flex space, I-10 distribution buildings, retail along the Grand Parkway, plus a very large residential base.",
     localAngle:
@@ -63,7 +63,7 @@ export const locations: Location[] = [
     name: "Missouri City",
     county: "Fort Bend County",
     intro:
-      "Missouri City combines established neighborhoods with newer retail and institutional buildings. It is a service area where we do genuinely mixed commercial and residential work.",
+      "Missouri City combines established neighborhoods with newer retail and institutional buildings. We work both sides of the business here, commercial and residential.",
     buildingStock:
       "Neighborhood retail, schools, churches and community buildings alongside a deep residential base of shingle roofs.",
     localAngle:
@@ -91,7 +91,7 @@ export const locations: Location[] = [
     buildingStock:
       "Light industrial and contractor yards, medical buildings, a historic downtown retail core, and growing suburban residential.",
     localAngle:
-      "Older downtown buildings often have layered roof systems where a moisture survey is essential. You cannot coat what you have not tested.",
+      "Older downtown buildings often have layered roof systems where a moisture survey is essential. You can't coat what you haven't tested.",
     nearby: ["Magnolia border", "SH-249 corridor", "Downtown Tomball"],
   },
   {
@@ -127,7 +127,7 @@ export const locations: Location[] = [
     buildingStock:
       "Medical office buildings, retail centers, corporate campuses along SH-288, and extensive newer residential.",
     localAngle:
-      "Medical and professional buildings cannot close for a tear-off. Coating systems go down while the building stays open, which is usually the deciding factor here.",
+      "Medical and professional buildings can't close for a tear-off. Coating systems go down while the building stays open, which is usually the deciding factor here.",
     nearby: ["Silverlake", "Shadow Creek Ranch", "SH-288 corridor"],
   },
   {
@@ -139,7 +139,7 @@ export const locations: Location[] = [
     buildingStock:
       "Hospitals and medical office, hotels, retail along the I-45 Gulf Freeway, and aerospace-adjacent office and light industrial.",
     localAngle:
-      "Proximity to the coast means wind-driven rain finds any weak seam or flashing detail. Most Webster leaks we trace are detail failures, not membrane failures. That is a repair, not a re-roof.",
+      "Proximity to the coast means wind-driven rain finds any weak seam or flashing detail. Most Webster leaks we trace are detail failures, not membrane failures. That's a repair, not a re-roof.",
     nearby: ["Clear Lake", "NASA Parkway", "League City border", "Gulf Freeway"],
   },
   {
@@ -163,7 +163,7 @@ export const locations: Location[] = [
     buildingStock:
       "Newer retail and restaurant pads, light industrial and contractor buildings, metal agricultural structures, and growing residential.",
     localAngle:
-      "Quick-service restaurants and fuel stations are common here. Small roofs that most commercial contractors will not bother with. We will, and they get the same documentation as a warehouse.",
+      "Quick-service restaurants and fuel stations are common here. Small roofs that most commercial contractors won't bother with. We do, and they get the same documentation as a warehouse.",
     nearby: ["Valley Ranch", "Porter", "Grand Parkway", "US-59 corridor"],
   },
   {
@@ -183,11 +183,11 @@ export const locations: Location[] = [
     name: "Waller",
     county: "Waller & Harris Counties",
     intro:
-      "Waller has become a genuine distribution corridor, with large-footprint warehouse buildings going up along US-290 and the Grand Parkway.",
+      "Waller has turned into a distribution corridor, with large-footprint warehouse buildings going up along US-290 and the Grand Parkway.",
     buildingStock:
       "Large distribution and warehouse space, agricultural metal buildings, and small-town commercial in the older core.",
     localAngle:
-      "Large-footprint distribution roofs are exactly the 100+ square projects we are set up for, and the scale where a coating system saves the most money per square foot.",
+      "Large-footprint distribution roofs are exactly the 100+ square projects we're set up for, and the scale where a coating system saves the most money per square foot.",
     nearby: ["US-290 corridor", "Prairie View", "Hempstead border"],
   },
   {
@@ -235,7 +235,7 @@ export const locations: Location[] = [
     buildingStock:
       "Neighborhood retail and restaurant pads, churches and community buildings, and a very large base of shingle-roofed housing.",
     localAngle:
-      "Most Fresno inquiries are residential storm damage. The inspection is free, and we will tell you plainly when a claim is not worth filing.",
+      "Most Fresno inquiries are residential storm damage. The inspection is free, and we'll tell you when a claim isn't worth filing.",
     nearby: ["Arcola", "Sienna border", "FM 521", "Missouri City border"],
   },
 ];

@@ -234,7 +234,7 @@ export function CoverageMap({
                 coverage.
               </h3>
               <p className="text-[0.92rem] leading-[1.7] text-white/85">
-                Type your city or neighborhood and we&apos;ll tell you straight
+                Type your city or neighborhood and we&apos;ll tell you right
                 away whether we cover it, and what we see on roofs there.
               </p>
             </div>

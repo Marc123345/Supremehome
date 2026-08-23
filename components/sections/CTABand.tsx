@@ -21,13 +21,13 @@ export function CTABand() {
               </p>
             </Reveal>
             <h2 className="display-lg text-white mb-5">
-              <RevealWords text="Get a straight answer on your roof" />
+              <RevealWords text="Get an answer on your roof" />
             </h2>
             <Reveal delay={0.15}>
               <p className="text-[1.05rem] leading-[1.75] text-white/82 max-w-xl">
-                We will inspect it, document it, and tell you whether it needs a
-                repair, a restoration or a replacement, in writing, before
-                anyone talks price.
+                We&rsquo;ll inspect it, document it, and tell you whether it
+                needs a repair, a restoration or a replacement, in writing,
+                before anyone talks price.
               </p>
             </Reveal>
           </div>

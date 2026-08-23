@@ -71,7 +71,7 @@ const HOMEOWNER_STEPS = [
   },
   {
     n: "02",
-    title: "Straight answer",
+    title: "Written answer",
     body: "Repair or replace, and why. If your roof has years left in it, we'll say so.",
   },
   {
@@ -115,7 +115,7 @@ export default function ResidentialRoofingPage() {
       <PageHero
         breadcrumb="Residential"
         eyebrow="Homes across Greater Houston"
-        title="Residential roofing, done straight"
+        title="Residential roofing, without the hard sell"
         intro="Same crews, same standards, scaled to a house. You get a free inspection, a written answer on repair-or-replace, and a 5-year leak protection warranty on our work."
         image={media.residentialTearOff}
         imageAlt="A roofer removing damaged shingles from a Texas brick home"
@@ -148,8 +148,8 @@ export default function ResidentialRoofingPage() {
               <Reveal delay={0.15}>
                 <p className="lede mb-8">
                   Storm damage, an aging roof, or a leak you can&rsquo;t track
-                  down. We inspect for free and tell you straight whether
-                  it&rsquo;s a repair or a replacement.
+                  down. We inspect for free and tell you whether it&rsquo;s a
+                  repair or a replacement.
                 </p>
               </Reveal>
 

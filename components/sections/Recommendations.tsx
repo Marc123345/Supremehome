@@ -179,7 +179,7 @@ export function Recommendations() {
               href="/contact"
               className="btn btn-primary group shrink-0"
             >
-              Get a straight answer
+              Get it in writing
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"

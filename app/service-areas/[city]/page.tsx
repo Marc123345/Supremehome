@@ -38,7 +38,7 @@ export async function generateMetadata({
 
   return {
     title: `Commercial & Residential Roofing in ${location.name}, TX`,
-    description: `Commercial roof restoration and replacement in ${location.name}, ${location.county}. Free roof assessment and written report from ${site.name} — insured to $2M and manufacturer certified.`,
+    description: `Commercial roof restoration and replacement in ${location.name}, ${location.county}. Free roof assessment and written report from ${site.name}, insured to $2M and manufacturer certified.`,
     alternates: { canonical: `/service-areas/${location.slug}` },
     openGraph: {
       title: `Roofing in ${location.name}, TX | ${site.shortName}`,
@@ -129,7 +129,7 @@ export default async function LocationPage({
                     Every {location.name} inquiry starts the same way: a free
                     inspection, core samples where the roof warrants them, and a
                     written report telling you whether this is a repair, a
-                    restoration or a genuine replacement.
+                    restoration or a replacement.
                   </p>
                 </div>
               </Reveal>
@@ -207,7 +207,7 @@ export default async function LocationPage({
       <ServicesSlider
         eyebrow={`Services in ${location.name}`}
         title={`What we do in ${location.name}`}
-        intro={`Commercial restoration and coatings, repairs, storm work and full replacement — plus residential roofing across ${location.county}.`}
+        intro={`Commercial restoration and coatings, repairs, storm work and full replacement, plus residential roofing across ${location.county}.`}
       />
 
       <Credentials />

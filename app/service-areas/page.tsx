@@ -9,7 +9,7 @@ import { HouseEyebrow } from "@/components/ui/HouseMark";
 export const metadata: Metadata = {
   alternates: { canonical: "/service-areas" },
   title: "Service Areas: Commercial & Residential Roofing Across Greater Houston",
-  description: `Supreme Home Roofing serves ${serviceAreas
+  description: `${site.name} covers ${serviceAreas
     .slice(0, 8)
     .join(", ")} and more across the Greater Houston area from our ${site.address.city}, TX base.`,
 };
@@ -48,7 +48,7 @@ export default function ServiceAreasPage() {
                 <h3 className="display-sm mb-3">Same-week inspections</h3>
                 <p className="text-[0.93rem] leading-[1.75] text-black/58">
                   Inside the service area we aim to have someone on your roof
-                  within the week. Sooner when there is active water coming in.
+                  within the week. Sooner when there&rsquo;s water coming in.
                 </p>
               </div>
             </RevealItem>

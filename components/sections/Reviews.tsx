@@ -92,7 +92,7 @@ export function Reviews() {
                 The <br> is what forces the break — a plain space would let
                 the two halves reflow onto one line at wide viewports. */}
             <h2 className="display-lg">
-              <RevealWords text="Don’t take our word" />
+              <RevealWords text="Take their word" />
               <br />
               <span className="italic text-[var(--supreme-red)]">
                 <RevealWords text="for it." delay={0.14} />
@@ -101,10 +101,10 @@ export function Reviews() {
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
             <p className="lede">
-              These are real Google reviews for Supreme, earned across the
-              Houston area. Our commercial portfolio is younger than the
-              company is, and we&rsquo;d rather show you the track record we
-              actually have than dress it up as something else.
+              Every quote here sits on our Google profile, word for word. Our
+              commercial portfolio is younger than the company is, and
+              we&rsquo;d rather show you the track record we have than dress
+              it up as something else.
             </p>
           </Reveal>
         </div>

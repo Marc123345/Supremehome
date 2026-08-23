@@ -48,7 +48,7 @@ export default function CommercialRoofingPage() {
         filter="commercial"
         eyebrow="How we work"
         title="Assess, then restore or replace"
-        intro="Three stages, not a menu of services. Which one your building needs is decided by what we document on the roof."
+        intro="One engagement in three stages. What we document on the roof decides which of them your building needs."
       />
 
       <WhoWeServe />

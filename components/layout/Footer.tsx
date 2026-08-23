@@ -49,7 +49,7 @@ export function Footer() {
           <p className="text-[0.95rem] leading-[1.75] text-white/90 max-w-md mb-10">
             Commercial roof restoration and replacement across Greater Houston.
             We assess the roof you have, then recommend restoring it or
-            replacing it based on what we actually find up there.
+            replacing it based on what we find up there.
           </p>
 
           <h3 className="display-sm text-white mb-5">Commercial roofing</h3>
