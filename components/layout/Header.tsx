@@ -59,7 +59,12 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-[100] bg-white h-[76px] lg:h-[96px] border-b border-black/10">
+      {/* Mobile is one continuous black bar: logo left, menu button right.
+          Desktop keeps the white header with the black brand block behind the
+          logo. Below lg the block used to be the only dark thing on the bar,
+          so the header read as a black rectangle around the logo and then
+          white space with a bordered button floating in it. */}
+      <header className="sticky top-0 z-[100] bg-[var(--ink)] lg:bg-white h-[76px] lg:h-[96px] lg:border-b lg:border-black/10">
         <div className="relative h-full flex items-center gap-6 pr-[var(--gutter)]">
           {/* The brand block is sized by the logo inside it rather than a
               fixed clamp. As a fixed width it ran under the first nav item,
@@ -69,8 +74,7 @@ export function Header() {
           <Link
             href="/"
             aria-label={`${site.name} — home`}
-            className="tap relative z-10 shrink-0 h-full flex items-center pl-[var(--gutter)] pr-8 lg:pr-12"
-            style={{ background: "var(--ink)" }}
+            className="tap relative z-10 shrink-0 h-full flex items-center pl-[var(--gutter)] lg:pr-12 lg:bg-[var(--ink)]"
           >
             <Logo variant="light" height={40} priority />
           </Link>
@@ -252,14 +256,14 @@ export function Header() {
           <button
             onClick={() => setMenuOpen(true)}
             aria-label="Open menu"
-            className="lg:hidden p-2.5 border border-black/10 hover:bg-[var(--supreme-red)] hover:border-[var(--supreme-red)] hover:text-white transition-colors"
+            className="lg:hidden ml-auto p-2.5 text-white border border-white/25 hover:bg-[var(--supreme-red)] hover:border-[var(--supreme-red)] transition-colors"
           >
             <Menu size={22} />
           </button>
         </div>
 
         {/* Hairline */}
-        <div className="absolute bottom-0 inset-x-0 h-px bg-black/12" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-white/12 lg:bg-black/12" />
       </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
