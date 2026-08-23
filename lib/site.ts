@@ -249,7 +249,7 @@ export const restorationScope = [
   },
   {
     title: "Closeout",
-    body: "Photo documentation, warranty paperwork, and a walkthrough before we leave.",
+    body: "Photo documentation, any applicable warranty paperwork, and a walkthrough before we leave.",
   },
 ] as const;
 

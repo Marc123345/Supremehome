@@ -99,8 +99,10 @@ export default function AboutPage() {
                       ["Doing business as", site.dba],
                       ["Based in", `${site.address.city}, Texas`],
                       ["Focus", "Commercial roof restoration & replacement"],
-                      ["Systems", "Metal, single-ply, mod-bit, BUR, low-slope"],
-                      ["Insurance", "General liability to $2M"],
+                      [
+                        "Systems assessed",
+                        "Metal, single-ply, mod-bit, BUR, low-slope",
+                      ],
                     ].map(([label, value]) => (
                       <div
                         key={label}

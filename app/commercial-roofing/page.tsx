@@ -35,7 +35,7 @@ export default function CommercialRoofingPage() {
         breadcrumb="Commercial"
         eyebrow="Restoration & Replacement"
         title="Commercial roof restoration and replacement"
-        intro="Warehouses, retail centers, churches, gas stations and restaurants across Greater Houston. We assess the roof you have, then tell you whether restoring it or replacing it is the better use of your money."
+        intro="Warehouses, retail centers, churches, gas stations and restaurants across Greater Houston. We assess the roof you have, document its current condition, and recommend coating and protection, restoration, or replacement based on what that assessment supports."
         image={media.heroCoating}
         imageAlt="A technician spray-applying a restoration coating across a commercial roof"
       />

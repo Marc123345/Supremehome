@@ -87,8 +87,8 @@ export function Credentials() {
               <p className="text-[1rem] leading-[1.8] text-white/60">
                 Our commercial portfolio is still growing, and we&rsquo;re not
                 going to pretend otherwise. What we can point at is the
-                certification, the process, and the people whose name is on
-                the work.
+                process, the specification we work to, and the people whose
+                name is on the work.
               </p>
             </Reveal>
 

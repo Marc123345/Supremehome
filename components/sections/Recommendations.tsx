@@ -66,8 +66,9 @@ export function Recommendations() {
             <p className="text-[1.02rem] leading-[1.8] text-white/65">
               A roof near the end of its life doesn&rsquo;t automatically need
               replacing. It also doesn&rsquo;t automatically qualify for a
-              coating. We assess it first, then tell you which of these two it
-              is, and why.
+              coating. We assess it first. What that assessment supports is one
+              of three paths — two of them restore the roof you have, the third
+              replaces it.
             </p>
           </Reveal>
         </div>

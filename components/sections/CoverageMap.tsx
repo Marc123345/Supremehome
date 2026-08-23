@@ -272,7 +272,7 @@ export function CoverageMap({
                     $0
                   </span>
                   <span className="eyebrow text-black/40 block mt-2.5">
-                    Cost of an inspection &amp; written assessment
+                    Cost of a commercial roof assessment
                   </span>
                 </div>
                 <ShieldCheck

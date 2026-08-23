@@ -126,7 +126,7 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ color: "rgba(255,255,255,0.72)", fontSize: 24 }}>
-            Free roof inspection · Insured to $2M
+            Free commercial roof assessment · Greater Houston
           </div>
           <div style={{ color: "#fff", fontSize: 28, fontWeight: 700 }}>
             {site.phone}

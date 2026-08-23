@@ -55,8 +55,8 @@ export function RestorationScope() {
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
             <p className="lede">
               A restoration isn&rsquo;t a coating with some repairs bolted onto
-              the invoice. Everything below is part of the same job, priced
-              together, warranted together.
+              the invoice. Everything below is identified and priced as one
+              project scope.
             </p>
           </Reveal>
         </div>

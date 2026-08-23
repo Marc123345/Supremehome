@@ -17,7 +17,7 @@ type Faq = { q: string; a: string };
  */
 export function FAQ({
   items,
-  intro = "Including the one most roofers would rather you didn't ask.",
+  intro = "What owners and property managers ask before the first site visit.",
 }: {
   items?: readonly Faq[];
   intro?: string;
