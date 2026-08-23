@@ -83,7 +83,7 @@ export function FAQ({
                           <dd
                             className="overflow-hidden"
                           >
-                            <p className="pb-7 pr-12 text-[0.97rem] leading-[1.8] text-black/62">
+                            <p className="pb-7 pr-12 text-[1.02rem] leading-[1.8] text-black">
                               {faq.a}
                             </p>
                           </dd>

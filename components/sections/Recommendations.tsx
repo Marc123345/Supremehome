@@ -62,7 +62,7 @@ export function Recommendations() {
           </div>
 
           <Reveal direction="left" delay={0.2} className="lg:col-span-5">
-            <p className="text-[1.02rem] leading-[1.8] text-white/65">
+            <p className="text-[1.02rem] leading-[1.8] text-white">
               A roof near the end of its life doesn&rsquo;t automatically need
               replacing. It also doesn&rsquo;t automatically qualify for a
               coating. We assess it first. What that assessment supports is one
@@ -106,7 +106,7 @@ export function Recommendations() {
                 />
 
                 <h3 className="display-md mb-4">{rec.title}</h3>
-                <p className="text-[0.98rem] leading-[1.8] text-white/62">
+                <p className="text-[1.05rem] leading-[1.8] text-white">
                   {rec.body}
                 </p>
               </div>
@@ -122,7 +122,7 @@ export function Recommendations() {
             </h3>
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
-            <p className="text-[0.98rem] leading-[1.8] text-white/60">
+            <p className="text-[1.05rem] leading-[1.8] text-white">
               These aren&rsquo;t three packages to choose between. Which one
               your building gets depends on what the assessment turns up.
             </p>
@@ -146,7 +146,7 @@ export function Recommendations() {
                     className="text-[0.66rem] font-bold uppercase px-2.5 py-1 border"
                     style={{
                       letterSpacing: "0.16em",
-                      color: "rgba(255,255,255,0.45)",
+                      color: "rgba(255,255,255,0.75)",
                       borderColor: "rgba(255,255,255,0.16)",
                     }}
                   >
@@ -155,7 +155,7 @@ export function Recommendations() {
                 </div>
 
                 <h4 className="display-sm mb-4">{path.title}</h4>
-                <p className="text-[0.95rem] leading-[1.75] text-white/60">
+                <p className="text-[1.02rem] leading-[1.75] text-white">
                   {path.body}
                 </p>
               </div>
@@ -166,10 +166,16 @@ export function Recommendations() {
         {/* ── Closing line ── */}
         <Reveal delay={0.2}>
           <div className="mt-12 lg:mt-16 flex flex-wrap items-center gap-x-6 gap-y-4 justify-between p-7 lg:p-9 border border-white/10 bg-white/[0.03]">
-            <p className="text-[1.05rem] lg:text-[1.15rem] leading-[1.6] font-display italic max-w-2xl">
-              If the deck is wet and the insulation is gone, a coating is money
-              thrown at a roof that can&rsquo;t hold it. We&rsquo;ll put that in
-              writing rather than sell you one.
+            {/* Two problems here, both fixed. The line said a coating on a
+                failed roof "is money thrown at" it — the banned phrase from
+                the correction package, reworded rather than removed. And it
+                was set in the condensed display face, italic, at body size:
+                the least legible combination on the site, in the one place
+                that is arguing for the company's honesty. */}
+            <p className="text-[1.1rem] lg:text-[1.2rem] leading-[1.65] max-w-2xl">
+              When the documented condition does not support restoration, we
+              say so and price the replacement. You get that in writing either
+              way.
             </p>
             <a
               href="/contact"

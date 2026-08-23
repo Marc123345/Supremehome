@@ -42,7 +42,7 @@ export function WhoWeServe() {
                       <Icon size={23} className="text-[var(--supreme-red)]" />
                     </span>
                     <h3 className="display-sm mb-3">{client.title}</h3>
-                    <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                    <p className="text-[1rem] leading-[1.7] text-black">
                       {client.body}
                     </p>
                   </div>

@@ -119,7 +119,7 @@ export default async function LocationPage({
                   top of lib/locations.ts. What replaces them is the approved
                   neutral language, which is true of every roof we assess. */}
               <Reveal delay={0.15}>
-                <div className="space-y-6 text-[1rem] leading-[1.85] text-black/68">
+                <div className="space-y-6 text-[1rem] leading-[1.85] text-black">
                   <p>
                     Commercial roofs can perform differently even within the
                     same area. The recommended path depends on the specific
@@ -127,7 +127,7 @@ export default async function LocationPage({
                     integrity, compatibility, detailing needs, and the
                     owner&rsquo;s objectives.
                   </p>
-                  <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black/75">
+                  <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black">
                     Every {location.name} inquiry starts the same way: a
                     no-cost assessment of the roof you have, documented, with a
                     recommendation of coating and protection, restoration, or
@@ -161,7 +161,7 @@ export default async function LocationPage({
                       {location.nearby.map((area) => (
                         <li
                           key={area}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/[0.09] text-[0.82rem]"
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/[0.09] text-[1rem]"
                         >
                           <MapPin
                             size={12}
@@ -189,7 +189,7 @@ export default async function LocationPage({
                               className="text-white"
                             />
                           </span>
-                          <span className="text-[0.88rem] leading-[1.6] text-white/72">
+                          <span className="text-[1.02rem] leading-[1.6] text-white">
                             {benefit}
                           </span>
                         </li>

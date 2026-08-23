@@ -63,10 +63,10 @@ export function DeeperLinks() {
               className="group flex flex-col bg-white p-7 lg:p-8 transition-colors hover:bg-[var(--ink-05)]"
             >
               <h3 className="display-sm mb-3">{link.title}</h3>
-              <p className="text-[0.9rem] leading-[1.7] text-black/58 mb-6">
+              <p className="text-[1rem] leading-[1.7] text-black mb-6">
                 {link.body}
               </p>
-              <span className="mt-auto inline-flex items-center gap-2 text-[0.86rem] font-bold text-[var(--supreme-red)]">
+              <span className="mt-auto inline-flex items-center gap-2 text-[1.02rem] font-bold text-[var(--supreme-red)]">
                 Read it
                 <ArrowRight size={15} aria-hidden="true" />
               </span>

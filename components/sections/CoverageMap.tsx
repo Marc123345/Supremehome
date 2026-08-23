@@ -87,7 +87,7 @@ export function CoverageMap({
               <span className="eyebrow text-[var(--supreme-red-bright)] bg-[var(--supreme-red)]/12 px-2.5 py-1">
                 {eyebrow}
               </span>
-              <span className="eyebrow text-white/40">
+              <span className="eyebrow text-white/75">
                 Greater Houston · {locations.length} communities
               </span>
             </div>
@@ -99,7 +99,7 @@ export function CoverageMap({
               </span>
             </h2>
           </div>
-          <p className="text-[0.92rem] text-white/55 max-w-[300px] leading-[1.75] italic border-l border-white/10 pl-6">
+          <p className="text-[1rem] text-white max-w-[300px] leading-[1.75] italic border-l border-white/10 pl-6">
             {quote ??
               `“Crews run out of ${site.address.city}. Commercial work travels further. If your building sits outside the map, call and ask.”`}
           </p>
@@ -112,7 +112,7 @@ export function CoverageMap({
             className="md:col-span-8 bg-[var(--ink-80)] border border-white/10 p-6 lg:p-8 relative overflow-hidden"
           >
             <div className="flex items-center justify-between gap-4 mb-8">
-              <h3 className="eyebrow text-white/45 flex items-center gap-2">
+              <h3 className="eyebrow text-white/75 flex items-center gap-2">
                 <Globe size={13} className="text-[var(--supreme-red-bright)]" />
                 Active service area map
               </h3>
@@ -164,7 +164,7 @@ export function CoverageMap({
                         : "0 0 18px rgba(224,1,22,0.32)",
                     }}
                   >
-                    <span className="font-display text-[0.82rem] leading-none uppercase">
+                    <span className="font-display text-[1rem] leading-none uppercase">
                       {loc.name}
                     </span>
                     {tag && (
@@ -188,13 +188,13 @@ export function CoverageMap({
                 <div
                   className="hidden lg:block absolute top-6 right-6 max-w-[270px] bg-white text-black p-5 shadow-2xl pointer-events-none z-20"
                 >
-                  <p className="eyebrow text-black/40 mb-1.5">
+                  <p className="eyebrow text-black/70 mb-1.5">
                     {COUNTY_SHORT(hoveredLocation.county)}
                   </p>
                   <p className="display-sm leading-none mb-2.5">
                     {hoveredLocation.name}
                   </p>
-                  <p className="text-[0.78rem] leading-[1.55] text-black/62">
+                  <p className="text-[1rem] leading-[1.55] text-black">
                     {hoveredLocation.nearby.slice(0, 3).join(" · ")}
                   </p>
                   <span className="block mt-3 pt-3 border-t border-black/10 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[var(--supreme-red)]">
@@ -218,7 +218,7 @@ export function CoverageMap({
                 <br />
                 coverage.
               </h3>
-              <p className="text-[0.92rem] leading-[1.7] text-white/85">
+              <p className="text-[1rem] leading-[1.7] text-white">
                 Enter your city or neighborhood to check current service
                 coverage.
               </p>
@@ -238,7 +238,7 @@ export function CoverageMap({
               <span className="display-md text-white leading-none">
                 {locations.length}
               </span>
-              <span className="eyebrow text-white/40 mt-2.5">
+              <span className="eyebrow text-white/75 mt-2.5">
                 Communities covered
               </span>
             </div>
@@ -246,7 +246,7 @@ export function CoverageMap({
               <span className="display-md text-[var(--supreme-red-bright)] leading-none">
                 {counties.size}
               </span>
-              <span className="eyebrow text-white/40 mt-2.5">
+              <span className="eyebrow text-white/75 mt-2.5">
                 Texas counties
               </span>
             </div>
@@ -256,7 +256,7 @@ export function CoverageMap({
                   <span className="display-md text-[var(--ink)] leading-none block">
                     $0
                   </span>
-                  <span className="eyebrow text-black/40 block mt-2.5">
+                  <span className="eyebrow text-black/70 block mt-2.5">
                     Cost of a commercial roof assessment
                   </span>
                 </div>
@@ -275,7 +275,7 @@ export function CoverageMap({
               <h3 className="eyebrow text-[var(--supreme-red-bright)] mb-5">
                 Who we go out to
               </h3>
-              <p className="text-[0.93rem] leading-[1.75] text-white/50">
+              <p className="text-[1rem] leading-[1.75] text-white/75">
                 Commercial buildings across Greater Houston with roofs coming
                 up on the end of their service life. Any system, any size.
               </p>
@@ -288,7 +288,7 @@ export function CoverageMap({
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 group">
                   <span className="mt-[7px] w-1 h-1 shrink-0 bg-[var(--supreme-red)] transition-transform group-hover:scale-150" />
-                  <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-white/65 group-hover:text-white transition-colors">
+                  <span className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-white group-hover:text-white transition-colors">
                     {item}
                   </span>
                 </li>

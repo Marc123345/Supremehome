@@ -94,15 +94,15 @@ export default function ResidentialRoofingPage() {
           commercial side of the business, per feedback section 1. */}
       <div className="bg-[var(--ink-05)] border-b border-black/10">
         <div className="shell py-3 flex flex-wrap items-center justify-between gap-3">
-          <p className="text-[0.82rem] text-black/55">
-            You&rsquo;re on the <strong className="font-semibold text-black/75">
+          <p className="text-[1rem] text-black">
+            You&rsquo;re on the <strong className="font-semibold text-black">
               {residentialBrand.name}
             </strong>{" "}
             side. Roofing for homes.
           </p>
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 text-[0.82rem] font-semibold text-black/55 hover:text-[var(--supreme-red)] transition-colors"
+            className="group inline-flex items-center gap-2 text-[1rem] font-semibold text-black hover:text-[var(--supreme-red)] transition-colors"
           >
             <ArrowLeft
               size={14}
@@ -179,7 +179,7 @@ export default function ResidentialRoofingPage() {
                   <RevealItem key={w.title} className="h-full">
                     <div className="edge-card h-full p-7">
                       <h3 className="display-sm mb-3">{w.title}</h3>
-                      <p className="text-[0.9rem] leading-[1.7] text-black/58">
+                      <p className="text-[1rem] leading-[1.7] text-black">
                         {w.body}
                       </p>
                     </div>
@@ -223,11 +223,11 @@ export default function ResidentialRoofingPage() {
             {HOMEOWNER_STEPS.map((step) => (
               <RevealItem key={step.n} className="h-full">
                 <div className="h-full p-7 border-t-2 border-[var(--supreme-red)] bg-[var(--ink-05)]">
-                  <span className="font-display text-[2rem] leading-none text-black/15">
+                  <span className="font-display text-[2rem] leading-none text-black/70">
                     {step.n}
                   </span>
                   <h3 className="display-sm mt-5 mb-3">{step.title}</h3>
-                  <p className="text-[0.9rem] leading-[1.7] text-black/58">
+                  <p className="text-[1rem] leading-[1.7] text-black">
                     {step.body}
                   </p>
                 </div>

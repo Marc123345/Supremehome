@@ -46,7 +46,7 @@ export default function ServiceAreasPage() {
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
                 <h3 className="display-sm mb-3">Scheduling an assessment</h3>
-                <p className="text-[0.93rem] leading-[1.75] text-black/58">
+                <p className="text-[1rem] leading-[1.75] text-black">
                   Scheduling depends on location, roof access, urgency,
                   weather, project size and current workload. We confirm timing
                   with you when you call.
@@ -56,7 +56,7 @@ export default function ServiceAreasPage() {
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
                 <h3 className="display-sm mb-3">Storm response</h3>
-                <p className="text-[0.93rem] leading-[1.75] text-black/58">
+                <p className="text-[1rem] leading-[1.75] text-black">
                   After a hail or wind event we prioritize make-safe work and
                   emergency tarping across the whole coverage map.
                 </p>
@@ -65,7 +65,7 @@ export default function ServiceAreasPage() {
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
                 <h3 className="display-sm mb-3">Portfolio accounts</h3>
-                <p className="text-[0.93rem] leading-[1.75] text-black/58">
+                <p className="text-[1rem] leading-[1.75] text-black">
                   Managing sites across several cities? We survey the whole
                   portfolio and give you one prioritized capital plan.
                 </p>
@@ -75,7 +75,7 @@ export default function ServiceAreasPage() {
 
           <Reveal delay={0.2}>
             <div className="mt-10 p-8 bg-[var(--ink-05)] border-l-[4px] border-[var(--supreme-red)]">
-              <p className="text-[0.98rem] leading-[1.8] text-black/70">
+              <p className="text-[1.05rem] leading-[1.8] text-black">
                 Based at {site.address.full}. Commercial inquiries outside the
                 listed cities are welcome. Restoration projects
                 regularly justify the travel.

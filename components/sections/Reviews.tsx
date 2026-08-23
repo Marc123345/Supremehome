@@ -44,7 +44,7 @@ function ReviewCard({ review }: { review: Review }) {
         />
       </div>
 
-      <blockquote className="text-[0.92rem] leading-[1.7] text-black/72 mb-5">
+      <blockquote className="text-[1rem] leading-[1.7] text-black mb-5">
         {review.quote}
       </blockquote>
 
@@ -53,10 +53,10 @@ function ReviewCard({ review }: { review: Review }) {
           <User size={15} className="text-[var(--supreme-red)]" />
         </span>
         <span className="min-w-0">
-          <span className="block text-[0.88rem] font-bold truncate">
+          <span className="block text-[1.02rem] font-bold truncate">
             {review.name}
           </span>
-          <span className="block text-[0.72rem] uppercase tracking-[0.14em] text-black/40">
+          <span className="block text-[0.72rem] uppercase tracking-[0.14em] text-black/70">
             {review.service}
           </span>
         </span>
@@ -132,7 +132,7 @@ export function Reviews() {
               href={googleProfile.shareUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="tap-inline group inline-flex items-center gap-2 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
+              className="tap-inline group inline-flex items-center gap-2 mt-7 font-bold text-[1rem] text-[var(--supreme-red)]"
             >
               Read every review on Google
               <ArrowUpRight
@@ -168,7 +168,7 @@ export function Reviews() {
                       size={16}
                       className="shrink-0 mt-1 text-[var(--supreme-red-bright)]"
                     />
-                    <p className="text-[0.93rem] leading-[1.6] text-white/85">
+                    <p className="text-[1rem] leading-[1.6] text-white">
                       {site.address.street}
                       <br />
                       {site.address.city}, {site.address.state}{" "}

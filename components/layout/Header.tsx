@@ -98,7 +98,7 @@ export function Header() {
                       aria-expanded={areasOpen}
                       aria-haspopup="true"
                       onFocus={openAreas}
-                      className="flex items-center gap-1.5 text-[0.94rem] font-semibold tracking-[0.01em] transition-colors hover:text-[var(--supreme-red)]"
+                      className="flex items-center gap-1.5 text-[1rem] font-semibold tracking-[0.01em] transition-colors hover:text-[var(--supreme-red)]"
                       style={{
                         color: active ? "var(--supreme-red)" : "var(--ink-80)",
                       }}
@@ -128,7 +128,7 @@ export function Header() {
                                 <Link
                                   href={AREAS_HREF}
                                   onClick={() => setAreasOpen(false)}
-                                  className="group inline-flex items-center gap-1.5 text-[0.78rem] font-bold text-black/55 hover:text-[var(--supreme-red)] transition-colors shrink-0"
+                                  className="group inline-flex items-center gap-1.5 text-[1rem] font-bold text-black hover:text-[var(--supreme-red)] transition-colors shrink-0"
                                 >
                                   View coverage map
                                   <ArrowUpRight
@@ -156,9 +156,9 @@ export function Header() {
                                       >
                                         <MapPin
                                           size={12}
-                                          className="shrink-0 text-black/20 transition-colors group-hover:text-[var(--supreme-red)]"
+                                          className="shrink-0 text-black/70 transition-colors group-hover:text-[var(--supreme-red)]"
                                         />
-                                        <span className="text-[0.86rem] font-semibold group-hover:text-[var(--supreme-red)] transition-colors">
+                                        <span className="text-[1.02rem] font-semibold group-hover:text-[var(--supreme-red)] transition-colors">
                                           {loc.name}
                                         </span>
                                       </Link>
@@ -169,12 +169,12 @@ export function Header() {
                             </div>
 
                             <div className="flex items-center justify-between gap-4 px-7 py-4 bg-[var(--ink-05)] border-t border-black/[0.07]">
-                              <p className="text-[0.8rem] text-black/55">
+                              <p className="text-[1rem] text-black">
                                 Not listed? We travel for commercial work.
                               </p>
                               <a
                                 href={site.phoneHref}
-                                className="text-[0.84rem] font-bold text-[var(--supreme-red)] shrink-0"
+                                className="text-[1rem] font-bold text-[var(--supreme-red)] shrink-0"
                               >
                                 {site.phone}
                               </a>
@@ -190,7 +190,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-[0.94rem] font-semibold tracking-[0.01em] transition-colors hover:text-[var(--supreme-red)]"
+                  className="text-[1rem] font-semibold tracking-[0.01em] transition-colors hover:text-[var(--supreme-red)]"
                   style={{
                     color: active ? "var(--supreme-red)" : "var(--ink-80)",
                   }}
@@ -213,10 +213,10 @@ export function Header() {
                 : {})}
               className="group flex flex-col leading-tight text-right"
             >
-              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/35">
+              <span className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/70">
                 {residentialNavItem.note}
               </span>
-              <span className="text-[0.88rem] font-semibold text-black/55 transition-colors group-hover:text-[var(--supreme-red)]">
+              <span className="text-[1.02rem] font-semibold text-black transition-colors group-hover:text-[var(--supreme-red)]">
                 {residentialNavItem.label}
               </span>
             </Link>
@@ -239,7 +239,7 @@ export function Header() {
               </span>
               {/* Collapses at lg so the centered nav has room. */}
               <span className="hidden xl:block leading-tight">
-                <span className="block eyebrow text-black/45">
+                <span className="block eyebrow text-black/70">
                   Commercial roof assessment
                 </span>
                 <span className="block font-display text-[1.4rem] leading-none tracking-wide transition-colors duration-300 group-hover:text-[var(--supreme-red)]">

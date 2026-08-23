@@ -91,7 +91,7 @@ export function Preloader() {
 
             {/* Readout */}
             <div className="flex items-baseline justify-between w-full mt-4">
-              <span className="eyebrow text-white/40">
+              <span className="eyebrow text-white/75">
                 Commercial Roof Restoration
               </span>
               <span

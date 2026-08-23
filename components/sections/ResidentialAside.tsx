@@ -50,11 +50,11 @@ export function ResidentialAside() {
 
             <div className="relative flex flex-col md:flex-row md:items-center gap-7 md:gap-10 p-8 lg:p-10">
               <span className="grid place-items-center w-14 h-14 shrink-0 rounded-full bg-white border border-black/10">
-                <Home size={22} className="text-black/45" />
+                <Home size={22} className="text-black/70" />
               </span>
 
               <div className="flex-1">
-                <p className="eyebrow text-black/40 mb-2.5">
+                <p className="eyebrow text-black/70 mb-2.5">
                   A different side of the business
                 </p>
                 <h2
@@ -63,7 +63,7 @@ export function ResidentialAside() {
                 >
                   Looking for a roof on your house?
                 </h2>
-                <p className="text-[0.95rem] leading-[1.75] text-black/58 max-w-2xl">
+                <p className="text-[1.02rem] leading-[1.75] text-black max-w-2xl">
                   Residential roofing is provided separately through{" "}
                   {residentialBrand.name}. Shingle roofs, storm and hail
                   claims, and homeowner financing all live over there.

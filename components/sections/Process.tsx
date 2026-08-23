@@ -78,7 +78,7 @@ export function Process() {
 
               <Reveal delay={0.2}>
                 <div className="mt-6 p-6 bg-[var(--ink-05)] border-l-[3px] border-[var(--supreme-red)]">
-                  <p className="text-[0.95rem] leading-[1.75] text-black/70">
+                  <p className="text-[1.02rem] leading-[1.75] text-black">
                     You get the written report and the photos either way. That includes the roofs we tell you to leave alone for now.
                   </p>
                 </div>
@@ -91,12 +91,12 @@ export function Process() {
             {processSteps.map((step, i) => (
               <Reveal key={step.n} delay={i * 0.07} as="li">
                 <div className="group grid grid-cols-[auto_1fr] gap-6 lg:gap-8 py-8 border-b border-black/10 first:pt-0">
-                  <span className="font-display text-[2.4rem] leading-none text-black/15 transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
+                  <span className="font-display text-[2.4rem] leading-none text-black/70 transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
                     {step.n}
                   </span>
                   <div>
                     <h3 className="display-sm mb-2.5">{step.title}</h3>
-                    <p className="text-[0.95rem] leading-[1.75] text-black/58">
+                    <p className="text-[1.02rem] leading-[1.75] text-black">
                       {step.body}
                     </p>
                   </div>

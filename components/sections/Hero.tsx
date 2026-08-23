@@ -109,8 +109,8 @@ export function Hero() {
             </span>
           </div>
           <p
-            className="max-w-md text-[0.95rem] lg:text-[0.98rem] leading-[1.75]"
-            style={{ color: "rgba(255,255,255,0.86)" }}
+            className="max-w-md text-[1.02rem] lg:text-[1.05rem] leading-[1.75]"
+            style={{ color: "#ffffff" }}
           >
             Commercial roofs do not all require the same answer. We begin with
             the roof you have, document its current condition, and recommend
@@ -165,10 +165,10 @@ export function Hero() {
               className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1"
             >
               <span
-                className="text-[0.8rem] font-semibold uppercase"
+                className="text-[1rem] font-semibold uppercase"
                 style={{
                   letterSpacing: "0.16em",
-                  color: "rgba(255,255,255,0.55)",
+                  color: "#ffffff",
                 }}
               >
                 We assess
@@ -178,7 +178,7 @@ export function Hero() {
                   reader had to wait to learn whether their roof type was
                   covered. All five are listed at once now. */}
               <span
-                className="text-[0.8rem] font-bold uppercase tracking-[0.16em]"
+                className="text-[1rem] font-bold uppercase tracking-[0.16em]"
                 style={{ color: "var(--supreme-red-bright)" }}
               >
                 {SYSTEM_PHRASES.join(" · ")}
@@ -191,8 +191,8 @@ export function Hero() {
               {TRUST_CHIPS.map((chip) => (
                 <li
                   key={chip}
-                  className="flex items-center gap-2 text-[0.78rem] lg:text-[0.8rem] font-semibold"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
+                  className="flex items-center gap-2 text-[1rem] lg:text-[1rem] font-semibold"
+                  style={{ color: "#ffffff" }}
                 >
                   <ShieldCheck
                     size={14}
@@ -232,8 +232,8 @@ export function Hero() {
               Find the right path for your roof
             </h2>
             <p
-              className="text-[0.9rem] leading-[1.7] mb-6"
-              style={{ color: "rgba(255,255,255,0.78)" }}
+              className="text-[1rem] leading-[1.7] mb-6"
+              style={{ color: "#ffffff" }}
             >
               A commercial roof assessment documents current conditions and
               identifies whether restoration and coating are viable or
@@ -273,7 +273,7 @@ export function Hero() {
       >
         <span
           className="text-[9px] font-semibold uppercase"
-          style={{ letterSpacing: "0.22em", color: "rgba(255,255,255,0.7)" }}
+          style={{ letterSpacing: "0.22em", color: "#ffffff" }}
         >
           Scroll
         </span>

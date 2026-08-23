@@ -7,8 +7,8 @@ import { services, serviceAreas } from "@/lib/site";
 type Status = "idle" | "sending" | "sent" | "error";
 
 const FIELD =
-  "w-full bg-white border border-black/12 px-4 py-3.5 text-[0.95rem] transition-colors focus:border-[var(--supreme-red)] focus:outline-none";
-const LABEL = "block text-[0.78rem] font-bold uppercase tracking-[0.14em] mb-2";
+  "w-full bg-white border border-black/12 px-4 py-3.5 text-[1.02rem] transition-colors focus:border-[var(--supreme-red)] focus:outline-none";
+const LABEL = "block text-[1rem] font-bold uppercase tracking-[0.14em] mb-2";
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
@@ -56,7 +56,7 @@ export function ContactForm() {
               <Check size={28} strokeWidth={3} className="text-white" />
             </span>
             <h3 className="display-md mb-4">Request received</h3>
-            <p className="text-[1rem] leading-[1.75] text-black/62 max-w-md mx-auto">
+            <p className="text-[1rem] leading-[1.75] text-black max-w-md mx-auto">
               We will call you to schedule the inspection, usually the same
               business day. If it is urgent, call us directly and we will get a
               crew out sooner.
@@ -192,7 +192,7 @@ export function ContactForm() {
                   size={18}
                   className="shrink-0 mt-0.5 text-[var(--supreme-red)]"
                 />
-                <p className="text-[0.9rem] text-black/72">{error}</p>
+                <p className="text-[1rem] text-black">{error}</p>
               </div>
             )}
 
@@ -217,7 +217,7 @@ export function ContactForm() {
                   </>
                 )}
               </button>
-              <p className="text-[0.8rem] text-black/48">
+              <p className="text-[1rem] text-black/70">
                 No cost, no obligation. We never sell your details.
               </p>
             </div>

@@ -37,7 +37,7 @@ export function CTABand({
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
             <Reveal>
-              <p className="eyebrow text-white/70 mb-5">
+              <p className="eyebrow text-white mb-5">
                 No cost · No obligation
               </p>
             </Reveal>
@@ -45,7 +45,7 @@ export function CTABand({
               <RevealWords text={heading} />
             </h2>
             <Reveal delay={0.15}>
-              <p className="text-[1.05rem] leading-[1.75] text-white/82 max-w-xl">
+              <p className="text-[1.05rem] leading-[1.75] text-white max-w-xl">
                 {body}
               </p>
             </Reveal>
@@ -70,7 +70,7 @@ export function CTABand({
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
-              <p className="text-[0.8rem] text-white/65 lg:text-right mt-2">
+              <p className="text-[1rem] text-white lg:text-right mt-2">
                 {note}
               </p>
             </div>

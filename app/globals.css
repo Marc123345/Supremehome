@@ -48,8 +48,8 @@
 
   /* Type scale — fluid */
   --step--2: clamp(0.69rem, 0.67rem + 0.1vw, 0.75rem);
-  --step--1: clamp(0.83rem, 0.8rem + 0.15vw, 0.9rem);
-  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.09rem);
+  --step--1: clamp(0.9rem, 0.87rem + 0.15vw, 0.97rem);
+  --step-0: clamp(1.06rem, 1.01rem + 0.22vw, 1.15rem);
   --step-1: clamp(1.2rem, 1.14rem + 0.3vw, 1.4rem);
   --step-2: clamp(1.44rem, 1.34rem + 0.5vw, 1.8rem);
   --step-3: clamp(1.73rem, 1.57rem + 0.8vw, 2.3rem);
@@ -151,10 +151,14 @@ body {
   line-height: 1.4;
 }
 
+/* Lede paragraphs were --ink-60 (#3a3d43). Readable, but this site is read by
+   building owners and facility managers who are often doing it on a phone in
+   a parking lot, and the client asked for maximum contrast over hierarchy.
+   Body copy is now pure black; hierarchy comes from size and weight instead. */
 .lede {
   font-size: var(--step-1);
-  line-height: 1.6;
-  color: var(--ink-60);
+  line-height: 1.65;
+  color: var(--ink);
 }
 
 /* Outlined display text (hero) */

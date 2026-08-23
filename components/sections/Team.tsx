@@ -85,7 +85,7 @@ export function Team() {
                       <h3 className="display-sm mb-3">{member.role}</h3>
                     )}
 
-                    <p className="text-[0.9rem] leading-[1.7] text-black/58">
+                    <p className="text-[1rem] leading-[1.7] text-black">
                       {member.body}
                     </p>
                   </div>
@@ -99,7 +99,7 @@ export function Team() {
             own the moment real names land in lib/site.ts. */}
         {!hasRealPeople && (
           <Reveal delay={0.2}>
-            <p className="mt-8 text-[0.88rem] leading-[1.7] text-black/45 max-w-2xl">
+            <p className="mt-8 text-[1.02rem] leading-[1.7] text-black/70 max-w-2xl">
               Want to know exactly who&rsquo;s coming out to your building?
               Ask when you call. We&rsquo;ll tell you who&rsquo;s walking the
               roof and who&rsquo;s writing the report.

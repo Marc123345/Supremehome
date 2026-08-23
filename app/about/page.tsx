@@ -43,7 +43,7 @@ export default function AboutPage() {
               </h2>
 
               <Reveal delay={0.15}>
-                <div className="space-y-6 text-[1.02rem] leading-[1.85] text-black/68">
+                <div className="space-y-6 text-[1.02rem] leading-[1.85] text-black">
                   <p>
                     Aging does not automatically make a roof a viable
                     restoration candidate, and it does not automatically
@@ -69,7 +69,7 @@ export default function AboutPage() {
                     ones. Metal, TPO, mod-bit, built-up. We assess the system
                     that&rsquo;s on your building and go from there.
                   </p>
-                  <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black/78">
+                  <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black">
                     Restore when viable. Replace when necessary. That&rsquo;s
                     the whole business.
                   </p>
@@ -92,7 +92,7 @@ export default function AboutPage() {
 
                 <div className="p-7 bg-[var(--ink-05)]">
                   <h3 className="display-sm mb-4">At a glance</h3>
-                  <dl className="space-y-3.5 text-[0.9rem]">
+                  <dl className="space-y-3.5 text-[1rem]">
                     {[
                       ["Legal entity", site.legalName],
                       ["Doing business as", site.dba],
@@ -107,7 +107,7 @@ export default function AboutPage() {
                         key={label}
                         className="flex justify-between gap-4 pb-3 border-b border-black/[0.09]"
                       >
-                        <dt className="text-black/48 shrink-0">{label}</dt>
+                        <dt className="text-black/70 shrink-0">{label}</dt>
                         <dd className="font-semibold text-right">{value}</dd>
                       </div>
                     ))}

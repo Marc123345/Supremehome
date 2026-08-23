@@ -46,7 +46,7 @@ export function About() {
                     <span className="mt-0.5 shrink-0 grid place-items-center w-[22px] h-[22px] rounded-full bg-[var(--supreme-red)]">
                       <Check size={12} strokeWidth={3.5} className="text-white" />
                     </span>
-                    <p className="text-[0.96rem] leading-[1.6] text-black/72">
+                    <p className="text-[1.02rem] leading-[1.6] text-black">
                       {point}
                     </p>
                   </div>
@@ -86,7 +86,7 @@ export function About() {
                 <p className="display-md text-[var(--supreme-red-bright)] leading-none mb-2">
                   <CounterUp end={100} suffix="+" />
                 </p>
-                <p className="text-[0.84rem] leading-[1.5] text-white/62">
+                <p className="text-[1rem] leading-[1.5] text-white">
                   Built for large commercial roofs and smaller single-building
                   projects.
                 </p>
@@ -103,7 +103,7 @@ export function About() {
                 <p className="display-md text-[var(--supreme-red)] leading-none mb-3">
                   <CounterUp end={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="text-[0.86rem] leading-[1.55] text-black/55">
+                <p className="text-[1.02rem] leading-[1.55] text-black">
                   {stat.label}
                 </p>
               </div>

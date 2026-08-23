@@ -91,7 +91,7 @@ export function GoogleRating({
         </span>
 
         <span
-          className="text-[0.78rem] font-semibold whitespace-nowrap"
+          className="text-[1rem] font-semibold whitespace-nowrap"
           style={{ color: onDark ? "rgba(255,255,255,0.72)" : "var(--ink-50)" }}
         >
           {reviewCount} Google reviews

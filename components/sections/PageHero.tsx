@@ -44,7 +44,7 @@ export function PageHero({
         {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 mb-7 text-[0.78rem] text-white/55"
+          className="flex items-center gap-2 mb-7 text-[1rem] text-white"
         >
           <Link href="/" className="hover:text-white transition-colors">
             Home
@@ -63,7 +63,7 @@ export function PageHero({
         <h1 className="display-lg text-white max-w-[20ch]">{title}</h1>
 
         {intro && (
-          <p className="mt-7 max-w-2xl text-[1.05rem] leading-[1.8] text-white/72">
+          <p className="mt-7 max-w-2xl text-[1.05rem] leading-[1.8] text-white">
             {intro}
           </p>
         )}

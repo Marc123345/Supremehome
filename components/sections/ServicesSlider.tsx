@@ -69,7 +69,7 @@ export function ServicesSlider({
             </h2>
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-6">
-            <p className="text-[1.02rem] leading-[1.8] text-white/62">{intro}</p>
+            <p className="text-[1.02rem] leading-[1.8] text-white">{intro}</p>
           </Reveal>
         </div>
 
@@ -88,14 +88,14 @@ export function ServicesSlider({
                 {card.category}
               </p>
               <h3 className="display-sm mb-4">{card.title}</h3>
-              <p className="text-[0.92rem] leading-[1.75] text-white/62 mb-6">
+              <p className="text-[1rem] leading-[1.75] text-white mb-6">
                 {card.blurb}
               </p>
               <ul className="space-y-2.5 mb-7">
                 {(card.bullets ?? []).map((b) => (
                   <li
                     key={b}
-                    className="flex gap-3 text-[0.88rem] leading-[1.6] text-white/75"
+                    className="flex gap-3 text-[1.02rem] leading-[1.6] text-white"
                   >
                     <span
                       aria-hidden="true"
@@ -107,7 +107,7 @@ export function ServicesSlider({
               </ul>
               <Link
                 href={card.href}
-                className="mt-auto inline-flex items-center gap-2 text-[0.88rem] font-bold text-[var(--supreme-red-bright)] hover:underline"
+                className="mt-auto inline-flex items-center gap-2 text-[1.02rem] font-bold text-[var(--supreme-red-bright)] hover:underline"
               >
                 {card.title}
                 <ArrowRight size={15} aria-hidden="true" />

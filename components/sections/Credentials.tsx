@@ -63,7 +63,7 @@ export function Credentials() {
                   className="text-[var(--supreme-red-bright)] mb-4"
                 />
                 <p className="display-sm mb-2">{c.label}</p>
-                <p className="text-[0.85rem] leading-[1.6] text-white/50">
+                <p className="text-[1rem] leading-[1.6] text-white/75">
                   {c.detail}
                 </p>
               </div>
@@ -84,7 +84,7 @@ export function Credentials() {
               <RevealWords text="Credentials and process you can verify" />
             </h2>
             <Reveal delay={0.15}>
-              <p className="text-[1rem] leading-[1.8] text-white/60">
+              <p className="text-[1rem] leading-[1.8] text-white">
                 Our commercial portfolio is still growing, and we&rsquo;re not
                 going to pretend otherwise. What we can point at is the
                 process, the specification we work to, and the people whose
@@ -95,7 +95,7 @@ export function Credentials() {
             {/* Manufacturer credentials */}
             <Reveal delay={0.25}>
               <div className="mt-9 pt-8 border-t border-white/12">
-                <p className="eyebrow text-white/40 mb-5">
+                <p className="eyebrow text-white/75 mb-5">
                   Coating systems we install
                 </p>
                 <ul className="space-y-3.5">
@@ -105,13 +105,13 @@ export function Credentials() {
                       className="flex items-baseline justify-between gap-4 pb-3.5 border-b border-white/[0.08]"
                     >
                       <span className="display-sm">{m.name}</span>
-                      <span className="text-[0.8rem] text-white/45 text-right">
+                      <span className="text-[1rem] text-white/75 text-right">
                         {m.note}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-[0.82rem] leading-[1.65] text-white/40">
+                <p className="mt-5 text-[1rem] leading-[1.65] text-white/75">
                   Warranty options depend on the selected system, the project
                   specification, installation and inspection requirements, and
                   manufacturer approval. Applicable terms are identified in the
@@ -134,7 +134,7 @@ export function Credentials() {
                     className="mb-5"
                   />
                   <h3 className="display-sm mb-3">{pillar.title}</h3>
-                  <p className="text-[0.9rem] leading-[1.7] text-white/58">
+                  <p className="text-[1rem] leading-[1.7] text-white">
                     {pillar.body}
                   </p>
                 </div>

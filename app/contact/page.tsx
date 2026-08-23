@@ -90,7 +90,7 @@ export default function ContactPage() {
                             <Icon size={17} className="text-[var(--supreme-red)]" />
                           </span>
                           <div>
-                            <p className="eyebrow text-black/40 mb-1.5">{label}</p>
+                            <p className="eyebrow text-black/70 mb-1.5">{label}</p>
                             {href ? (
                               <a
                                 href={href}
@@ -101,7 +101,7 @@ export default function ContactPage() {
                             ) : (
                               <p className="font-bold text-[1rem]">{value}</p>
                             )}
-                            <p className="text-[0.82rem] text-black/48 mt-1">
+                            <p className="text-[1rem] text-black/70 mt-1">
                               {note}
                             </p>
                           </div>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                       className="text-[var(--supreme-red-bright)] mb-4"
                     />
                     <h3 className="display-sm mb-3">Rather talk it through?</h3>
-                    <p className="text-[0.9rem] leading-[1.7] text-white/60 mb-5">
+                    <p className="text-[1rem] leading-[1.7] text-white mb-5">
                       Call and we can discuss the property and schedule the
                       next available assessment time.
                     </p>

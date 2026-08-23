@@ -123,9 +123,9 @@ export function MobileMenu({
                                 >
                                   <MapPin
                                     size={12}
-                                    className="shrink-0 text-black/20 group-hover:text-[var(--supreme-red)] transition-colors"
+                                    className="shrink-0 text-black/70 group-hover:text-[var(--supreme-red)] transition-colors"
                                   />
-                                  <span className="text-[0.85rem] font-semibold group-hover:text-[var(--supreme-red)] transition-colors">
+                                  <span className="text-[1rem] font-semibold group-hover:text-[var(--supreme-red)] transition-colors">
                                     {loc.name}
                                   </span>
                                 </Link>
@@ -145,7 +145,7 @@ export function MobileMenu({
                       <span className="display-sm">{item.label}</span>
                       <ArrowUpRight
                         size={19}
-                        className="text-black/25 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        className="text-black/70 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                       />
                     </Link>
                   )}
@@ -160,7 +160,7 @@ export function MobileMenu({
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className="flex items-center gap-2.5 py-2.5 text-[0.9rem] font-semibold text-black/55 hover:text-[var(--supreme-red)] transition-colors"
+                      className="flex items-center gap-2.5 py-2.5 text-[1rem] font-semibold text-black hover:text-[var(--supreme-red)] transition-colors"
                     >
                       <HouseMark size={13} className="shrink-0 opacity-50" />
                       {item.label}
@@ -180,7 +180,7 @@ export function MobileMenu({
                 className="group mt-6 flex items-center justify-between gap-4 p-4 bg-[var(--ink-05)] border border-black/10"
               >
                 <span>
-                  <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/35 mb-1">
+                  <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-black/70 mb-1">
                     {residentialNavItem.note}
                   </span>
                   <span className="block font-display text-[1.05rem]">
@@ -189,7 +189,7 @@ export function MobileMenu({
                 </span>
                 <ArrowUpRight
                   size={18}
-                  className="shrink-0 text-black/25 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  className="shrink-0 text-black/70 transition-all group-hover:text-[var(--supreme-red)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </Link>
             </nav>
@@ -207,7 +207,7 @@ export function MobileMenu({
                 Request a Commercial Roof Assessment
               </Link>
 
-              <div className="pt-4 space-y-2.5 text-[0.82rem] text-black/55">
+              <div className="pt-4 space-y-2.5 text-[1rem] text-black">
                 <a
                   href={`mailto:${site.email}`}
                   className="flex items-center gap-2.5 hover:text-[var(--supreme-red)] transition-colors"

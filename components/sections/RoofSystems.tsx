@@ -93,7 +93,7 @@ export function RoofSystems() {
                     <h3 className="font-display text-[1.15rem] mb-3">
                       {system.name}
                     </h3>
-                    <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                    <p className="text-[1rem] leading-[1.7] text-black">
                       {system.body}
                     </p>
                   </div>
@@ -112,7 +112,7 @@ export function RoofSystems() {
               </h3>
             </div>
             <Reveal direction="left" delay={0.15} className="lg:col-span-5">
-              <p className="text-[0.98rem] leading-[1.8] text-black/60">
+              <p className="text-[1.05rem] leading-[1.8] text-black">
                 Two identical TPO roofs on two identical buildings can get
                 opposite recommendations. These are the things we&rsquo;re
                 measuring to tell them apart.
@@ -141,7 +141,7 @@ export function RoofSystems() {
                     <h4 className="font-display text-[1.02rem] mb-2">
                       {factor.title}
                     </h4>
-                    <p className="text-[0.9rem] leading-[1.7] text-black/55">
+                    <p className="text-[1rem] leading-[1.7] text-black">
                       {factor.body}
                     </p>
                   </div>

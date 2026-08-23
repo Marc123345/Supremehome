@@ -46,7 +46,7 @@ export function Footer() {
             <Logo variant="light" height={44} />
           </div>
 
-          <p className="text-[0.95rem] leading-[1.75] text-white/90 max-w-md mb-10">
+          <p className="text-[1.02rem] leading-[1.75] text-white max-w-md mb-10">
             Commercial roof restoration and replacement across Greater Houston.
             We assess the roof you have, then recommend restoring it or
             replacing it based on what we find up there.
@@ -58,7 +58,7 @@ export function Footer() {
               <li key={s.slug}>
                 <Link
                   href={`/commercial-roofing${s.anchor ?? ""}`}
-                  className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
+                  className="tap-inline group inline-flex items-center gap-2.5 text-[1rem] text-white hover:text-white transition-colors"
                 >
                   <HouseMark
                     size={12}
@@ -73,7 +73,7 @@ export function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="tap-inline group inline-flex items-center gap-2.5 text-[0.93rem] text-white/85 hover:text-white transition-colors"
+                  className="tap-inline group inline-flex items-center gap-2.5 text-[1rem] text-white hover:text-white transition-colors"
                 >
                   <HouseMark
                     size={12}
@@ -95,23 +95,23 @@ export function Footer() {
             className="group flex items-center justify-between gap-4 mb-10 p-4 border border-white/15 hover:border-white/35 transition-colors"
           >
             <span>
-              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/40 mb-1">
+              <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/75 mb-1">
                 {residentialNavItem.note}
               </span>
-              <span className="block text-[0.93rem] font-semibold text-white/85">
+              <span className="block text-[1rem] font-semibold text-white">
                 Roofing for homes
               </span>
             </span>
             <ArrowRight
               size={16}
-              className="shrink-0 text-white/40 transition-transform duration-300 group-hover:translate-x-1"
+              className="shrink-0 text-white/75 transition-transform duration-300 group-hover:translate-x-1"
             />
           </Link>
 
           {/* Contact */}
-          <div className="space-y-4 text-[0.93rem] text-white/90">
+          <div className="space-y-4 text-[1rem] text-white">
             <div className="flex items-start gap-3">
-              <MapPin size={16} className="shrink-0 mt-1 text-white/60" />
+              <MapPin size={16} className="shrink-0 mt-1 text-white" />
               <span>
                 {site.address.street}
                 <br />
@@ -119,7 +119,7 @@ export function Footer() {
               </span>
             </div>
             <div className="flex items-center gap-3">
-              <Phone size={16} className="shrink-0 text-white/60" />
+              <Phone size={16} className="shrink-0 text-white" />
               <a
                 href={site.phoneHref}
                 className="tap-inline hover:text-white transition-colors"
@@ -128,7 +128,7 @@ export function Footer() {
               </a>
             </div>
             <div className="flex items-center gap-3">
-              <Mail size={16} className="shrink-0 text-white/60" />
+              <Mail size={16} className="shrink-0 text-white" />
               <a
                 href={`mailto:${site.email}`}
                 className="tap-inline hover:text-white transition-colors break-all"
@@ -147,8 +147,8 @@ export function Footer() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="tap-inline text-[0.93rem] transition-colors hover:text-[var(--supreme-red)]"
-                  style={{ color: "var(--ink-50)" }}
+                  className="tap-inline text-[1rem] transition-colors hover:text-[var(--supreme-red)]"
+                  style={{ color: "var(--ink-70)" }}
                 >
                   {item.label}
                 </Link>
@@ -161,12 +161,12 @@ export function Footer() {
             {locations.map((loc) => (
               <li
                 key={loc.slug}
-                className="after:content-['·'] after:ml-3 after:text-black/20 last:after:content-['']"
+                className="after:content-['·'] after:ml-3 after:text-black/70 last:after:content-['']"
               >
                 <Link
                   href={`/service-areas/${loc.slug}`}
-                  className="tap-inline text-[0.86rem] transition-colors hover:text-[var(--supreme-red)]"
-                  style={{ color: "var(--ink-50)" }}
+                  className="tap-inline text-[1.02rem] transition-colors hover:text-[var(--supreme-red)]"
+                  style={{ color: "var(--ink-70)" }}
                 >
                   {loc.name}
                 </Link>
@@ -185,8 +185,8 @@ export function Footer() {
             {commercialManufacturers.map((m) => (
               <li
                 key={m.name}
-                className="text-[0.86rem] font-semibold"
-                style={{ color: "var(--ink-50)" }}
+                className="text-[1.02rem] font-semibold"
+                style={{ color: "var(--ink-70)" }}
               >
                 {m.name}
               </li>
@@ -219,7 +219,7 @@ export function Footer() {
 
             <Link
               href="/contact"
-              className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
+              className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[1rem] text-[var(--supreme-red)]"
             >
               Request a commercial roof assessment
               <ArrowRight
@@ -239,7 +239,7 @@ export function Footer() {
           borderTop: "1px solid rgba(255,255,255,0.15)",
         }}
       >
-        <p className="text-[0.82rem] text-white/85">
+        <p className="text-[1rem] text-white">
           © {year} {site.legalName}, doing business as {site.dba}. All rights
           reserved.
         </p>
@@ -248,7 +248,7 @@ export function Footer() {
             05). The first two are unverified; the third is a residential
             credential that was being published site-wide on a commercial
             site. Restore them in Supreme's confirmed wording. */}
-        <p className="text-[0.78rem] text-white/80 sm:text-right max-w-2xl">
+        <p className="text-[1rem] text-white sm:text-right max-w-2xl">
           Texas does not issue a statewide roofing contractor license.
           Insurance and manufacturer credential documentation is available on
           request.

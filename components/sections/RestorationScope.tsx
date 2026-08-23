@@ -77,7 +77,7 @@ export function RestorationScope() {
                   <h3 className="font-display text-[1.08rem] mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                  <p className="text-[1rem] leading-[1.7] text-black">
                     {item.body}
                   </p>
                 </div>
@@ -87,7 +87,7 @@ export function RestorationScope() {
         </RevealGroup>
 
         <Reveal delay={0.15}>
-          <p className="mt-10 pl-5 border-l-[3px] border-[var(--supreme-red)] text-[1rem] leading-[1.8] text-black/70 max-w-3xl">
+          <p className="mt-10 pl-5 border-l-[3px] border-[var(--supreme-red)] text-[1rem] leading-[1.8] text-black max-w-3xl">
             We do repairs when a roof needs them. What we don&rsquo;t do is sell
             a repair as the whole answer when the roof needs more than that, or
             sell you a coating over problems we didn&rsquo;t fix first.
@@ -129,7 +129,7 @@ export function RestorationScope() {
                     <span className="mt-1">
                       <HouseBullet size={15} />
                     </span>
-                    <span className="text-[0.93rem] leading-[1.6] text-black/70">
+                    <span className="text-[1rem] leading-[1.6] text-black">
                       {benefit}
                     </span>
                   </div>

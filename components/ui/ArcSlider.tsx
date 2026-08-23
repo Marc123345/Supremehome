@@ -229,7 +229,7 @@ export function ArcSlider({
                   {String(i + 1).padStart(2, "0")} · {c.category}
                 </span>
                 <h3 className="display-sm text-white mb-3 mt-auto">{c.title}</h3>
-                <p className="text-[0.88rem] leading-[1.65] text-white/60 mb-6">
+                <p className="text-[1.02rem] leading-[1.65] text-white mb-6">
                   {c.blurb}
                 </p>
                 {c.bullets && (
@@ -237,7 +237,7 @@ export function ArcSlider({
                     {c.bullets.slice(0, 3).map((b) => (
                       <li
                         key={b}
-                        className="flex gap-2.5 items-start text-[0.78rem] leading-[1.5] text-white/50"
+                        className="flex gap-2.5 items-start text-[1rem] leading-[1.5] text-white/75"
                       >
                         <span className="mt-[7px] w-[4px] h-[4px] shrink-0 bg-[var(--supreme-red)]" />
                         {b}
@@ -245,7 +245,7 @@ export function ArcSlider({
                     ))}
                   </ul>
                 )}
-                <span className="inline-flex items-center gap-2 text-[0.85rem] font-bold text-white border-b border-white/25 pb-1 self-start">
+                <span className="inline-flex items-center gap-2 text-[1rem] font-bold text-white border-b border-white/25 pb-1 self-start">
                   See details <ArrowUpRight size={15} />
                 </span>
               </Link>
@@ -344,7 +344,7 @@ export function ArcSlider({
                     <span className="eyebrow text-[var(--supreme-red-bright)]">
                       {String(i + 1).padStart(2, "0")} · {c.category}
                     </span>
-                    <span className="eyebrow text-white/35 shrink-0">Service</span>
+                    <span className="eyebrow text-white/75 shrink-0">Service</span>
                   </div>
 
                   {/* justify-end pushes content to the base of the card; the
@@ -360,7 +360,7 @@ export function ArcSlider({
                     >
                       {c.title}
                     </h3>
-                    <p className="text-[0.86rem] leading-[1.6] text-white/62 mb-6">
+                    <p className="text-[1.02rem] leading-[1.6] text-white mb-6">
                       {c.blurb}
                     </p>
 
@@ -369,7 +369,7 @@ export function ArcSlider({
                         {c.bullets.slice(0, 3).map((b) => (
                           <li
                             key={b}
-                            className="flex gap-2.5 items-start text-[0.8rem] leading-[1.45] text-white/50"
+                            className="flex gap-2.5 items-start text-[1rem] leading-[1.45] text-white/75"
                           >
                             <span className="mt-[7px] w-[4px] h-[4px] shrink-0 bg-[var(--supreme-red)]" />
                             <span>{b}</span>
@@ -385,7 +385,7 @@ export function ArcSlider({
                         e.stopPropagation();
                       }}
                       aria-label={`See details for ${c.title}`}
-                      className="inline-flex items-center gap-2.5 text-[0.88rem] font-bold text-white border-b border-white/25 hover:border-[var(--supreme-red-bright)] hover:text-[var(--supreme-red-bright)] pb-1 self-start transition-colors relative z-10"
+                      className="inline-flex items-center gap-2.5 text-[1.02rem] font-bold text-white border-b border-white/25 hover:border-[var(--supreme-red-bright)] hover:text-[var(--supreme-red-bright)] pb-1 self-start transition-colors relative z-10"
                     >
                       See details
                       <ArrowUpRight size={15} />
@@ -419,11 +419,11 @@ export function ArcSlider({
       {/* Caption + dots */}
       <div className="mt-10 flex flex-col items-center gap-5">
         <div className="text-center">
-          <p className="eyebrow text-white/40 mb-2">
+          <p className="eyebrow text-white/75 mb-2">
             {String(activeIndex + 1).padStart(2, "0")} /{" "}
             {String(cards.length).padStart(2, "0")}
           </p>
-          <p className="display-sm text-white/85">{active.title}</p>
+          <p className="display-sm text-white">{active.title}</p>
         </div>
 
         <div className="flex items-center gap-2">

@@ -75,7 +75,7 @@ export default function OpengraphImage() {
             </div>
             <div
               style={{
-                color: "rgba(255,255,255,0.6)",
+                color: "#ffffff",
                 fontSize: 17,
                 letterSpacing: 3,
               }}
@@ -125,7 +125,7 @@ export default function OpengraphImage() {
             paddingTop: 26,
           }}
         >
-          <div style={{ color: "rgba(255,255,255,0.72)", fontSize: 24 }}>
+          <div style={{ color: "#ffffff", fontSize: 24 }}>
             Free commercial roof assessment · Greater Houston
           </div>
           <div style={{ color: "#fff", fontSize: 28, fontWeight: 700 }}>

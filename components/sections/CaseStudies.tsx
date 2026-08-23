@@ -99,10 +99,10 @@ export function CaseStudies() {
                   <h3 className="font-display text-[1.15rem] mb-1">
                     {study.building}
                   </h3>
-                  <p className="text-[0.82rem] text-black/45 mb-4">
+                  <p className="text-[1rem] text-black/70 mb-4">
                     {study.city}
                   </p>
-                  <p className="text-[0.92rem] leading-[1.7] text-black/58">
+                  <p className="text-[1rem] leading-[1.7] text-black">
                     {study.summary}
                   </p>
                 </div>

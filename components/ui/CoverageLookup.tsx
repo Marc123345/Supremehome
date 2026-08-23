@@ -73,7 +73,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
           Coverage check
         </p>
         <h2 className="display-lg mb-4 max-w-[18ch]">Are you in our area?</h2>
-        <p className="text-[0.98rem] leading-[1.75] text-white/60 max-w-xl mb-9">
+        <p className="text-[1.05rem] leading-[1.75] text-white max-w-xl mb-9">
           Type your city or neighborhood. We cover eighteen communities across
           Greater Houston, and we travel further for commercial flat-roof work.
         </p>
@@ -92,7 +92,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
           <div className="relative flex-1">
             <Search
               size={17}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/35 pointer-events-none"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/75 pointer-events-none"
             />
             <input
               id="coverage-query"
@@ -103,7 +103,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
               }}
               placeholder="e.g. Cypress, Clear Lake, Grand Parkway"
               autoComplete="off"
-              className="w-full bg-white/[0.04] border border-white/15 pl-11 pr-4 py-4 text-[0.95rem] text-white placeholder:text-white/30 focus:border-[var(--supreme-red)] focus:outline-none transition-colors"
+              className="w-full bg-white/[0.04] border border-white/15 pl-11 pr-4 py-4 text-[1.02rem] text-white placeholder:text-white/75 focus:border-[var(--supreme-red)] focus:outline-none transition-colors"
             />
           </div>
           <button type="submit" className="btn btn-primary shrink-0">
@@ -121,7 +121,7 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
                     setQuery(s.name);
                     lookup(s.name);
                   }}
-                  className="flex items-center gap-1.5 px-3 py-1.5 border border-white/15 text-[0.82rem] text-white/70 hover:border-[var(--supreme-red)] hover:text-white transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 border border-white/15 text-[1rem] text-white hover:border-[var(--supreme-red)] hover:text-white transition-colors"
                 >
                   <MapPin size={12} className="text-[var(--supreme-red-bright)]" />
                   {s.name}
@@ -140,10 +140,10 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
             <h3 className="display-md mb-3">
               {result.matchedOn}
               {result.matchedOn !== result.location.name && (
-                <span className="text-white/40"> · {result.location.name}</span>
+                <span className="text-white/75"> · {result.location.name}</span>
               )}
             </h3>
-            <p className="text-[0.93rem] leading-[1.7] text-white/62 mb-6">
+            <p className="text-[1rem] leading-[1.7] text-white mb-6">
               {result.location.name} is inside the service area, in{" "}
               {result.location.county}.
             </p>
@@ -169,9 +169,9 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
 
         {result.kind === "miss" && (
           <div className="mt-8 p-7 lg:p-8 bg-white/[0.03] border-l-[4px] border-white/25 max-w-2xl">
-            <p className="eyebrow text-white/45 mb-3">Not on the list</p>
+            <p className="eyebrow text-white/75 mb-3">Not on the list</p>
             <h3 className="display-md mb-3">Still worth a call</h3>
-            <p className="text-[0.93rem] leading-[1.7] text-white/62 mb-6">
+            <p className="text-[1rem] leading-[1.7] text-white mb-6">
               We didn&apos;t find “{result.query}” in our eighteen listed
               communities. Commercial projects regularly justify the travel
               across the wider Houston metro, though. Call and ask.

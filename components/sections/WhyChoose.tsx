@@ -62,13 +62,13 @@ export function WhyChoose() {
                   }`}
                 >
                   <span
-                    className="font-display text-[2.4rem] leading-none text-black/12 block mb-5"
+                    className="font-display text-[2.4rem] leading-none text-black/70 block mb-5"
                     aria-hidden="true"
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <h3 className="display-sm mb-3">{reason.title}</h3>
-                  <p className="text-[0.93rem] leading-[1.7] text-black/58">
+                  <p className="text-[1rem] leading-[1.7] text-black">
                     {reason.body}
                   </p>
                 </div>
@@ -79,7 +79,7 @@ export function WhyChoose() {
 
         {/* ── Capability tiles (topfloor Process grid) ── */}
         <Reveal>
-          <p className="eyebrow text-black/40 mb-6">What we handle on the roof</p>
+          <p className="eyebrow text-black/70 mb-6">What we handle on the roof</p>
         </Reveal>
 
         <RevealGroup className="grid grid-cols-2 lg:grid-cols-3 gap-px bg-black/[0.09] border border-black/[0.09]">
@@ -87,7 +87,7 @@ export function WhyChoose() {
             <RevealItem key={cap.title}>
               <div className="group relative h-full bg-white p-7 lg:p-8 transition-colors duration-300 hover:bg-[var(--ink-90)]">
                 <span
-                  className="absolute top-5 right-6 font-display text-[1.6rem] leading-none text-black/10 transition-colors duration-300 group-hover:text-white/20"
+                  className="absolute top-5 right-6 font-display text-[1.6rem] leading-none text-black/70 transition-colors duration-300 group-hover:text-white/75"
                   aria-hidden="true"
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -95,7 +95,7 @@ export function WhyChoose() {
                 <h3 className="display-sm mb-2 pr-10 transition-colors duration-300 group-hover:text-white">
                   {cap.title}
                 </h3>
-                <p className="text-[0.85rem] leading-[1.55] text-black/52 transition-colors duration-300 group-hover:text-white/60">
+                <p className="text-[1rem] leading-[1.55] text-black transition-colors duration-300 group-hover:text-white">
                   {cap.note}
                 </p>
               </div>
