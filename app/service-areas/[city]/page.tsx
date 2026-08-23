@@ -5,7 +5,6 @@ import { MapPin, Phone, Check } from "lucide-react";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServicesSlider } from "@/components/sections/ServicesSlider";
 import { Recommendations } from "@/components/sections/Recommendations";
-import { Credentials } from "@/components/sections/Credentials";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { SlidingText } from "@/components/sections/SlidingText";
@@ -213,7 +212,9 @@ export default async function LocationPage({
         intro={`Commercial roof assessment, coating and protection, essential restoration repairs and roof replacement across ${location.county}.`}
       />
 
-      <Credentials />
+      {/* The trust block is on the home and commercial pages. Repeating it
+          across eighteen location pages was the largest single source of
+          duplicate content on the site. */}
 
       {/* ── Other locations — interactive coverage map ── */}
       <CoverageMap

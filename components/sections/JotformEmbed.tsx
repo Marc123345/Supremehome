@@ -26,7 +26,7 @@ declare global {
  */
 export function JotformEmbed({
   formId,
-  title = "Request Your Free Roof Inspection",
+  title = "Request a free roof assessment",
   /** Placeholder height until the handler measures the real form. */
   initialHeight = 700,
 }: {

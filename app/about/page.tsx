@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageHero } from "@/components/sections/PageHero";
-import { Credentials } from "@/components/sections/Credentials";
 import { CTABand } from "@/components/sections/CTABand";
 import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { media, site } from "@/lib/site";
@@ -120,7 +119,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Credentials />
+      {/* The trust block renders on the home and commercial pages already.
+          Package E4 asks for one concise version rather than the same six
+          credibility cards on a third route. */}
       <CTABand />
     </>
   );

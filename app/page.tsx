@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/sections/Hero";
 import { Recommendations } from "@/components/sections/Recommendations";
-import { RoofSystems } from "@/components/sections/RoofSystems";
-import { RestorationScope } from "@/components/sections/RestorationScope";
+import { DeeperLinks } from "@/components/sections/DeeperLinks";
 import { About } from "@/components/sections/About";
 import { SlidingText } from "@/components/sections/SlidingText";
 import { WhyChoose } from "@/components/sections/WhyChoose";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
-import { Process } from "@/components/sections/Process";
 import { Credentials } from "@/components/sections/Credentials";
 import { Team } from "@/components/sections/Team";
 import { CaseStudies } from "@/components/sections/CaseStudies";
@@ -69,12 +67,14 @@ export default function Home() {
 
       <Recommendations />
 
-      <RoofSystems />
-      <RestorationScope />
+      {/* RoofSystems, RestorationScope and Process used to render here in
+          full, and again in full on /commercial-roofing. Someone reading both
+          pages read all three twice. The commercial page is the detailed
+          version now; this page links into it. (Correction package A6.) */}
+      <DeeperLinks />
+
       <SlidingText />
       <WhyChoose />
-
-      <Process />
 
       <Credentials />
       <Team />
