@@ -5,7 +5,7 @@ import {
   nav,
   secondaryNav,
   services,
-  manufacturers,
+  commercialManufacturers,
   residentialBrand,
   residentialNavItem,
 } from "@/lib/site";
@@ -174,9 +174,15 @@ export function Footer() {
             ))}
           </ul>
 
-          <h3 className="display-sm mb-4">Manufacturer certified</h3>
+          {/* Two changes here, both from the correction package (J2, A5).
+              The heading claimed certification, which is a credential we
+              cannot state until Supreme confirms each manufacturer's exact
+              designation. And the list rendered all four manufacturers, so
+              CertainTeed (shingles) and Attic Breeze (attic ventilation) —
+              both residential — appeared in the commercial footer. */}
+          <h3 className="display-sm mb-4">Coating systems we install</h3>
           <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-6">
-            {manufacturers.map((m) => (
+            {commercialManufacturers.map((m) => (
               <li
                 key={m.name}
                 className="text-[0.86rem] font-semibold"
@@ -215,7 +221,7 @@ export function Footer() {
               href="/contact"
               className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[0.92rem] text-[var(--supreme-red)]"
             >
-              Request a roof assessment
+              Request a commercial roof assessment
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
@@ -237,10 +243,15 @@ export function Footer() {
           © {year} {site.legalName}, doing business as {site.dba}. All rights
           reserved.
         </p>
+        {/* The liability figure, the bonding line and the Oklahoma
+            residential license were removed here (correction package J2 and
+            05). The first two are unverified; the third is a residential
+            credential that was being published site-wide on a commercial
+            site. Restore them in Supreme's confirmed wording. */}
         <p className="text-[0.78rem] text-white/80 sm:text-right max-w-2xl">
-          Insured to $2M · Bonded where required · Oklahoma CIB residential
-          roofing license #80007778. Texas does not issue a state roofing
-          contractor license.
+          Texas does not issue a statewide roofing contractor license.
+          Insurance and manufacturer credential documentation is available on
+          request.
         </p>
       </div>
     </footer>

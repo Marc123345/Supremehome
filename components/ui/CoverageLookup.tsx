@@ -144,7 +144,8 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
               )}
             </h3>
             <p className="text-[0.93rem] leading-[1.7] text-white/62 mb-6">
-              {result.location.buildingStock}
+              {result.location.name} is inside the service area, in{" "}
+              {result.location.county}.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link

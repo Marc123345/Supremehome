@@ -1,241 +1,170 @@
 /**
- * Per-city content for the location pages.
+ * The 18 Greater Houston communities SCC lists as its service area.
  *
- * Each entry carries genuinely city-specific detail — county, corridor,
- * building stock — rather than a find-and-replace of one template. Near
- * duplicate "doorway" pages are a ranking liability, not an asset, so the
- * intro, building-stock note and local angle differ for every city.
+ * WHAT THIS FILE DELIBERATELY NO LONGER CONTAINS
+ *
+ * Each entry used to carry a `buildingStock` and a `localAngle` paragraph —
+ * eighteen accounts of what the roofs are like in a given city, why they fail
+ * there, and what the owners in that city usually decide. None of it was
+ * sourced. Houston was said to have "more low-slope commercial roof than
+ * anywhere else in Texas"; Webster's leaks were "detail failures, not membrane
+ * failures"; Katy had the fastest response on the map. Those are a roof-level
+ * diagnosis and an operational promise published as city-wide fact.
+ *
+ * The website correction package (section H, marked critical) requires them
+ * removed rather than reworded: "Do not invent location-specific market facts"
+ * and "Do not create city-specific local facts merely to make an SEO page
+ * sound unique."
+ *
+ * What is left is what can actually be checked: the city, its county, the
+ * neighborhoods and corridors nearby, and the same honest statement of what
+ * SCC does everywhere it works. That is a real tradeoff — eighteen pages now
+ * share most of their copy, which is weaker for search than eighteen unique
+ * ones. Accuracy was the client's explicit instruction where the two conflict.
+ *
+ * To make a page genuinely local again, add a verified fact — a completed
+ * project, a named building type SCC has actually worked on there — not a
+ * generalization about the city.
  */
 
 export type Location = {
   slug: string;
   name: string;
   county: string;
-  /** Short positioning line used in the hero */
+  /** Approved neutral template. Local claims do not belong here. */
   intro: string;
-  /** What the commercial building stock actually looks like there */
-  buildingStock: string;
-  /** Why roofs fail locally / what we see most */
-  localAngle: string;
-  /** Corridors, districts and neighboring areas we also cover */
+  /** Verified neighborhoods and corridors inside the coverage area. */
   nearby: string[];
 };
+
+const intro = (name: string) =>
+  `Supreme Commercial Coatings serves commercial properties in ${name} and the surrounding area. We assess existing roof conditions, document what we find, and recommend restoration and coating when viable, or replacement when necessary.`;
 
 export const locations: Location[] = [
   {
     slug: "houston",
     name: "Houston",
     county: "Harris County",
-    intro:
-      "The core of our service area. Houston has more low-slope commercial roof than anywhere else in Texas, and most of it is a restoration candidate long before it's a replacement candidate.",
-    buildingStock:
-      "Warehouse and distribution space, office parks, retail strip centers, churches and medical buildings. Overwhelmingly flat or low-slope, with TPO, modified bitumen and older built-up systems.",
-    localAngle:
-      "Houston roofs age on heat and UV more than on storms. A membrane can look finished at fifteen years and still have a dry, sound deck underneath. That's exactly the roof a coating system is designed for.",
+    intro: intro("Houston"),
     nearby: ["Energy Corridor", "Westchase", "Greenspoint", "Sharpstown", "East End"],
   },
   {
     slug: "cypress",
     name: "Cypress",
     county: "Harris County",
-    intro:
-      "Cypress has grown fast along the 290 corridor, and a lot of its retail and light-industrial roof stock hit the age where owners start getting replacement quotes.",
-    buildingStock:
-      "Newer retail centers, self-storage, light industrial and a large volume of suburban residential. An even mix of low-slope commercial and steep-slope shingle.",
-    localAngle:
-      "Much of the commercial roof here is young enough that restoration is clearly the right call. Replacing a fifteen-year-old TPO roof with a dry deck is the most expensive mistake an owner can make.",
+    intro: intro("Cypress"),
     nearby: ["Fairfield", "Bridgeland", "Copperfield", "US-290 corridor"],
   },
   {
     slug: "katy",
     name: "Katy",
     county: "Harris, Fort Bend & Waller Counties",
-    intro:
-      "Our home base. Crews roll out of Katy every morning, which makes it the fastest response on our coverage map, for inspections and for storm make-safe work.",
-    buildingStock:
-      "Energy Corridor office and flex space, I-10 distribution buildings, retail along the Grand Parkway, plus a very large residential base.",
-    localAngle:
-      "Being local matters most when water is already coming in. We can have someone on a Katy roof faster than anywhere else we serve.",
+    intro: intro("Katy"),
     nearby: ["Cinco Ranch", "Energy Corridor", "Grand Parkway", "I-10 corridor"],
   },
   {
     slug: "missouri-city",
     name: "Missouri City",
     county: "Fort Bend County",
-    intro:
-      "Missouri City combines established neighborhoods with newer retail and institutional buildings. We work both sides of the business here, commercial and residential.",
-    buildingStock:
-      "Neighborhood retail, schools, churches and community buildings alongside a deep residential base of shingle roofs.",
-    localAngle:
-      "Churches and community buildings here are exactly the client we built the business for: accountable budgets, and a roof that usually has more life in it than the replacement quote suggests.",
+    intro: intro("Missouri City"),
     nearby: ["Sienna", "Quail Valley", "Fort Bend Parkway", "Sugar Land border"],
   },
   {
     slug: "spring",
     name: "Spring",
     county: "Harris County",
-    intro:
-      "Spring sits on the I-45 north corridor with a dense concentration of office, flex and retail buildings, which puts a lot of low-slope roof within a short drive.",
-    buildingStock:
-      "Corporate campuses and office parks near the Woodlands boundary, flex-industrial, and extensive retail along I-45 and Louetta.",
-    localAngle:
-      "Property managers running several buildings along this corridor are our most common Spring inquiry. We survey the whole portfolio and hand back a prioritized plan rather than a stack of separate quotes.",
+    intro: intro("Spring"),
     nearby: ["Klein", "Louetta", "I-45 North", "The Woodlands border"],
   },
   {
     slug: "tomball",
     name: "Tomball",
     county: "Harris County",
-    intro:
-      "Tomball has added commercial and light-industrial space quickly while keeping an older core, which means roof stock at both ends of the age range.",
-    buildingStock:
-      "Light industrial and contractor yards, medical buildings, a historic downtown retail core, and growing suburban residential.",
-    localAngle:
-      "Older downtown buildings often have layered roof systems where a moisture survey is essential. You can't coat what you haven't tested.",
+    intro: intro("Tomball"),
     nearby: ["Magnolia border", "SH-249 corridor", "Downtown Tomball"],
   },
   {
     slug: "richmond",
     name: "Richmond",
     county: "Fort Bend County",
-    intro:
-      "As the Fort Bend county seat, Richmond carries a mix of civic, institutional and older commercial buildings alongside rapid residential growth.",
-    buildingStock:
-      "Civic and county buildings, churches, older masonry commercial in the historic core, and a fast-expanding residential ring.",
-    localAngle:
-      "Institutional buildings are budgeted years ahead. A restoration that adds warranty life for a fraction of replacement cost is often the only option that fits the cycle.",
+    intro: intro("Richmond"),
     nearby: ["Historic downtown", "Pecan Grove", "US-90A corridor"],
   },
   {
     slug: "rosenberg",
     name: "Rosenberg",
     county: "Fort Bend County",
-    intro:
-      "Rosenberg sits on the I-69 corridor with a solid base of industrial, warehouse and highway retail. High-value low-slope roof, and plenty of it.",
-    buildingStock:
-      "Distribution and warehouse space, highway retail and quick-service restaurants, plus agricultural and light industrial metal buildings.",
-    localAngle:
-      "Metal buildings dominate parts of this area, and metal restoration coatings are one of the most cost-effective systems we install: rust treatment, seam sealing, then a coated membrane over the top.",
+    intro: intro("Rosenberg"),
     nearby: ["I-69 / US-59 corridor", "Beasley", "Richmond border"],
   },
   {
     slug: "pearland",
     name: "Pearland",
     county: "Brazoria County",
-    intro:
-      "Pearland's growth along SH-288 has produced a large stock of newer medical, retail and office buildings, mostly single-ply low-slope roof.",
-    buildingStock:
-      "Medical office buildings, retail centers, corporate campuses along SH-288, and extensive newer residential.",
-    localAngle:
-      "Medical and professional buildings can't close for a tear-off. Coating systems go down while the building stays open, which is usually the deciding factor here.",
+    intro: intro("Pearland"),
     nearby: ["Silverlake", "Shadow Creek Ranch", "SH-288 corridor"],
   },
   {
     slug: "webster",
     name: "Webster",
     county: "Harris County",
-    intro:
-      "Webster anchors the Clear Lake area, with a concentration of medical, hospitality and aerospace-adjacent commercial buildings.",
-    buildingStock:
-      "Hospitals and medical office, hotels, retail along the I-45 Gulf Freeway, and aerospace-adjacent office and light industrial.",
-    localAngle:
-      "Proximity to the coast means wind-driven rain finds any weak seam or flashing detail. Most Webster leaks we trace are detail failures, not membrane failures. That's a repair, not a re-roof.",
+    intro: intro("Webster"),
     nearby: ["Clear Lake", "NASA Parkway", "League City border", "Gulf Freeway"],
   },
   {
     slug: "humble",
     name: "Humble",
     county: "Harris County",
-    intro:
-      "Humble sits beside Bush Intercontinental, which brings airport-adjacent logistics, hospitality and retail. Buildings with large uninterrupted roof areas.",
-    buildingStock:
-      "Airport-adjacent warehouse and logistics, hotels, big-box and mall retail, plus medical buildings.",
-    localAngle:
-      "Large single-span roofs are where restoration economics are strongest. The bigger the roof, the wider the gap between coating cost and replacement cost.",
+    intro: intro("Humble"),
     nearby: ["Bush Intercontinental", "Atascocita", "Kingwood border", "FM 1960"],
   },
   {
     slug: "new-caney",
     name: "New Caney",
     county: "Montgomery County",
-    intro:
-      "New Caney has expanded quickly around the Grand Parkway, adding retail and light industrial to what was largely rural building stock.",
-    buildingStock:
-      "Newer retail and restaurant pads, light industrial and contractor buildings, metal agricultural structures, and growing residential.",
-    localAngle:
-      "Quick-service restaurants and fuel stations are common here. Small roofs that most commercial contractors won't bother with. We do, and they get the same documentation as a warehouse.",
+    intro: intro("New Caney"),
     nearby: ["Valley Ranch", "Porter", "Grand Parkway", "US-59 corridor"],
   },
   {
     slug: "conroe",
     name: "Conroe",
     county: "Montgomery County",
-    intro:
-      "Conroe is the Montgomery county seat and the northern edge of our map, with a substantial industrial park and a large civic and institutional base.",
-    buildingStock:
-      "Industrial park manufacturing and warehouse, county and civic buildings, lakeside hospitality, and an older downtown commercial core.",
-    localAngle:
-      "Manufacturing roofs often carry rooftop equipment, penetrations and years of service traffic. Those are the roofs where a fluid-applied coating outperforms a patched membrane.",
+    intro: intro("Conroe"),
     nearby: ["Lake Conroe", "Conroe Park North", "Willis border", "I-45 North"],
   },
   {
     slug: "waller",
     name: "Waller",
     county: "Waller & Harris Counties",
-    intro:
-      "Waller has turned into a distribution corridor, with large-footprint warehouse buildings going up along US-290 and the Grand Parkway.",
-    buildingStock:
-      "Large distribution and warehouse space, agricultural metal buildings, and small-town commercial in the older core.",
-    localAngle:
-      "Large-footprint distribution roofs are exactly the 100+ square projects we're set up for, and the scale where a coating system saves the most money per square foot.",
+    intro: intro("Waller"),
     nearby: ["US-290 corridor", "Prairie View", "Hempstead border"],
   },
   {
     slug: "sealy",
     name: "Sealy",
     county: "Austin County",
-    intro:
-      "Sealy sits on I-10 west of the metro, with manufacturing and distribution buildings that carry large, simple, coatable roof areas.",
-    buildingStock:
-      "Manufacturing plants, distribution buildings, highway retail and fuel stops, plus agricultural metal structures.",
-    localAngle:
-      "Industrial roofs out here take a lot of sun and very little maintenance. Most are further from failure than the owner assumes. A survey usually buys years, not a replacement.",
+    intro: intro("Sealy"),
     nearby: ["I-10 corridor", "Brookshire border", "Bellville"],
   },
   {
     slug: "brookshire",
     name: "Brookshire",
     county: "Waller County",
-    intro:
-      "Brookshire's position on I-10 has made it a distribution hub, and new warehouse space keeps arriving, along with the low-slope roof that comes with it.",
-    buildingStock:
-      "Distribution centers and cold storage, truck terminals, highway retail and fuel stations, plus light manufacturing.",
-    localAngle:
-      "Cold storage and conditioned warehouse roofs benefit twice from a reflective coating: watertight, and a measurably lower cooling load through a Houston summer.",
+    intro: intro("Brookshire"),
     nearby: ["I-10 corridor", "Pattison", "Katy border", "Waller border"],
   },
   {
     slug: "manvel",
     name: "Manvel",
     county: "Brazoria County",
-    intro:
-      "Manvel is in the middle of rapid SH-288 corridor growth, with new commercial pads arriving alongside long-established rural property.",
-    buildingStock:
-      "New retail and restaurant pads, medical and professional offices, metal agricultural buildings, and fast-growing residential.",
-    localAngle:
-      "New commercial pads mean new roofs. The right service there is a maintenance plan and early coating, not a replacement quote a decade too early.",
+    intro: intro("Manvel"),
     nearby: ["SH-288 corridor", "Iowa Colony", "Alvin border", "Pearland border"],
   },
   {
     slug: "fresno",
     name: "Fresno",
     county: "Fort Bend County",
-    intro:
-      "Fresno is a largely residential Fort Bend community with neighborhood commercial along the main corridors, where our residential and small-commercial work meet.",
-    buildingStock:
-      "Neighborhood retail and restaurant pads, churches and community buildings, and a very large base of shingle-roofed housing.",
-    localAngle:
-      "Most Fresno inquiries are residential storm damage. The inspection is free, and we'll tell you when a claim isn't worth filing.",
+    intro: intro("Fresno"),
     nearby: ["Arcola", "Sienna border", "FM 521", "Missouri City border"],
   },
 ];

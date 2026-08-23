@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Preloader } from "@/components/ui/Preloader";
 import { BackToTop } from "@/components/ui/BackToTop";
-import { site, serviceAreas, services, manufacturers } from "@/lib/site";
+import { site, serviceAreas, services } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
 
 const bebas = Bebas_Neue({
@@ -35,11 +35,11 @@ export const metadata: Metadata = {
    */
   title: {
     default:
-      "Commercial Roof Restoration & Replacement in Houston | Supreme Commercial Coatings",
+      "Supreme Commercial Coatings | Commercial Roof Assessment, Restoration and Replacement",
     template: `%s | ${site.name}`,
   },
   description:
-    "Houston commercial roof restoration and replacement. We assess metal, TPO, modified bitumen, built-up and low-slope systems, then recommend restoring or replacing based on documented condition. Free assessment, insured to $2M, manufacturer certified.",
+    "Supreme Commercial Coatings assesses commercial roofs across Greater Houston and recommends coating and protection, restoration, or replacement based on documented conditions and project requirements.",
   keywords: [
     "commercial roofing Houston",
     "commercial roof restoration Houston",
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: site.url,
     siteName: site.name,
-    title: "Commercial Roof Restoration & Replacement in Houston",
+    title: "Commercial Roof Assessment, Restoration and Replacement",
     description:
-      "We assess the roof you have, then recommend restoring or replacing it based on what we document. Free assessment and a written recommendation.",
+      "We assess the roof you have, document what we find, and recommend coating and protection, restoration, or replacement based on what the assessment supports.",
   },
   twitter: {
     card: "summary_large_image",
@@ -108,7 +108,11 @@ const structuredData = {
       "@id": BUSINESS_ID,
       name: site.name,
       alternateName: site.dba,
-      legalName: site.name,
+      /* `legalName` was emitting "Supreme Commercial Coatings" while the
+         footer published "Supreme Home Roofing and Construction, doing
+         business as Supreme Commercial Coatings" — two different legal
+         identities on one site. Correction package J5 holds the field until
+         Supreme supplies the exact registered entity and DBA wording. */
       telephone: site.phone,
       email: site.email,
       url: site.url,
@@ -139,11 +143,13 @@ const structuredData = {
         "Modified bitumen and built-up roofing",
         "Roof coating systems",
       ],
-      hasCredential: manufacturers.map((m) => ({
-        "@type": "EducationalOccupationalCredential",
-        credentialCategory: "Manufacturer certification",
-        name: `${m.name} certified applicator`,
-      })),
+      /* `hasCredential` mapped all four manufacturers — including CertainTeed
+         (shingles) and Attic Breeze (attic ventilation) — into commercial
+         schema as "certified applicator". The visible pages already filter
+         those out; the schema was still publishing them to search engines.
+         Correction package J5: no credential is emitted until Supreme
+         supplies the exact designations. Restore this from
+         `commercialManufacturers` once they are confirmed. */
       makesOffer: services.map((s) => ({
         "@type": "Offer",
         itemOffered: {

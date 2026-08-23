@@ -23,7 +23,7 @@ import { FaqJsonLd, ServicesJsonLd } from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/commercial-roofing" },
-  title: "Commercial Roof Restoration & Replacement in Houston",
+  title: "Commercial Roof Assessment, Restoration and Replacement",
   description:
     "Commercial roof restoration and replacement across Greater Houston. We assess metal, TPO, modified bitumen, built-up and low-slope systems, then recommend restoring or replacing based on documented condition. Starts with a free written assessment.",
 };

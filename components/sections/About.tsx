@@ -86,8 +86,8 @@ export function About() {
                   <CounterUp end={100} suffix="+" />
                 </p>
                 <p className="text-[0.84rem] leading-[1.5] text-white/62">
-                  Square roofs are what we&rsquo;re built for. Small ones get
-                  the same paperwork.
+                  Built for large commercial roofs and smaller single-building
+                  projects.
                 </p>
               </div>
             </div>
@@ -95,16 +95,12 @@ export function About() {
         </div>
 
         {/* ── Stats strip ── */}
-        <RevealGroup className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-black/[0.09] border border-black/[0.09] mt-24 lg:mt-28">
+        <RevealGroup className="grid grid-cols-2 gap-px bg-black/[0.09] border border-black/[0.09] mt-24 lg:mt-28">
           {stats.map((stat) => (
             <RevealItem key={stat.label}>
               <div className="h-full bg-white p-7 lg:p-8">
                 <p className="display-md text-[var(--supreme-red)] leading-none mb-3">
-                  <CounterUp
-                    end={stat.value}
-                    prefix={"prefix" in stat ? stat.prefix : ""}
-                    suffix={stat.suffix}
-                  />
+                  <CounterUp end={stat.value} suffix={stat.suffix} />
                 </p>
                 <p className="text-[0.86rem] leading-[1.55] text-black/55">
                   {stat.label}

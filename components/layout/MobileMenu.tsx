@@ -231,7 +231,7 @@ export function MobileMenu({
                 onClick={onClose}
                 className="btn btn-ghost-dark w-full"
               >
-                Request a Roof Assessment
+                Request a Commercial Roof Assessment
               </Link>
 
               <div className="pt-4 space-y-2.5 text-[0.82rem] text-black/55">

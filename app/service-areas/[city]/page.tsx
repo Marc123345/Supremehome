@@ -37,8 +37,8 @@ export async function generateMetadata({
   if (!location) return {};
 
   return {
-    title: `Commercial & Residential Roofing in ${location.name}, TX`,
-    description: `Commercial roof restoration and replacement in ${location.name}, ${location.county}. Free roof assessment and written report from ${site.name}, insured to $2M and manufacturer certified.`,
+    title: `Commercial Roofing in ${location.name}, TX`,
+    description: `Commercial roof assessment, restoration and replacement in ${location.name}, ${location.county}. ${site.name} documents the roof's current condition before recommending restoration when viable or replacement when necessary.`,
     alternates: { canonical: `/service-areas/${location.slug}` },
     openGraph: {
       title: `Roofing in ${location.name}, TX | ${site.shortName}`,
@@ -108,28 +108,31 @@ export default async function LocationPage({
             <div className="lg:col-span-7">
               <Reveal>
                 <HouseEyebrow className="mb-5">
-                  On the ground in {location.name}
+                  Serving {location.name}
                 </HouseEyebrow>
               </Reveal>
               <h2 className="display-lg mb-8">
-                <RevealWords text={`What we see on ${location.name} roofs`} />
+                <RevealWords text={`Commercial roofing in ${location.name}`} />
               </h2>
 
+              {/* This block used to run "Building stock." and "Why roofs fail
+                  here." — two invented paragraphs per city. See the note at the
+                  top of lib/locations.ts. What replaces them is the approved
+                  neutral language, which is true of every roof we assess. */}
               <Reveal delay={0.15}>
                 <div className="space-y-6 text-[1rem] leading-[1.85] text-black/68">
                   <p>
-                    <strong className="text-black">Building stock. </strong>
-                    {location.buildingStock}
-                  </p>
-                  <p>
-                    <strong className="text-black">Why roofs fail here. </strong>
-                    {location.localAngle}
+                    Commercial roofs can perform differently even within the
+                    same area. The recommended path depends on the specific
+                    roof&rsquo;s condition, serviceability, moisture, substrate
+                    integrity, compatibility, detailing needs, and the
+                    owner&rsquo;s objectives.
                   </p>
                   <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black/75">
-                    Every {location.name} inquiry starts the same way: a free
-                    inspection, core samples where the roof warrants them, and a
-                    written report telling you whether this is a repair, a
-                    restoration or a replacement.
+                    Every {location.name} inquiry starts the same way: a
+                    no-cost assessment of the roof you have, documented, with a
+                    recommendation of coating and protection, restoration, or
+                    replacement based on what that assessment supports.
                   </p>
                 </div>
               </Reveal>
@@ -141,7 +144,7 @@ export default async function LocationPage({
                     {site.phone}
                   </a>
                   <Link href="/contact" className="btn btn-ghost-dark">
-                    Request a roof assessment
+                    Request a commercial roof assessment
                   </Link>
                 </div>
               </Reveal>
@@ -207,7 +210,7 @@ export default async function LocationPage({
       <ServicesSlider
         eyebrow={`Services in ${location.name}`}
         title={`What we do in ${location.name}`}
-        intro={`Commercial restoration and coatings, repairs, storm work and full replacement, plus residential roofing across ${location.county}.`}
+        intro={`Commercial roof assessment, coating and protection, essential restoration repairs and roof replacement across ${location.county}.`}
       />
 
       <Credentials />

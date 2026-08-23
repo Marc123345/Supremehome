@@ -53,6 +53,7 @@ export function Credentials() {
 
       <div className="shell relative">
         {/* ── Credential bar ── */}
+        {credentials.length > 0 && (
         <RevealGroup className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 mb-16 lg:mb-24">
           {credentials.map((c) => (
             <RevealItem key={c.label}>
@@ -69,6 +70,7 @@ export function Credentials() {
             </RevealItem>
           ))}
         </RevealGroup>
+        )}
 
         {/* ── Why you can trust a young commercial arm ── */}
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
@@ -94,7 +96,7 @@ export function Credentials() {
             <Reveal delay={0.25}>
               <div className="mt-9 pt-8 border-t border-white/12">
                 <p className="eyebrow text-white/40 mb-5">
-                  Manufacturer certified
+                  Coating systems we install
                 </p>
                 <ul className="space-y-3.5">
                   {commercialManufacturers.map((m) => (
@@ -110,9 +112,10 @@ export function Credentials() {
                   ))}
                 </ul>
                 <p className="mt-5 text-[0.82rem] leading-[1.65] text-white/40">
-                  Where a project meets the manufacturer&rsquo;s requirements,
-                  it can carry a manufacturer-backed warranty. We tell you
-                  whether yours qualifies before you sign, not after.
+                  Warranty options depend on the selected system, the project
+                  specification, installation and inspection requirements, and
+                  manufacturer approval. Applicable terms are identified in the
+                  proposal before you authorize the work.
                 </p>
               </div>
             </Reveal>

@@ -9,8 +9,8 @@ import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
-  title: "Contact: Request a Free Roof Assessment",
-  description: `Call ${site.phone} or request a free roof assessment. ${site.name} covers commercial and residential roofing across Greater Houston from ${site.address.city}, TX.`,
+  title: "Contact: Request a Commercial Roof Assessment",
+  description: `Contact ${site.name} to discuss a commercial roof assessment in Greater Houston. Call ${site.phone} or send the form to confirm project fit and scheduling with the ${site.address.city}-based commercial team.`,
 };
 
 const CONTACT_ITEMS = [
@@ -50,9 +50,9 @@ export default function ContactPage() {
     <>
       <PageHero
         breadcrumb="Contact"
-        eyebrow="Free assessment · No obligation"
-        title="Let's look at your roof"
-        intro="Tell us what you're dealing with and we'll get someone on the roof. You get a written assessment with photos, and if the roof doesn't need work yet, the report says that too."
+        eyebrow="Commercial roof assessment · No obligation"
+        title="Request a commercial roof assessment"
+        intro="Tell us about the property, the roof, and the concern you are addressing. We will confirm project fit, roof access, and the appropriate next step for scheduling an assessment."
         image={media.grayRoof}
         imageAlt="Close view of a weathered roof surface"
       />
@@ -111,17 +111,22 @@ export default function ContactPage() {
                   </ul>
                 </Reveal>
 
-                {/* Scheduling slot — embed the client's booking tool here */}
+                {/* There used to be a "Prefer to book online? Online
+                    scheduling is coming shortly" card here, sitting a few
+                    hundred pixels from a working Jotform. It told visitors the
+                    form beside it did not exist yet. Correction package F3
+                    removes that language; the form is the online route, and
+                    the phone number is in the contact list above. */}
                 <Reveal direction="left" delay={0.1}>
                   <div className="p-7 bg-[var(--ink-90)] text-white noise relative overflow-hidden">
                     <CalendarCheck
                       size={22}
                       className="text-[var(--supreme-red-bright)] mb-4"
                     />
-                    <h3 className="display-sm mb-3">Prefer to book online?</h3>
+                    <h3 className="display-sm mb-3">Rather talk it through?</h3>
                     <p className="text-[0.9rem] leading-[1.7] text-white/60 mb-5">
-                      Online booking is coming. For now, call and we&rsquo;ll get
-                      you on the schedule while you&rsquo;re on the phone.
+                      Call and we can discuss the property and schedule the
+                      next available assessment time.
                     </p>
                     <a href={site.phoneHref} className="btn btn-primary w-full">
                       <Phone size={16} />
@@ -130,6 +135,7 @@ export default function ContactPage() {
                   </div>
                 </Reveal>
 
+                {credentials.length > 0 && (
                 <Reveal direction="left" delay={0.15}>
                   <ul className="grid grid-cols-2 gap-px bg-black/[0.09] border border-black/[0.09]">
                     {credentials.map((c) => (
@@ -141,6 +147,7 @@ export default function ContactPage() {
                     ))}
                   </ul>
                 </Reveal>
+                )}
               </div>
             </div>
           </div>

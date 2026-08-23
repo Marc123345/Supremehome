@@ -16,6 +16,7 @@ import {
   credentialBadges,
   residentialFaqs,
   residentialBrand,
+  tickerResidential,
 } from "@/lib/site";
 
 import { FaqJsonLd } from "@/components/seo/JsonLd";
@@ -116,7 +117,7 @@ export default function ResidentialRoofingPage() {
         breadcrumb="Residential"
         eyebrow="Homes across Greater Houston"
         title="Residential roofing, without the hard sell"
-        intro="Same crews, same standards, scaled to a house. You get a free inspection, a written answer on repair-or-replace, and a 5-year leak protection warranty on our work."
+        intro="Residential roofing from Supreme, scaled to a house. You get a free inspection, a written answer on repair-or-replace, and a 5-year leak protection warranty on our work."
         image={media.residentialTearOff}
         imageAlt="A roofer removing damaged shingles from a Texas brick home"
       />
@@ -241,7 +242,13 @@ export default function ResidentialRoofingPage() {
         items={residentialFaqs}
         intro="The things homeowners ask us most after a storm."
       />
-      <CTABand />
+      <CTABand
+        heading="Get your roof looked at"
+        body="Tell us what you're seeing and we'll come out and inspect it, free. You get a written answer on whether it's a repair or a replacement."
+        cta="Request a free roof inspection"
+        note={`Residential roofing \u00b7 ${site.address.city}, TX`}
+        ticker={tickerResidential}
+      />
     </>
   );
 }

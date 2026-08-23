@@ -6,7 +6,28 @@ import { Reveal, RevealWords } from "@/components/ui/Reveal";
 import { Ticker } from "@/components/ui/Ticker";
 import { site, tickerPrimary } from "@/lib/site";
 
-export function CTABand() {
+/**
+ * The closing CTA band.
+ *
+ * Props exist for one reason: /residential-roofing used to end with the
+ * commercial call to action and a ticker advertising TPO, mod-bit and BUR
+ * restoration to homeowners (correction package I2). Defaults are the
+ * commercial copy, so every commercial surface is unchanged; the residential
+ * page passes its own.
+ */
+export function CTABand({
+  heading = "Request a commercial roof assessment",
+  body = "We\u2019ll review the roof\u2019s current condition, document the findings, and explain whether restoration and coating are viable or replacement is necessary.",
+  cta = "Request a commercial roof assessment",
+  note = `Commercial roof assessment \u00b7 ${site.address.city}, TX`,
+  ticker = tickerPrimary as readonly string[],
+}: {
+  heading?: string;
+  body?: string;
+  cta?: string;
+  note?: string;
+  ticker?: readonly string[];
+} = {}) {
   return (
     <section className="relative overflow-hidden noise" style={{ background: "var(--supreme-red)" }}>
       {/* Grid texture */}
@@ -21,13 +42,11 @@ export function CTABand() {
               </p>
             </Reveal>
             <h2 className="display-lg text-white mb-5">
-              <RevealWords text="Get an answer on your roof" />
+              <RevealWords text={heading} />
             </h2>
             <Reveal delay={0.15}>
               <p className="text-[1.05rem] leading-[1.75] text-white/82 max-w-xl">
-                We&rsquo;ll inspect it, document it, and tell you whether it
-                needs a repair, a restoration or a replacement, in writing,
-                before anyone talks price.
+                {body}
               </p>
             </Reveal>
           </div>
@@ -45,14 +64,14 @@ export function CTABand() {
                 href="/contact"
                 className="btn btn-ghost-light group w-full lg:w-auto"
               >
-                Request a roof assessment
+                {cta}
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 />
               </Link>
               <p className="text-[0.8rem] text-white/65 lg:text-right mt-2">
-                Free roof assessment · {site.address.city}, TX
+                {note}
               </p>
             </div>
           </Reveal>
@@ -61,7 +80,7 @@ export function CTABand() {
 
       <div className="relative border-t border-white/15">
         <Ticker
-          items={tickerPrimary}
+          items={ticker}
           direction="left"
           textColor="rgba(255,255,255,0.6)"
           dotColor="rgba(255,255,255,0.45)"

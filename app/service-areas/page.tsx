@@ -8,8 +8,8 @@ import { HouseEyebrow } from "@/components/ui/HouseMark";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/service-areas" },
-  title: "Service Areas: Commercial & Residential Roofing Across Greater Houston",
-  description: `${site.name} covers ${serviceAreas
+  title: "Commercial Roofing Service Areas Across Greater Houston",
+  description: `${site.name} serves commercial properties in ${serviceAreas
     .slice(0, 8)
     .join(", ")} and more across the Greater Houston area from our ${site.address.city}, TX base.`,
 };
@@ -45,10 +45,11 @@ export default function ServiceAreasPage() {
           <RevealGroup className="grid md:grid-cols-3 gap-5">
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">Same-week inspections</h3>
+                <h3 className="display-sm mb-3">Scheduling an assessment</h3>
                 <p className="text-[0.93rem] leading-[1.75] text-black/58">
-                  Inside the service area we aim to have someone on your roof
-                  within the week. Sooner when there&rsquo;s water coming in.
+                  Scheduling depends on location, roof access, urgency,
+                  weather, project size and current workload. We confirm timing
+                  with you when you call.
                 </p>
               </div>
             </RevealItem>

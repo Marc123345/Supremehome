@@ -54,10 +54,10 @@ export function Recommendations() {
               </HouseEyebrow>
             </Reveal>
             <h2 className="display-lg">
-              <RevealWords text="Two answers." />
+              <RevealWords text="Three possible paths." />
               <br />
               <span className="text-[var(--supreme-red-bright)]">
-                <RevealWords text="The roof picks which one." delay={0.15} />
+                <RevealWords text="The assessment decides." delay={0.15} />
               </span>
             </h2>
           </div>
@@ -120,7 +120,7 @@ export function Recommendations() {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-end mb-12 lg:mb-14">
           <div className="lg:col-span-7">
             <h3 className="display-md">
-              <RevealWords text="Three ways that plays out" />
+              <RevealWords text="What each path involves" />
             </h3>
           </div>
           <Reveal direction="left" delay={0.15} className="lg:col-span-5">
@@ -179,7 +179,7 @@ export function Recommendations() {
               href="/contact"
               className="btn btn-primary group shrink-0"
             >
-              Get it in writing
+              Request an assessment
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"

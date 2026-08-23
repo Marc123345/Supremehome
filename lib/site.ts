@@ -89,24 +89,22 @@ export const residentialBrand = {
 /* Texas does not issue a state roofing license, so the honest framing is
    insurance, bonding and manufacturer approval — not a fictional TX license. */
 
-export const credentials = [
-  {
-    label: "Insured to $2M",
-    detail: "General liability coverage carried on every project.",
-  },
-  {
-    label: "Bonded",
-    detail: "Bonded in the cities that require it.",
-  },
-  {
-    label: "Approved Applicator",
-    detail: "Certified on the coating systems we install.",
-  },
-  {
-    label: "Free Assessment",
-    detail: "No-cost roof assessment and written report.",
-  },
-] as const;
+/**
+ * HELD PENDING VERIFICATION — correction package sections A4 and 05.
+ *
+ * All four tiles that used to sit here made claims Supreme has not confirmed
+ * in writing: a $2M liability limit whose basis (per occurrence vs aggregate)
+ * is unknown, blanket bonding, a generic "Approved Applicator" line standing
+ * in for manufacturer designations we do not have exactly right, and a free
+ * assessment whose standard contents are undefined.
+ *
+ * The package's instruction for an unresolved claim is to remove it rather
+ * than publish a softened version, so the array is empty and the credential
+ * bar does not render. Restore entries here — in Supreme's own approved
+ * wording — and both the Credentials section and the contact page pick them
+ * up again automatically.
+ */
+export const credentials: readonly { label: string; detail: string }[] = [];
 
 /**
  * `audience` exists because the full list is genuinely mixed: APOC and Henry's
@@ -185,12 +183,12 @@ export const recommendations = [
   {
     key: "restore",
     title: "Restore the roof",
-    body: "The deck is sound, the insulation is dry, and the roof has service life left in it. We bring it back and put a warranty behind it.",
+    body: "The documented condition supports restoration: current serviceability, moisture, substrate and compatibility all point the same way. We scope the work the roof needs and bring it back.",
   },
   {
     key: "replace",
     title: "Replace the roof",
-    body: "The substrate is too far gone for restoration to be worth your money. We say so, and we price the replacement.",
+    body: "The documented condition does not support restoration, or the project requires a new system. We say so, and we price the replacement.",
   },
 ] as const;
 
@@ -203,23 +201,23 @@ export const pathways = [
   {
     step: "01",
     key: "coating",
-    title: "Coating system",
-    tag: "Restoration-ready",
-    body: "The roof is already in shape to take a coating. We prep it, detail it, and install a complete coating system over it.",
+    title: "Coating and protection",
+    tag: "Fully serviceable today",
+    body: "The roof is fully serviceable today and is an appropriate candidate for the selected protective system. We clean, detail, prepare, coat and protect it.",
   },
   {
     step: "02",
     key: "restoration",
-    title: "Full restoration and coating",
-    tag: "Corrective work first",
-    body: "The roof can be saved, but not as it stands. Corrective work comes first, then the coating system goes on over a roof that's ready for it.",
+    title: "Restoration repairs plus coating and protection",
+    tag: "Serviceability requires work first",
+    body: "Full serviceability requires essential restoration work first. We scope the repairs the roof needs, then install the protective system over a roof that is ready for it.",
   },
   {
     step: "03",
     key: "replacement",
     title: "Roof replacement",
-    tag: "When restoration won't hold",
-    body: "Wet insulation, failed decking, a membrane past saving. Coating that roof is throwing money at it. We tear off and replace instead.",
+    tag: "When restoration is not viable",
+    body: "Restoration is not viable based on the documented condition or project requirements, or replacement is otherwise necessary. We price and install the replacement.",
   },
 ] as const;
 
@@ -231,7 +229,7 @@ export const pathways = [
 export const restorationScope = [
   {
     title: "Required repairs",
-    body: "Whatever the roof needs to be sound before anything goes over it.",
+    body: "The project-specific repairs required before coating and protection goes over the roof.",
   },
   {
     title: "Detailing",
@@ -243,7 +241,7 @@ export const restorationScope = [
   },
   {
     title: "Coating installation",
-    body: "The complete system installed to the manufacturer's spec, at the specified rate.",
+    body: "The complete system installed to the approved project specification and required application rate.",
   },
   {
     title: "Quality control",
@@ -255,13 +253,19 @@ export const restorationScope = [
   },
 ] as const;
 
+/**
+ * Three claims, not six. The correction package removed the other three
+ * outright: the accounting line (a marketing site should not classify a
+ * client's capital expenditure), the zero-landfill line (repairs, packaging
+ * and removed materials still produce waste), and the renewable-warranty
+ * line, which promised future recoat eligibility years before the condition
+ * assessment that would decide it. The three that remain are conditional
+ * because the outcome genuinely depends on the roof.
+ */
 export const restorationBenefits = [
-  "Usually a fraction of what a full replacement costs",
-  "No tear-off, so your building stays open and running",
-  "Renewable warranty, so you recoat instead of re-roofing",
-  "Reflective surface takes heat load off the building",
-  "Often books as a maintenance expense instead of capital",
-  "Nothing goes to the landfill",
+  "Can cost less than replacement for an appropriate candidate",
+  "May reduce tear-off and disruption to building operations",
+  "Reflective systems may lower roof-surface temperatures; building-level energy results depend on the assembly and operating conditions",
 ] as const;
 
 /* ── ROOF SYSTEMS WE EVALUATE ────────────────────────────── */
@@ -279,27 +283,27 @@ export const roofSystems = [
   {
     slug: "standing-seam-metal",
     name: "Standing-seam metal",
-    body: "Concealed-clip systems. The panels usually outlast the details, so the details are where we start.",
+    body: "Concealed-clip systems. We assess panel condition, clips, seams, terminations and penetrations before recommending a path.",
   },
   {
     slug: "tpo-single-ply",
     name: "TPO and single-ply",
-    body: "TPO, PVC and EPDM membranes. Seam condition and how much life is left in the sheet drive the answer.",
+    body: "TPO, PVC and EPDM membranes. Membrane and seam condition, flashings, moisture, substrate, drainage and system compatibility all bear on the answer.",
   },
   {
     slug: "modified-bitumen",
     name: "Modified bitumen",
-    body: "Mod-bit and torch-down. Surfacing wear, seam integrity and what's underneath the cap sheet.",
+    body: "Mod-bit and torch-down. Surfacing wear, seam integrity, and what the assessment finds beneath the cap sheet.",
   },
   {
     slug: "built-up-asphaltic",
     name: "Built-up and asphaltic",
-    body: "BUR, gravel-surfaced and other asphalt systems. Often better candidates for restoration than owners expect.",
+    body: "BUR, gravel-surfaced and other asphalt systems. Condition, moisture and compatibility decide whether restoration is appropriate.",
   },
   {
     slug: "low-slope-specialty",
     name: "Low-slope and specialty",
-    body: "Mixed assemblies, previously-coated roofs, and the odd systems that don't fit a category.",
+    body: "Mixed assemblies, previously coated roofs, and specialty systems.",
   },
 ] as const;
 
@@ -314,7 +318,7 @@ export const eligibilityFactors = [
   },
   {
     title: "Moisture",
-    body: "Wet insulation kills restoration. We find out before we recommend, not after.",
+    body: "Moisture in the assembly bears directly on whether restoration is appropriate. We establish it before we recommend, not after.",
   },
   {
     title: "Substrate integrity",
@@ -359,10 +363,10 @@ export const services: Service[] = [
     blurb:
       "We get on the roof, document what's actually there, and tell you whether it can be restored. No cost, and no obligation to do the work with us.",
     points: [
-      "Core samples and moisture survey",
+      "Core samples and moisture survey when conditions warrant",
       "Photo-documented condition report",
       "Restoration eligibility determined on evidence",
-      "Written recommendation, not a sales pitch",
+      "A documented recommendation, not a sales pitch",
     ],
     audience: "commercial",
     featured: true,
@@ -372,12 +376,12 @@ export const services: Service[] = [
     title: "Commercial Roof Restoration",
     kicker: "Coating and full restoration systems",
     blurb:
-      "One complete scope: the corrective work the roof needs, the detailing, the prep, and the coating system over the top of it. Your building stays open the whole time.",
+      "One complete scope: the corrective work the roof needs, the detailing, the prep, and the coating system over the top of it. The work is coordinated to reduce disruption to building operations.",
     points: [
       "Required repairs and detailing included in scope",
-      "Manufacturer-specified systems, installed to spec",
+      "Installed to the approved project specification",
       "Thickness checks and QC as the work goes down",
-      "Renewable manufacturer warranty on qualifying systems",
+      "Warranty terms identified in the proposal before authorization",
     ],
     audience: "commercial",
     featured: true,
@@ -389,10 +393,10 @@ export const services: Service[] = [
     blurb:
       "Some roofs are past saving, and coating them is a waste of your budget. When that's the answer, we tell you in writing and price the replacement.",
     points: [
-      "Full tear-off and deck inspection",
-      "Wet insulation and substrate replacement",
-      "New system installed by certified crews",
-      "Phased around your tenants and operations",
+      "Tear-off and deck inspection to the project scope",
+      "Wet insulation and substrate replacement where found",
+      "New system installed to the approved specification",
+      "Coordinated around your tenants and operations",
     ],
     audience: "commercial",
     featured: true,
@@ -496,12 +500,12 @@ export const processSteps = [
   {
     n: "01",
     title: "Assessment",
-    body: "We get on the roof and walk the whole thing. Core samples where we need them, moisture readings, and a look at every detail and penetration.",
+    body: "We get on the roof and walk the whole thing. Core samples and moisture readings when conditions warrant, and a look at every detail and penetration.",
   },
   {
     n: "02",
     title: "Condition documentation",
-    body: "Everything we find gets photographed and written down: deck, insulation, membrane, seams, drainage. You get the record whether you hire us or not.",
+    body: "What we find gets photographed and written down: deck, insulation, membrane, seams, drainage.",
   },
   {
     n: "03",
@@ -511,17 +515,17 @@ export const processSteps = [
   {
     n: "04",
     title: "Required scope",
-    body: "If it can be restored, we spell out exactly what has to happen first. The corrective work, the detailing, the prep. No vague allowances.",
+    body: "If it can be restored, we spell out what has to happen first: the essential restoration repairs, the detailing, the prep.",
   },
   {
     n: "05",
     title: "Recommendation",
-    body: "Restore or replace, in writing, with the reasoning behind it. Where both are viable, you see both numbers side by side.",
+    body: "Restore or replace, documented, with the reasoning behind it.",
   },
   {
     n: "06",
     title: "Proposal",
-    body: "A scoped, priced proposal you can take to ownership, with the documentation that backs up every line of it.",
+    body: "A project-specific scope, pricing and supporting documentation you can take to ownership.",
   },
 ] as const;
 
@@ -529,10 +533,17 @@ export const processSteps = [
 /* Only verifiable figures. No client counts, project counts or years
    in business — the questionnaire reports 1 year trading. */
 
+/**
+ * The insurance figure and the manufacturer-certification count both came out
+ * here (correction package C15). The first is an unverified limit; the second
+ * counted four certifications on a commercial page when two of them —
+ * CertainTeed and Attic Breeze — are residential credentials.
+ *
+ * What is left is checkable against this repository: the city list and the
+ * roof-system list are both derived from data below.
+ */
 export const stats = [
-  { value: 2, prefix: "$", suffix: "M", label: "Liability insurance carried" },
   { value: 18, suffix: "", label: "Greater Houston cities served" },
-  { value: 4, suffix: "", label: "Manufacturer certifications" },
   { value: 6, suffix: "", label: "Roof systems we evaluate" },
 ] as const;
 
@@ -540,27 +551,27 @@ export const stats = [
 
 export const aboutPoints = [
   "We assess the roof before we recommend anything",
-  "Free assessment with a written, photographed report",
-  "Certified applicator on the systems we install",
-  "Work scheduled around your tenants and your hours",
+  "No-cost commercial roof assessment",
+  "Systems installed to the manufacturer's requirements",
+  "Work coordinated around your tenants and operations",
 ] as const;
 
 export const whyChoose = [
   {
-    title: "The roof decides, not the sales call",
+    title: "The recommendation follows the documented condition",
     body: "We don't show up with an answer already picked. What we document on your roof is what determines the recommendation.",
   },
   {
-    title: "Certified, so the warranty is real",
-    body: "Manufacturer approval is what lets a coating carry a warranty at all. Without it, a coating is paint with a receipt.",
+    title: "Qualified systems, verified requirements",
+    body: "Manufacturer approval, project specifications and inspection requirements are what make a warranty available at all. We work to those requirements and tell you what they mean for your roof.",
   },
   {
     title: "Restoration and replacement, both",
     body: "We're not a coating company looking for roofs to coat. When a roof needs replacing, that's what we tell you.",
   },
   {
-    title: "One scope, not a pile of line items",
-    body: "Repairs, detailing, prep, coating, QC and closeout come as one job with one number and one company standing behind it.",
+    title: "One coordinated project-specific scope",
+    body: "Repairs, detailing, prep, coating, QC and closeout are identified together as one project scope rather than a pile of separate line items.",
   },
 ] as const;
 
@@ -572,20 +583,20 @@ export const whyChoose = [
  */
 export const credibilityPillars = [
   {
-    title: "Manufacturer certifications",
-    body: "We're an approved applicator on the systems we install. That approval is audited, and it's what makes a manufacturer warranty possible.",
+    title: "Manufacturer requirements",
+    body: "Coating and protection systems are installed to the manufacturer's requirements for the specified system. Those requirements are what make a manufacturer-backed warranty possible on a qualifying project.",
   },
   {
-    title: "Warranty-eligible systems",
-    body: "Where a project meets the manufacturer's requirements, it can carry a manufacturer-backed warranty. We'll tell you upfront whether yours qualifies.",
+    title: "Warranty terms in the proposal",
+    body: "Warranty options depend on the system, specification, installation requirements, manufacturer approval and inspections. Applicable terms are identified in the project proposal before you authorize anything.",
   },
   {
     title: "A process that doesn't bend",
-    body: "Same assessment, same documentation, same written recommendation on every building, whether it's a gas station or a distribution center.",
+    body: "The same assessment and the same documentation, on a single-building project or a distribution center.",
   },
   {
     title: "You know who's accountable",
-    body: "Supreme leadership walks commercial roofs personally. You're not handed to a rotating account manager after you sign.",
+    body: "Your commercial contact stays involved from the assessment through the recommendation. You're not handed to a rotating account manager after you sign.",
   },
   {
     title: "No borrowed portfolios",
@@ -593,7 +604,7 @@ export const credibilityPillars = [
   },
   {
     title: "The Supreme name behind it",
-    body: "Supreme Commercial Coatings is the commercial arm of Supreme Home Roofing and Construction. Same owner, same crews, and one name answering for both.",
+    body: "Supreme Commercial Coatings is the commercial roofing business within Supreme, working out of Katy across Greater Houston.",
   },
 ] as const;
 
@@ -624,12 +635,12 @@ export const caseStudies: CaseStudy[] = [];
 /* ── COMMERCIAL CAPABILITIES ─────────────────────────────── */
 
 export const capabilities = [
-  { title: "Moisture surveys", note: "Core samples before we quote" },
-  { title: "Infrared scanning", note: "Finding wet insulation" },
-  { title: "Seam and flashing work", note: "Where most leaks start" },
-  { title: "Ponding correction", note: "Tapered fills and drainage" },
+  { title: "Moisture surveys", note: "When conditions warrant" },
+  { title: "Infrared scanning", note: "When included in the assessment scope" },
+  { title: "Seam and flashing work", note: "Detailing as the scope requires" },
+  { title: "Ponding correction", note: "Tapered fills and drainage, as scoped" },
   { title: "Metal roof restoration", note: "Rust treatment and seam seal" },
-  { title: "Coating systems", note: "Silicone and acrylic, to spec" },
+  { title: "Coating systems", note: "Installed to the approved specification" },
 ] as const;
 
 /* ── TEAM ────────────────────────────────────────────────── */
@@ -647,19 +658,19 @@ export const team = [
     role: "Owner and Estimator",
     name: null as string | null,
     photo: null as string | null,
-    body: "Walks the roof on commercial projects and writes the assessment personally.",
+    body: "Your commercial contact from the assessment through the recommendation.",
   },
   {
     role: "Project Manager",
     name: null as string | null,
     photo: null as string | null,
-    body: "Your one point of contact once work starts. Daily updates, site cleanliness, schedule.",
+    body: "Runs the job once work starts. Communication and schedule are established for the specific project.",
   },
   {
-    role: "Certified Applicators",
+    role: "Applicators",
     name: null as string | null,
     photo: null as string | null,
-    body: "Trained on the systems we install, which is what makes the manufacturer warranty issuable.",
+    body: "Trained on the systems we install and the requirements those systems carry.",
   },
   {
     role: "Quality Control",
@@ -680,19 +691,19 @@ export const serviceAreas: readonly string[] = locations.map((l) => l.name);
 export const clientTypes = [
   {
     title: "Property Managers",
-    body: "Multi-site portfolios where a surprise roof replacement wrecks the capital budget. We build a restoration plan you can defend to ownership.",
+    body: "Multi-site portfolios where roof spend has to be planned rather than absorbed. We document condition in a form that supports portfolio planning and ownership review.",
   },
   {
     title: "Building Owners",
-    body: "Roofs coming up on the end of their service life. We tell you how many years are actually left and what it costs to add more.",
+    body: "Roofs coming up on the end of their service life. We document present condition and explain the available paths.",
   },
   {
     title: "Churches and Schools",
-    body: "Buildings where every dollar gets accounted for. Restoration keeps the roof tight without a capital campaign.",
+    body: "Buildings where every dollar gets accounted for. We help leadership evaluate responsible use of available funds.",
   },
   {
     title: "Retail and Restaurants",
-    body: "Gas stations, fast food, strip centers. A small building gets the same documentation as a big one.",
+    body: "Gas stations, fast food, strip centers. Smaller single-building projects get a documented assessment too.",
   },
 ] as const;
 
@@ -703,39 +714,39 @@ export const clientTypes = [
 export const faqs = [
   {
     q: "Can my roof be restored instead of replaced?",
-    a: "That depends on condition, not roof type. If the deck and insulation are dry and sound, and the membrane is weathered rather than failed, restoration is usually on the table. We take core samples and run a moisture survey before we answer. If the roof is too far gone, we'll tell you that instead of selling you a coating that won't last.",
+    a: "Possibly. Viability depends on the roof's current serviceability, moisture conditions, substrate integrity, system compatibility, detailing needs, prior work, and your objectives for the building. We document those conditions before recommending restoration and coating or replacement. If the roof is too far gone, we tell you that instead of selling you a coating that won't last.",
   },
   {
     q: "What kinds of commercial roofs do you work on?",
-    a: "All the major commercial systems: exposed-fastener metal, standing-seam metal, TPO and other single-ply membranes, modified bitumen, built-up and asphaltic roofs, and low-slope or specialty assemblies. We assess the whole roof system rather than deciding by roof type.",
+    a: "We assess exposed-fastener metal, standing-seam metal, TPO and other single-ply membranes, modified bitumen, built-up roofing, and mixed low-slope assemblies. Current installation and restoration capabilities vary by roof system and project requirements. The recommended path depends on the condition of the specific roof, not its category alone.",
   },
   {
     q: "Why does everyone else quote me a full replacement?",
-    a: "Because replacement carries the biggest price tag. That's the honest answer. We assess the roof first, and where restoration and replacement are both viable, you get both numbers so you can see the difference yourself.",
+    a: "Replacement is a common recommendation for an aging roof because it provides a complete new system. It is not always the only appropriate option. When the existing roof is a viable restoration candidate, we explain that path and the work it requires.",
   },
   {
     q: "Do you only do coatings?",
-    a: "No. We restore roofs and we replace roofs. A coating is one part of a restoration, and restoration is only the right call when the roof supports it. When it doesn't, we replace.",
+    a: "No. We provide commercial roof assessment, coating and protection systems, essential restoration repairs when required, and roof replacement. A coating system is recommended only when the existing roof is a viable candidate.",
   },
   {
     q: "Do you do repairs?",
-    a: "We do the repairs a roof needs as part of restoring it. That's built into the scope. We're not set up as a call-out repair company, though. If your roof needs a repair to get it ready, that's part of the job we quote.",
+    a: "Repairs required to prepare an approved restoration project are included in the project-specific scope. Availability for standalone commercial repair work depends on the property, location and required scope — call us to confirm project fit.",
   },
   {
     q: "Are you licensed and insured in Texas?",
-    a: "Texas doesn't issue a state roofing contractor license, so no roofer in Texas holds one. What matters is insurance and manufacturer approval. We carry general liability coverage to $2 million, we're bonded in the cities that require it, and we're certified applicators for APOC, Henry's, CertainTeed and Attic Breeze. We also hold Oklahoma CIB residential roofing license #80007778.",
+    a: "Texas doesn't issue a statewide roofing contractor license, so no roofer in Texas holds one. What matters is insurance and manufacturer approval. We carry general liability insurance and hold current manufacturer credentials for the systems we install, and documentation is available on request.",
   },
   {
     q: "How long does a commercial restoration take?",
-    a: "Most coating projects run days rather than weeks, and there's no tear-off, so your building stays open the whole time. We schedule around your hours and give you a progress update every day we're on site.",
+    a: "Project duration depends on roof size, existing condition, the restoration work required, weather, access and the selected system. We provide a project-specific schedule before work begins and coordinate the work to reduce disruption to building operations.",
   },
   {
     q: "What warranties come with the work?",
-    a: "Restoration systems carry renewable manufacturer warranties. When the term is up you recoat instead of re-roofing. Where a project meets the manufacturer's requirements, it can carry a manufacturer-backed warranty, and we'll tell you upfront whether yours qualifies.",
+    a: "Warranty options depend on the selected system, project specifications, installation requirements, manufacturer approval, inspections and submission procedures. Applicable warranty terms are identified in the project proposal before authorization.",
   },
   {
     q: "How small a job will you take?",
-    a: "We're set up for 100+ square projects, but we work on gas stations, fast food buildings and single-building sites all the time. A small roof gets the same assessment, documentation and warranty as a big one.",
+    a: "We assess both large commercial roofs and smaller single-building projects. Project fit depends on location, roof size, scope, access and scheduling — call us to confirm whether a specific property is a fit.",
   },
 ] as const;
 
@@ -884,15 +895,29 @@ export const residentialNavItem = {
 
 /* ── HERO TICKERS ────────────────────────────────────────── */
 
+/* "INSURED TO $2M", "APOC CERTIFIED" and "HENRY'S CERTIFIED" were removed
+   here (correction package A4 and 05). The insurance limit is unconfirmed and
+   both manufacturer designations need to come back in the manufacturer's own
+   exact wording — "Henry's" is a trading name we have not verified. */
 export const tickerPrimary = [
   "COMMERCIAL ROOF RESTORATION",
   "COMMERCIAL ROOF REPLACEMENT",
   "METAL · TPO · MOD-BIT · BUR",
-  "RESTORATION ELIGIBILITY ASSESSMENTS",
-  "INSURED TO $2M",
-  "APOC CERTIFIED",
-  "HENRY'S CERTIFIED",
-  "FREE ROOF ASSESSMENTS",
+  "COMMERCIAL ROOF ASSESSMENTS",
+  "RESTORE WHEN VIABLE",
+  "REPLACE WHEN NECESSARY",
+  "GREATER HOUSTON",
+] as const;
+
+/* Residential surfaces used to run tickerPrimary, which advertises commercial
+   restoration systems to homeowners (correction package I2). Everything below
+   already appears in the residential services and FAQs on that page. */
+export const tickerResidential = [
+  "RESIDENTIAL ROOF REPLACEMENT",
+  "STORM AND HAIL DAMAGE",
+  "ROOF REPAIR",
+  "INSURANCE CLAIM HELP",
+  "FREE ROOF INSPECTION",
   "GREATER HOUSTON",
 ] as const;
 

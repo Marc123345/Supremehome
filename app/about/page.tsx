@@ -24,7 +24,7 @@ export default function AboutPage() {
         breadcrumb="About"
         eyebrow="Who we are"
         title="We assess before we recommend"
-        intro={`${site.dba} is the commercial arm of ${site.legalName}, based in ${site.address.city}. We got into this because too many building owners get handed a replacement quote for a roof that didn't need replacing.`}
+        intro={`${site.dba} is the commercial roofing business within Supreme. Based in ${site.address.city}, we help owners and property leaders understand existing roof conditions before selecting coating and protection, restoration, or replacement.`}
         image={media.aerialPlant}
         imageAlt="Aerial view of a large industrial building and its roof system"
       />
@@ -46,18 +46,18 @@ export default function AboutPage() {
               <Reveal delay={0.15}>
                 <div className="space-y-6 text-[1.02rem] leading-[1.85] text-black/68">
                   <p>
-                    Get three quotes on an aging commercial roof and you&rsquo;ll
-                    usually get the same answer three times: tear it off and
-                    replace it. Sometimes that&rsquo;s right. A lot of the time
-                    it&rsquo;s just the biggest ticket on the page.
+                    Aging does not automatically make a roof a viable
+                    restoration candidate, and it does not automatically
+                    require replacement. Replacement is a common
+                    recommendation because it provides a complete new system,
+                    and sometimes that is the right call.
                   </p>
                   <p>
-                    We do it the other way around. Every project starts with an
-                    assessment and a written report on what we found. If the
-                    deck and insulation are dry and the membrane is worn rather
-                    than failed, we can usually bring that roof back for a
-                    fraction of what replacing it costs. No tear-off, and your
-                    building never closes.
+                    We start further back. Every project begins with an
+                    assessment and a documented account of what we found. Where
+                    the condition supports restoration, it can cost less than
+                    replacement and may reduce tear-off and disruption to
+                    building operations.
                   </p>
                   <p>
                     When the substrate is gone, we say so and price the

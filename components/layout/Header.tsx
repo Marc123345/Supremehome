@@ -254,7 +254,7 @@ export function Header() {
               {/* Collapses at lg so the centered nav has room. */}
               <span className="hidden xl:block leading-tight">
                 <span className="block eyebrow text-black/45">
-                  Free assessment
+                  Commercial roof assessment
                 </span>
                 <span className="block font-display text-[1.4rem] leading-none tracking-wide transition-colors duration-300 group-hover:text-[var(--supreme-red)]">
                   {site.phone}

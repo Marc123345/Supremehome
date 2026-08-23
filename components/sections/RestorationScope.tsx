@@ -25,7 +25,9 @@ import { restorationScope, restorationBenefits, media } from "@/lib/site";
 
 export function RestorationScope() {
   return (
-    <section className="relative section bg-white overflow-hidden">
+    /* `id="scope"` is linked from the footer's Restoration Scope entry, which
+       pointed at a target that did not exist (correction package D4). */
+    <section id="scope" className="relative section bg-white overflow-hidden">
       {/* Watermark keeps the brand present on the light sections too. */}
       <div
         aria-hidden="true"
@@ -43,10 +45,10 @@ export function RestorationScope() {
               </HouseEyebrow>
             </Reveal>
             <h2 className="display-lg">
-              <RevealWords text="One scope. One number." />
+              <RevealWords text="One coordinated scope." />
               <br />
               <span className="text-[var(--supreme-red)]">
-                <RevealWords text="One company on the hook." delay={0.15} />
+                <RevealWords text="One accountable partner." delay={0.15} />
               </span>
             </h2>
           </div>
@@ -105,7 +107,7 @@ export function RestorationScope() {
                     Built for scale
                   </p>
                   <p className="display-sm">
-                    100+ square projects, and the gas station on the corner
+                    Large commercial roofs and smaller single-building projects
                   </p>
                 </>
               }

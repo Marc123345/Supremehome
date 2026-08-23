@@ -39,10 +39,13 @@ const SYSTEM_PHRASES = [
   "BUILT-UP ROOFING",
 ] as const;
 
+/* The insurance limit and the generic "Approved applicator" line were removed
+   here (correction package A4). Both are unverified claims, and the applicator
+   line stood in for manufacturer designations we do not yet have exactly
+   right. What is left is the offer itself and the positioning. */
 const TRUST_CHIPS = [
-  "Insured to $2M",
-  "Approved applicator",
-  "Free roof assessment",
+  "Free commercial roof assessment",
+  "Assessment before recommendation",
 ] as const;
 
 export function Hero() {
@@ -277,19 +280,20 @@ export function Hero() {
             className="hidden lg:flex lg:col-span-5 xl:col-span-4 flex-col items-start pb-3"
           >
             <h2 className="display-sm text-white mb-3">
-              Find out which one your roof is
+              Find the right path for your roof
             </h2>
             <p
               className="text-[0.9rem] leading-[1.7] mb-6"
               style={{ color: "rgba(255,255,255,0.78)" }}
             >
-              A free assessment tells you whether your roof can be restored,
-              what it would take, and what that costs next to a replacement.
+              A commercial roof assessment documents current conditions and
+              identifies whether restoration and coating are viable or
+              replacement is necessary.
             </p>
 
             <div className="flex items-center gap-3">
               <Link href="/contact" className="btn btn-primary group">
-                Request a Roof Assessment
+                Request a Commercial Roof Assessment
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-1"

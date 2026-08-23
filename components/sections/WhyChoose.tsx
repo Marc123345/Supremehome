@@ -27,8 +27,9 @@ export function WhyChoose() {
             </h2>
             <Reveal delay={0.15}>
               <p className="lede">
-                Anyone can install a roof. The value is in knowing which roofs
-                need one, and being willing to say so when they don&apos;t.
+                The value of a commercial roofing partner begins with an
+                accurate assessment, and continues through a clearly defined
+                scope, proper installation, quality control and closeout.
               </p>
             </Reveal>
           </div>
