@@ -4,7 +4,7 @@ import { Bebas_Neue, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BackToTop } from "@/components/ui/BackToTop";
+import { ChatToggle } from "@/components/ui/ChatToggle";
 import { site, serviceAreas, services } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
 
@@ -193,7 +193,10 @@ export default function RootLayout({
         <Header />
         <main id="main">{children}</main>
         <Footer />
-        <BackToTop />
+        {/* The back-to-top circle used to sit here. It was moved to the
+            bottom-left to get out of the agent's way, and a floating circle
+            on the left that scrolls the page is not a control anyone reads
+            as that — the browser and the phone both already do it. */}
 
         {/* Supreme assessment agent (Jotform). It fills and submits the same
             form the contact page embeds, so a conversation that finishes is a
@@ -208,6 +211,7 @@ export default function RootLayout({
           src="https://cdn.jotfor.ms/agent/embedjs/01a02fe8bce870008b0de7beaa0b1f91da1a/embed.js"
           strategy="lazyOnload"
         />
+        <ChatToggle />
       </body>
     </html>
   );
