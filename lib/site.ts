@@ -126,7 +126,7 @@ export const manufacturers = [
     audience: "commercial" as const,
   },
   {
-    name: "Henry's",
+    name: "Henry",
     note: "Commercial roofing and waterproofing",
     audience: "commercial" as const,
   },
@@ -245,7 +245,7 @@ export const restorationScope = [
   },
   {
     title: "Quality control",
-    body: "Thickness checks and inspection as the work goes down, not after it's covered up.",
+    body: "Inspection and thickness checks as the work goes down, to the requirements the system carries.",
   },
   {
     title: "Closeout",
@@ -369,7 +369,7 @@ export const services: Service[] = [
       "We get on the roof, document what's actually there, and tell you whether it can be restored. No cost, and no obligation to do the work with us.",
     points: [
       "Core samples and moisture survey when conditions warrant",
-      "Photo-documented condition report",
+      "Condition documented as the roof and access allow",
       "Restoration eligibility determined on evidence",
       "A documented recommendation, not a sales pitch",
     ],
@@ -512,7 +512,7 @@ export const processSteps = [
   {
     n: "02",
     title: "Condition documentation",
-    body: "What we find gets photographed and written down: deck, insulation, membrane, seams, drainage.",
+    body: "We record what we find across the deck, insulation, membrane, seams and drainage.",
   },
   {
     n: "03",
@@ -646,7 +646,7 @@ export const capabilities = [
   { title: "Infrared scanning", note: "When included in the assessment scope" },
   { title: "Seam and flashing work", note: "Detailing as the scope requires" },
   { title: "Ponding correction", note: "Tapered fills and drainage, as scoped" },
-  { title: "Metal roof restoration", note: "Rust treatment and seam seal" },
+  { title: "Metal roof restoration", note: "Rust treatment and seam seal, as scoped" },
   { title: "Coating systems", note: "Installed to the approved specification" },
 ] as const;
 
@@ -741,7 +741,7 @@ export const faqs = [
   },
   {
     q: "Are you licensed and insured in Texas?",
-    a: "Texas doesn't issue a statewide roofing contractor license, so no roofer in Texas holds one. What matters is insurance and manufacturer approval. We carry general liability insurance and hold current manufacturer credentials for the systems we install, and documentation is available on request.",
+    a: "Texas doesn't issue a statewide roofing contractor license. What matters is insurance and manufacturer approval. We carry general liability insurance and hold current manufacturer credentials for the systems we install, and documentation is available on request.",
   },
   {
     q: "How long does a commercial restoration take?",

@@ -83,9 +83,11 @@ export function About() {
 
               {/* Stat badge */}
               <div className="absolute -bottom-8 -right-4 sm:-right-8 bg-[var(--ink-90)] text-white p-6 lg:p-7 max-w-[230px] noise">
-                <p className="display-md text-[var(--supreme-red-bright)] leading-none mb-2">
-                  <CounterUp end={100} suffix="+" />
-                </p>
+                {/* A bare "100+" used to sit above this line. It read as a
+                    project count once the caption stopped saying "square
+                    projects" — which is the exact claim the checklist says
+                    must not drift from "set up for" into "completed many".
+                    The statement stands on its own. */}
                 <p className="text-[1rem] leading-[1.5] text-white">
                   Built for large commercial roofs and smaller single-building
                   projects.

@@ -85,10 +85,8 @@ export function Credentials() {
             </h2>
             <Reveal delay={0.15}>
               <p className="text-[1rem] leading-[1.8] text-white">
-                Our commercial portfolio is still growing, and we&rsquo;re not
-                going to pretend otherwise. What we can point at is the
-                process, the specification we work to, and the people whose
-                name is on the work.
+                What we can point at is the process, the specification we
+                work to, and the people whose name is on the work.
               </p>
             </Reveal>
 

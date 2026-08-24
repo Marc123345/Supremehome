@@ -26,7 +26,8 @@ import { processSteps, media } from "@/lib/site";
 
 export function Process() {
   return (
-    <section id="process" className="relative section bg-white overflow-hidden">
+    <section id="process" style={{ scrollMarginTop: "96px" }}
+      className="relative section bg-white overflow-hidden">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -right-36 bottom-0 opacity-[0.03]"
@@ -78,8 +79,15 @@ export function Process() {
 
               <Reveal delay={0.2}>
                 <div className="mt-6 p-6 bg-[var(--ink-05)] border-l-[3px] border-[var(--supreme-red)]">
+                  {/* This promised "the written report and the photos either
+                      way" on every assessment. What the no-cost assessment
+                      universally includes is a blocking item on the claims
+                      checklist, so the promise comes out and the part that is
+                      true — we will tell you when a roof needs nothing yet —
+                      stays. */}
                   <p className="text-[1.02rem] leading-[1.75] text-black">
-                    You get the written report and the photos either way. That includes the roofs we tell you to leave alone for now.
+                    That includes telling you when a roof needs nothing from us
+                    yet.
                   </p>
                 </div>
               </Reveal>

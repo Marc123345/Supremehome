@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ChatToggle } from "@/components/ui/ChatToggle";
+import { HashScroll } from "@/components/ui/HashScroll";
 import { site, serviceAreas, services } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
 
@@ -212,6 +213,7 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
         <ChatToggle />
+        <HashScroll />
       </body>
     </html>
   );
