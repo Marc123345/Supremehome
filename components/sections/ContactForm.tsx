@@ -57,9 +57,8 @@ export function ContactForm() {
             </span>
             <h3 className="display-md mb-4">Request received</h3>
             <p className="text-[1rem] leading-[1.75] text-black max-w-md mx-auto">
-              We will call you to schedule the inspection, usually the same
-              business day. If it is urgent, call us directly and we will get a
-              crew out sooner.
+              We will call you to confirm the property and the next step. If
+              it is urgent, call us directly.
             </p>
           </div>
         ) : (

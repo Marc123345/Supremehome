@@ -71,8 +71,16 @@ export function CoverageMap({
     };
   }, [showLookup]);
 
+  /* Split on commas as well as ampersands. "Harris, Fort Bend & Waller
+     Counties" was being split on " & " alone, so "Harris, Fort Bend" counted
+     as one county and the page published seven. There are six. */
   const counties = new Set(
-    locations.flatMap((l) => COUNTY_SHORT(l.county).split(" & ").map((c) => c.trim()))
+    locations.flatMap((l) =>
+      COUNTY_SHORT(l.county)
+        .split(/\s*(?:&|,)\s*/)
+        .map((c) => c.trim())
+        .filter(Boolean),
+    ),
   );
 
   const hoveredLocation = locations.find((l) => l.slug === hovered);

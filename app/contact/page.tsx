@@ -64,7 +64,7 @@ export default function ContactPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <HouseEyebrow className="mb-5">
-                  Request an inspection
+                  Request a commercial roof assessment
                 </HouseEyebrow>
               </Reveal>
               <h2 className="display-md mb-8">

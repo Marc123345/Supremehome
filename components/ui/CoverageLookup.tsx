@@ -173,8 +173,8 @@ export function CoverageLookup({ onClose }: { onClose: () => void }) {
             <h3 className="display-md mb-3">Still worth a call</h3>
             <p className="text-[1rem] leading-[1.7] text-white mb-6">
               We didn&apos;t find “{result.query}” in our eighteen listed
-              communities. Commercial projects regularly justify the travel
-              across the wider Houston metro, though. Call and ask.
+              communities. Commercial projects outside the listed area may
+              still be a fit — call and we will confirm.
             </p>
             <div className="flex flex-wrap gap-3">
               <a href={site.phoneHref} className="btn btn-primary">

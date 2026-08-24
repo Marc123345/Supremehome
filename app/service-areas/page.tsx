@@ -20,8 +20,8 @@ export default function ServiceAreasPage() {
       <PageHero
         breadcrumb="Service Areas"
         eyebrow="Eighteen communities"
-        title="Roofing across Greater Houston"
-        intro={`Crews run out of ${site.address.city} and cover the metro from the Energy Corridor to the Woodlands and down to the Gulf. Commercial work travels further. If your building sits outside the list, call and ask.`}
+        title="Commercial roofing across Greater Houston"
+        intro={`${site.name} serves commercial properties from its ${site.address.city} base across the listed Greater Houston communities. Commercial projects outside the listed area may be considered based on scope, location and scheduling.`}
         image={media.warehouseAerial}
         imageAlt="Aerial view of a distribution facility and its low-slope roof"
       />
@@ -55,19 +55,19 @@ export default function ServiceAreasPage() {
             </RevealItem>
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">Storm response</h3>
+                <h3 className="display-sm mb-3">After a storm</h3>
                 <p className="text-[1rem] leading-[1.75] text-black">
-                  After a hail or wind event we prioritize make-safe work and
-                  emergency tarping across the whole coverage map.
+                  Call us after a hail or wind event and we will confirm what
+                  we can do for the property and when.
                 </p>
               </div>
             </RevealItem>
             <RevealItem className="h-full">
               <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">Portfolio accounts</h3>
+                <h3 className="display-sm mb-3">More than one building</h3>
                 <p className="text-[1rem] leading-[1.75] text-black">
-                  Managing sites across several cities? We survey the whole
-                  portfolio and give you one prioritized capital plan.
+                  Managing sites across several cities? Tell us what you have
+                  and we will confirm what we can assess and in what order.
                 </p>
               </div>
             </RevealItem>
@@ -77,8 +77,8 @@ export default function ServiceAreasPage() {
             <div className="mt-10 p-8 bg-[var(--ink-05)] border-l-[4px] border-[var(--supreme-red)]">
               <p className="text-[1.05rem] leading-[1.8] text-black">
                 Based at {site.address.full}. Commercial inquiries outside the
-                listed cities are welcome. Restoration projects
-                regularly justify the travel.
+                listed cities are welcome — call and we will confirm whether
+                the project is a fit.
               </p>
             </div>
           </Reveal>
