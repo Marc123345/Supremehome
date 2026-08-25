@@ -1,23 +1,50 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { MapPin, Phone, Check } from "lucide-react";
-import { PageHero } from "@/components/sections/PageHero";
-import { ServicesSlider } from "@/components/sections/ServicesSlider";
-import { Recommendations } from "@/components/sections/Recommendations";
-import { FAQ } from "@/components/sections/FAQ";
-import { CTABand } from "@/components/sections/CTABand";
-import { SlidingText } from "@/components/sections/SlidingText";
-import { CoverageMap } from "@/components/sections/CoverageMap";
-import {
-  FaqJsonLd,
-  BreadcrumbJsonLd,
-  ServicesJsonLd,
-} from "@/components/seo/JsonLd";
-import { Reveal, RevealWords } from "@/components/ui/Reveal";
+import { MapPin } from "lucide-react";
+import { FinalCta } from "@/components/scc/FinalCta";
+import { BreadcrumbJsonLd, ServicesJsonLd } from "@/components/seo/JsonLd";
 import { locations, getLocation } from "@/lib/locations";
-import { media, site, restorationBenefits } from "@/lib/site";
-import { HouseEyebrow } from "@/components/ui/HouseMark";
+import { site } from "@/lib/site";
+
+/**
+ * CITY ROUTE — rebuilt to the concise template in file 05 §6.
+ *
+ * ── What this replaced ─────────────────────────────────────────────────────
+ *
+ * The review measured the Houston page at ~952 words and ~8,400px and called
+ * it what it was: "functions as a duplicate commercial sales page." Eighteen
+ * of them existed, each carrying the full decision framework, a services
+ * slider, the coverage map, a nine-question FAQ with its own schema, and a
+ * "Why restoration wins in [City]" section.
+ *
+ * Everything on file 03's REMOVE list is gone: the solution framework, the
+ * service cards, the full map, the FAQ and its schema, the marquee, and the
+ * "Why restoration wins" block — which was also the worst offender on claims,
+ * since it asserted local restoration outcomes nobody had verified.
+ *
+ * The template is now five things: coverage, one capability paragraph, local
+ * proof, nearby areas, one CTA.
+ *
+ * ── The indexing rule, which is the consequential part ─────────────────────
+ *
+ * File 05 §6: "Set every city page without verified local proof to `noindex`
+ * and remove it from the production sitemap. Do not invent local facts to
+ * manufacture uniqueness."
+ *
+ * `location.proof` is the switch. No location has it today, so ALL EIGHTEEN
+ * city pages are currently `noindex` and excluded from the sitemap. That is
+ * the correct state: a page whose only content is "we cover this city" has no
+ * business competing in search, and eighteen near-identical ones are a
+ * liability rather than a footprint.
+ *
+ * Add a verified `proof` entry to a location in lib/locations and that page
+ * becomes indexable on its own. Nothing else changes.
+ *
+ * ⚠ SCC INPUT REQUIRED (file 03, D9): the city-to-project mapping. Which
+ * cities have a real nearby project, photograph, or verified operational fact.
+ * Do not populate `proof` with anything SCC has not confirmed.
+ */
 
 type Params = { city: string };
 
@@ -32,203 +59,130 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { city } = await params;
   const location = getLocation(city);
-
   if (!location) return {};
+
+  const hasProof = Boolean(location.proof);
 
   return {
     title: `Commercial Roofing in ${location.name}, TX`,
     description: `Commercial roof assessment, restoration and replacement in ${location.name}, ${location.county}. ${site.name} documents the roof's current condition before recommending restoration when viable or replacement when necessary.`,
     alternates: { canonical: `/service-areas/${location.slug}` },
-    openGraph: {
-      title: `Roofing in ${location.name}, TX | ${site.shortName}`,
-      description: location.intro,
-      url: `${site.url}/service-areas/${location.slug}`,
-    },
+    /* No verified local proof, no index. See the note above. */
+    ...(hasProof ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
-export default async function LocationPage({
+export default async function CityPage({
   params,
 }: {
   params: Promise<Params>;
 }) {
   const { city } = await params;
   const location = getLocation(city);
-
   if (!location) notFound();
 
-  const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "RoofingContractor",
-    name: `${site.name} — ${location.name}`,
-    telephone: site.phone,
-    email: site.email,
-    url: `${site.url}/service-areas/${location.slug}`,
-    areaServed: { "@type": "City", name: `${location.name}, TX` },
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: site.address.street,
-      addressLocality: site.address.city,
-      addressRegion: site.address.state,
-      postalCode: site.address.zip,
-      addressCountry: "US",
-    },
-    description: location.intro,
-  };
+  const others = locations.filter((l) => l.slug !== location.slug).slice(0, 6);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-
       <BreadcrumbJsonLd
         trail={[
-          { name: "Service Areas", path: "/service-areas" },
+          { name: "Service areas", path: "/service-areas" },
           { name: location.name, path: `/service-areas/${location.slug}` },
         ]}
       />
       <ServicesJsonLd areaServed={location.name} />
 
-      <PageHero
-        breadcrumb={location.name}
-        eyebrow={`${location.county} · Texas`}
-        title={`Roofing in ${location.name}`}
-        intro={location.intro}
-        image={media.loadingDocks}
-        imageAlt={`Loading docks and low-slope roofing of the kind found across ${location.name}, Texas`}
-      />
-
-      {/* ── Local detail ── */}
-      <section className="section bg-white">
+      {/* 1. Compact hero — coverage, verified. */}
+      <section className="border-b border-[var(--scc-border)] bg-[var(--paper)] pt-12 pb-10 lg:pt-14 lg:pb-12">
         <div className="shell">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16">
+          <p className="[font-size:var(--t-label)] font-[700] uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            Service area
+          </p>
+          <h1 className="mt-3 font-display uppercase leading-[1.06] [font-size:var(--t-h2)] text-[var(--scc-ink)]">
+            Commercial Roofing in {location.name}, Texas
+          </h1>
+          <p className="scc-measure mt-4 [font-size:var(--t-lead)] leading-[1.6] text-[var(--text-muted)]">
+            Supreme Commercial Coatings serves commercial properties in{" "}
+            {location.name} and the surrounding {location.county} area. We
+            assess existing roof conditions, document what we find, and
+            recommend restoration and coating when viable, or replacement when
+            necessary.
+          </p>
+        </div>
+      </section>
+
+      {/* 2. One concise capability paragraph. Not a service-card block. */}
+      <section className="scc-section-compact bg-[var(--paper)]">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
-              <Reveal>
-                <HouseEyebrow className="mb-5">
-                  Serving {location.name}
-                </HouseEyebrow>
-              </Reveal>
-              <h2 className="display-lg mb-8">
-                <RevealWords text={`Commercial roofing in ${location.name}`} />
+              <h2 className="text-[1.375rem] font-[700] text-[var(--scc-ink)]">
+                What we do in {location.name}
               </h2>
-
-              {/* This block used to run "Building stock." and "Why roofs fail
-                  here." — two invented paragraphs per city. See the note at the
-                  top of lib/locations.ts. What replaces them is the approved
-                  neutral language, which is true of every roof we assess. */}
-              <Reveal delay={0.15}>
-                <div className="space-y-6 text-[1rem] leading-[1.85] text-black">
-                  <p>
-                    Commercial roofs can perform differently even within the
-                    same area. The recommended path depends on the specific
-                    roof&rsquo;s condition, serviceability, moisture, substrate
-                    integrity, compatibility, detailing needs, and the
-                    owner&rsquo;s objectives.
-                  </p>
-                  <p className="pl-5 border-l-[3px] border-[var(--supreme-red)] italic text-black">
-                    Every {location.name} inquiry starts the same way: a
-                    no-cost assessment of the roof you have, documented, with a
-                    recommendation of coating and protection, restoration, or
-                    replacement based on what that assessment supports.
-                  </p>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.2}>
-                <div className="flex flex-wrap gap-3 mt-9">
-                  <a href={site.phoneHref} className="btn btn-primary">
-                    <Phone size={16} />
-                    {site.phone}
-                  </a>
-                  <Link href="/contact" className="btn btn-ghost-dark">
-                    Request a commercial roof assessment
-                  </Link>
-                </div>
-              </Reveal>
+              <p className="scc-measure mt-4 text-[var(--t-body)] leading-[1.65] text-[var(--text-muted)]">
+                Commercial roof assessment and planning, repair and
+                restoration, coating and protection systems, complete roof
+                replacement, and related commercial construction — delivered
+                through one accountable company. Commercial roofs can perform
+                differently even within the same area, so the recommended path
+                depends on the specific roof&rsquo;s condition, serviceability,
+                moisture, substrate integrity, compatibility, detailing needs,
+                and the owner&rsquo;s objectives.
+              </p>
+              <Link
+                href="/commercial-roofing"
+                className="mt-5 inline-flex min-h-[44px] items-center text-[0.9375rem] font-[700] text-[var(--scc-red)] underline underline-offset-4"
+              >
+                See how the assessment decides the direction
+              </Link>
             </div>
 
-            {/* Sidebar */}
+            {/* 3. Local proof — or an honest absence of it. */}
             <div className="lg:col-span-5">
-              <div className="lg:sticky lg:top-32 space-y-5">
-                <Reveal direction="left">
-                  <div className="p-7 bg-[var(--ink-05)] border-l-[4px] border-[var(--supreme-red)]">
-                    <h3 className="display-sm mb-5">
-                      Also covering, near {location.name}
-                    </h3>
-                    <ul className="flex flex-wrap gap-2">
-                      {location.nearby.map((area) => (
-                        <li
-                          key={area}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/[0.09] text-[1rem]"
-                        >
-                          <MapPin
-                            size={12}
-                            className="text-[var(--supreme-red)] shrink-0"
-                          />
-                          {area}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
+              {location.proof ? (
+                <div className="rounded-[var(--r-frame)] border border-[var(--scc-border)] bg-[var(--canvas)] p-6">
+                  <p className="[font-size:var(--t-label)] font-[700] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                    Local work
+                  </p>
+                  <p className="mt-3 text-[var(--t-body)] leading-[1.6] text-[var(--scc-ink)]">
+                    {location.proof}
+                  </p>
+                </div>
+              ) : null}
 
-                <Reveal direction="left" delay={0.1}>
-                  <div className="p-7 bg-[var(--ink-90)] text-white noise relative">
-                    <h3 className="display-sm mb-5">
-                      Why restoration wins in {location.name}
-                    </h3>
-                    <ul className="space-y-3">
-                      {restorationBenefits.slice(0, 4).map((benefit) => (
-                        <li key={benefit} className="flex items-start gap-3">
-                          <span className="mt-1 shrink-0 grid place-items-center w-[17px] h-[17px] rounded-full bg-[var(--supreme-red)]">
-                            <Check
-                              size={10}
-                              strokeWidth={3.5}
-                              className="text-white"
-                            />
-                          </span>
-                          <span className="text-[1.02rem] leading-[1.6] text-white">
-                            {benefit}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </Reveal>
+              {/* 4. Nearby areas and the Service Areas link. */}
+              <div className={location.proof ? "mt-6" : ""}>
+                <p className="[font-size:var(--t-label)] font-[700] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                  Nearby
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-x-2 gap-y-2">
+                  {others.map((o) => (
+                    <li key={o.slug}>
+                      <Link
+                        href={`/service-areas/${o.slug}`}
+                        className="inline-flex min-h-[36px] items-center rounded-[var(--r-control)] border border-[var(--scc-border)] px-3 text-[0.875rem] text-[var(--scc-ink)] transition-colors hover:border-[var(--scc-ink)]"
+                      >
+                        {o.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/service-areas"
+                  className="mt-4 inline-flex min-h-[44px] items-center gap-2 text-[0.9375rem] font-[700] text-[var(--scc-ink)] underline underline-offset-4"
+                >
+                  <MapPin size={15} className="text-[var(--scc-red)]" />
+                  All service areas
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <SlidingText />
-      <Recommendations />
-
-      <ServicesSlider
-        eyebrow={`Services in ${location.name}`}
-        title={`What we do in ${location.name}`}
-        intro={`Commercial roof assessment, coating and protection, essential restoration repairs and roof replacement across ${location.county}.`}
-      />
-
-      {/* The trust block is on the home and commercial pages. Repeating it
-          across eighteen location pages was the largest single source of
-          duplicate content on the site. */}
-
-      {/* ── Other locations — interactive coverage map ── */}
-      <CoverageMap
-        activeSlug={location.slug}
-        eyebrow="Elsewhere in Greater Houston"
-        titleLead="Other areas"
-        titleAccent="We cover."
-        quote={`“${location.name} is one of ${locations.length} communities we cover. Pick any tile to see what we find on roofs there.”`}
-        showTargets={false}
-      />
-
-      <FaqJsonLd />
-      <FAQ />
-      <CTABand />
+      {/* 5. One CTA. */}
+      <FinalCta />
     </>
   );
 }

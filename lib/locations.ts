@@ -35,6 +35,23 @@ export type Location = {
   intro: string;
   /** Verified neighborhoods and corridors inside the coverage area. */
   nearby: string[];
+  /**
+   * Verified local proof, and the switch that controls indexing.
+   *
+   * File 05 §6: a city page without verified local proof is set to `noindex`
+   * and removed from the production sitemap. This field is how a page earns
+   * its way back in — an approved nearby project, a photograph, or a verified
+   * operational fact.
+   *
+   * ⚠ NEVER fill this to make a page indexable. Inventing local building
+   * stock, typical failure causes, response times or customer behaviour is
+   * specifically forbidden by the source of truth §11, and it is the exact
+   * thing "Why restoration wins in [City]" was doing before it was removed.
+   *
+   * SCC supplies the city-to-project mapping (file 03, D9). Until then every
+   * one of these is undefined and all eighteen routes are noindex.
+   */
+  proof?: string;
 };
 
 const intro = (name: string) =>

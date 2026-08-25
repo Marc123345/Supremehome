@@ -366,7 +366,7 @@ export const services: Service[] = [
     title: "Commercial Roof Assessment",
     kicker: "Where every project starts",
     blurb:
-      "We get on the roof, document what's actually there, and tell you whether it can be restored. No cost, and no obligation to do the work with us.",
+      "We get on the roof, document what's actually there, and tell you whether it can be restored — before anyone talks about scope or price.",
     points: [
       "Core samples and moisture survey when conditions warrant",
       "Condition documented as the roof and access allow",
@@ -479,7 +479,7 @@ export const residentialServices: Service[] = [
 export const warranties = [
   {
     title: "Free Inspection and Estimate",
-    body: "We inspect, document and price the work at no cost. That includes telling you if you don't need a new roof yet.",
+    body: "We inspect, document and price the work. That includes telling you if you don't need a new roof yet.",
   },
   {
     title: "5-Year Leak Protection",

@@ -26,7 +26,13 @@ declare global {
  */
 export function JotformEmbed({
   formId,
-  title = "Request a free roof assessment",
+  /* Was "Request a free roof assessment". Whether the assessment is free is
+     an open SCC decision (file 03, D7) and the package requires the visible
+     copy, this title, the CTA and the schema to carry one answer together.
+     Neutral until then.
+     ⚠ This is only the accessible title on the iframe — the title INSIDE the
+     Jotform is a builder setting and must be changed there too. */
+  title = "Request a commercial roof assessment",
   /** Placeholder height until the handler measures the real form. */
   initialHeight = 700,
 }: {

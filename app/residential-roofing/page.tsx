@@ -32,7 +32,15 @@ import { FaqJsonLd } from "@/components/seo/JsonLd";
  * So this page is now self-contained:
  *   - Its own brand lockup (Supreme Home) leads the page.
  *   - The CertainTeed steep-slope badges live here, not on commercial pages.
- *   - Financing and the 5-year residential warranty live here.
+ *   - Financing and warranty terms live here IF SCC confirms them. As of the
+ *     Strategic Revision Package they are unverified, so the specifics are off
+ *     the page: the "5-year leak protection warranty", "zero-down financing",
+ *     "CertainTeed certified installation", "insurance claim help" and every
+ *     "free inspection" have been removed from copy and metadata.
+ *
+ *     File 05 §7: "Publish only the residential services, financing,
+ *     warranties, claim support, and credentials SCC supplies in file 03."
+ *     They go back when SCC answers D10 — not before.
  *   - It uses `residentialFaqs`, not the commercial FAQ set.
  *   - It no longer renders the commercial <Process>, which is the six-step
  *     commercial assessment-to-proposal journey and makes no sense for a
@@ -60,14 +68,14 @@ export const metadata: Metadata = {
       "Residential Roofing, Repair & Storm Damage in Houston | Supreme Home Roofing",
   },
   description:
-    "Shingle and metal roofing for Houston-area homes. CertainTeed certified installation, 5-year leak protection warranty, insurance claim help and zero-down financing.",
+    "Supreme Home Roofing provides clear roof recommendations and professional residential roofing service for Greater Houston homeowners.",
 };
 
 /** Homeowner-scale process — deliberately not the commercial six-step one. */
 const HOMEOWNER_STEPS = [
   {
     n: "01",
-    title: "Free inspection",
+    title: "Roof inspection",
     body: "We come out, get on the roof, and take photos of anything we find. No charge, and no pressure.",
   },
   {
@@ -117,7 +125,7 @@ export default function ResidentialRoofingPage() {
         breadcrumb="Residential"
         eyebrow="Homes across Greater Houston"
         title="Residential roofing, without the hard sell"
-        intro="Residential roofing from Supreme, scaled to a house. You get a free inspection, a written answer on repair-or-replace, and a 5-year leak protection warranty on our work."
+        intro="Supreme Home Roofing provides clear roof recommendations and professional residential roofing service for Greater Houston homeowners."
         image={media.residentialTearOff}
         imageAlt="A roofer removing damaged shingles from a Texas brick home"
       />
@@ -149,7 +157,7 @@ export default function ResidentialRoofingPage() {
               <Reveal delay={0.15}>
                 <p className="lede mb-8">
                   Storm damage, an aging roof, or a leak you can&rsquo;t track
-                  down. We inspect for free and tell you whether it&rsquo;s a
+                  down. We look at the roof and tell you whether it&rsquo;s a
                   repair or a replacement.
                 </p>
               </Reveal>
@@ -195,7 +203,7 @@ export default function ResidentialRoofingPage() {
         filter="residential"
         eyebrow="Residential services"
         title="What we do on homes"
-        intro="Shingle roofing, repairs, storm restoration and insurance claim help, all from one contractor."
+        intro="Shingle roofing, repairs and storm restoration from one contractor."
       />
 
       {/* ── Homeowner process ── */}
@@ -244,8 +252,8 @@ export default function ResidentialRoofingPage() {
       />
       <CTABand
         heading="Get your roof looked at"
-        body="Tell us what you're seeing and we'll come out and inspect it, free. You get a written answer on whether it's a repair or a replacement."
-        cta="Request a free roof inspection"
+        body="Tell us what you're seeing and we'll come out and look at the roof. You get a clear answer on whether it's a repair or a replacement."
+        cta="Contact Supreme Home Roofing"
         note={`Residential roofing \u00b7 ${site.address.city}, TX`}
         ticker={tickerResidential}
       />

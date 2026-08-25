@@ -126,7 +126,7 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ color: "#ffffff", fontSize: 24 }}>
-            Free commercial roof assessment · Greater Houston
+            Commercial roof assessment · Greater Houston
           </div>
           <div style={{ color: "#fff", fontSize: 28, fontWeight: 700 }}>
             {site.phone}

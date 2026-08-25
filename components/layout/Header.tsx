@@ -83,6 +83,13 @@ export function Header() {
      underlines on one bar, which tells the reader nothing. A hash link jumps
      within a page the nav is already indicating, so it never carries the
      active mark. */
+  /* On /residential-roofing the header must carry a residential action, not a
+     commercial one — file 05 §7 and §8. A homeowner reading about shingles
+     should not be asked to request a commercial roof assessment by the bar at
+     the top of the page. Same rule that produced the residential footer
+     variant. */
+  const residentialRoute = pathname?.startsWith(residentialBrand.path) ?? false;
+
   const isActive = (href: string) => {
     if (href.includes("#")) return false;
     if (href === "/") return pathname === "/";
@@ -183,6 +190,10 @@ export function Header() {
               href="/contact"
               className="inline-flex h-11 items-center rounded-[var(--r-control)] bg-[var(--scc-red)] px-4 text-[0.875rem] font-[700] text-white transition-colors duration-[var(--m-feedback)] hover:bg-[#b80112]"
             >
+              {residentialRoute ? (
+                <span>Contact {residentialBrand.shortName}</span>
+              ) : (
+                <>
               <span className="hidden 2xl:inline">Request a Commercial Roof Assessment</span>
               {/* The full label needs ~300px. Below 2xl it would push the nav
                   into the logo, so the short form carries the same action and
@@ -191,6 +202,8 @@ export function Header() {
                 Request Assessment
               </span>
               <span className="sr-only 2xl:hidden">Request a Commercial Roof Assessment</span>
+                </>
+              )}
             </Link>
           </div>
 
