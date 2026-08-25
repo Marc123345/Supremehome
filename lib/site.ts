@@ -628,15 +628,52 @@ export const credibilityPillars = [
  */
 export type CaseStudy = {
   slug: string;
-  building: string;
-  city: string;
-  system: string;
-  recommendation: "Restored" | "Replaced";
-  squares?: number;
-  summary: string;
-  image?: string;
+  /** Approved public project name, or an anonymised label SCC has cleared. */
+  label: string;
+  /** Approved location — city, or region if the client is not named. */
+  location: string;
+  propertyType: string;
+  /** Existing roof system, and its verified size. Size is optional because an
+   *  unverified square count is worse than none. */
+  existingSystem: string;
+  size?: string;
+  /** What the assessment documented. Conditions found, not conclusions drawn. */
+  documentedConditions: string;
+  recommendation: "Restore and protect" | "Roof replacement" | "Targeted repair";
+  /** The scope actually completed, which is not always the recommendation. */
+  completedScope: string;
+  completionStatus: string;
+  /** Warranty facts as SCC states them. Omit rather than generalise. */
+  warranty?: string;
+  /** Approved SCC photographs. `caption` is required — file 05 asks for
+   *  "authentic SCC photographs with useful captions", and an uncaptioned
+   *  project photo is decoration. */
+  images?: { src: string; alt: string; caption: string }[];
 };
 
+/**
+ * Commercial case studies.
+ *
+ * DELIBERATELY EMPTY, and it must stay that way until SCC supplies real
+ * projects. The Strategic Revision Package makes two of these a hard
+ * production launch gate, and is explicit that nothing may stand in for them:
+ * not company-wide reviews, not stock photography, not a disclaimer.
+ *
+ * The fields above are the package's required content model, verbatim from
+ * file 05 §1.4 and the proof-system section of file 02. They are wider than
+ * the old shape (which had building/city/system/summary) because the package
+ * asks for the documented condition, the completed scope, and the completion
+ * and warranty facts — the things that make a project verifiable rather than
+ * a testimonial.
+ *
+ * ⚠ NEVER invent a value here. Not a square count, not a completion date, not
+ * a warranty term, not a client quote. If SCC has not written it down, the
+ * field stays empty and the component renders without it.
+ *
+ * The proof section reads this array. Empty, it renders the honest "portfolio
+ * in progress" state rather than a broken grid; populated, it becomes the
+ * strongest content on the homepage. See components/scc/ProjectProof.
+ */
 export const caseStudies: CaseStudy[] = [];
 
 /* ── COMMERCIAL CAPABILITIES ─────────────────────────────── */

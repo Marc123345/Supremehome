@@ -7,7 +7,7 @@ import { ServicesSlider } from "@/components/sections/ServicesSlider";
 import { WhoWeServe } from "@/components/sections/WhoWeServe";
 import { Process } from "@/components/sections/Process";
 import { Credentials } from "@/components/sections/Credentials";
-import { CaseStudies } from "@/components/sections/CaseStudies";
+import { ProjectProof } from "@/components/scc/ProjectProof";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTABand } from "@/components/sections/CTABand";
 import { media } from "@/lib/site";
@@ -56,7 +56,7 @@ export default function CommercialRoofingPage() {
       <Credentials />
 
       {/* Empty until real commercial projects are added to lib/site.ts. */}
-      <CaseStudies />
+      <ProjectProof />
 
       <ServicesJsonLd />
       <FaqJsonLd />
