@@ -1,10 +1,47 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/sections/PageHero";
 import { CoverageMap } from "@/components/sections/CoverageMap";
-import { CTABand } from "@/components/sections/CTABand";
-import { Reveal, RevealGroup, RevealItem, RevealWords } from "@/components/ui/Reveal";
-import { media, serviceAreas, site } from "@/lib/site";
-import { HouseEyebrow } from "@/components/ui/HouseMark";
+import { FinalCta } from "@/components/scc/FinalCta";
+import { serviceAreas, site } from "@/lib/site";
+
+/**
+ * SERVICE AREAS — rebuilt to file 05 §5.
+ *
+ * ── Its one job ────────────────────────────────────────────────────────────
+ *
+ * "Provide the single authoritative coverage destination." This is now the
+ * only route on the site carrying the full map and the city directory — the
+ * header mega-dropdown, the mobile menu list, the footer's eighteen links and
+ * the per-city maps have all been consolidated here.
+ *
+ * ── What was rewritten, and why it mattered ────────────────────────────────
+ *
+ * File 03 marks "Local crews, documented work" as REWRITE: "Use verified
+ * coverage and project-logistics facts supplied by SCC."
+ *
+ * The three cards under that heading were the problem. Read closely they said
+ * almost nothing — scheduling "depends on location, roof access, urgency,
+ * weather, project size and current workload", after a storm "call us and we
+ * will confirm what we can do", multiple buildings "tell us what you have and
+ * we will confirm". Three cards to say "call us" three times, under a heading
+ * claiming local crews and documented work, neither of which is verified.
+ *
+ * That is exactly the "repeated sales-card sequence" file 05 §5 asks to
+ * remove, and the heading is an unverified operational claim. Both are gone.
+ * What replaces them is the coverage facts that are actually true: where SCC
+ * is based, what the coverage area is, and how to ask about an unlisted
+ * location — which the package requires this page to explain.
+ *
+ * ── The oversized hero also went ───────────────────────────────────────────
+ *
+ * "Keep the page concise and factual." A photographic PageHero above a map is
+ * two large visual objects before any coverage information; the map is the
+ * page's content, so it comes first after a compact introduction.
+ *
+ * ⚠ SCC INPUT REQUIRED (file 03, D8): confirmed cities and counties, the
+ * policy for unlisted locations, and any real project-logistics facts. When
+ * those arrive this page can say something specific about how coverage
+ * actually works rather than only where it reaches.
+ */
 
 export const metadata: Metadata = {
   alternates: { canonical: "/service-areas" },
@@ -17,75 +54,75 @@ export const metadata: Metadata = {
 export default function ServiceAreasPage() {
   return (
     <>
-      <PageHero
-        breadcrumb="Service Areas"
-        eyebrow="Eighteen communities"
-        title="Commercial roofing across Greater Houston"
-        intro={`${site.name} serves commercial properties from its ${site.address.city} base across the listed Greater Houston communities. Commercial projects outside the listed area may be considered based on scope, location and scheduling.`}
-        image={media.warehouseAerial}
-        imageAlt="Aerial view of a distribution facility and its low-slope roof"
-      />
-
-      <CoverageMap />
-
-      {/* ── Coverage detail ── */}
-      <section className="section bg-white">
+      {/* Compact introduction, not a photographic hero. */}
+      <section className="border-b border-[var(--scc-border)] bg-[var(--paper)] pt-12 pb-10 lg:pt-14 lg:pb-12">
         <div className="shell">
-          <div className="max-w-2xl mb-12">
-            <Reveal>
-              <HouseEyebrow className="mb-5">
-                How coverage works
-              </HouseEyebrow>
-            </Reveal>
-            <h2 className="display-lg mb-6">
-              <RevealWords text="Local crews, documented work" />
-            </h2>
-          </div>
-
-          <RevealGroup className="grid md:grid-cols-3 gap-5">
-            <RevealItem className="h-full">
-              <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">Scheduling an assessment</h3>
-                <p className="text-[1rem] leading-[1.75] text-black">
-                  Scheduling depends on location, roof access, urgency,
-                  weather, project size and current workload. We confirm timing
-                  with you when you call.
-                </p>
-              </div>
-            </RevealItem>
-            <RevealItem className="h-full">
-              <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">After a storm</h3>
-                <p className="text-[1rem] leading-[1.75] text-black">
-                  Call us after a hail or wind event and we will confirm what
-                  we can do for the property and when.
-                </p>
-              </div>
-            </RevealItem>
-            <RevealItem className="h-full">
-              <div className="edge-card h-full p-8">
-                <h3 className="display-sm mb-3">More than one building</h3>
-                <p className="text-[1rem] leading-[1.75] text-black">
-                  Managing sites across several cities? Tell us what you have
-                  and we will confirm what we can assess and in what order.
-                </p>
-              </div>
-            </RevealItem>
-          </RevealGroup>
-
-          <Reveal delay={0.2}>
-            <div className="mt-10 p-8 bg-[var(--ink-05)] border-l-[4px] border-[var(--supreme-red)]">
-              <p className="text-[1.05rem] leading-[1.8] text-black">
-                Based at {site.address.full}. Commercial inquiries outside the
-                listed cities are welcome — call and we will confirm whether
-                the project is a fit.
-              </p>
-            </div>
-          </Reveal>
+          <p className="[font-size:var(--t-label)] font-[700] uppercase tracking-[0.18em] text-[var(--text-muted)]">
+            Service areas
+          </p>
+          <h1 className="mt-3 font-display uppercase leading-[1.06] [font-size:var(--t-h2)] text-[var(--scc-ink)]">
+            Commercial roofing across Greater Houston
+          </h1>
+          <p className="scc-measure mt-4 [font-size:var(--t-lead)] leading-[1.6] text-[var(--text-muted)]">
+            Supreme Commercial Coatings serves commercial properties across the
+            Greater Houston communities below, from its {site.address.city}{" "}
+            base.
+          </p>
         </div>
       </section>
 
-      <CTABand />
+      {/* The map and directory. The only place on the site either appears. */}
+      <CoverageMap />
+
+      {/* Coverage facts. No cards, no repeated call-to-action sequence. */}
+      <section className="scc-section-compact bg-[var(--paper)]" aria-labelledby="coverage-heading">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-5">
+              <h2
+                id="coverage-heading"
+                className="font-display uppercase leading-[1.06] [font-size:var(--t-h2-minor)] text-[var(--scc-ink)]"
+              >
+                How coverage works
+              </h2>
+            </div>
+
+            <dl className="lg:col-span-7">
+              <div className="border-t border-[var(--scc-border)] py-5">
+                <dt className="text-[1.0625rem] font-[700] text-[var(--scc-ink)]">
+                  Where we are based
+                </dt>
+                <dd className="mt-1.5 max-w-[62ch] text-[var(--t-body)] leading-[1.6] text-[var(--text-muted)]">
+                  {site.address.full}
+                </dd>
+              </div>
+
+              <div className="border-t border-[var(--scc-border)] py-5">
+                <dt className="text-[1.0625rem] font-[700] text-[var(--scc-ink)]">
+                  Properties outside the listed areas
+                </dt>
+                <dd className="mt-1.5 max-w-[62ch] text-[var(--t-body)] leading-[1.6] text-[var(--text-muted)]">
+                  Commercial inquiries outside the listed communities are
+                  welcome. Call or send the property details and we will confirm
+                  whether the project is a fit before anything is scheduled.
+                </dd>
+              </div>
+
+              <div className="border-t border-[var(--scc-border)] py-5 last:border-b">
+                <dt className="text-[1.0625rem] font-[700] text-[var(--scc-ink)]">
+                  More than one building
+                </dt>
+                <dd className="mt-1.5 max-w-[62ch] text-[var(--t-body)] leading-[1.6] text-[var(--text-muted)]">
+                  Tell us what you have and where. We will confirm what we can
+                  assess and in what order.
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <FinalCta />
     </>
   );
 }

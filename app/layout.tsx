@@ -34,8 +34,12 @@ export const metadata: Metadata = {
    * contractor. Both are now stated in the terms the client asked for.
    */
   title: {
+    /* Home and Commercial must not carry the same title (file 02, metadata
+       policy). They previously differed only by word order, which is the same
+       title as far as a search result is concerned. Home identifies the
+       company and its market; Commercial names the service. */
     default:
-      "Supreme Commercial Coatings | Commercial Roof Assessment, Restoration and Replacement",
+      "Supreme Commercial Coatings | Commercial Roofing in Greater Houston",
     template: `%s | ${site.name}`,
   },
   description:

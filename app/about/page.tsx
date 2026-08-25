@@ -39,7 +39,9 @@ import { site, commercialManufacturers } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/about" },
-  title: "About Supreme Commercial Coatings",
+  /* Just "About" — the root template appends "| Supreme Commercial Coatings",
+     so the previous value rendered the brand twice in the tab and the SERP. */
+  title: "About",
   description:
     "Supreme Commercial Coatings serves Greater Houston commercial property owners with assessment-led roof repair, restoration, coating systems, replacement and related commercial construction.",
 };
