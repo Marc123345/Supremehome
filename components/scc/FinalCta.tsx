@@ -22,20 +22,27 @@ import { site } from "@/lib/site";
  */
 export function FinalCta({
   heading = "Request a commercial roof assessment",
-  body = "Tell us about the property, roof system and concern. We will review the roof's current condition, document what we find, and explain whether restoration and coating are viable or replacement is necessary.",
+  body = "Tell us about the property, roof system and concern. We will review the request and contact you to confirm the appropriate next step.",
 }: {
   heading?: string;
   body?: string;
 }) {
   return (
-    <section className="bg-[var(--scc-red)] py-[var(--section-y)] text-white">
+    /* Compact padding, not the standard section rhythm.
+    
+       Measured on the built homepage the red band was 8% of page surface
+       against file 04 §3's ≤5% cap. Red is the one colour with a hard ceiling,
+       and a CTA does not need 120px of air above and below to be found — it
+       needs to be the last thing and the only red thing, both of which are
+       still true at this height. */
+    <section className="bg-[var(--scc-red)] py-12 text-white lg:py-14">
       <div className="shell">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end lg:gap-16">
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div className="lg:col-span-7">
-            <h2 className="font-display uppercase leading-[1.06] [font-size:var(--t-h2)]">
+            <h2 className="font-display uppercase leading-[1.06] [font-size:var(--t-h2-minor)]">
               {heading}
             </h2>
-            <p className="scc-measure mt-5 [font-size:var(--t-lead)] leading-[1.6] text-white/90">
+            <p className="scc-measure mt-4 text-[var(--t-body)] leading-[1.6] text-white/90">
               {body}
             </p>
           </div>

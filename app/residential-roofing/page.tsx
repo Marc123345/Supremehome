@@ -64,11 +64,28 @@ export const metadata: Metadata = {
    * search result and the browser tab.
    */
   title: {
-    absolute:
-      "Residential Roofing, Repair & Storm Damage in Houston | Supreme Home Roofing",
+    absolute: "Residential Roofing | Supreme Home Roofing",
   },
   description:
-    "Supreme Home Roofing provides clear roof recommendations and professional residential roofing service for Greater Houston homeowners.",
+    "Professional residential roofing service for Greater Houston homeowners from Supreme Home Roofing.",
+  /* File 06 §6 requires route-specific social fields. Without these the route
+     inherited the root Open Graph — a commercial assessment offer, on the one
+     page that must not carry one. `images` is inherited deliberately until SCC
+     supplies residential imagery (file 03, D10). */
+  openGraph: {
+    title: "Residential Roofing | Supreme Home Roofing",
+    description:
+      "Professional residential roofing service for Greater Houston homeowners from Supreme Home Roofing.",
+    url: "/residential-roofing",
+    siteName: "Supreme Home Roofing",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Residential Roofing | Supreme Home Roofing",
+    description:
+      "Professional residential roofing service for Greater Houston homeowners from Supreme Home Roofing.",
+  },
 };
 
 /** Homeowner-scale process — deliberately not the commercial six-step one. */

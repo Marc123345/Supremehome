@@ -398,7 +398,12 @@ export const services: Service[] = [
     title: "Commercial Roof Replacement",
     kicker: "When restoration won't hold",
     blurb:
-      "Some roofs are past saving, and coating them is a waste of your budget. When that's the answer, we tell you in writing and price the replacement.",
+      /* File 06 §2 replaces this by name. It read "Some roofs are past saving,
+         and coating them is a waste of your budget" — which frames replacement
+         as the failure case for coating, the exact perception the revision is
+         correcting, and promises a written answer that is an unverified
+         deliverable (D2). The package's wording is used verbatim. */
+      "When the documented condition, expected performance, owner objectives, or project requirements make a new roof system appropriate, Supreme Commercial Coatings explains the findings and provides a project-specific replacement direction.",
     points: [
       "Tear-off and deck inspection to the project scope",
       "Wet insulation and substrate replacement where found",
@@ -776,10 +781,15 @@ export const faqs = [
     q: "Do you do repairs?",
     a: "Repairs required to prepare an approved restoration project are included in the project-specific scope. Availability for standalone commercial repair work depends on the property, location and required scope — call us to confirm project fit.",
   },
-  {
-    q: "Are you licensed and insured in Texas?",
-    a: "Texas doesn't issue a statewide roofing contractor license. What matters is insurance and manufacturer approval. We carry general liability insurance and hold current manufacturer credentials for the systems we install, and documentation is available on request.",
-  },
+  /* The Texas licensing FAQ was removed here — file 06 §5, "Remove the Texas
+     licensing FAQ now". Two reasons in the package: the answer used dismissive
+     comparison language ("Texas doesn't issue a statewide roofing contractor
+     license. What matters is..."), and any statement about licensing,
+     insurance and bonding needs an independent current legal determination
+     rather than a copywriter's framing.
+
+     It comes back only with the exact license/registration, insurance, bonding
+     and manufacturer documentation SCC supplies (file 03, D4). */
   {
     q: "How long does a commercial restoration take?",
     a: "Project duration depends on roof size, existing condition, the restoration work required, weather, access and the selected system. We provide a project-specific schedule before work begins and coordinate the work to reduce disruption to building operations.",

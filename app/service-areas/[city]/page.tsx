@@ -64,9 +64,18 @@ export async function generateMetadata({
   const hasProof = Boolean(location.proof);
 
   return {
-    title: `Commercial Roofing in ${location.name}, TX`,
+    /* File 06 §7 title pattern, with `absolute` so the root template does not
+       append the brand a second time. The visible H1 says the same thing. */
+    title: {
+      absolute: `Commercial Roofing in ${location.name}, TX | ${site.name}`,
+    },
     description: `Commercial roof assessment, restoration and replacement in ${location.name}, ${location.county}. ${site.name} documents the roof's current condition before recommending restoration when viable or replacement when necessary.`,
     alternates: { canonical: `/service-areas/${location.slug}` },
+    openGraph: {
+      title: `Commercial Roofing in ${location.name}, TX | ${site.name}`,
+      url: `/service-areas/${location.slug}`,
+      type: "website",
+    },
     /* No verified local proof, no index. See the note above. */
     ...(hasProof ? {} : { robots: { index: false, follow: true } }),
   };

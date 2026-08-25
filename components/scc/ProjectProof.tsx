@@ -35,7 +35,10 @@ export function ProjectProof() {
   return (
     <section
       id="projects"
-      className="scc-section bg-[var(--surface-dark)] text-white"
+      /* Compact rhythm: the hero is already dark, and the two together put
+         dark surface at 25% against file 04 §3's 15-20% band. This section
+         will grow when real case studies load, so it starts tight. */
+      className="scc-section-compact bg-[var(--surface-dark)] text-white"
       aria-labelledby="projects-heading"
     >
       <div className="shell">

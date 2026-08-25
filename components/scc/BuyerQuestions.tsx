@@ -36,7 +36,10 @@ const QUESTIONS = [
   },
   {
     q: "When is roof replacement the appropriate recommendation?",
-    a: "When restoration is not viable on the documented condition, or when the building's expected performance, the owner's objectives or the project's requirements call for a new assembly. Replacement is a planned project direction rather than a fallback — it is recommended when it is the correct answer, and it is executed by the same company that assessed the roof.",
+    /* File 06 §3 supplies this answer verbatim and requires the same text in
+       the visible accordion and the FAQPage schema. Both read this array, so
+       they cannot drift. */
+    a: "Roof replacement is appropriate when the documented condition, expected performance, owner objectives, or project requirements make a new roof system the right project direction. Supreme Commercial Coatings evaluates those factors and recommends the solution the assessment supports.",
   },
   {
     q: "What happens during a commercial roof assessment?",
