@@ -27,7 +27,7 @@ export function RestorationScope() {
   return (
     /* `id="scope"` is linked from the footer's Restoration Scope entry, which
        pointed at a target that did not exist (correction package D4). */
-    <section id="scope" style={{ scrollMarginTop: "96px" }}
+    <section id="scope"
       className="relative section bg-white overflow-hidden">
       {/* Watermark keeps the brand present on the light sections too. */}
       <div

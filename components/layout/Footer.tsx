@@ -9,7 +9,6 @@ import {
   residentialBrand,
   residentialNavItem,
 } from "@/lib/site";
-import { locations } from "@/lib/locations";
 import { HouseMark } from "@/components/ui/HouseMark";
 import { Logo } from "./Logo";
 
@@ -28,8 +27,23 @@ import { Logo } from "./Logo";
  *     Replace last." — which led with repair and positioned SCC as a repair
  *     company (feedback section 2).
  */
-export function Footer() {
+/**
+ * `variant` — commercial (default) or residential.
+ *
+ * File 05 §8 requires the residential route to close on Supreme Home Roofing
+ * rather than on SCC: its own identity, its own action, one clear route back
+ * to SCC, and explicitly **no commercial assessment CTA as the closing
+ * action**. Shipping one footer meant /residential-roofing ended by asking a
+ * homeowner to request a commercial roof assessment, which is the exact
+ * crossover the whole separation exists to prevent.
+ *
+ * Only the parts that carry brand identity swap. The contact panel, legal
+ * line and structure are shared, because they are the same company and
+ * duplicating the component would guarantee the two drift.
+ */
+export function Footer({ variant = "commercial" }: { variant?: "commercial" | "residential" } = {}) {
   const year = new Date().getFullYear();
+  const residential = variant === "residential";
 
   return (
     <footer className="relative">
@@ -156,23 +170,28 @@ export function Footer() {
             ))}
           </ul>
 
+          {/* ONE Service Areas link, not the eighteen-city directory.
+
+              File 05 §8: "One Service Areas link instead of the full 18-city
+              directory." The directory is not lost — Service Areas becomes its
+              single authoritative destination, the same consolidation that
+              took the city mega-dropdown out of the header.
+
+              There is a second reason beyond tidiness. Eighteen city links in
+              the footer of every route gave each of those pages a sitewide
+              internal link, which works directly against the package's rule
+              that any city page without verified local proof goes `noindex`. */}
           <h3 className="display-sm mb-5">Service areas</h3>
-          <ul className="flex flex-wrap gap-x-3 gap-y-2 mb-10 max-w-lg">
-            {locations.map((loc) => (
-              <li
-                key={loc.slug}
-                className="after:content-['·'] after:ml-3 after:text-black/70 last:after:content-['']"
-              >
-                <Link
-                  href={`/service-areas/${loc.slug}`}
-                  className="tap-inline text-[1.02rem] transition-colors hover:text-[var(--supreme-red)]"
-                  style={{ color: "var(--ink-70)" }}
-                >
-                  {loc.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <p className="mb-4 max-w-md text-[1rem]" style={{ color: "var(--ink-70)" }}>
+            Commercial roofing across Greater Houston and the surrounding counties.
+          </p>
+          <Link
+            href="/service-areas"
+            className="tap-inline mb-10 inline-flex items-center gap-2 text-[1.02rem] font-semibold transition-colors hover:text-[var(--supreme-red)]"
+            style={{ color: "var(--ink-70)" }}
+          >
+            See all service areas
+          </Link>
 
           {/* Two changes here, both from the correction package (J2, A5).
               The heading claimed certification, which is a credential we
@@ -210,23 +229,49 @@ export function Footer() {
                 color: "var(--ink)",
               }}
             >
-              Restore when viable.
-              <br />
-              <span style={{ color: "var(--supreme-red)" }}>
-                Replace when necessary.
-              </span>
+              {residential ? (
+                <>
+                  Clear answers.
+                  <br />
+                  <span style={{ color: "var(--supreme-red)" }}>
+                    Professional roofing.
+                  </span>
+                </>
+              ) : (
+                <>
+                  Restore when viable.
+                  <br />
+                  <span style={{ color: "var(--supreme-red)" }}>
+                    Replace when necessary.
+                  </span>
+                </>
+              )}
             </p>
 
+            {/* The closing action. On the residential route this is the
+                Supreme Home action and the commercial link is demoted to a
+                secondary line beneath it — never the other way round. */}
             <Link
               href="/contact"
               className="tap-inline group inline-flex items-center gap-2.5 mt-7 font-bold text-[1rem] text-[var(--supreme-red)]"
             >
-              Request a commercial roof assessment
+              {residential
+                ? "Contact Supreme Home Roofing"
+                : "Request a commercial roof assessment"}
               <ArrowRight
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
             </Link>
+
+            {residential && (
+              <p className="mt-4 text-[0.95rem]" style={{ color: "var(--ink-60)" }}>
+                Looking for commercial roofing?{" "}
+                <Link href="/" className="tap-inline font-semibold underline underline-offset-2">
+                  Supreme Commercial Coatings
+                </Link>
+              </p>
+            )}
           </div>
         </div>
       </div>

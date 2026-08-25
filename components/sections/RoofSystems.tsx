@@ -23,7 +23,6 @@ export function RoofSystems() {
   return (
     <section
       id="roof-systems"
-      style={{ scrollMarginTop: "96px" }}
       className="relative section bg-[var(--ink-05)] overflow-hidden"
     >
       <div

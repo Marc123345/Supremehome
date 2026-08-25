@@ -59,6 +59,95 @@
   /* Layout */
   --gutter: clamp(1.25rem, 4vw, 5rem);
   --shell: 1440px;
+
+  /* ═════════════════════════════════════════════════════════════════════
+     SCC STRATEGIC REVISION TOKENS  (package file 04, section 3-5)
+
+     These are the named tokens the revision package specifies by value.
+     They sit alongside the older scales above rather than replacing them
+     in one move: roughly forty components still read `--ink-70`,
+     `--step-4` and friends, and swapping the variables out from under
+     them would change every page at once with nothing rebuilt to catch
+     it. The retirement order is the package's own — Phase 1 defines the
+     system, Phases 3-5 move each route onto it, Phase 7 deletes what is
+     left unused.
+
+     ⚠ --scc-red is #e00116 sampled from the current build. File 04
+     requires this to be confirmed against the official logo asset and
+     the confirmed value made the single source. It is on the SCC
+     request list.
+     ═════════════════════════════════════════════════════════════════════ */
+
+  /* Colour — file 04 §3, verbatim */
+  --scc-red: #e00116;
+  --scc-ink: #17191c;
+  --surface-dark: #0f1113;
+  --paper: #ffffff;
+  --canvas: #f6f7f7;
+  --surface-muted: #eceff1;
+  --text-muted: #5b6168;
+  --scc-border: #d9dde1;
+  --red-tint: #fff1f2;
+
+  /* Type roles — file 04 §4. Explicit min/max rather than the older
+     fluid `--step-*` ramp, because the package specifies desktop and
+     mobile targets per role and the routine-H2-at-88px problem it is
+     correcting came from a ramp with no ceiling. */
+  --t-h1: clamp(2.375rem, 1.6rem + 3.4vw, 4.5rem);        /* 38 → 72 */
+  --t-h2: clamp(2rem, 1.55rem + 2vw, 3.5rem);             /* 32 → 56 */
+  --t-h2-minor: clamp(1.75rem, 1.5rem + 1.1vw, 2.625rem); /* 28 → 42 */
+  --t-h3: clamp(1.375rem, 1.25rem + 0.55vw, 1.875rem);    /* 22 → 30 */
+  --t-lead: clamp(1.125rem, 1.06rem + 0.28vw, 1.3125rem); /* 18 → 21 */
+  --t-body: clamp(1rem, 0.97rem + 0.14vw, 1.125rem);      /* 16 → 18 */
+  --t-label: clamp(0.75rem, 0.73rem + 0.09vw, 0.875rem);  /* 12 → 14 */
+  --t-control: clamp(0.9375rem, 0.92rem + 0.07vw, 1rem);  /* 15 → 16 */
+
+  --lh-display: 1.06;
+  --lh-body: 1.6;
+
+  /* Spacing scale — file 04 §5, verbatim: 8 12 16 24 32 48 64 96 120 */
+  --s-1: 0.5rem;
+  --s-2: 0.75rem;
+  --s-3: 1rem;
+  --s-4: 1.5rem;
+  --s-5: 2rem;
+  --s-6: 3rem;
+  --s-7: 4rem;
+  --s-8: 6rem;
+  --s-9: 7.5rem;
+
+  /* Grid and measure — file 04 §5 */
+  --container: 1240px;
+  --reading: 740px;          /* 720-760 band */
+  --gutter-wide: 3rem;       /* 48px ≥1280 */
+  --gutter-desk: 2rem;       /* 32px <1280 */
+  --gutter-mobile: 1.375rem; /* 22px, inside the 20-24 band */
+
+  /* Header height, and the single source for every anchor offset.
+
+     Four sections used to carry `scrollMarginTop: "96px"` inline, each
+     restating the old header height. When the header moved to 78px they were
+     all silently wrong by 18px — an anchor landing under the bar is the kind
+     of fault nobody files but everybody feels. `scroll-padding-top` on the
+     root handles every anchor on the site from one value, so a future header
+     change is one line here. */
+  --header-h: 68px;
+
+  /* Section rhythm — file 04 §5 */
+  --section-y: clamp(3.5rem, 2rem + 5vw, 7.5rem);      /* 56 → 120 */
+  --section-y-compact: clamp(3.5rem, 2.4rem + 3vw, 5rem); /* 56 → 80 */
+
+  /* Radius, border, elevation — file 04 §7 and §9 */
+  --r-control: 7px;   /* 6-8px on the primary action */
+  --r-frame: 4px;
+  --hair: 1px;
+  --shadow-header: 0 1px 3px rgba(15, 17, 19, 0.08);
+  --shadow-raise: 0 8px 28px -12px rgba(15, 17, 19, 0.22);
+
+  /* Motion — file 04 §14 */
+  --m-feedback: 180ms;  /* 150-220 band */
+  --m-enter: 380ms;     /* 300-450 band */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @theme inline {
@@ -66,6 +155,19 @@
   --color-foreground: var(--foreground);
   --color-red-brand: var(--supreme-red);
   --color-ink: var(--ink);
+
+  /* Strategic-revision tokens as utilities. `scc-` prefixed so a
+     component that has been migrated is greppable and the two systems
+     never silently blend. */
+  --color-scc-red: var(--scc-red);
+  --color-scc-ink: var(--scc-ink);
+  --color-surface-dark: var(--surface-dark);
+  --color-paper: var(--paper);
+  --color-canvas: var(--canvas);
+  --color-surface-muted: var(--surface-muted);
+  --color-text-muted: var(--text-muted);
+  --color-scc-border: var(--scc-border);
+  --color-red-tint: var(--red-tint);
   --font-display: var(--font-bebas), "Arial Narrow", sans-serif;
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
@@ -79,6 +181,14 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* +16px so an anchored heading clears the bar rather than touching it. */
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 78px;
+  }
 }
 
 body {
@@ -175,6 +285,74 @@ body {
 }
 
 /* ── LAYOUT ──────────────────────────────────────────────── */
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SCC LAYOUT PRIMITIVES  (file 04 §5)
+
+   `.shell` below is the old container: 1440px wide on a fluid gutter. The
+   package specifies 1240px with fixed gutter steps and a separate reading
+   column, so these are the replacements. Both exist during the migration for
+   the same reason the token sets do — routes move onto `.scc-shell` as they
+   are rebuilt in Phases 3-5, and `.shell` is deleted in Phase 7 once nothing
+   references it.
+
+   `.scc-measure` is the one most likely to be forgotten: the package caps body
+   copy at 68 characters and a 720-760px column, and the current pages run
+   paragraphs the full width of a 1440px shell.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.scc-shell {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter-mobile);
+}
+
+@media (min-width: 768px) {
+  .scc-shell {
+    padding-inline: var(--gutter-desk);
+  }
+}
+
+@media (min-width: 1280px) {
+  .scc-shell {
+    padding-inline: var(--gutter-wide);
+  }
+}
+
+/* Standard and compact section rhythm. */
+.scc-section {
+  padding-block: var(--section-y);
+}
+.scc-section-compact {
+  padding-block: var(--section-y-compact);
+}
+
+/* The reading column. 68ch is the package's character cap; the px value is
+   the ceiling, and whichever is narrower wins. */
+.scc-measure {
+  max-width: min(68ch, var(--reading));
+}
+
+/* 12 / 8 / 4 responsive grid. */
+.scc-grid {
+  display: grid;
+  gap: var(--s-4);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .scc-grid {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: var(--s-5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .scc-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
 
 .shell {
   width: 100%;
@@ -493,8 +671,6 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ── PRELOADER (ported from topfloor Preloader.js) ───────── */
-
 /* ── SLIDING DISPLAY TEXT (topfloor Slidingtext.js) ──────── */
 /* Outlined by default, solid on hover — the marquee "fill" effect. */
 
@@ -508,32 +684,15 @@ body {
   -webkit-text-stroke-color: var(--supreme-red);
 }
 
-/* ── CIRCLE TEXT (topfloor Circletext.js) ────────────────── */
+/* Retired with Phase 1: an empty PRELOADER heading, and the `circle-rotate`
+   and `float-bob-x` keyframes from the original template. Both animations had
+   already been switched off (`animation: none`) by an earlier pass, so the
+   keyframes were shipping bytes that could never run. File 04 Phase 1 asks for
+   obsolete global style variants to be removed rather than left disabled.
 
-@keyframes circle-rotate {
-  to {
-    transform: rotate(360deg);
-  }
-}
-.animate-circle-rotate {
-  animation: none;
-  transform-origin: center;
-}
-
-/* ── FLOAT (topfloor float-bob-x) ────────────────────────── */
-
-@keyframes float-bob-x {
-  0%,
-  100% {
-    transform: translateX(-14px);
-  }
-  50% {
-    transform: translateX(14px);
-  }
-}
-.animate-float-x {
-  animation: none;
-}
+   `.sliding-word` above is still referenced by the SlidingText section, which
+   is not one of the homepage's seven required sections. It comes out with that
+   section in Phase 3 rather than being orphaned here first.
 
 /* ── SCROLLBAR ───────────────────────────────────────────── */
 
@@ -554,6 +713,20 @@ body {
 :focus-visible {
   outline: 3px solid var(--supreme-red);
   outline-offset: 3px;
+}
+
+/* A focus ring drawn outside an element that sits flush against a dark
+   section edge gets clipped. `--shadow` style rings do not clip, so anything
+   marked `.scc-focus-inset` keeps a visible ring in those positions. */
+.scc-focus-inset:focus-visible {
+  outline-offset: -3px;
+}
+
+/* Anchored headings must clear the sticky bar. Belt and braces alongside the
+   root `scroll-padding-top`: an element that sets its own `scroll-margin` for
+   another reason still gets the header offset from here. */
+[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 
 .skip-link {
@@ -600,9 +773,7 @@ body {
   .animate-ticker-left,
   .animate-ticker-right,
   .animate-kenburns,
-  .animate-circle-rotate,
   .animate-pulse-ring,
-  .animate-float-x,
   .reviews-track,
   .animate-bounce {
     animation: none !important;

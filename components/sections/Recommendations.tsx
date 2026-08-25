@@ -24,7 +24,6 @@ export function Recommendations() {
   return (
     <section
       id="recommendations"
-      style={{ scrollMarginTop: "96px" }}
       className="relative section bg-[var(--ink-90)] text-white noise overflow-hidden"
     >
       {/* Ambient red glow */}

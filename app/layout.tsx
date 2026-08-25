@@ -1,13 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Bebas_Neue, Manrope } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { ChatToggle } from "@/components/ui/ChatToggle";
+import { FooterSwitch } from "@/components/layout/FooterSwitch";
 import { HashScroll } from "@/components/ui/HashScroll";
 import { site, serviceAreas, services } from "@/lib/site";
 import { googleProfile } from "@/lib/reviews";
+import { INDEXABLE } from "@/lib/indexing";
 
 const bebas = Bebas_Neue({
   weight: "400",
@@ -67,7 +66,11 @@ export const metadata: Metadata = {
     description:
       "Restore when viable. Replace when necessary. Commercial roofing across Greater Houston.",
   },
-  robots: { index: true, follow: true },
+  /* Closed unless NEXT_PUBLIC_ALLOW_INDEXING=true — see lib/indexing. The
+     development deployment must not be indexed mid-rebuild (package file 02). */
+  robots: INDEXABLE
+    ? { index: true, follow: true }
+    : { index: false, follow: false, nocache: true },
   icons: {
     icon: [
       { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
@@ -193,26 +196,21 @@ export default function RootLayout({
         </a>
         <Header />
         <main id="main">{children}</main>
-        <Footer />
-        {/* The back-to-top circle used to sit here. It was moved to the
-            bottom-left to get out of the agent's way, and a floating circle
-            on the left that scrolls the page is not a control anyone reads
-            as that — the browser and the phone both already do it. */}
+        <FooterSwitch />
+        {/* THE FLOATING CHATBOT IS GONE, and it is a removal rather than a
+            relocation. The strategic revision package lists it under sitewide
+            visual actions ("remove the floating chatbot from every route in
+            this revision") and again in the acceptance criteria.
 
-        {/* Supreme assessment agent (Jotform). It fills and submits the same
-            form the contact page embeds, so a conversation that finishes is a
-            lead, not a hand-off to another step.
+            What went with it: the ChatToggle launcher and the Jotform agent
+            script it wrapped. That agent filled and submitted the same form
+            the contact page embeds, so nothing that converted through it is
+            now unreachable — the same form is one click away on /contact and
+            is about to move into the first viewport there (file 05, §4).
 
-            lazyOnload keeps it off the critical path: it loads after the page
-            is interactive rather than competing with the hero image for
-            bandwidth. The launcher is not part of first paint, so nothing
-            visible waits on it. */}
-        <Script
-          id="supreme-assessment-agent"
-          src="https://cdn.jotfor.ms/agent/embedjs/01a02fe8bce870008b0de7beaa0b1f91da1a/embed.js"
-          strategy="lazyOnload"
-        />
-        <ChatToggle />
+            ⚠ SCC should know the agent is off. It was a live capture path,
+            and switching it off is a business decision as much as a visual
+            one. It is on the consolidated request list. */}
         <HashScroll />
       </body>
     </html>

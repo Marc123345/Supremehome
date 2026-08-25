@@ -10,7 +10,7 @@ import { site, media } from "@/lib/site";
 export function Hero() {
 
   return (
-    <section className="relative w-full overflow-hidden flex flex-col min-h-[560px] lg:min-h-[calc(88svh-96px)]">
+    <section className="relative w-full overflow-hidden flex flex-col min-h-[560px] lg:min-h-[calc(88svh-var(--header-h))]">
       {/* ── BACKGROUND ── */}
       <div className="absolute inset-0 z-0">
         {/* The still is the LCP element: priority-loaded, and no longer

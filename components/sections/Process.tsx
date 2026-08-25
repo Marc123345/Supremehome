@@ -26,7 +26,7 @@ import { processSteps, media } from "@/lib/site";
 
 export function Process() {
   return (
-    <section id="process" style={{ scrollMarginTop: "96px" }}
+    <section id="process"
       className="relative section bg-white overflow-hidden">
       <div
         aria-hidden="true"
